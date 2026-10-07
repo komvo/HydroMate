@@ -14,7 +14,10 @@
 - Usuario solicita primero repositorio GitHub en `komvo`, con documentos,
   código y pruebas; autoriza posteriormente que sea público. Git local inicializado,
   README/política preparados y remoto https://github.com/komvo/HydroMate creado.
-  Push inicial pendiente de revisión final; secretos y archivos locales excluidos.
+  Versión inicial subida y verificada contra GitHub: 540 archivos, `main`;
+  commits originales conservados. Transferencia completa requirió lotes por
+  errores HTTP 408, sin borrar archivos ni reescribir el historial original.
+  Secretos y archivos locales excluidos; `.env.example` sin contraseñas asignadas.
 - Requisito docente comunicado por usuario: talleres organizados en GitHub,
   preferentemente PDF; desde Taller 5, reportes técnicos con código, capturas,
   errores/resultados, diagramas y archivos utilizados. `talleres/` contiene copias

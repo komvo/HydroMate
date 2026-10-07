@@ -7,6 +7,11 @@ cuenta `komvo`. Tras propuesta inicial privada, el usuario autorizó expresament
 la visibilidad pública. Repositorio: https://github.com/komvo/HydroMate.
 Git local está en `C:\Hydromate` y usa rama `main`.
 
+La versión inicial completa se publicó y verificó el 07/10/2026. Dos intentos
+de transferencia completa agotaron el tiempo de espera HTTP; se subió en 18 lotes
+y se conectó el historial de importación con los dos commits locales originales.
+Ambos commits se conservan como ancestros de `main`; no hubo force push ni reset.
+
 Se incluyen los originales de `Documentos PDC/`, también versiones anteriores y
 duplicados: conservar su procedencia es parte del respaldo solicitado. El sketch
 `tsts/tsts.ino` permanece como referencia de las pruebas físicas.

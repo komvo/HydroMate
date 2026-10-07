@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-07",
+  "repository": "https://github.com/komvo/HydroMate",
+  "visibility": "public",
+  "branch": "main",
+  "verifiedCompleteSnapshot": "5c4c691ccdd601e5e2f9bc0ed69acb6ad6faa768",
+  "trackedFilesAtSnapshot": 540,
+  "originalCommits": [
+    "c7bda7b",
+    "5d2011a"
+  ],
+  "uploadBatches": 18,
+  "uploadProblems": [
+    "HTTP 408 on full initial transfer"
+  ],
+  "correction": "Incremental batch upload; original local commits preserved as ancestors, complete tree checked before closure",
+  "checks": [
+    "Remote HEAD equals local HEAD",
+    "Public repository and main default branch confirmed via GitHub API",
+    "Six workshop PDF copies match originals by SHA-256",
+    "New README relative links resolve",
+    "Real .env and local configuration ignored",
+    "Heuristic text and Office XML secret scan without remaining findings"
+  ],
+  "limitations": [
+    "No new backend, Android or physical sensor tests run for repository setup",
+    "PDF and image text not included in heuristic secret scan",
+    "Taller 5 final technical PDF and end-to-end cloud evidence remain pending"
+  ]
+}
