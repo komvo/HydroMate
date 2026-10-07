@@ -1,0 +1,54 @@
+﻿{
+    "date":  "2026-10-03",
+    "version":  "0.2.0",
+    "build":  "assembleDebug successful",
+    "tests":  [
+                  {
+                      "name":  "com.hydromate.mobile.ReadingStateTest",
+                      "tests":  3,
+                      "failures":  0,
+                      "errors":  0,
+                      "skipped":  0
+                  },
+                  {
+                      "name":  "com.hydromate.mobile.RepositoryTest",
+                      "tests":  2,
+                      "failures":  0,
+                      "errors":  0,
+                      "skipped":  0
+                  },
+                  {
+                      "name":  "com.hydromate.mobile.TelemetryTest",
+                      "tests":  7,
+                      "failures":  0,
+                      "errors":  0,
+                      "skipped":  0
+                  }
+              ],
+    "integration":  "Read-only opt-in Kotlin GET to local Laravel/PostgreSQL passed; zero skipped tests",
+    "backend":  "PHPUnit: 17 tests, 104 assertions passed; isolated SQLite in memory",
+    "lint":  "0 errors; 2 existing warnings: target API 35 and newer test-only JSON dependency",
+    "apk_sha256":  "aba801d6996c345fd5d7f8b53fdfa72d32ed7e4158f60c157cffe93cce50e8e4",
+    "backend_code_changed":  false,
+    "telemetry_contract_changed":  false,
+    "postgres_writes":  false,
+    "production_dependencies_added":  false,
+    "api_bind":  "127.0.0.1:8000",
+    "postgres_mount":  "existing volume at /var/lib/postgresql/data",
+    "phone_installation":  "pending; no ADB device",
+    "ui_runtime_validation":  "pending; no device or AVD",
+    "runtime_pending":  [
+                            "appearance light/dark",
+                            "pull gesture",
+                            "rotation",
+                            "lifecycle/cancel behavior",
+                            "keyboard/insets",
+                            "font scaling",
+                            "TalkBack"
+                        ],
+    "freshness":  "Optional display threshold; disabled by default; not device connectivity",
+    "future_features":  "Cultivation/control/BLE/alerts unavailable; no commands or invented actuator states",
+    "backup":  ".local/backups/android-ux-2026-10-03",
+    "git":  "No repository; source changes compared to local backup",
+    "firewall_changed":  false
+}

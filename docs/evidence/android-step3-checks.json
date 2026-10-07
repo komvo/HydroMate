@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-30",
+  "build": "assembleDebug successful",
+  "tests": [
+    {
+      "name": "com.hydromate.mobile.RepositoryTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.hydromate.mobile.TelemetryTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "integration": "Read-only GET from Kotlin repository to local Laravel passed",
+  "lint": "0 errors; 2 warnings: target API 35 and newer test-only JSON library available",
+  "apk_sha256": "4480ece5c66aae904157ee7725ea2e3dd6c11e9ca1ff575e40a11a34087ee83f",
+  "phone_installation": "pending; no ADB device",
+  "ui_runtime_validation": "pending; no device or AVD",
+  "firewall_changed": false,
+  "backend_changed": false
+}

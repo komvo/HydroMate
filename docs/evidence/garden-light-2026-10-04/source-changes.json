@@ -1,0 +1,70 @@
+[
+  {
+    "path": "debug/java/com/hydromate/mobile/VisualCheckActivity.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/AeroArtwork.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/AeroIcons.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/Components.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/cultivation/CultivationScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/dashboard/DashboardScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/history/HistoryScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/settings/SettingsScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_refresh.png",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_tds.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/background_botanical.jpg",
+    "change": "added"
+  },
+  {
+    "path": "main/res/values/colors.xml",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/values/styles.xml",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/values-night/colors.xml",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/values-night/styles.xml",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/values-night-v27/styles.xml",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/values-v27/styles.xml",
+    "change": "modified"
+  }
+]

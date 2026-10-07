@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-30",
+  "php": "8.4.26",
+  "laravel": "13.33.0",
+  "phpunit": {
+    "tests": 15,
+    "assertions": 79,
+    "passed": true,
+    "database": "SQLite :memory:"
+  },
+  "pint": "passed",
+  "php_lint": "passed",
+  "postgres": "16.15",
+  "docker_volume": "not_verified",
+  "schema_changes": false
+}

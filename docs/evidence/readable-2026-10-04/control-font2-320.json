@@ -1,0 +1,47 @@
+{
+  "screen": "CONTROL",
+  "scenario": 1,
+  "width_dp": 320,
+  "font_scale": 2,
+  "two_columns": false,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Ver detalles de integración",
+      "width_dp": 260.14816,
+      "height_dp": 86.22222
+    },
+    {
+      "label": "Volver",
+      "width_dp": 288,
+      "height_dp": 53.333332
+    },
+    {
+      "label": "Inicio",
+      "width_dp": 62.22222,
+      "height_dp": 66.37037
+    },
+    {
+      "label": "Historial",
+      "width_dp": 62.22222,
+      "height_dp": 66.37037
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 62.22222,
+      "height_dp": 66.37037
+    },
+    {
+      "label": "Control, seleccionado",
+      "width_dp": 62.51852,
+      "height_dp": 66.37037
+    },
+    {
+      "label": "Más",
+      "width_dp": 62.51852,
+      "height_dp": 66.37037
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

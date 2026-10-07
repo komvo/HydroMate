@@ -1,0 +1,468 @@
+{
+  "date": "2026-10-04",
+  "observed_at_utc": "2026-10-04T20:53:08.035239+00:00",
+  "build": "testDebugUnitTest lintDebug assembleDebug assembleRelease: BUILD SUCCESSFUL",
+  "tests": [
+    {
+      "name": "com.hydromate.mobile.AeroBehaviorTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T20:49:30.281Z"
+    },
+    {
+      "name": "com.hydromate.mobile.ReadingStateTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T20:49:30.386Z"
+    },
+    {
+      "name": "com.hydromate.mobile.RepositoryTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1",
+      "timestamp": "2026-10-04T20:49:30.396Z"
+    },
+    {
+      "name": "com.hydromate.mobile.TelemetryTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T20:49:30.503Z"
+    }
+  ],
+  "passed": 17,
+  "skipped": 1,
+  "lint": [
+    {
+      "id": "OldTargetApi",
+      "severity": "Warning"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning"
+    },
+    {
+      "id": "ObsoleteSdkInt",
+      "severity": "Warning"
+    }
+  ],
+  "apks": {
+    "debug": {
+      "path": "mobile/app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 2349272,
+      "sha256": "727cc1ee129a558a909563c74698864f6b6b785c837a2a2254eb72c562bfa54c",
+      "debug_fixtures_and_review_activity": true,
+      "cleartext": true
+    },
+    "release": {
+      "path": "mobile/app/build/outputs/apk/release/app-release-unsigned.apk",
+      "bytes": 1792008,
+      "sha256": "3d161dafea4df0afdabb297dc0f2eba2f1a42c2d41717da54f6328d08f62a764",
+      "debug_fixtures_and_review_activity": false,
+      "cleartext": false
+    }
+  },
+  "functional_files_and_tests_unchanged": [
+    "main/java/com/hydromate/mobile/Telemetry.kt",
+    "main/java/com/hydromate/mobile/RequestFence.kt",
+    "main/java/com/hydromate/mobile/ConnectionStore.kt",
+    "debug/java/com/hydromate/mobile/PreviewSupport.kt",
+    "release/java/com/hydromate/mobile/PreviewSupport.kt",
+    "test/java/com/hydromate/mobile/ReadingStateTest.kt",
+    "test/java/com/hydromate/mobile/RepositoryTest.kt",
+    "test/java/com/hydromate/mobile/TelemetryTest.kt",
+    "testDebug/java/com/hydromate/mobile/AeroBehaviorTest.kt"
+  ],
+  "contrast": [
+    {
+      "theme": "day",
+      "pair": "ink / glossy sky",
+      "minimum_ratio": 8.504
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy lime",
+      "minimum_ratio": 8.032
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy water_soft",
+      "minimum_ratio": 8.736
+    },
+    {
+      "theme": "day",
+      "pair": "muted / hero",
+      "minimum_ratio": 4.81
+    },
+    {
+      "theme": "day",
+      "pair": "primary / hero",
+      "minimum_ratio": 5.058
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate glass",
+      "minimum_ratio": 6.797
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate surface",
+      "minimum_ratio": 7.015
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate water_soft",
+      "minimum_ratio": 6.863
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate sky",
+      "minimum_ratio": 6.855
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate lime",
+      "minimum_ratio": 6.805
+    },
+    {
+      "theme": "day",
+      "pair": "warning / warning plate",
+      "minimum_ratio": 6.804
+    },
+    {
+      "theme": "day",
+      "pair": "critical / warning plate",
+      "minimum_ratio": 6.481
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy sky",
+      "minimum_ratio": 7.982
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy lime",
+      "minimum_ratio": 5.99
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy water_soft",
+      "minimum_ratio": 6.131
+    },
+    {
+      "theme": "night",
+      "pair": "muted / hero",
+      "minimum_ratio": 4.823
+    },
+    {
+      "theme": "night",
+      "pair": "primary / hero",
+      "minimum_ratio": 5.51
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate glass",
+      "minimum_ratio": 4.852
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate surface",
+      "minimum_ratio": 6.479
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate water_soft",
+      "minimum_ratio": 5.523
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate sky",
+      "minimum_ratio": 6.467
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate lime",
+      "minimum_ratio": 5.534
+    },
+    {
+      "theme": "night",
+      "pair": "warning / warning plate",
+      "minimum_ratio": 7.594
+    },
+    {
+      "theme": "night",
+      "pair": "critical / warning plate",
+      "minimum_ratio": 6.466
+    }
+  ],
+  "device": {
+    "model": "2207117BPG",
+    "android": "13",
+    "api": 33,
+    "physical_px": [
+      1080,
+      2400
+    ],
+    "density": 440
+  },
+  "layout_review": {
+    "count": 26,
+    "text_clipping_detected": 0,
+    "targets_under_48dp": 0,
+    "scope": "Real device native views with Activity-local width/font configuration; not MainActivity interaction tests",
+    "screenshots": [
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-demo-393.png",
+        "sha256": "649d1301d482b1a92cd1040e20d3b2bf4c869884c83c2a5f7aa9f696e1bfaa1a",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/history-393.png",
+        "sha256": "9a69002b7f14bcad943958bc32eb689b41e1ba0f6c12ef4022c27e8e763f393e",
+        "screen": "HISTORY",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/cultivation-393.png",
+        "sha256": "6373e0398b0f0f262f2d9cd81061459bace407a69fb58944fee238797d2739c5",
+        "screen": "CULTIVATION",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/control-393.png",
+        "sha256": "a4d723ff7b64f0f5116ab57c0c8b5a550d1a8cb747c63dd04788b3bf6ce95549",
+        "screen": "CONTROL",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/settings-393.png",
+        "sha256": "1a568a16bfb0bb3b1c818f524d1cb683d3a0ee4a0524d7c4acea28c4f580f75b",
+        "screen": "SETTINGS",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-bottom-393.png",
+        "sha256": "21d349a373ee7b88928253b87e516672ca25d7a129ab9e7590305db5c921f763",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/history-bottom-393.png",
+        "sha256": "b8b80c6f5e5f6d5bac282932f019d864c566176f2af7c1cbd5c2372d4469365a",
+        "screen": "HISTORY",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/settings-bottom-393.png",
+        "sha256": "601568c69c87b69880daa8b8d2a6f235175adf1c6560bf9da2b260c1c422fc88",
+        "screen": "SETTINGS",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-320-font1.png",
+        "sha256": "0021df0cf30dea7cdf63379efb73f2db97c725838ed584c3af1cdbabd559f7ad",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-320-font1.3.png",
+        "sha256": "6f32bcc10ceb519339f8182fee3f3b83dce61906be41f575868ebe34e8071f5d",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-320-font2.png",
+        "sha256": "ee005b67278cd34cb42b93b35c6e9f7518df781624599d7b372e2762df9076ee",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-360-font1.png",
+        "sha256": "dcaecb25d39af47a653a22bf36906ce5f694e7758dfc3e91647ebe96864f54b2",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-360-font1.3.png",
+        "sha256": "43286ea321a3b677ecd2ab4de3f782096a06c36682fcd8abd8897987295f72f1",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-360-font2.png",
+        "sha256": "971e52e24c7f17257c625d06a345ab51256f61fde1fe20625870c13088d93b68",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-412-font1.png",
+        "sha256": "930569ad69879b3c2629cc26337ba7be3e492023e73ba76b2e91fb6859a0ec52",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-412-font1.3.png",
+        "sha256": "263a67bcc31ab78713409ca399adc46fad642ca21cb4947a417634a3663dbd63",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-412-font2.png",
+        "sha256": "0810d3b646b503471945c87b73b73f15008c942892bed744a6fb2b17e4437c87",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-state2-360.png",
+        "sha256": "8474a31513e73896e733aae4806023661d269fc6250a5b30a2ce6bcd1135c799",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 2,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-state3-360.png",
+        "sha256": "0ccd9d30bd7c6a2a452276c45d18f954aa729f669e81b43434b871e84a3dbcce",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 3,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-state4-360.png",
+        "sha256": "9b190560635e83fbbad08cc296d787a6fd42b00052247162614d4d7c4e1c0eb6",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 4,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-state5-360.png",
+        "sha256": "97aa4644296d7c11f415fa01d2b12043147e06d7b2211d86682e875a6df2050a",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 5,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-state6-360.png",
+        "sha256": "d94632d4306f53ae561a62bdf318cefcc0209a05e354de35f73772929719d16c",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 6,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-state7-360.png",
+        "sha256": "03d0cb0632d669416a06edb776acc9471c06201c2a2c38e57851b70a720ce375",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 7,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/home-night-393.png",
+        "sha256": "e432ff9a4fcab53dea82b475593014ab4372fb4857d415153d97609fbdb4fa8f",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": true
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/settings-font2-320.png",
+        "sha256": "62202acab2f57f3813b82525ad3b67619de45fcb178548f1c51be217a531c419",
+        "screen": "SETTINGS",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/crystal-2026-10-04/control-font2-320.png",
+        "sha256": "8cc4464e4e7d044b6c0e21af3ea5cf68113c8bf0dce87d0de83bb5f3e1639d8b",
+        "screen": "CONTROL",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      }
+    ]
+  },
+  "main_activity": "Installed, launched and real unavailable-server UI captured; no injected touch",
+  "backend": "Docker daemon unavailable this session; optional GET integration test omitted. No database changes.",
+  "pending": [
+    "Manual TalkBack and focus traversal",
+    "Keyboard and draft preservation in real Activity",
+    "Physical rotation of final build",
+    "System navigation gestures",
+    "Real API connection after starting backend/DB"
+  ],
+  "version": "0.5.0-crystal",
+  "backup": ".local/backups/android-crystal-2026-10-04/mobile/src",
+  "git": "No repository; reviewed against backup"
+}

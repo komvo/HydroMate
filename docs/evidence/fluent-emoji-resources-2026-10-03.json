@@ -1,0 +1,123 @@
+{
+  "provider": "Microsoft Fluent Emoji 3D",
+  "revision": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+  "resources": [
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_droplet.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Droplet/3D/droplet_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "e5d71667f30307af984a42f204871b8eef0d3c3af7501e637b50472822c994da",
+      "bytes": 19579,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_seedling.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Seedling/3D/seedling_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "b16c51b1b36c68b87bc05b92841d3cbd25d93919911057bb0eb3648717615cc1",
+      "bytes": 25324,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_sun.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Sun/3D/sun_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "c9bb15d03d4b1e6151d97e12119ac93bbd2bcb5e713a49c1fcfc11ece54caec1",
+      "bytes": 34812,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_thermometer.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Thermometer/3D/thermometer_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "5bde254ad0f29e3b3280b25e52c036e7a3fbb37c0e2ac3d1e9803dd4abb83c42",
+      "bytes": 31130,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_test_tube.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Test%20tube/3D/test_tube_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "60dc2ba1c1dd275624dc27a1a63548af6264c4288733b838af46e1ee31233668",
+      "bytes": 24780,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_gear.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Gear/3D/gear_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "415296d4fadabc2e0f6593143ea632948fef20a1cd73fbbc3dbda571f0421988",
+      "bytes": 39892,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_bar_chart.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Bar%20chart/3D/bar_chart_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "0d83833e992b128aa00b85220fc2f777516bbdeb92e9e1e019a7b715ecc6ef97",
+      "bytes": 38652,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_home.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/House%20with%20garden/3D/house_with_garden_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "57f676a85409d18348c069cebf35b4b4082498b0ddb783c54166eac15d402b81",
+      "bytes": 41641,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hm_control.png",
+      "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Control%20knobs/3D/control_knobs_3d.png",
+      "author": "Microsoft Corporation",
+      "license": "MIT",
+      "sha256": "2365d422c70108fcf0c4529ea3a958946b134c9605974bd21cefa1c25e16b1a0",
+      "bytes": 46304,
+      "dimensions": [
+        256,
+        256
+      ],
+      "modifications": "None; sized by ImageView"
+    }
+  ]
+}

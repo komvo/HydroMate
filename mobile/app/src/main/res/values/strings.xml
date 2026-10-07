@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HydroMate</string>
+    <string name="show_details">Ver %1$s</string>
+    <string name="hide_details">Ocultar %1$s</string>
+</resources>
