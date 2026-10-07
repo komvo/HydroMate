@@ -1,0 +1,95 @@
+{
+  "version": "0.4.0-eco",
+  "date": "2026-10-04",
+  "resources": [
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        512,
+        512
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "modifications": "Downsampled with System.Drawing; real alpha preserved",
+      "alpha_checks": "corner alpha 0; composited on white/cyan/dark, visually reviewed",
+      "prompt": "Use case: stylized-concept. Create a single original decorative emblem asset for the native Android hydroponics app HydroMate, not a screen mockup. Square composition on a genuinely transparent alpha background. Subject: a small botanical seedling with two richly detailed natural green leaves, visible fine veins, tiny dew drops and wet glossy highlights, growing partly through a clear cyan glass water-drop capsule / slightly spherical bubble. No soil or opaque pot. Strong Frutiger Aero / Frutiger Eco early-2000s optimistic ecological technology character. The glass is physically thick, transparent, polished and aquatic with light cyan rim, bright white specular reflections, subtle refraction and a soft contact shadow. Leaves must look organic and photoreal, not geometric or clay. Broad studio light from upper left, moderate front three-quarter perspective, bright fresh lime/leaf greens and aqua, restrained complexity readable at 90 dp. One centered subject occupies 80 percent of square; generous clean transparent margins. No lettering, numbers, text, logos, UI, gauges, water-level marks, status indicators, watermark, checkerboard pixels, background rectangle, matte plastic, cartoon face, purple neon or dark background.",
+      "sha256": "fcdd2ce49ae5655c5060d8c8796a9563161d9779e9c12a2be08478cb0fbb94b4",
+      "bytes": 368677
+    }
+  ],
+  "native_artwork": [
+    {
+      "path": "mobile/app/src/main/java/com/hydromate/mobile/ui/GlassIconDrawable.kt",
+      "origin": "Original layered Android Canvas icons; no copied third-party code",
+      "sha256": "e95f9bdfa798bdef737d03c8cd42aa062024fec8ae1dbd10fa34b945c3201b73",
+      "bytes": 7798
+    },
+    {
+      "path": "mobile/app/src/main/java/com/hydromate/mobile/ui/AeroArtwork.kt",
+      "origin": "Original native glass surfaces, sky, water ribbon and three bubbles",
+      "sha256": "516433aeebd6b0be07aa55f0c0a1b4ee792b50be92fd2d879c77de1ef5ca7957",
+      "bytes": 6399
+    }
+  ],
+  "references": [
+    {
+      "url": "https://makeaero.com/button",
+      "purpose": "Botón convexo, reflejo superior curvo y presión.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://makeaero.com/orb",
+      "purpose": "Volumen de burbuja y reflejo localizado.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://makeaero.com/window-glass",
+      "purpose": "Borde iluminado y espesor aparente; sin controles de escritorio.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://makeaero.com/wallpaper",
+      "purpose": "Cielo, onda acuática y burbujas periféricas.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://github.com/Visnalize/makeaero",
+      "purpose": "Referencia de implementación; no se copió código ni arte.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://docs.spline.design/materials-shading/shading-and-reflection/glass-layer",
+      "purpose": "Distinción entre transparencia, espesor y refracción.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://www.meshy.ai/3d-tools/3d-shape-generator",
+      "purpose": "Referencia de primitivas; no se usó el servicio ni se contrató un plan.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://help.figma.com/hc/en-us/articles/360041488473-Apply-effects-to-layers",
+      "purpose": "Referencia de efectos; no se exportó un diseño Figma.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://cari.institute/aesthetics/frutiger-aero",
+      "purpose": "Gramática histórica Aero; no se reutilizaron imágenes.",
+      "accessed": true,
+      "reuse": "Reference only"
+    }
+  ],
+  "legacy_manifest": "docs/evidence/fluent-emoji-resources-2026-10-03.json"
+}

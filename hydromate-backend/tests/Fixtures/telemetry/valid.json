@@ -1,0 +1,15 @@
+{
+  "device_id": "test-contract-01",
+  "sequence": 1,
+  "sample_number": 1,
+  "reason": [
+    "synthetic_test"
+  ],
+  "temperature_c": 24.3,
+  "light_pct": 65.2,
+  "light_state": "MEDIA",
+  "water_level_pct": 82.4,
+  "water_level_state": "LLENO",
+  "ph": 6.2,
+  "tds_ppm": 650
+}

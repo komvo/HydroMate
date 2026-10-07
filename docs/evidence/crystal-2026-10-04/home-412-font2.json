@@ -1,0 +1,57 @@
+{
+  "screen": "HOME",
+  "scenario": 1,
+  "width_dp": 412,
+  "font_scale": 2,
+  "two_columns": false,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Actualizar lecturas",
+      "width_dp": 51.933174,
+      "height_dp": 51.933174
+    },
+    {
+      "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+      "width_dp": 380.3341,
+      "height_dp": 95.08353
+    },
+    {
+      "label": "Sobre estas lecturas",
+      "width_dp": 352.07635,
+      "height_dp": 53.460617
+    },
+    {
+      "label": "Ver equipo y control",
+      "width_dp": 380.3341,
+      "height_dp": 53.460617
+    },
+    {
+      "label": "Inicio, seleccionado",
+      "width_dp": 80.95465,
+      "height_dp": 66.06205
+    },
+    {
+      "label": "Historial",
+      "width_dp": 80.95465,
+      "height_dp": 66.06205
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 80.95465,
+      "height_dp": 66.06205
+    },
+    {
+      "label": "Control",
+      "width_dp": 80.95465,
+      "height_dp": 66.06205
+    },
+    {
+      "label": "Más",
+      "width_dp": 80.95465,
+      "height_dp": 66.06205
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

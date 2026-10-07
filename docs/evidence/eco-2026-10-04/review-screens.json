@@ -1,0 +1,433 @@
+[
+  {
+    "screen": "HISTORY",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Mostrar pH, seleccionado",
+        "width_dp": 80.18223,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Mostrar Temp.",
+        "width_dp": 80.54669,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Mostrar TDS",
+        "width_dp": 80.54669,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Mostrar Luz",
+        "width_dp": 80.54669,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial, seleccionado",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "history-393.png"
+  },
+  {
+    "screen": "CULTIVATION",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Sobre los perfiles",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo, seleccionado",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "cultivation-393.png"
+  },
+  {
+    "screen": "CONTROL",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Ver detalles de integración",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Volver",
+        "width_dp": 361.54895,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control, seleccionado",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "control-393.png"
+  },
+  {
+    "screen": "SETTINGS",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Nombre en este teléfono",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Equipo y control",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Ver conexión avanzada",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Guardar conexión real",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Ver diagnóstico",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Seguir tema del sistema",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Escenario: Lecturas de ejemplo",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Salir de la demostración",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Acerca del diseño",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más, seleccionado",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "settings-393.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Actualizar lecturas",
+        "width_dp": 52.11845,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 361.54895,
+        "height_dp": 105.694756
+      },
+      {
+        "label": "Sobre estas lecturas",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Ver equipo y control",
+        "width_dp": 361.54895,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-bottom-393.png"
+  },
+  {
+    "screen": "HISTORY",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Mostrar pH, seleccionado",
+        "width_dp": 80.18223,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Mostrar Temp.",
+        "width_dp": 80.54669,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Mostrar TDS",
+        "width_dp": 80.54669,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Mostrar Luz",
+        "width_dp": 80.54669,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial, seleccionado",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "history-bottom-393.png"
+  },
+  {
+    "screen": "SETTINGS",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Nombre en este teléfono",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Equipo y control",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Ver conexión avanzada",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Guardar conexión real",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Ver diagnóstico",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Seguir tema del sistema",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Escenario: Lecturas de ejemplo",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Salir de la demostración",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Acerca del diseño",
+        "width_dp": 333.84964,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Historial",
+        "width_dp": 76.90205,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Control",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      },
+      {
+        "label": "Más, seleccionado",
+        "width_dp": 77.26651,
+        "height_dp": 64.14578
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "settings-bottom-393.png"
+  }
+]

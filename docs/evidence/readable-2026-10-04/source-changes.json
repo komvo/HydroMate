@@ -1,0 +1,122 @@
+[
+  {
+    "path": "debug/AndroidManifest.xml",
+    "change": "modified"
+  },
+  {
+    "path": "debug/java/com/hydromate/mobile/VisualCheckActivity.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/AndroidManifest.xml",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/AeroArtwork.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/AeroBottomNavigation.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/AeroIcons.kt",
+    "change": "added"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/Components.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/dashboard/DashboardScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/GlassIconDrawable.kt",
+    "change": "removed"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/history/HistoryScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/java/com/hydromate/mobile/ui/settings/SettingsScreen.kt",
+    "change": "modified"
+  },
+  {
+    "path": "main/res/drawable/ic_hydromate.xml",
+    "change": "removed"
+  },
+  {
+    "path": "main/res/drawable/ic_refresh.xml",
+    "change": "removed"
+  },
+  {
+    "path": "main/res/drawable/launcher_emblem.xml",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable/launcher_sky.xml",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_chemistry.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_control.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_droplet.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_history.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_home.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_irrigation.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_refresh.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_settings.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_sun.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/aero_thermometer.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/nav_control.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/nav_history.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/nav_home.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/drawable-nodpi/nav_settings.png",
+    "change": "added"
+  },
+  {
+    "path": "main/res/mipmap-anydpi/ic_hydromate.xml",
+    "change": "added"
+  }
+]

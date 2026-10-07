@@ -1,0 +1,560 @@
+{
+  "version": "0.6.0-garden",
+  "date": "2026-10-04",
+  "resources": [
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        512,
+        512
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "modifications": "Downsampled with System.Drawing; real alpha preserved",
+      "alpha_checks": "corner alpha 0; composited on white/cyan/dark, visually reviewed",
+      "prompt": "Use case: stylized-concept. Create a single original decorative emblem asset for the native Android hydroponics app HydroMate, not a screen mockup. Square composition on a genuinely transparent alpha background. Subject: a small botanical seedling with two richly detailed natural green leaves, visible fine veins, tiny dew drops and wet glossy highlights, growing partly through a clear cyan glass water-drop capsule / slightly spherical bubble. No soil or opaque pot. Strong Frutiger Aero / Frutiger Eco early-2000s optimistic ecological technology character. The glass is physically thick, transparent, polished and aquatic with light cyan rim, bright white specular reflections, subtle refraction and a soft contact shadow. Leaves must look organic and photoreal, not geometric or clay. Broad studio light from upper left, moderate front three-quarter perspective, bright fresh lime/leaf greens and aqua, restrained complexity readable at 90 dp. One centered subject occupies 80 percent of square; generous clean transparent margins. No lettering, numbers, text, logos, UI, gauges, water-level marks, status indicators, watermark, checkerboard pixels, background rectangle, matte plastic, cartoon face, purple neon or dark background.",
+      "sha256": "fcdd2ce49ae5655c5060d8c8796a9563161d9779e9c12a2be08478cb0fbb94b4",
+      "bytes": 368677
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_thermometer.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One upright laboratory thermometer: thick transparent pale cyan glass tube and spherical bulb, a slender warm amber liquid core, a few unnumbered embossed ticks. Distinct recognizable silhouette. No extra leaf obscuring the instrument.",
+      "sha256": "69e4dc799fa7f186491b0e60e08ecb7b696cda76b3c6c7fdc60c41fd4929a5df",
+      "bytes": 51114
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_droplet.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One large teardrop of clear cyan water glass, curved convex body with believable depth and refraction, three tiny trapped bubbles, bright wet rim and a subtle blue caustic beneath.",
+      "sha256": "c1d86e83deb187f6cbcdf3b5749c46c0ea128392dcef3679500c171857d415c6",
+      "bytes": 80365
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_chemistry.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One compact Erlenmeyer laboratory flask, thick clear aqua glass with a rounded triangular lower body, narrow open neck and rolled lip. A little clean cyan liquid and a few small air bubbles, tiny green reflection, no graduations or lettering.",
+      "sha256": "832b261d75beba2d0d2c69b9421e62ba23316a3330273a57ee5451b884989bcd",
+      "bytes": 80470
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_sun.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One jewel-like golden yellow sun: warm transparent amber glass sphere surrounded by eight short tapered crystalline rays. Pale cyan reflections along the clear rim, rich sunny highlights. No face.",
+      "sha256": "6004350babbb019d7ac3442166f642d0a63126f20d4c6f5663b714ba50ab646c",
+      "bytes": 87524
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_home.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One miniature greenhouse shaped like a simple house, pitched clear cyan glass roof, thick polished glass walls with restrained silver structure and one natural dew-covered green leaf visible inside. Readable house silhouette; a conceptual icon, not a physical tower model.",
+      "sha256": "cfd5b4b1d532049c463f25e2c667ab85080aecce03d028277fcd58299d0f6469",
+      "bytes": 129942
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_history.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One compact freestanding chart object made of three thick clear glass vertical columns at three different heights on a small transparent cyan rounded base. Aqua, lime-green and aqua columns; a natural tiny dew-covered leaf at one base corner. No axes, numbers, time labels or arrows.",
+      "sha256": "8d530dda93cc3367c2db1dc33b473241a4da62825a8c1feb5b5c63db05107c32",
+      "bytes": 108441
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_control.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One small ecological technology control console in three-quarter perspective, a clear thick cyan glass rounded rectangular panel with three polished cylindrical glass-and-silver knobs. Clean dimensional tactile objects, soft lime reflection on one knob, no screen, letters, numbers or indicator lights.",
+      "sha256": "a8255b2b53d15d14fa1df110f8c48b3d8bbbd52e0c3109dea98a46de5878a385",
+      "bytes": 106883
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_settings.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One upright thick transparent cyan glass cogwheel with eight rounded teeth and a circular hole. Subtle polished silver-blue inner bevel, believable transparent thickness, one very small natural green leaf resting at the lower right edge without obstructing the cog silhouette.",
+      "sha256": "63ada52347288333d9804c7b8691ead34f9fae184e1dd893374c1d9643beb3fb",
+      "bytes": 112503
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_irrigation.png",
+      "source": "OpenAI imagegen built-in; original generation for HydroMate",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png",
+      "modifications": "Downsampled with System.Drawing HighQualityBicubic to 256 px; real alpha preserved; no creative post-edit",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "White, cyan and dark composites: docs/evidence/crystal-2026-10-04/asset-contact-sheet.png"
+      },
+      "prompt": "Use case: stylized-concept.\nAsset type: individual transparent PNG icon for a native Android hydroponics app; not a UI mockup.\nReference image: the supplied HydroMate botanical glass emblem is STYLE reference only. Match its photographic material quality, believable glass depth, fresh wet detail and upper-left studio light. Create a different subject described below; do not repeat the emblem.\nStyle: high-end photoreal 3D product render, strong Frutiger Aero / Frutiger Eco, optimistic early-2000s ecological technology. Thick clear cyan glass, rich white specular reflections, finely resolved refraction, subtle aqua caustics, soft contact shadow, restrained natural green accents. Cohesive front three-quarter camera, only about 10-15 degrees perspective. Crisp recognizable silhouette, useful at 34-68 dp; simplify tiny details.\nComposition: exactly ONE isolated centered object, square image, subject occupies 78-82% of canvas, equal generous transparent margins. Subject entirely visible, no clipping. Transparent alpha background, no backdrop or platform rectangle.\nConstraints: no words, digits, watermark, logo, interface, grid, checkerboard pixels, outline/cartoon, matte plastic, clay, extraneous sparkles, neon or lens-flare stars. Static decorative symbol; do not show physical status.\nSubject: One small elegant watering can made of thick transparent pale cyan glass, rounded vessel, arched handle, short curved spout and a clear perforated rose head. A dew-covered green leaf rests against the body. No pouring water or motion.",
+      "sha256": "c77dc8e480aaf0e9c0212c50883abd56375ea387eda7149858036ab7fc200652",
+      "bytes": 105764
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/nav_home.png",
+      "source": "OpenAI imagegen built-in; original HydroMate navigation asset refinement",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/aero_home.png",
+      "usage": "Navigation only; original screen illustration preserved",
+      "modifications": "Optical refinement generated from own original, then downsampled to 256 px with System.Drawing HighQualityBicubic; alpha preserved",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "Small-size light/dark comparisons: docs/evidence/readable-2026-10-04/navigation-assets.png"
+      },
+      "prompt": "Use case: stylized-concept / local asset refinement.\nEdit the supplied HydroMate icon into an OPTICALLY SIMPLIFIED NAVIGATION VARIANT. Reference is the existing icon to preserve its identity and quality. User likes the large photoreal Frutiger Aero icons but ONLY the navigation icons at 34-36 dp need a middle ground between photographic complexity and over-simple flat pictograms.\nKeep the distinctive little glass greenhouse/house and the single living green seedling inside. Make the roof and outer house silhouette strong and broad. Simplify to four substantial glass walls/roof planes; no window crosshatching, chimney, roof grooves, miniature hinges, microscopic stems or leaf veins. Give the two leaves a rich readable green. Keep the object dimensional, rounded beveled cyan glass; not a flat generic house.\nKeep real dimensional thickness, smooth tinted translucent glass, a rich clear silhouette, soft contact shadow, upper-left soft studio light and convincing three-quarter 3D volume. Reduce internal refraction and texture drastically: broad calm color areas, restrained bright reflection, a single clear dark blue contour. It must look polished and Frutiger Aero, not cartoon, clipart, matte plastic, wireframe, flat vector or clay.\nAt a 36 dp size the entire silhouette must be recognizable immediately. Clear separation of color zones; no white noisy web of reflections. Do not add patterns, sparkles or tiny details. Cyan blue glass, natural green accents. Preserve object's proportions while simplifying unnecessary detail.\nExactly one centered isolated object. Square transparent alpha canvas, entirely visible with 10% clean margin. No words, digits, lettering, frame, UI, backdrop rectangle, checkerboard pixels or watermark. Background fully transparent.",
+      "sha256": "1c3e8215e8b563ba53dc0764c741900b60d3ee95e34ccf8dbac50471abeedd16",
+      "bytes": 108726
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/nav_history.png",
+      "source": "OpenAI imagegen built-in; original HydroMate navigation asset refinement",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/aero_history.png",
+      "usage": "Navigation only; original screen illustration preserved",
+      "modifications": "Optical refinement generated from own original, then downsampled to 256 px with System.Drawing HighQualityBicubic; alpha preserved",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "Small-size light/dark comparisons: docs/evidence/readable-2026-10-04/navigation-assets.png"
+      },
+      "prompt": "Use case: stylized-concept / local asset refinement.\nEdit the supplied HydroMate icon into an OPTICALLY SIMPLIFIED NAVIGATION VARIANT. Reference is the existing icon to preserve its identity and quality. User likes the large photoreal Frutiger Aero icons but ONLY the navigation icons at 34-36 dp need a middle ground between photographic complexity and over-simple flat pictograms.\nKeep three substantial rounded glass columns of three different heights, aqua / leaf green / aqua, arranged as a compact chart. Keep the three cylinders' convincing thickness and top elliptical surfaces, but only one broad highlight per cylinder. Remove the separate decorative leaf, extra base layers, bubbles, liquid lines, tiny rings and inner reflections. Preserve a strong three-column silhouette with clear gaps, a thin simple shared base, and high-end 3D glass material.\nKeep real dimensional thickness, smooth tinted translucent glass, a rich clear silhouette, soft contact shadow, upper-left soft studio light and convincing three-quarter 3D volume. Reduce internal refraction and texture drastically: broad calm color areas, restrained bright reflection, a single clear dark blue contour. It must look polished and Frutiger Aero, not cartoon, clipart, matte plastic, wireframe, flat vector or clay.\nAt a 36 dp size the entire silhouette must be recognizable immediately. Clear separation of color zones; no white noisy web of reflections. Do not add patterns, sparkles or tiny details. Cyan blue glass, natural green accents. Preserve object's proportions while simplifying unnecessary detail.\nExactly one centered isolated object. Square transparent alpha canvas, entirely visible with 10% clean margin. No words, digits, lettering, frame, UI, backdrop rectangle, checkerboard pixels or watermark. Background fully transparent.",
+      "sha256": "695d1b47e24f508cf00a61fa2265b52550809481bae0558745b893ecb5322f23",
+      "bytes": 88029
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/nav_control.png",
+      "source": "OpenAI imagegen built-in; original HydroMate navigation asset refinement",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/aero_control.png",
+      "usage": "Navigation only; original screen illustration preserved",
+      "modifications": "Optical refinement generated from own original, then downsampled to 256 px with System.Drawing HighQualityBicubic; alpha preserved",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "Small-size light/dark comparisons: docs/evidence/readable-2026-10-04/navigation-assets.png"
+      },
+      "prompt": "Use case: stylized-concept / local asset refinement.\nEdit the supplied HydroMate icon into an OPTICALLY SIMPLIFIED NAVIGATION VARIANT. Reference is the existing icon to preserve its identity and quality. User likes the large photoreal Frutiger Aero icons but ONLY the navigation icons at 34-36 dp need a middle ground between photographic complexity and over-simple flat pictograms.\nKeep the dimensional rounded glass control console and three physical silver/cyan knobs. Present almost straight on, only a shallow 10 degree three-quarter view. Three large separated knob silhouettes and one softly rounded aqua plate. One subtle green accent on the center knob. Remove pinstripes, extra bevel ridges, sharp reflected textures, microscopic controls and distracting internal elements. It must remain a premium glass console, not flat sliders.\nKeep real dimensional thickness, smooth tinted translucent glass, a rich clear silhouette, soft contact shadow, upper-left soft studio light and convincing three-quarter 3D volume. Reduce internal refraction and texture drastically: broad calm color areas, restrained bright reflection, a single clear dark blue contour. It must look polished and Frutiger Aero, not cartoon, clipart, matte plastic, wireframe, flat vector or clay.\nAt a 36 dp size the entire silhouette must be recognizable immediately. Clear separation of color zones; no white noisy web of reflections. Do not add patterns, sparkles or tiny details. Cyan blue glass, natural green accents. Preserve object's proportions while simplifying unnecessary detail.\nExactly one centered isolated object. Square transparent alpha canvas, entirely visible with 10% clean margin. No words, digits, lettering, frame, UI, backdrop rectangle, checkerboard pixels or watermark. Background fully transparent.",
+      "sha256": "a1e89023be12f7890e186a59e768a4e8ed50d25ca72d544e2f59fa02e01ea3f7",
+      "bytes": 80830
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/nav_settings.png",
+      "source": "OpenAI imagegen built-in; original HydroMate navigation asset refinement",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "mobile/app/src/main/res/drawable-nodpi/aero_settings.png",
+      "usage": "Navigation only; original screen illustration preserved",
+      "modifications": "Optical refinement generated from own original, then downsampled to 256 px with System.Drawing HighQualityBicubic; alpha preserved",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visual_review": "Small-size light/dark comparisons: docs/evidence/readable-2026-10-04/navigation-assets.png"
+      },
+      "prompt": "Use case: stylized-concept / local asset refinement.\nEdit the supplied HydroMate icon into an OPTICALLY SIMPLIFIED NAVIGATION VARIANT. Reference is the existing icon to preserve its identity and quality. User likes the large photoreal Frutiger Aero icons but ONLY the navigation icons at 34-36 dp need a middle ground between photographic complexity and over-simple flat pictograms.\nKeep a dimensional eight-tooth cyan glass gear with a large clear central circular hole, and one compact natural green leaf at lower right. Use thicker rounded simple teeth and broad clean facets. One sweeping white highlight and one shaded blue rim for volume. Remove all bubbles, tiny reflected streaks, leaf droplets, vein texture and repeated bevel ridges. The leaf can be simple but organically curved and glossy. Preserve depth and a clear recognizable cog silhouette.\nKeep real dimensional thickness, smooth tinted translucent glass, a rich clear silhouette, soft contact shadow, upper-left soft studio light and convincing three-quarter 3D volume. Reduce internal refraction and texture drastically: broad calm color areas, restrained bright reflection, a single clear dark blue contour. It must look polished and Frutiger Aero, not cartoon, clipart, matte plastic, wireframe, flat vector or clay.\nAt a 36 dp size the entire silhouette must be recognizable immediately. Clear separation of color zones; no white noisy web of reflections. Do not add patterns, sparkles or tiny details. Cyan blue glass, natural green accents. Preserve object's proportions while simplifying unnecessary detail.\nExactly one centered isolated object. Square transparent alpha canvas, entirely visible with 10% clean margin. No words, digits, lettering, frame, UI, backdrop rectangle, checkerboard pixels or watermark. Background fully transparent.",
+      "sha256": "3504f3019e89d2c55951c1ae70b45ea9c6c5152b42b265eab38ad74d2c9922d0",
+      "bytes": 99969
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_refresh.png",
+      "source": "OpenAI imagegen built-in; original HydroMate artwork",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "C:/Hydromate/mobile/app/src/main/res/drawable-nodpi/nav_history.png",
+      "usage": "Decorative refresh or TDS symbol; no physical state",
+      "modifications": "System.Drawing downsample; background encoded as JPEG quality 90, icons PNG with alpha",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "intent": "Transparent icon"
+      },
+      "prompt": "Use case: stylized-concept. Create ONE individual refresh icon for a native Android app, legible at 34 dp. Use reference ONLY for smooth thick translucent glass material and broad highlights; do not depict columns. Subject: one strong clockwise circular arrow, about 290 degrees of a circle, made of thick smooth cyan glass with a single prominent green glass arrowhead. Large clear central opening and unambiguous arrow silhouette. Frutiger Aero 3D, substantial rounded depth, upper-left studio illumination, broad calm aqua color areas, one clean white highlight. No noisy inner reflections, bubbles, photographic texture or decorative leaves. Distinctive mid-detail premium glass object, not flat vector or a complicated double-arrow knot. Exactly one centered object, square canvas, 12% transparent margin, true transparent alpha background, no lettering, numbers, checkerboard, UI, watermark or backdrop.",
+      "sha256": "61e47debc08a70d7aae40b6c93432b140947ffe39b52f366f257cdc811ce5f40",
+      "bytes": 75499
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/aero_tds.png",
+      "source": "OpenAI imagegen built-in; original HydroMate artwork",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_dimensions": [
+        1254,
+        1254
+      ],
+      "style_reference": "C:/Hydromate/mobile/app/src/main/res/drawable-nodpi/aero_chemistry.png",
+      "usage": "Decorative refresh or TDS symbol; no physical state",
+      "modifications": "System.Drawing downsample; background encoded as JPEG quality 90, icons PNG with alpha",
+      "alpha_checks": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "intent": "Transparent icon"
+      },
+      "prompt": "Use case: stylized-concept. Create ONE individual decorative TDS icon for HydroMate Android. Reference is our original pH flask: preserve its upper-left studio light and clear cyan Frutiger Aero glass material, but make the silhouette CLEARLY DIFFERENT. Subject: a short wide cylindrical glass laboratory beaker, OPEN straight wide lip, no narrow neck and no triangular body. Pale cyan water inside, with three distinct simple bright lime-green mineral crystal shapes visible in the center as a conceptual symbol of dissolved solids. Thick clear blue glass rim and base, broad readable reflections, believable rounded 3D thickness, shallow front-three-quarter angle. Broad clear shapes, readable at 34 dp. No complex internal refraction, microscopic bubbles, graduation marks, numbers, units, letters or electronic readings. Symbol is decorative, not an actual measurement or hardware specification. Exactly one centered object, square transparent alpha canvas, 12% margins. No background rectangle, checkerboard pixels, watermark, text, UI or stand.",
+      "sha256": "3ef07b77b2ab8f5bc2b4803571013cfe6b7243a6e65253f04420d684f3619ce8",
+      "bytes": 86945
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable-nodpi/background_botanical.jpg",
+      "source": "OpenAI imagegen built-in; original HydroMate artwork",
+      "license": "Generated artwork; no third-party stock license assigned",
+      "dimensions": [
+        720,
+        1601
+      ],
+      "original_dimensions": [
+        841,
+        1870
+      ],
+      "style_reference": "Original botanical background direction requested by user",
+      "usage": "Static botanical background",
+      "modifications": "System.Drawing downsample; background encoded as JPEG quality 90, icons PNG with alpha",
+      "alpha_checks": {
+        "corners": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "intent": "Opaque background"
+      },
+      "prompt": "Use case: stylized-concept / Android background artwork. Create a tall portrait 9:20 Frutiger Eco botanical background for the HydroMate hydroponics app, image only, no UI. Dark emerald and forest-green luminous garden atmosphere, optimistic early-2000s ecological technology. Realistic fresh broad green leaves with subtle dew and natural veins, clustered sparingly along the extreme LEFT and RIGHT borders and the lower corners, occupying only the outer 15-20% of the image. A few large elegant leaves rather than a dense jungle. Upper-left softly diffused sunlight gives leaves wet satin highlights, no hard glare. CENTER 65% and upper center remain quiet, smooth deep forest green (#123E2E) with gentle depth and subtle green light, no branches, patterns, flowers, text or bright bokeh behind future content. Faint aquatic atmosphere and refined glassy light along the bottom edge, no literal pond, pot or hydroponic tower. Restrained luxurious calm botanical scene, fresh lime and rich emerald edge leaves, no blue sky, no black, no neon, no purple, no geometric clipart, no repeating texture, no logos or lettering. Entire canvas filled; no frame or white margins. Decorative vegetation does not represent active plants or actual crop state.",
+      "sha256": "0cbf13b20f3ff98552fc9f87e3865117c14644ef0147d60f6d88452b5f69fe9a",
+      "bytes": 127952
+    }
+  ],
+  "native_artwork": [
+    {
+      "path": "mobile/app/src/main/java/com/hydromate/mobile/ui/AeroArtwork.kt",
+      "origin": "Original native translucent green glass: day base alpha 110 and reading plate 68; night 180/130. Local botanical backdrop with bright mint daytime veil; no dynamic refraction.",
+      "sha256": "a9db74fc3bca4b80b904f22b2016184242b99b40dc6e7981a793d62bb8feb49e",
+      "bytes": 6563
+    },
+    {
+      "path": "mobile/app/src/main/java/com/hydromate/mobile/ui/history/HistoryScreen.kt",
+      "origin": "Native glass pearl point appearance; sample positions and isolated-point contract unchanged",
+      "sha256": "b40139567ef39790cd1302d8901ed989a10d59406793f99b3f9d95970501d8df",
+      "bytes": 6601
+    },
+    {
+      "path": "mobile/app/src/main/res/mipmap-anydpi/ic_hydromate.xml",
+      "origin": "Adaptive launcher; reuses the original botanical emblem with native sky background",
+      "sha256": "4ee37d462d8a0551995d6210c2a256ded3b3749a42d8cc3271aa87bb880f0f52",
+      "bytes": 217
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable/launcher_sky.xml",
+      "origin": "Original native sky gradient for launcher",
+      "sha256": "e3728c840e27478d9a6fef7cc0205dd08b2fc204633714e859bd787eef053e5f",
+      "bytes": 225
+    },
+    {
+      "path": "mobile/app/src/main/res/drawable/launcher_emblem.xml",
+      "origin": "Original emblem with adaptive icon safe-area inset",
+      "sha256": "4fa13b3fd4695b724d12968a62c15a5ba2e2497a6165e4737a223501521ccaa2",
+      "bytes": 283
+    }
+  ],
+  "references": [
+    {
+      "url": "https://makeaero.com/button",
+      "purpose": "Botón convexo, reflejo superior curvo y presión.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://makeaero.com/orb",
+      "purpose": "Volumen de burbuja y reflejo localizado.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://makeaero.com/window-glass",
+      "purpose": "Borde iluminado y espesor aparente; sin controles de escritorio.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://makeaero.com/wallpaper",
+      "purpose": "Cielo, onda acuática y burbujas periféricas.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://github.com/Visnalize/makeaero",
+      "purpose": "Referencia de implementación; no se copió código ni arte.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://docs.spline.design/materials-shading/shading-and-reflection/glass-layer",
+      "purpose": "Distinción entre transparencia, espesor y refracción.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://www.meshy.ai/3d-tools/3d-shape-generator",
+      "purpose": "Referencia de primitivas; no se usó el servicio ni se contrató un plan.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://help.figma.com/hc/en-us/articles/360041488473-Apply-effects-to-layers",
+      "purpose": "Referencia de efectos; no se exportó un diseño Figma.",
+      "accessed": true,
+      "reuse": "Reference only"
+    },
+    {
+      "url": "https://cari.institute/aesthetics/frutiger-aero",
+      "purpose": "Gramática histórica Aero; no se reutilizaron imágenes.",
+      "accessed": true,
+      "reuse": "Reference only"
+    }
+  ],
+  "legacy_manifest": "docs/evidence/fluent-emoji-resources-2026-10-03.json",
+  "previous_manifest": "docs/evidence/readable-2026-10-04/resources-final-0.5.json",
+  "display_policy": {
+    "screens": "Original glass icons; pH keeps flask, TDS uses dedicated wide beaker, refresh uses one circular arrow",
+    "navigation": "Four dedicated optical variants for Inicio, Historial, Control and Más at 36 dp",
+    "cultivation_navigation": "Original botanical emblem unchanged at 34 dp",
+    "hero_and_launcher": "Original botanical emblem unchanged",
+    "background": "Bright botanical garden; mint veil 189/255; dark system-night variant remains optional"
+  }
+}

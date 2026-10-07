@@ -1,0 +1,203 @@
+{
+  "date": "2026-10-04",
+  "observed_at_utc": "2026-10-04T22:17:27.522563+00:00",
+  "scope": "Documentation and targeted source review; no deployment, firmware implementation or physical testing",
+  "git": "No repository; comparison against local backup",
+  "backup": ".local/backups/energy-docs-2026-10-04",
+  "implementation_files_unchanged": 80,
+  "implementation_sha256": {
+    "mobile/app/src/debug/AndroidManifest.xml": "b53049b26e9eb8b2bba4a8403c5b0e1f8f5a7b031832d73c1dc1b02a129351b3",
+    "mobile/app/src/main/AndroidManifest.xml": "0f0e109a32ef24f8dff2f7f966d51b3fda3ad59625e323339f569fb383081298",
+    "mobile/app/src/testDebug/java/com/hydromate/mobile/AeroBehaviorTest.kt": "f2f7998096369bb2d74b01dd7a22918534ed2488481af6a922be9d13d33541b6",
+    "mobile/app/src/test/java/com/hydromate/mobile/ReadingStateTest.kt": "bb5e62985c06351a973e65d1ee8b20825e4d81d07fba161c577374b011c48d4c",
+    "mobile/app/src/test/java/com/hydromate/mobile/RepositoryTest.kt": "7e2730a1447bb07d48fb1237eb9da6efd87ce01a77cc5ca9ccb38d10a0609f50",
+    "mobile/app/src/test/java/com/hydromate/mobile/TelemetryTest.kt": "3fb842f8b2a04d1423820190e7228c0bf8d6483ed84a0dae70101cf8d07443d5",
+    "mobile/app/src/release/java/com/hydromate/mobile/PreviewSupport.kt": "a9e6eefe3f745ececb04b90ea761a14b253b0a095ed0f864a00b2670d6d292b0",
+    "mobile/app/src/main/res/drawable/launcher_emblem.xml": "4fa13b3fd4695b724d12968a62c15a5ba2e2497a6165e4737a223501521ccaa2",
+    "mobile/app/src/main/res/drawable/launcher_sky.xml": "e3728c840e27478d9a6fef7cc0205dd08b2fc204633714e859bd787eef053e5f",
+    "mobile/app/src/main/res/drawable-nodpi/aero_chemistry.png": "832b261d75beba2d0d2c69b9421e62ba23316a3330273a57ee5451b884989bcd",
+    "mobile/app/src/main/res/drawable-nodpi/aero_control.png": "a8255b2b53d15d14fa1df110f8c48b3d8bbbd52e0c3109dea98a46de5878a385",
+    "mobile/app/src/main/res/drawable-nodpi/aero_droplet.png": "c1d86e83deb187f6cbcdf3b5749c46c0ea128392dcef3679500c171857d415c6",
+    "mobile/app/src/main/res/drawable-nodpi/aero_history.png": "8d530dda93cc3367c2db1dc33b473241a4da62825a8c1feb5b5c63db05107c32",
+    "mobile/app/src/main/res/drawable-nodpi/aero_home.png": "cfd5b4b1d532049c463f25e2c667ab85080aecce03d028277fcd58299d0f6469",
+    "mobile/app/src/main/res/drawable-nodpi/aero_irrigation.png": "c77dc8e480aaf0e9c0212c50883abd56375ea387eda7149858036ab7fc200652",
+    "mobile/app/src/main/res/drawable-nodpi/aero_refresh.png": "61e47debc08a70d7aae40b6c93432b140947ffe39b52f366f257cdc811ce5f40",
+    "mobile/app/src/main/res/drawable-nodpi/aero_settings.png": "63ada52347288333d9804c7b8691ead34f9fae184e1dd893374c1d9643beb3fb",
+    "mobile/app/src/main/res/drawable-nodpi/aero_sun.png": "6004350babbb019d7ac3442166f642d0a63126f20d4c6f5663b714ba50ab646c",
+    "mobile/app/src/main/res/drawable-nodpi/aero_tds.png": "3ef07b77b2ab8f5bc2b4803571013cfe6b7243a6e65253f04420d684f3619ce8",
+    "mobile/app/src/main/res/drawable-nodpi/aero_thermometer.png": "69e4dc799fa7f186491b0e60e08ecb7b696cda76b3c6c7fdc60c41fd4929a5df",
+    "mobile/app/src/main/res/drawable-nodpi/background_botanical.jpg": "0cbf13b20f3ff98552fc9f87e3865117c14644ef0147d60f6d88452b5f69fe9a",
+    "mobile/app/src/main/res/drawable-nodpi/hero_hydromate_glass.png": "fcdd2ce49ae5655c5060d8c8796a9563161d9779e9c12a2be08478cb0fbb94b4",
+    "mobile/app/src/main/res/drawable-nodpi/nav_control.png": "a1e89023be12f7890e186a59e768a4e8ed50d25ca72d544e2f59fa02e01ea3f7",
+    "mobile/app/src/main/res/drawable-nodpi/nav_history.png": "695d1b47e24f508cf00a61fa2265b52550809481bae0558745b893ecb5322f23",
+    "mobile/app/src/main/res/drawable-nodpi/nav_home.png": "1c3e8215e8b563ba53dc0764c741900b60d3ee95e34ccf8dbac50471abeedd16",
+    "mobile/app/src/main/res/drawable-nodpi/nav_settings.png": "3504f3019e89d2c55951c1ae70b45ea9c6c5152b42b265eab38ad74d2c9922d0",
+    "mobile/app/src/main/res/mipmap-anydpi/ic_hydromate.xml": "4ee37d462d8a0551995d6210c2a256ded3b3749a42d8cc3271aa87bb880f0f52",
+    "mobile/app/src/main/res/values/colors.xml": "a2c5998ba0a37e981e2f728093f229bcce173fd04c8084330fc99f3f9671686e",
+    "mobile/app/src/main/res/values/strings.xml": "57e61a0d354985f61a343a64ce7939d8db118450f733df61d8b85b9d63a67318",
+    "mobile/app/src/main/res/values/styles.xml": "d971bae9f8a963d404ad32281241547194ffce4aedc4f149e19a22f74512711d",
+    "mobile/app/src/main/res/values-night/colors.xml": "d6c7378c2a9c27d976fa68d809f58e00b5704911e05ee6080aa797b93a9c6752",
+    "mobile/app/src/main/res/values-night/styles.xml": "35538185cdf5c65e91f501887664af3b4df995d903a91e525d707ebfea45184e",
+    "mobile/app/src/main/res/values-night-v27/styles.xml": "f4e5b45e2285b47ea2366cd89385be0aa4588523ddb367363584231ead87044e",
+    "mobile/app/src/main/res/values-v27/styles.xml": "792900be4398e6a3e43a0dc63681edaa5e416832dca434f65b529dae3efb97df",
+    "mobile/app/src/main/res/xml/data_extraction_rules.xml": "ae35849d9ca27241f4481e5785aaf5fa797ef14209574beb1941af15e29f25a5",
+    "mobile/app/src/main/java/com/hydromate/mobile/ConnectionStore.kt": "ad82a820673e1a4024f2bef0334342ac1a87ccffdb9ef0fea9cf41b827ede5f6",
+    "mobile/app/src/main/java/com/hydromate/mobile/MainActivity.kt": "d99adaa82966c5e4a2288b5c87ac612defe5a274524f7519c5f9b090f6a50842",
+    "mobile/app/src/main/java/com/hydromate/mobile/RequestFence.kt": "c049909b52fb3470f654f3ba3d001d01c059e9dbf885fec794743154e6cda146",
+    "mobile/app/src/main/java/com/hydromate/mobile/Telemetry.kt": "8bbb4527d189d59df16276ea6d85e77dc3c5ee5649b84366f1517f3f27941e5c",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/AeroArtwork.kt": "a9db74fc3bca4b80b904f22b2016184242b99b40dc6e7981a793d62bb8feb49e",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/AeroBottomNavigation.kt": "5d3fca3175a0199bb3f24dfe760e8eb1bb88d457a9f27d72a62558f4c36ac8d7",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/AeroIcons.kt": "ed915f25801f24013a0d6f5c47df18402be938cb0642bebae39eca6531b2e11f",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/Components.kt": "555ae5831c116d61df61aad7f04f8015cc57e45d83e03feeccb2c55ff0818379",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/ReadingState.kt": "59147cff9929789728a1c4c58e8c37250b773a47aa660dd12d0e48fa62d34334",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/control/ControlScreen.kt": "a0254f2f25f9042c96d30ee011633353117fdf2230c39b37bbe9beb000e6fc5a",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/cultivation/CultivationScreen.kt": "99a345b37c65f665cc5c3123554daa75ba4428b7f5c0e9541862aeaeedda23ec",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/dashboard/DashboardScreen.kt": "68115fe3d52b1689bf381d5e4d3abcc3b6f9ab440868d5d83367435a91fdab95",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/history/HistoryScreen.kt": "b40139567ef39790cd1302d8901ed989a10d59406793f99b3f9d95970501d8df",
+    "mobile/app/src/main/java/com/hydromate/mobile/ui/settings/SettingsScreen.kt": "185e1280203d71ef279a322cbbb5ac3f5fdd356b5cfda38e3f19425cf00941c0",
+    "mobile/app/src/main/assets/licenses/fluent-emoji-MIT.txt": "9906940f61b1f0b533fa7d99baf55178b2808fbe113ea51dfbfad8572ccd5f2b",
+    "mobile/app/src/debug/java/com/hydromate/mobile/PreviewSupport.kt": "056722b6d8281770e1d6f67b7fc56d9fbb8982bd92606f84c192c906dd1d107b",
+    "mobile/app/src/debug/java/com/hydromate/mobile/VisualCheckActivity.kt": "a1bc66cf15f59a723e37958a018bf6d1460bcdbd9b465e0f63317dea2885b56d",
+    "hydromate-backend/app/Models/Measurement.php": "3a7e0b50b9605813c7e190f783a14e4e2efaa5a72b704c37d3c7965f06500fc6",
+    "hydromate-backend/app/Models/User.php": "1dca1344e88308fe405ae050f02bd65081a649de65ec86f2ee2beabbb4706afa",
+    "hydromate-backend/app/Providers/AppServiceProvider.php": "caf306ef6a25a547bbb7edd5508a39b51c365083eb6dd58378cf2242018e94c7",
+    "hydromate-backend/app/Http/Controllers/Controller.php": "25d1c1ef8e6cc8a376553faacfba2b07d9dfaee9bdbb84f14f77517580e9deb1",
+    "hydromate-backend/app/Http/Requests/StoreMeasurementRequest.php": "581d8c3adad4405dd6785568f9328bb675e2cd929962f8d444699a4bdd15de43",
+    "hydromate-backend/app/Http/Controllers/Api/MeasurementController.php": "66da8442e08313ba1473db3b3e8409a7cf039067ca4ce8b4d2b6e17861ed82bc",
+    "hydromate-backend/routes/api.php": "b370f36a34a1892d75c2827d3ba6a690cdc5325cad754c2999c33a924a5c8f7d",
+    "hydromate-backend/routes/console.php": "9adccc33e7dd400683e434774077c7fdb2f299c5712cedf16a43fdf56f2850fa",
+    "hydromate-backend/routes/web.php": "248c7eeeb43bb61ee4fb6603e52b44843c64f72a841d671bcd41871aab23f970",
+    "hydromate-backend/bootstrap/app.php": "8b9cded7951578594db05ab22e6776c3fa433de3b7c43c134f4579e2b3a99849",
+    "hydromate-backend/bootstrap/providers.php": "f720e185207a343d4c19fc99dbb317a4187efbcd7d38a303a695bbdd77ffb943",
+    "hydromate-backend/database/migrations/0001_01_01_000000_create_users_table.php": "10d79883bc08ce46510f9ad8b1830b4d06d586dc56ae2c8bac3b3e491f69a90f",
+    "hydromate-backend/database/migrations/0001_01_01_000001_create_cache_table.php": "fbb4665e5a977e71df4e74ec75b3c06ca4f17ad0de7138fe9786639189978e77",
+    "hydromate-backend/database/migrations/0001_01_01_000002_create_jobs_table.php": "df4910687180313a14a3f96a8bddd808ae145ed1b107cd772caf865c0dc2b746",
+    "hydromate-backend/database/migrations/2026_09_23_205121_create_measurements_table.php": "1ddd4c1935fa27830420b3592d1ab8d117f71ee62bea41735adcecb095c6bdb8",
+    "hydromate-backend/database/migrations/2026_09_23_210316_create_personal_access_tokens_table.php": "c81ecde85ea5072188c468dcaf79776728b6eb8f684d63fc0d88a4908484ca75",
+    "hydromate-backend/tests/smoke_api.py": "21c2fc21f150dfa3d8194670bde5ef9a27bff4af3f4d50968eae5b6586ed292f",
+    "hydromate-backend/tests/TestCase.php": "c7c209f5579c42647c1f7b2a79ac828e8b54ac62a98442045a6e94fa2c0d0ebc",
+    "hydromate-backend/tests/Feature/ExampleTest.php": "aaa4a192fb4aa96d4e81eda06a29968da3d9a73b71026b87a67297e66dd985b8",
+    "hydromate-backend/tests/Feature/MeasurementApiTest.php": "492216cc425cb7d7dfd6a438177124882809886234f8af49cfda0a2de9720cd9",
+    "hydromate-backend/tests/Unit/ExampleTest.php": "ffacae5c1a2a44c809420af5b3b404910da1b12167d58764dac6d10b8ba8cfaf",
+    "hydromate-backend/tests/Fixtures/telemetry/invalid-ph.json": "2d9d99889ad55c98e400e839635675f7a1e19d89c8f38b2b3d0777d929530eeb",
+    "hydromate-backend/tests/Fixtures/telemetry/unavailable-sensor.json": "528a5cce57d12fbd8882c51b12aef3cb788df1cab827de9c03e22472d8ca5dcd",
+    "hydromate-backend/tests/Fixtures/telemetry/valid.json": "49aa110cb42c60684d6ae7e3845427bd02abe568285bdbd218de6e455493001c",
+    "scripts/capture_eco_review.py": "38f2e533d6448d0cd49ea8c174187716f0bb98d42253e0ba35c0f1f26edd1277",
+    "scripts/fetch_aero_assets.py": "76af1d51dbb6204be13819d2e7514bb7d2187bb8ea932ddb132ae24b9b97107d",
+    "scripts/verify_aero.py": "f88f402595441627dead60f20c426b53a95e837fa6cf68b088bedbc475d8546f",
+    "scripts/verify_eco.py": "37cd3d646af2d2edd57ddbbbdc55607c22e019e9e6c15da5c285fb8a5f3ef12a"
+  },
+  "cadence_estimates": [
+    {
+      "publication_interval_s": 5,
+      "messages_per_day": 17280,
+      "messages_per_30_days": 518400,
+      "payload_only_MB_at_500_bytes": 259.2
+    },
+    {
+      "publication_interval_s": 30,
+      "messages_per_day": 2880,
+      "messages_per_30_days": 86400,
+      "payload_only_MB_at_500_bytes": 43.2
+    },
+    {
+      "publication_interval_s": 60,
+      "messages_per_day": 1440,
+      "messages_per_30_days": 43200,
+      "payload_only_MB_at_500_bytes": 21.6
+    },
+    {
+      "publication_interval_s": 300,
+      "messages_per_day": 288,
+      "messages_per_30_days": 8640,
+      "payload_only_MB_at_500_bytes": 4.32
+    },
+    {
+      "publication_interval_s": 900,
+      "messages_per_day": 96,
+      "messages_per_30_days": 2880,
+      "payload_only_MB_at_500_bytes": 1.44
+    }
+  ],
+  "cadence_assumptions": "One tower; 30-day month; one message includes all sensors; excludes events, retries and protocol overhead",
+  "compact_test_fixture_bytes": 225,
+  "stable_300s_vs_30s_message_reduction_percent": 90,
+  "neon_estimate": {
+    "fixed_CU": 0.25,
+    "free_CU_hours": 100,
+    "max_active_hours_at_fixed_CU": 400,
+    "continuous_30_days_CU_hours": 180,
+    "measured": false
+  },
+  "energy_arithmetic_examples": {
+    "nominal_25W_continuous_30days_kWh": 18,
+    "one_W_continuous_30days_kWh": 0.72,
+    "measured": false
+  },
+  "optimization_candidates": 14,
+  "physical_acceptance_cases": 13,
+  "sources_accessed_2026_10_04": [
+    "https://aiven.io/docs/products/postgresql/concepts/pg-free-tier",
+    "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/sleep_modes.html",
+    "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/storage/nvs_flash.html",
+    "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/power_management.html",
+    "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/wdts.html",
+    "https://docs.espressif.com/projects/esp-idf/en/v5.0/esp32/api-reference/storage/spi_flash_concurrency.html",
+    "https://docs.espressif.com/projects/esp-mqtt/en/latest/esp32/index.html",
+    "https://neon.com/blog/neon-free-plan-1-gb-per-project",
+    "https://neon.com/docs/manage/endpoints/",
+    "https://render.com/docs/free",
+    "https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf",
+    "https://www.postgresql.org/docs/current/indexes-ordering.html",
+    "https://www.ti.com/lit/ds/symlink/ads1115.pdf"
+  ],
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "2d48ea4b603d23a2153b3db220fc46aba40855db973c8b9e577a96e3cefa6afb"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "sha256": "d3c976838a46cfa0f38cb8342b71bb08f489cf9ff6957745f0d34f79c9d0705a"
+    },
+    {
+      "path": "docs/PROJECT_CONTEXT.md",
+      "sha256": "ffd84d032beb20ac6a59f474242e4078c328a5a29b2dd8deb4b9ac42f5ddaf7c"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "sha256": "36c059a871209cb8b1b15f915ee2ce0b3bac1d5c7eca35efe68216bcb6dc926d"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "b41a9d8cff8fa2b58bcd8485a738c367050129be39904b42b81a7a17c3f4d178"
+    },
+    {
+      "path": "docs/TELEMETRY_CONTRACT.md",
+      "sha256": "8cfa75eb4f9481eaedfe908068b1d0353f2c04555c90e689d608681294c43da8"
+    },
+    {
+      "path": "docs/POC.md",
+      "sha256": "28d527e0997a2ec08e2d2333bd8cefa230aeefe89cf8367aaf97a2f466b49c81"
+    },
+    {
+      "path": "docs/ENERGY_OPTIMIZATION.md",
+      "sha256": "c24e46df4cd81035b6cd3004d14543f7cf702b156ea9f2eaf711f8e82249eeb0"
+    }
+  ],
+  "validation": {
+    "implementation_hashes_match": true,
+    "cadence_table_recomputed": true,
+    "encoding_utf8_valid": true,
+    "internal_markdown_links_valid": 9,
+    "markdown_table_columns_consistent": true
+  },
+  "not_performed": [
+    "Physical energy measurements",
+    "Actuator/sensor calibration or fail-safe testing",
+    "Firmware compilation or flashing",
+    "Cloud signup/deployment",
+    "Database migrations or performance SQL",
+    "Android/backend test rerun (no code changes)"
+  ]
+}

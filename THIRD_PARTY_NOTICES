@@ -1,0 +1,40 @@
+HydroMate Aero — third-party artwork
+
+Microsoft Fluent Emoji, 3D PNG collection
+Source: https://github.com/microsoft/fluentui-emoji
+Revision: 1ffb34c752ecf5d402f04cfb4b392c77f57c54bc
+Historical files, source URLs and SHA-256: docs/evidence/fluent-emoji-resources-2026-10-03.json
+Original PNG files, no pixel modifications. Sized by native ImageView.
+The 0.3 PNGs were replaced in 0.4. Full historical license remains bundled offline.
+Current original native artwork, generated emblem, eleven domain icons, four navigation variants and botanical background: docs/recursos.json.
+No substantial external reference code or art was incorporated in 0.4, 0.5 or 0.6.
+Generated assets are not covered by the historical Fluent Emoji MIT license.
+
+    MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+
+Glass surfaces, buttons and chart points: original native HydroMate artwork.
+Botanical emblem, eleven glass icons, four navigation variants and botanical background: original artwork generated with OpenAI imagegen.
+The emblem is reused in the adaptive launcher; complete prompts and hashes: docs/recursos.json.
+Typeface: Android system sans-serif; no font redistributed.
+No third-party photos, wallpaper, logos or additional icon families are included.

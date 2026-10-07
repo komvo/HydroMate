@@ -1,0 +1,468 @@
+{
+  "date": "2026-10-04",
+  "observed_at_utc": "2026-10-04T20:29:58.350485+00:00",
+  "build": "testDebugUnitTest lintDebug assembleDebug assembleRelease: BUILD SUCCESSFUL",
+  "tests": [
+    {
+      "name": "com.hydromate.mobile.AeroBehaviorTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T20:24:46.802Z"
+    },
+    {
+      "name": "com.hydromate.mobile.ReadingStateTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T20:24:47.083Z"
+    },
+    {
+      "name": "com.hydromate.mobile.RepositoryTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1",
+      "timestamp": "2026-10-04T20:24:47.104Z"
+    },
+    {
+      "name": "com.hydromate.mobile.TelemetryTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T20:24:47.357Z"
+    }
+  ],
+  "passed": 17,
+  "skipped": 1,
+  "lint": [
+    {
+      "id": "OldTargetApi",
+      "severity": "Warning"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning"
+    }
+  ],
+  "apks": {
+    "debug": {
+      "path": "mobile/app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 1642033,
+      "sha256": "c8300d8044921eb7afcd12b888339516f6af43f15e19ad94b2a5f49e3aa94560",
+      "debug_fixtures_and_review_activity": true,
+      "cleartext": true
+    },
+    "release": {
+      "path": "mobile/app/build/outputs/apk/release/app-release-unsigned.apk",
+      "bytes": 996864,
+      "sha256": "12a29b5b78588c3299044e29c635358cf610bcc0e026bce51cbbed8553c73257",
+      "debug_fixtures_and_review_activity": false,
+      "cleartext": false
+    }
+  },
+  "functional_files_and_tests_unchanged": [
+    "main/java/com/hydromate/mobile/Telemetry.kt",
+    "main/java/com/hydromate/mobile/RequestFence.kt",
+    "main/java/com/hydromate/mobile/ConnectionStore.kt",
+    "debug/java/com/hydromate/mobile/PreviewSupport.kt",
+    "release/java/com/hydromate/mobile/PreviewSupport.kt",
+    "test/java/com/hydromate/mobile/ReadingStateTest.kt",
+    "test/java/com/hydromate/mobile/RepositoryTest.kt",
+    "test/java/com/hydromate/mobile/TelemetryTest.kt",
+    "testDebug/java/com/hydromate/mobile/AeroBehaviorTest.kt"
+  ],
+  "contrast": [
+    {
+      "theme": "day",
+      "pair": "ink / glossy sky",
+      "minimum_ratio": 8.504
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy lime",
+      "minimum_ratio": 8.032
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy water_soft",
+      "minimum_ratio": 8.736
+    },
+    {
+      "theme": "day",
+      "pair": "muted / hero",
+      "minimum_ratio": 4.81
+    },
+    {
+      "theme": "day",
+      "pair": "primary / hero",
+      "minimum_ratio": 5.058
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate glass",
+      "minimum_ratio": 6.797
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate surface",
+      "minimum_ratio": 7.015
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate water_soft",
+      "minimum_ratio": 6.863
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate sky",
+      "minimum_ratio": 6.855
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate lime",
+      "minimum_ratio": 6.805
+    },
+    {
+      "theme": "day",
+      "pair": "warning / warning plate",
+      "minimum_ratio": 6.804
+    },
+    {
+      "theme": "day",
+      "pair": "critical / warning plate",
+      "minimum_ratio": 6.481
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy sky",
+      "minimum_ratio": 7.982
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy lime",
+      "minimum_ratio": 5.99
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy water_soft",
+      "minimum_ratio": 6.131
+    },
+    {
+      "theme": "night",
+      "pair": "muted / hero",
+      "minimum_ratio": 4.823
+    },
+    {
+      "theme": "night",
+      "pair": "primary / hero",
+      "minimum_ratio": 5.51
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate glass",
+      "minimum_ratio": 4.852
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate surface",
+      "minimum_ratio": 6.479
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate water_soft",
+      "minimum_ratio": 5.523
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate sky",
+      "minimum_ratio": 6.467
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate lime",
+      "minimum_ratio": 5.534
+    },
+    {
+      "theme": "night",
+      "pair": "warning / warning plate",
+      "minimum_ratio": 7.594
+    },
+    {
+      "theme": "night",
+      "pair": "critical / warning plate",
+      "minimum_ratio": 6.466
+    }
+  ],
+  "device": {
+    "model": "2207117BPG",
+    "android": "13",
+    "api": 33,
+    "physical_px": [
+      1080,
+      2400
+    ],
+    "density": 440
+  },
+  "layout_review": {
+    "count": 26,
+    "text_clipping_detected": 0,
+    "targets_under_48dp": 0,
+    "scope": "Real device native views with Activity-local width/font configuration; not MainActivity interaction tests",
+    "screenshots": [
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-demo-393.png",
+        "sha256": "c4baf816bfeca54ba83fc05d6c322e1badae338519f2127dc8a6cca3a7b5d5db",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/history-393.png",
+        "sha256": "6437284811589151d2254c52dbf52151158538b551edf2ef29df4d92cf25cb17",
+        "screen": "HISTORY",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/cultivation-393.png",
+        "sha256": "f6558087f17b02e44b5d27932631f3c1ac2be6ed37b56cb40ca855b78c0ca076",
+        "screen": "CULTIVATION",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/control-393.png",
+        "sha256": "448a5e16c16b5fc33d0701e16417f41d17b50cb2b58eff899b0cfe5d143ad23a",
+        "screen": "CONTROL",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/settings-393.png",
+        "sha256": "12dcb42fb84cdf43126baab5024e9c7bd903a423894e859eab29eb9d5b5b8f0c",
+        "screen": "SETTINGS",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-bottom-393.png",
+        "sha256": "9873c23f535e2da833264e40fee8093d6cc800c43dfa5b62b5d24c4f948be950",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/history-bottom-393.png",
+        "sha256": "ac40968511a20550897e4c7e559799ba7579b6beb73b190c2850f6d40b8381d0",
+        "screen": "HISTORY",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/settings-bottom-393.png",
+        "sha256": "fbdfd9cb621ce15fe685188fa35bfd9a5e65c1f96898287f12228bf7cc07a4d2",
+        "screen": "SETTINGS",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-320-font1.png",
+        "sha256": "147191405c669fdea79d458de25ceedd5582835d6d291fb7be1708d663533a93",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-320-font1.3.png",
+        "sha256": "6a2a72dca65c303ceaf40689a7a882227cf39ce2292b490c8266e743963c6b56",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-320-font2.png",
+        "sha256": "a77a1064c96736c1430e8eead54f25c8550d110147023d7304b57a5a6d751ac1",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-360-font1.png",
+        "sha256": "c79b70812a889ff0462d85a8058af698955744fe5803cb4fed8b68c4029a1a24",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-360-font1.3.png",
+        "sha256": "83c2b51ee31f095009805d3d7fb7031960c4c1745a8efae58583b41bd18892bc",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-360-font2.png",
+        "sha256": "24bdac7d0896a20e18242627c39368b522b829cdd24005518d7a37bedf04d6ed",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-412-font1.png",
+        "sha256": "76fd29559f675e946182515604d3ba5631b840d09dd1d36aa578b901176fae00",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-412-font1.3.png",
+        "sha256": "869b7fe95cf336deaacfe19126787c274376edebb1880dfc108de331336e584c",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-412-font2.png",
+        "sha256": "56bdef8c21c6c0aa0647e9d19b1cb7d429bb747a2ddcdc393b7448fbf2e3f888",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-state2-360.png",
+        "sha256": "c4272406383a19803ce6338efb24fe558dd5a733cee78d2be57b702b8d4a81c4",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 2,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-state3-360.png",
+        "sha256": "c96f5c911a208979b1cbe2babaf363085b9896a24d2d5dd5dbc2ae241e00d47e",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 3,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-state4-360.png",
+        "sha256": "15c86fdfce145daf898374b49e8efa226e14f531579076253a1dd11298f3740f",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 4,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-state5-360.png",
+        "sha256": "aa3b4fb9720b1b95a56393789ed9996f26febf3e3f6a950a8052ba1199f01a8b",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 5,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-state6-360.png",
+        "sha256": "b70c420225a7ab2e77b38f2f45a5966a4efa19a515f13c7cabdda5c86a57e2dd",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 6,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-state7-360.png",
+        "sha256": "738d341de70a0c871096df2cd253794b7aba0abcaef5a5d777a0138ec24dfe54",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 7,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/home-night-393.png",
+        "sha256": "a14724d2baf7323e22ba88164f76711c78b43bd73600828e627d5c214888a8ed",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": true
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/settings-font2-320.png",
+        "sha256": "4c5414d4f3cfee136e1071823bd77f1521d2c103d9f7554aa8dd324585481ee9",
+        "screen": "SETTINGS",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/eco-2026-10-04/control-font2-320.png",
+        "sha256": "05b15b4e2127f81d4caac768b7b522d85143f60f466d7ef7c1b206a0fd70154f",
+        "screen": "CONTROL",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      }
+    ]
+  },
+  "main_activity": "Installed, launched and real unavailable-server UI captured; no injected touch",
+  "backend": "Docker daemon unavailable this session; optional GET integration test omitted. No database changes.",
+  "pending": [
+    "Manual TalkBack and focus traversal",
+    "Keyboard and draft preservation in real Activity",
+    "Physical rotation of final build",
+    "System navigation gestures",
+    "Real API connection after starting backend/DB"
+  ],
+  "backup": ".local/backups/android-eco-2026-10-04",
+  "git": "No repository; reviewed against backup",
+  "main_activity_capture": {
+    "path": "docs/evidence/eco-2026-10-04/home-real-final.png",
+    "sha256": "06284ee21a958a5090feaa63075f747c07f88ab91bca552bd90051c117c47b76",
+    "source": "Real MainActivity, configured connection, no demo fallback"
+  }
+}

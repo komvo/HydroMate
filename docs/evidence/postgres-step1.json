@@ -1,0 +1,102 @@
+{
+  "version": "16.15 (Debian 16.15-1.pgdg13+2)",
+  "tables": [
+    "migrations",
+    "users",
+    "password_reset_tokens",
+    "sessions",
+    "cache",
+    "cache_locks",
+    "jobs",
+    "job_batches",
+    "failed_jobs",
+    "measurements"
+  ],
+  "indexes": [
+    [
+      "measurements_pkey",
+      "CREATE UNIQUE INDEX measurements_pkey ON public.measurements USING btree (id)"
+    ],
+    [
+      "measurements_device_id_sequence_unique",
+      "CREATE UNIQUE INDEX measurements_device_id_sequence_unique ON public.measurements USING btree (device_id, sequence)"
+    ]
+  ],
+  "count": 11,
+  "columns": [
+    [
+      "id",
+      "bigint"
+    ],
+    [
+      "device_id",
+      "character varying"
+    ],
+    [
+      "sequence",
+      "bigint"
+    ],
+    [
+      "sample_number",
+      "bigint"
+    ],
+    [
+      "reason",
+      "json"
+    ],
+    [
+      "temperature_c",
+      "numeric"
+    ],
+    [
+      "light_pct",
+      "numeric"
+    ],
+    [
+      "light_state",
+      "character varying"
+    ],
+    [
+      "water_level_pct",
+      "numeric"
+    ],
+    [
+      "water_level_state",
+      "character varying"
+    ],
+    [
+      "ph",
+      "numeric"
+    ],
+    [
+      "tds_ppm",
+      "numeric"
+    ],
+    [
+      "created_at",
+      "timestamp without time zone"
+    ],
+    [
+      "updated_at",
+      "timestamp without time zone"
+    ]
+  ],
+  "migrations": [
+    [
+      "0001_01_01_000000_create_users_table",
+      1
+    ],
+    [
+      "0001_01_01_000001_create_cache_table",
+      1
+    ],
+    [
+      "0001_01_01_000002_create_jobs_table",
+      1
+    ],
+    [
+      "2026_09_23_205121_create_measurements_table",
+      2
+    ]
+  ]
+}

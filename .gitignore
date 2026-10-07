@@ -1,0 +1,39 @@
+# Secretos y estado local
+.env
+.env.*
+!.env.example
+.local/
+**/vendor/
+**/node_modules/
+**/__pycache__/
+**/.venv/
+*.log
+# Documentos PDC se incluyen por solicitud expresa del usuario.
+
+# Entornos, compilaciones y archivos de editor
+**/.gradle/
+**/.kotlin/
+**/build/
+**/.idea/
+**/local.properties
+*.iml
+Thumbs.db
+.DS_Store
+~$*
+
+# Claves y configuración privada
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets.h
+secrets.json
+credentials.json
+service-account*.json
+
+# Datos operativos y exportaciones privadas
+*.sql
+*.dump
+*.sqlite*

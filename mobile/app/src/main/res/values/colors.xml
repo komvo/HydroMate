@@ -1,0 +1,21 @@
+<resources>
+    <color name="background">#E3F1D7</color>
+    <color name="surface">#EFFBDD</color>
+    <color name="glass">#C7EBA9</color>
+    <color name="ink">#143B27</color>
+    <color name="muted">#36503C</color>
+    <color name="primary">#205632</color>
+    <color name="water">#006C74</color>
+    <color name="water_soft">#CBEABB</color>
+    <color name="outline">#88BC75</color>
+    <color name="warning">#8A4A00</color>
+    <color name="warning_soft">#FFF4DC</color>
+    <color name="critical">#A51F1B</color>
+    <color name="sky">#CEEAB4</color>
+    <color name="sky_deep">#3D7C40</color>
+    <color name="aqua">#8FD05A</color>
+    <color name="lime">#C9EE8A</color>
+    <color name="disabled_surface">#D1E0C6</color>
+    <color name="backdrop_ink">#143B27</color>
+    <color name="backdrop_muted">#294B31</color>
+</resources>

@@ -1,0 +1,157 @@
+--- before/MeasurementController.php
++++ after/MeasurementController.php
+@@ -3,115 +3,75 @@
+ namespace App\Http\Controllers\Api;
+ 
+ use App\Http\Controllers\Controller;
++use App\Http\Requests\StoreMeasurementRequest;
+ use App\Models\Measurement;
++use Illuminate\Database\Eloquent\Builder;
++use Illuminate\Database\UniqueConstraintViolationException;
++use Illuminate\Http\JsonResponse;
+ use Illuminate\Http\Request;
+ 
+ class MeasurementController extends Controller
+ {
+-    public function store(Request $request)
++    public function store(StoreMeasurementRequest $request): JsonResponse
+     {
+-        $validated = $request->validate([
+-            'device_id' => 'required|string|max:64',
++        // The database constraint is authoritative even for simultaneous requests.
++        try {
++            $measurement = Measurement::create($request->validated());
++        } catch (UniqueConstraintViolationException $exception) {
++            if ($exception->index !== 'measurements_device_id_sequence_unique'
++                && $exception->columns !== ['device_id', 'sequence']) {
++                throw $exception;
++            }
+ 
+-            'sequence' => 'required|integer|min:1',
+-
+-            'sample_number' => 'nullable|integer|min:1',
+-
+-            'reason' => 'nullable|array',
+-
+-            'temperature_c' => 'required|numeric|between:0,50',
+-
+-            'light_pct' => 'required|numeric|between:0,100',
+-
+-            'light_state' =>
+-                'required|in:BAJA,MEDIA,ALTA',
+-
+-            'water_level_pct' =>
+-                'required|numeric|between:0,100',
+-
+-            'water_level_state' =>
+-                'required|in:VACIO,MEDIO,LLENO',
+-
+-            'ph' =>
+-                'required|numeric|between:0,14',
+-
+-            'tds_ppm' =>
+-                'required|numeric|between:0,1000',
+-        ]);
+-
+-
+-        $duplicate = Measurement::where(
+-            'device_id',
+-            $validated['device_id']
+-        )
+-        ->where(
+-            'sequence',
+-            $validated['sequence']
+-        )
+-        ->exists();
+-
+-
+-        if ($duplicate) {
+             return response()->json([
+                 'status' => 'error',
+-                'message' => 'Medicion duplicada'
++                'message' => 'Medicion duplicada',
+             ], 409);
+         }
+-
+-
+-        $measurement = Measurement::create(
+-            $validated
+-        );
+-
+ 
+         return response()->json([
+             'status' => 'ok',
+             'message' => 'Medicion registrada correctamente',
+-            'measurement' => $measurement
++            'measurement' => $measurement,
+         ], 201);
+     }
+ 
+-
+-    public function index(Request $request)
++    public function index(Request $request): JsonResponse
+     {
+-        $limit = (int) $request->query(
+-            'limit',
+-            20
+-        );
+-
+-        $limit = max(
+-            1,
+-            min($limit, 100)
+-        );
+-
++        $filters = $request->validate([
++            'device_id' => ['sometimes', 'required', 'string', 'max:64'],
++            'limit' => ['sometimes', 'required', 'integer', 'between:1,100'],
++        ]);
+ 
+         return response()->json(
+-            Measurement::orderByDesc(
+-                'created_at'
+-            )
+-            ->limit($limit)
+-            ->get()
++            $this->measurements($filters['device_id'] ?? null)
++                ->limit($filters['limit'] ?? 20)
++                ->get()
+         );
+     }
+ 
++    public function latest(Request $request): JsonResponse
++    {
++        $filters = $request->validate([
++            'device_id' => ['sometimes', 'required', 'string', 'max:64'],
++        ]);
++        $measurement = $this->measurements($filters['device_id'] ?? null)->first();
+ 
+-    public function latest()
+-    {
+-        $measurement = Measurement::orderByDesc(
+-            'created_at'
+-        )->first();
+-
+-
+-        if (!$measurement) {
++        if (! $measurement) {
+             return response()->json([
+                 'status' => 'error',
+-                'message' => 'No hay mediciones'
++                'message' => 'No hay mediciones',
+             ], 404);
+         }
+ 
++        return response()->json($measurement);
++    }
+ 
+-        return response()->json(
+-            $measurement
+-        );
++    private function measurements(?string $deviceId): Builder
++    {
++        return Measurement::query()
++            ->when($deviceId !== null, fn (Builder $query) => $query->where('device_id', $deviceId))
++            ->orderByDesc('created_at')
++            ->orderByDesc('id');
+     }
+-}+}

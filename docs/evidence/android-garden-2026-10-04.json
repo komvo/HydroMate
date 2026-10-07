@@ -1,0 +1,497 @@
+{
+  "date": "2026-10-04",
+  "observed_at_utc": "2026-10-04T21:42:10.173444+00:00",
+  "build": "testDebugUnitTest lintDebug assembleDebug assembleRelease: BUILD SUCCESSFUL",
+  "tests": [
+    {
+      "name": "com.hydromate.mobile.AeroBehaviorTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T21:28:38.148Z"
+    },
+    {
+      "name": "com.hydromate.mobile.ReadingStateTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T21:28:38.228Z"
+    },
+    {
+      "name": "com.hydromate.mobile.RepositoryTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1",
+      "timestamp": "2026-10-04T21:28:38.234Z"
+    },
+    {
+      "name": "com.hydromate.mobile.TelemetryTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-10-04T21:28:38.306Z"
+    }
+  ],
+  "passed": 17,
+  "skipped": 1,
+  "lint": [
+    {
+      "id": "OldTargetApi",
+      "severity": "Warning"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning"
+    },
+    {
+      "id": "DiscouragedApi",
+      "severity": "Warning"
+    }
+  ],
+  "apks": {
+    "debug": {
+      "path": "mobile/app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 2921627,
+      "sha256": "e273fdc771f5caa16abd2df6651b82fc1349a08885005b5897a08967fbf99306",
+      "debug_fixtures_and_review_activity": true,
+      "cleartext": true
+    },
+    "release": {
+      "path": "mobile/app/build/outputs/apk/release/app-release-unsigned.apk",
+      "bytes": 2230952,
+      "sha256": "c169cbc72712a2a5d7734ca8e5e3525044993535393561d2e828b8e2697c214d",
+      "debug_fixtures_and_review_activity": false,
+      "cleartext": false
+    }
+  },
+  "functional_files_and_tests_unchanged": [
+    "main/java/com/hydromate/mobile/Telemetry.kt",
+    "main/java/com/hydromate/mobile/RequestFence.kt",
+    "main/java/com/hydromate/mobile/ConnectionStore.kt",
+    "debug/java/com/hydromate/mobile/PreviewSupport.kt",
+    "release/java/com/hydromate/mobile/PreviewSupport.kt",
+    "test/java/com/hydromate/mobile/ReadingStateTest.kt",
+    "test/java/com/hydromate/mobile/RepositoryTest.kt",
+    "test/java/com/hydromate/mobile/TelemetryTest.kt",
+    "testDebug/java/com/hydromate/mobile/AeroBehaviorTest.kt"
+  ],
+  "contrast": [
+    {
+      "theme": "day",
+      "pair": "title / botanical backdrop",
+      "minimum_ratio": 6.137
+    },
+    {
+      "theme": "day",
+      "pair": "subtitle / botanical backdrop",
+      "minimum_ratio": 4.819
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy sky",
+      "minimum_ratio": 6.982
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy lime",
+      "minimum_ratio": 6.959
+    },
+    {
+      "theme": "day",
+      "pair": "ink / glossy water_soft",
+      "minimum_ratio": 6.977
+    },
+    {
+      "theme": "day",
+      "pair": "muted / hero",
+      "minimum_ratio": 4.964
+    },
+    {
+      "theme": "day",
+      "pair": "primary / hero",
+      "minimum_ratio": 4.823
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate glass",
+      "minimum_ratio": 5.654
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate surface",
+      "minimum_ratio": 6.076
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate water_soft",
+      "minimum_ratio": 5.681
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate sky",
+      "minimum_ratio": 5.689
+    },
+    {
+      "theme": "day",
+      "pair": "muted / plate lime",
+      "minimum_ratio": 5.636
+    },
+    {
+      "theme": "day",
+      "pair": "warning / warning plate",
+      "minimum_ratio": 4.639
+    },
+    {
+      "theme": "day",
+      "pair": "critical / warning plate",
+      "minimum_ratio": 5.049
+    },
+    {
+      "theme": "night",
+      "pair": "title / botanical backdrop",
+      "minimum_ratio": 7.994
+    },
+    {
+      "theme": "night",
+      "pair": "subtitle / botanical backdrop",
+      "minimum_ratio": 7.661
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy sky",
+      "minimum_ratio": 7.531
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy lime",
+      "minimum_ratio": 6.178
+    },
+    {
+      "theme": "night",
+      "pair": "ink / glossy water_soft",
+      "minimum_ratio": 6.875
+    },
+    {
+      "theme": "night",
+      "pair": "muted / hero",
+      "minimum_ratio": 5.108
+    },
+    {
+      "theme": "night",
+      "pair": "primary / hero",
+      "minimum_ratio": 5.572
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate glass",
+      "minimum_ratio": 5.128
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate surface",
+      "minimum_ratio": 6.885
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate water_soft",
+      "minimum_ratio": 5.932
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate sky",
+      "minimum_ratio": 6.496
+    },
+    {
+      "theme": "night",
+      "pair": "muted / plate lime",
+      "minimum_ratio": 5.406
+    },
+    {
+      "theme": "night",
+      "pair": "warning / warning plate",
+      "minimum_ratio": 6.353
+    },
+    {
+      "theme": "night",
+      "pair": "critical / warning plate",
+      "minimum_ratio": 5.408
+    }
+  ],
+  "device": {
+    "model": "2207117BPG",
+    "android": "13",
+    "api": 33,
+    "physical_px": [
+      1080,
+      2400
+    ],
+    "density": 440
+  },
+  "layout_review": {
+    "count": 26,
+    "text_clipping_detected": 0,
+    "targets_under_48dp": 0,
+    "scope": "Real device native views with Activity-local width/font configuration; not MainActivity interaction tests",
+    "screenshots": [
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-demo-393.png",
+        "sha256": "cf62056b7e96434d89d02aa26619d79cf81993412b76236af7c3d0276d9b268a",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/history-393.png",
+        "sha256": "7cac7a1ee7fcf6c4ce7ddbd84069fac691aa206f87020bb7de9dee77d02007ea",
+        "screen": "HISTORY",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/cultivation-393.png",
+        "sha256": "629c53370b5db46a32276ef0a7b100e1126cf27ce2f2bcd0342cb7a03736c05f",
+        "screen": "CULTIVATION",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/control-393.png",
+        "sha256": "64d427e777afffaed6f822f2234ec18cb75035c162699e119cb2cec866e1cb9f",
+        "screen": "CONTROL",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/settings-393.png",
+        "sha256": "1c5851d4e0ecaa000367da79d1afd0fd0f761ad6a7705e45a3b02b4fee7b4bfa",
+        "screen": "SETTINGS",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-bottom-393.png",
+        "sha256": "bad0f2400ddb9b78d7d205eb6c59b5b79b4abcd6541c43e56e308c830f031e53",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/history-bottom-393.png",
+        "sha256": "92b8d41b963109700f99c909f6c62015d40ea73801ac0c69e469e175e30edc17",
+        "screen": "HISTORY",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/settings-bottom-393.png",
+        "sha256": "e9d7ed66bfcbbc9b00e57fa30fcaeb1dbb6c4fc6bee314c8ec8fa62b06b5cb6b",
+        "screen": "SETTINGS",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-320-font1.png",
+        "sha256": "63973ea56e08fc372b3ba3b1464480f5d5a77a0cc2dab0c3b10297e7a6b590b2",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-320-font1.3.png",
+        "sha256": "eb2a65f8f077a9a06baf7970d3597f0fb7c676c8c34c3bc09e92b96d9f0d3c12",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-320-font2.png",
+        "sha256": "2e292bdd8242111242d99ebf641f46066e6b4c5481859b665128a65a754426ad",
+        "screen": "HOME",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-360-font1.png",
+        "sha256": "9b0fb011c132dcb4d9fe052171707d900e386282ca3e998f9bf8edf9a6857f2c",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-360-font1.3.png",
+        "sha256": "3ad12c2b255ffca276fd4aaca8cb4c278b80a19fdd07658cd9601c90c7b0f360",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-360-font2.png",
+        "sha256": "4e6beae53f746966ac6bd4ec55426b3028da4deb28cc06a3e341a999777402c5",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-412-font1.png",
+        "sha256": "8e0f46c23a7399e6037c8cb116990c176c12043a4eeac35ee8c2de9d30007abc",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-412-font1.3.png",
+        "sha256": "f7b8765f6414b9eb9b75d1dc6c3e77c29d7a4a96ad05d4da8032ab7dab79fd1b",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 1.3,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-412-font2.png",
+        "sha256": "af832b1411ad0aab8edcf4d0f0de9e71f74232d8cb4294d441478fb4549f953f",
+        "screen": "HOME",
+        "width_dp": 412,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-state2-360.png",
+        "sha256": "62f420a5b39b704011c9e1bd3b7f5eff911e983ecd7f0856342c0451feb3fb48",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 2,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-state3-360.png",
+        "sha256": "829ec4aca5de4a6907e98088e904d7d2846a7956478bcf87659f343443d0f0ef",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 3,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-state4-360.png",
+        "sha256": "e133485bf02ab885f32d76460adcbe0ce8495652d36f453a76586e58b1e42dbf",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 4,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-state5-360.png",
+        "sha256": "ec23b1ab0b26c21ac85fd9818685a8002b4baf3cfc7930fcc8018d7aeda216f1",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 5,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-state6-360.png",
+        "sha256": "a1b42449be7e55724021998bd13b0458647b9975d0c218ba02fa03439fa7df4a",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 6,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-state7-360.png",
+        "sha256": "9b0fb011c132dcb4d9fe052171707d900e386282ca3e998f9bf8edf9a6857f2c",
+        "screen": "HOME",
+        "width_dp": 360,
+        "font_scale": 1,
+        "scenario": 7,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/home-night-393.png",
+        "sha256": "332c79e319925455b28d794313a45879538f1f0b70429016814b2689b2e2ac17",
+        "screen": "HOME",
+        "width_dp": 393,
+        "font_scale": 1,
+        "scenario": 1,
+        "night": true
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/settings-font2-320.png",
+        "sha256": "556ae9d4e28994a16f8efc3026f9b3c3ebc12ec4ae0ad5e49b48331b41c2a9a6",
+        "screen": "SETTINGS",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      },
+      {
+        "path": "docs/evidence/garden-light-2026-10-04/control-font2-320.png",
+        "sha256": "43f4c0712e03940f4e5c0b0cc804c63ab2b13a11779539c498a002c0af5912d4",
+        "screen": "CONTROL",
+        "width_dp": 320,
+        "font_scale": 2,
+        "scenario": 1,
+        "night": false
+      }
+    ]
+  },
+  "main_activity": "Installed, launched and real unavailable-server UI captured; no injected touch",
+  "backend": "Docker daemon unavailable this session; optional GET integration test omitted. No database changes.",
+  "pending": [
+    "Manual TalkBack and focus traversal",
+    "Keyboard and draft preservation in real Activity",
+    "Physical rotation of final build",
+    "System navigation gestures",
+    "Real API connection after starting backend/DB"
+  ],
+  "version": "0.6.0-garden",
+  "backup": ".local/backups/android-crystal-nav-2026-10-04/mobile/src",
+  "git": "No repository; reviewed against backup",
+  "main_activity_capture": {
+    "path": "docs/evidence/garden-light-2026-10-04/home-real-final.png",
+    "sha256": "2b6877de79cca9c6a543370bf313f3bd08f06890c2807b5da56db9fa46e14fba"
+  },
+  "appearance_on_review_device": {
+    "mode": "aero",
+    "reason": "User requested a much lighter background; existing per-app preference changed from system to Jardin claro. No global setting changed.",
+    "backup": ".local/appearance-before-light-request.xml"
+  }
+}
