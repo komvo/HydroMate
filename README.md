@@ -35,6 +35,7 @@ conservan el contexto técnico e histórico.
 | `docs/evidence/` | Evidencias y resultados registrados, con fechas |
 | `scripts/` | Herramientas de revisión y captura |
 | `reports/` | Informes elaborados sobre el proyecto |
+| `talleres/` | PDF por taller e índice técnico del Taller 5 |
 
 `embedded/` e infraestructura de despliegue se incorporarán cuando se implementen.
 Una carpeta prevista no representa una función terminada.

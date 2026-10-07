@@ -176,3 +176,8 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   secretos/dependencias/cachés/compilaciones excluidos. Autoriza crear y subir la
   versión inicial; sincronización futura requiere commits/push y no implica
   acceso de escritura del compañero.
+- D51 — Usuario comunica requisito docente: carpeta de talleres en GitHub,
+  preferentemente PDF; reportes técnicos desde T5 con código, capturas,
+  errores/resultados, diagramas y archivos utilizados. Conservar fuentes y
+  originales; generar reporte final con evidencia observada, sin completar
+  resultados pendientes por simulación o inventar aprobación de entregables.

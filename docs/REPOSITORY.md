@@ -11,6 +11,11 @@ Se incluyen los originales de `Documentos PDC/`, también versiones anteriores y
 duplicados: conservar su procedencia es parte del respaldo solicitado. El sketch
 `tsts/tsts.ino` permanece como referencia de las pruebas físicas.
 
+`talleres/` organiza copias de los PDF existentes y materiales técnicos del
+Taller 5 según el requisito docente comunicado. Las copias conservan el hash de
+sus originales. T6/T7 se conservan como históricos; su adecuación técnica sigue
+pendiente. Código/evidencia se enlazan a sus fuentes para conservar trazabilidad.
+
 ## Archivos excluidos
 
 `.gitignore` excluye secretos, `.local/`, herramientas descargadas, dependencias

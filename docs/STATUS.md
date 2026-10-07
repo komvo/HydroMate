@@ -15,6 +15,11 @@
   código y pruebas; autoriza posteriormente que sea público. Git local inicializado,
   README/política preparados y remoto https://github.com/komvo/HydroMate creado.
   Push inicial pendiente de revisión final; secretos y archivos locales excluidos.
+- Requisito docente comunicado por usuario: talleres organizados en GitHub,
+  preferentemente PDF; desde Taller 5, reportes técnicos con código, capturas,
+  errores/resultados, diagramas y archivos utilizados. `talleres/` contiene copias
+  verificadas por hash de los PDF existentes T1–T4/T6/T7 y estructura técnica T5.
+  No se afirma revisión/aprobación de T6/T7 ni reporte final/pruebas completas T5.
 
 - Usuario confirma entrega vencida el 16 de septiembre; fecha final del proyecto
   todavía sin definir. El 30/11 es referencia histórica, no cierre confirmado.
