@@ -14,7 +14,7 @@ Ambos commits se conservan como ancestros de `main`; no hubo force push ni reset
 
 La inclusión inicial de todos los originales fue reemplazada el 07/10 por una
 selección solicitada por el usuario: en `Documentos PDC/` se mantienen publicados
-los archivos T1–T4/T6/T7 y `tsts/tsts.ino`. Se retiraron de la versión actual las
+los archivos T1–T4/T6/T7 y `tests/PruebaSensores1.ino` (antes `tsts/tsts.ino`). Se retiraron de la versión actual las
 carpetas de duplicados, versiones anteriores y HydroMate_Duena_Milca, así como los
 18 documentos/archivos señalados en las capturas. Se conservan físicamente en la
 computadora, excluidos mediante `.gitignore`; también permanecen en el historial

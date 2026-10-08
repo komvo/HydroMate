@@ -11,7 +11,7 @@ proyecto. Repositorio público: [komvo/HydroMate](https://github.com/komvo/Hydro
   parcialmente pendientes.
 - ESP32 con DS18B20, BH1750, flotador, ADS1115 y pH probados según la bitácora
   del 5 de octubre. TDS defectuoso: reemplazo pendiente.
-- Código de pruebas físicas conservado en `Documentos PDC/tsts/tsts.ino`.
+- Código de pruebas físicas conservado en `Documentos PDC/tests/PruebaSensores1.ino`.
   Todavía no contiene Wi-Fi ni publicación MQTT.
 - Taller 5 pendiente: demostrar sensores físicos → ESP32 → backend en nube →
   PostgreSQL → Android, diez transmisiones y evidencia de fallos y tiempos.

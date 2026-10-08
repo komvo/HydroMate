@@ -2,6 +2,10 @@
 
 ## Taller de viabilidad pendiente — revisión del 2026-10-07
 
+- Renombre solicitado: `Documentos PDC/tsts/tsts.ino` pasa a
+  `Documentos PDC/tests/PruebaSensores1.ino`. Contenido idéntico comprobado por
+  SHA-256; referencias actualizadas. No se modificó ni ejecutó el firmware.
+
 - Limpieza de documentación GitHub solicitada después de la subida: retirar de
   la versión actual las tres carpetas y los 18 archivos señalados en capturas.
   Originales conservados localmente y excluidos de Git; talleres y sketch `tsts`
@@ -12,7 +16,7 @@
   más TDS simulado identificado por variable; reemplaza la propuesta inicial de
   una sola temperatura. No implementado. BH1750 debe conservar lux y flotador
   nivel discreto; v1 necesita evolución antes de integrar esos datos.
-- Sketch localizado y revisado: `Documentos PDC/tsts/tsts.ino`; conserva pruebas
+- Sketch localizado y revisado: `Documentos PDC/tests/PruebaSensores1.ino`; conserva pruebas
   locales, sin Wi-Fi/MQTT. Anuncia TDS en A1 pero lee A3: discrepancia histórica
   pendiente de resolver al integrar reemplazo; no se modificó el original.
 - OVHcloud VPS-1 compartido con un proyecto similar aceptado para preparar la

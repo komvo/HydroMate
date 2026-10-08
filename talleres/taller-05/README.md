@@ -15,7 +15,7 @@ OVHcloud VPS-1 compartido es opción aceptada; no se afirma que esté contratado
 
 | Material | Archivo fuente | Alcance de la evidencia |
 |---|---|---|
-| Sketch de sensores | [tsts.ino](../../Documentos%20PDC/tsts/tsts.ino) | Lectura local; sin publicación MQTT |
+| Sketch de sensores | [PruebaSensores1.ino](../../Documentos%20PDC/tests/PruebaSensores1.ino) | Lectura local; sin publicación MQTT |
 | Bitácora física | Referencia local, retirada de GitHub por solicitud del usuario | Sensores funcionales y diagnóstico TDS registrados; resumen en STATUS |
 | Backend y pruebas | [Laravel](../../hydromate-backend/) | Código y tests existentes |
 | Contrato actual | [Telemetría v1](../../docs/TELEMETRY_CONTRACT.md) | Requiere evolución; no acepta magnitudes parciales actuales |
