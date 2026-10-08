@@ -185,3 +185,16 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   Documentos PDC señalados en capturas. Reemplaza la inclusión exhaustiva de D50:
   conservar originales locales mediante exclusión de Git, publicar solo las
   fuentes de talleres seleccionadas y sketch tsts; no reescribir historial.
+
+## D53 — Incremento local Taller 5 (2026-10-07)
+
+Por petición del usuario se implementa primero el flujo local completo y se
+documenta procedimiento reproducible. Telemetría v2 conserva lux reales y nivel
+booleano, agrega origen por variable y mantiene v1 compatible. TDS simulado fijo
+650 ppm, explícito desde firmware hasta Android; no se usa para dosificación.
+Bridge Python/Paho con bandeja SQLite privada y ACK después de persistencia.
+Firmware de banco separado del sketch histórico, sin actuadores, NVS para
+reserva de secuencia y un pendiente. MQTT sin TLS solamente en banco doméstico
+autorizado; VPS requiere TLS/HTTPS, API protegida y separación del compañero.
+Usuario autorizó perfil doméstico privado/regla 1884 local; configuración previa
+Mosquitto 1883 y PostgreSQL conservada. Pruebas físicas/nube según STATUS.

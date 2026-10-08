@@ -1,6 +1,22 @@
 # Arquitectura vigente
 
-Fecha: 2026-09-30. Distinguir diseño seleccionado de implementación comprobada.
+Fecha: 2026-10-07. Distinguir diseño seleccionado de implementación comprobada.
+
+## Incremento local del Taller 5 — 2026-10-07
+
+Productor PC sintético → Mosquitto → bridge Python con bandeja SQLite → Laravel
+→ PostgreSQL probado con diez mensajes, inválido y conflicto. Broker separado
+1884 autenticado, ACL por cuenta y listener loopback/IP Wi-Fi; 1883 conservado.
+Android reconoce v1/v2 y muestra lux, flotador y TDS simulado. Firmware ESP32
+cargado con reserva de secuencias y un pendiente NVS; diez entregas físicas
+comparadas contra API y recuperación de pendiente tras reinicio observadas.
+Inicio Android muestra datos reales y TDS simulado; evidencia actual en STATUS.
+Laravel permanece loopback; Android usa USB reverse. MQTT sin TLS se limita al
+banco doméstico autorizado. Nube HTTPS/MQTT TLS y protección de API pendientes.
+v2 agrega light_lux, water_present, sources y message_version sin borrar v1.
+Detalle vigente en TELEMETRY_CONTRACT.md; v1 preservado en TELEMETRY_CONTRACT_V1.md.
+Los párrafos siguientes describen el diseño/estado anterior y se sustituyen en
+estos puntos por este incremento, sin afirmar pruebas físicas todavía pendientes.
 
 ## Incremento seleccionado
 Datos sintéticos identificados → POST Laravel → PostgreSQL → GET Laravel →
@@ -24,11 +40,12 @@ en el camino crítico. Medición inicial propuesta de 5 s, publicación estable 
 300 s y prueba temporal de 30 s; interbloqueos con plazo propio aún por determinar.
 Modem-sleep/frecuencia dinámica por etapas; sueño ligero automático condicionado a
 despertar/pines/plazos verificados. Sin deep sleep durante operación normal.
-La cola durable, confirmación posterior al INSERT y recuperación no están implementadas.
+La bandeja durable y ACK posterior al INSERT se implementaron en banco el 07/10;
+recuperación física/reinicio/corte de energía todavía por verificar.
 
 Antes de sensores reales o cola tardía ampliar el contrato de forma compatible:
 calidad/ausencias, nivel discreto, magnitud de luz, eventos y tiempo de adquisición.
-v1 permanece sin cambios. [ENERGY_OPTIMIZATION.md](ENERGY_OPTIMIZATION.md) contiene
+v1 permanece compatible y v2 implementa lux/flotador/origen. [ENERGY_OPTIMIZATION.md](ENERGY_OPTIMIZATION.md) contiene
 invariantes, comparaciones de energía, mejoras por capa y pruebas para habilitarlas.
 Render + Aiven es solo candidato para API/BD; MQTT/bridge requiere evaluación aparte.
 
@@ -51,13 +68,13 @@ sequence/sample_number positivos y dentro de bigint PostgreSQL.
 Contrato y ejemplos: API.md. Verificación observada: STATUS y evidence/.
 
 ## Pendientes de diseño acotados
-- Implementar en firmware sequence persistente por rangos (D19); contrato definido,
-  comportamiento ante reinicio todavía sin implementar ni probar.
-- Definir reintentos del bridge y comportamiento ante respuesta perdida.
+- Verificar físicamente secuencia persistente por rangos (D19), pendiente y reinicio;
+  implementados en firmware nuevo, sin resultado físico afirmado aquí.
+- Verificar recuperación de bandeja/reintentos ante cortes; implementación local nueva.
 - Canales de dosificación abstractos; driver físico por elegir.
 - Sin implementación de comandos, usuarios/grupos/perfiles en esta fase.
 
-Referencia de mensaje canónico: TELEMETRY_CONTRACT.md (v1 documental).
+Referencia vigente: TELEMETRY_CONTRACT.md (v2 y compatibilidad v1).
 
 ## Cliente Android 0.2 — base histórica, actualizada abajo por 0.3
 MainActivity coordina navegación, lifecycle y preferencias de conexión. Pantallas

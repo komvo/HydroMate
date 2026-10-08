@@ -201,6 +201,7 @@ class MainActivity : Activity() {
         val message = when {
             scenario > 0 -> "Demostración · datos simulados"
             config.device.startsWith("test-") || (state as? ReadingState.Ready)?.values?.any { it.synthetic } == true -> "Datos de prueba · ${config.device}"
+            (state as? ReadingState.Ready)?.values?.any { it.sources.values.any { source -> source == "simulated" } } == true -> "Contiene variables simuladas · ${config.device}"
             else -> null
         }
         provenance.visibility = if (message == null) View.GONE else View.VISIBLE

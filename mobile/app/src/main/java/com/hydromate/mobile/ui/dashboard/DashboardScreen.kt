@@ -61,8 +61,8 @@ class DashboardScreen(private val ui: Components) {
         val items = listOf(
             Instrument("pH", latest?.ph, "", GlassSymbol.CHEMISTRY),
             Instrument("Temp.", latest?.temperature, "°C", GlassSymbol.THERMOMETER),
-            Instrument("TDS", latest?.tds, "ppm", GlassSymbol.TDS),
-            Instrument("Luz relativa", latest?.light, "%", GlassSymbol.SUN))
+            Instrument(if (latest?.tdsSimulated == true) "TDS simulado" else "TDS", latest?.tds, "ppm", GlassSymbol.TDS),
+            Instrument("Luz", latest?.lightValue, latest?.lightUnit ?: "lux", GlassSymbol.SUN))
         items.chunked(if (twoColumns) 2 else 1).forEach { group ->
             val line = row().apply { gravity = Gravity.TOP }
             root.addView(line, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(12) })
@@ -92,13 +92,13 @@ class DashboardScreen(private val ui: Components) {
         val waterRow = row()
         waterRow.addView(icon(GlassSymbol.DROPLET, 54))
         val waterCopy = column()
-        waterCopy.addView(text("Nivel relativo · prototipo", 14, true))
-        waterCopy.addView(text(latest?.let { "${number(it.water)} %" } ?: "—", 26, true))
+        waterCopy.addView(text(if (latest?.waterPresent != null) "Flotador · nivel discreto" else "Nivel relativo · prototipo", 14, true))
+        waterCopy.addView(text(latest?.waterDescription ?: "—", 20, true))
         waterCopy.addView(text(if (latest == null) "Sin lectura" else if (old) "Lectura antigua" else "Sin rango configurado", 12, tint = muted))
         waterRow.addView(waterCopy, LinearLayout.LayoutParams(0, -2, 1f).apply { marginStart = dp(10) })
         waterCard.addView(waterRow)
         waterCard.addView(button("Sobre estas lecturas", {
-            help("Lecturas del prototipo", "Luz y nivel son porcentajes relativos del contrato actual; no lux, litros ni un flotador. La fecha es recepción en el servidor, no captura. Sin perfil no evaluamos rangos. Una respuesta del servidor no confirma conexión del ESP32.")
+            help("Lecturas del prototipo", "Las lecturas v2 muestran luz en lux y presencia de agua mediante flotador; no litros ni porcentaje de llenado. TDS simulado se identifica en su tarjeta. Los registros v1 conservan sus porcentajes relativos. La fecha es recepción en el servidor. Una respuesta de la API no confirma conexión del ESP32.")
         }, false))
         section(root, "Equipo y control", "Integración pendiente")
         root.addView(button("Ver equipo y control", equipment, false).apply {

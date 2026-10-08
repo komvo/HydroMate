@@ -8,6 +8,10 @@ class Measurement extends Model
 {
     protected $fillable = [
         'device_id',
+        'message_version',
+        'light_lux',
+        'water_present',
+        'sources',
         'sequence',
         'sample_number',
         'reason',
@@ -22,6 +26,10 @@ class Measurement extends Model
 
     protected $casts = [
         'reason' => 'array',
+        'sources' => 'array',
+        'message_version' => 'integer',
+        'light_lux' => 'float',
+        'water_present' => 'boolean',
 
         'temperature_c' => 'float',
         'light_pct' => 'float',

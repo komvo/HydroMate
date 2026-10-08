@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-08T03:53:30.274311+00:00",
+  "passed": false,
+  "scope": "Approximate acquisition-complete -> Android UI verification via USB restart.\n\nThis includes manual-refresh-equivalent app startup and ADB inspection overhead.\nIt is one observed sample, not a polling or cloud latency benchmark.\n",
+  "device_id": "hydromate-01",
+  "sequence": 601,
+  "acquisition_complete_seen_at": "2026-10-08T03:53:31.127659+00:00",
+  "acquisition_complete_to_ack_ms": 3650.68,
+  "error": "Command '['C:\\\\Users\\\\danna\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe', 'pull', '/sdcard/hydromate-latency.xml', '.local\\\\android-latency.xml']' returned non-zero exit status 1."
+}

@@ -16,7 +16,9 @@ proyecto. Repositorio público: [komvo/HydroMate](https://github.com/komvo/Hydro
 - Taller 5 pendiente: demostrar sensores físicos → ESP32 → backend en nube →
   PostgreSQL → Android, diez transmisiones y evidencia de fallos y tiempos.
 - Alcance solicitado: temperatura, pH, luz y nivel reales; TDS simulado con
-  identificación por variable. Aún requiere cambios de contrato, BD, firmware y app.
+  identificación por variable. Contrato v2/API/BD/Android e integrador local
+  implementados; diez transmisiones sintéticas verificadas. Firmware nuevo en
+  `embedded/`, prueba física y despliegue según STATUS.
 - VPS-1 de OVHcloud compartido con otro proyecto es la opción aceptada para
   preparar el despliegue; contratación y despliegue no comprobados.
 
@@ -30,20 +32,23 @@ conservan el contexto técnico e histórico.
 |---|---|
 | `hydromate-backend/` | API Laravel, migraciones, pruebas y fixtures sintéticos |
 | `mobile/` | Aplicación Android, pruebas y recursos gráficos |
+| `embedded/` | Firmware ESP32 MQTT, plantilla privada y guía de compilación |
 | `Documentos PDC/` | Fuentes de talleres seleccionadas y sketch de sensores |
 | `docs/` | Contexto, contratos, arquitectura, decisiones y guías |
 | `docs/evidence/` | Evidencias y resultados registrados, con fechas |
-| `scripts/` | Herramientas de revisión y captura |
+| `scripts/` | Integrador MQTT, arranque, preparación y herramientas de prueba/captura |
 | `reports/` | Informes elaborados sobre el proyecto |
 | `talleres/` | PDF por taller e índice técnico del Taller 5 |
 
-`embedded/` e infraestructura de despliegue se incorporarán cuando se implementen.
+Infraestructura de nube pendiente de contratación y validación.
 Una carpeta prevista no representa una función terminada.
 
 ## Ejecutar y verificar
 
 Seguir [SETUP](docs/SETUP.md) para los servicios locales existentes y
 [mobile/README](mobile/README.md) para compilar e instalar Android.
+Guía completa del incremento: [procedimiento local Taller 5](talleres/taller-05/procedimiento-local.md).
+Plan, presupuesto y riesgos: [plan de acción](talleres/taller-05/plan-accion.md).
 No recrear contenedores ni borrar volúmenes para arrancar el proyecto.
 
 Backend: pruebas PHPUnit en SQLite en memoria; el smoke HTTP conserva datos

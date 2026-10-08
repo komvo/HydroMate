@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-08T02:34:08.004047+00:00",
+  "device_id": "test-mqtt-e4683ee174",
+  "synthetic": true,
+  "passed": true,
+  "scope": "PC producer -> Mosquitto -> bridge -> Laravel -> PostgreSQL; API GET checked; excludes sensor and Android display latency",
+  "events": [
+    {
+      "sequence": 1,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 2881.34
+    },
+    {
+      "sequence": 2,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 645.35
+    },
+    {
+      "sequence": 3,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 662.21
+    },
+    {
+      "sequence": 4,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 504.29
+    },
+    {
+      "sequence": 5,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 481.62
+    },
+    {
+      "sequence": 6,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 470.86
+    },
+    {
+      "sequence": 7,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 436.42
+    },
+    {
+      "sequence": 8,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 406.97
+    },
+    {
+      "sequence": 9,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 470.39
+    },
+    {
+      "sequence": 10,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 471.61
+    },
+    {
+      "sequence": 1,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 1.93
+    },
+    {
+      "sequence": 1,
+      "expected": "conflict",
+      "ack": "conflict",
+      "mqtt_to_persistence_ack_ms": 2.02
+    },
+    {
+      "sequence": 11,
+      "expected": "rejected",
+      "ack": "rejected",
+      "mqtt_to_persistence_ack_ms": 436.7
+    }
+  ]
+}

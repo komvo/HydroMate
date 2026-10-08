@@ -1,105 +1,74 @@
-# Contrato de telemetría v1 — 2026-09-30
+# Telemetría v2 física — 2026-10-07
 
-Formato canónico del productor y referencia para la app. Compatible con el esquema
-existente; no cambia tablas ni endpoints. v1 es versión documental, no un campo
-message_version aceptado/persistido actualmente. Implementación firmware pendiente.
+v2 implementada en Laravel/PostgreSQL/Android e integrador local. Firmware
+preparado; ejecución física según STATUS. Contrato v1 preservado en
+[TELEMETRY_CONTRACT_V1.md](TELEMETRY_CONTRACT_V1.md) y aceptado sin `message_version`.
+Los endpoints e índice único `(device_id, sequence)` no cambian.
 
-## Flujo y representación
-ESP32 físico → MQTT → integración/bridge → POST /api/measurements → PostgreSQL.
-Android consulta GET /api/measurements y /api/measurements/latest con device_id.
-Por ahora solo hay pruebas HTTP, sin firmware ni MQTT conectado. El bridge deberá
-conservar el objeto original: no renumerar, cambiar unidad ni completar sensores.
-JSON UTF-8, valores numéricos como números (no cadenas), decimales con punto.
-Content-Type y Accept: application/json. No incluir credenciales en la telemetría.
+## Mensaje v2
 
-| Campo | Tipo canónico / unidad | Obligatorio y límites actuales |
-|---|---|---|
-| device_id | string, identidad estable de la torre | Sí, no vacío, ≤64 caracteres |
-| sequence | entero, identificador del mensaje | Sí, 1–9223372036854775807 |
-| sample_number | entero, contador de adquisición | No; null o entero positivo hasta bigint |
-| reason | lista de cadenas, motivos de transmisión | No; null o hasta 10 cadenas no vacías de ≤64 caracteres |
-| temperature_c | número, °C | Sí, 0–50 |
-| light_pct | número, porcentaje relativo | Sí, 0–100; NO lux ni PAR |
-| light_state | string | Sí: BAJA, MEDIA, ALTA |
-| water_level_pct | número, porcentaje relativo | Sí, 0–100; NO litros |
-| water_level_state | string | Sí: VACIO, MEDIO, LLENO |
-| ph | número, pH sin unidad | Sí, 0–14 |
-| tds_ppm | número, ppm | Sí, 0–1000; NO EC en mS/cm |
+```json
+{"message_version":2,"device_id":"hydromate-01","sequence":1,"reason":["periodic_poc"],"temperature_c":24.3,"light_lux":450.5,"water_present":true,"ph":6.2,"tds_ppm":650,"sources":{"temperature_c":"real","light_lux":"real","water_present":"real","ph":"real","tds_ppm":"simulated"}}
+```
 
-Estos rangos son validación del prototipo, no objetivos del cultivo. No recortar
-un valor real fuera de rango para conseguir un 201. Si el sensor necesita otro
-rango, acordar cambio de contrato y probarlo antes de conectarlo.
-Enviar como máximo dos decimales para evitar redondeo implícito del almacenamiento.
-El servidor acepta algunas coerciones numéricas heredadas; el productor no debe
-depender de ellas. Android debe tolerar enteros o decimales para campos numéricos
-y usar Long para id/sequence/sample_number, no Int de 32 bits.
+Este ejemplo describe el formato; sus números no acreditan mediciones físicas.
 
-## Identidad y datos sintéticos
-Asignar a cada torre un device_id estable, por ejemplo hydromate-01, antes de su
-primera transmisión. No cambiarlo al reiniciar; no es un token ni autentica nada.
-Reservar el prefijo test- y reason=["synthetic_test"] para datos de prueba.
-Fixtures en hydromate-backend/tests/Fixtures/telemetry son exclusivamente sintéticas.
-La API actual no impone esa convención ni valida autenticidad; la app mostrará
-"Datos de prueba" para esos dispositivos y permitirá seleccionar el dispositivo.
-
-## Secuencia, reinicios y entrega (regla seleccionada; firmware aún pendiente)
-Una adquisición que genere mensaje nuevo recibe una sequence nueva. Un reintento
-conserva device_id, sequence y todos los valores originales. sample_number cuenta
-adquisiciones y no se usa para deduplicar; puede reiniciarse o no enviarse.
-Se permiten huecos en sequence. El contador de transmisión no vuelve a 1 tras
-reiniciar el mismo dispositivo. Para firmware: reservar rangos en almacenamiento
-persistente antes de usarlos; al reiniciar saltar el rango previamente reservado.
-Ejemplo conceptual: guardar próximo límite 101 antes de emitir 1–100; después de
-reinicio reservar el siguiente rango y emitir desde 101. Tamaño, escritura atómica
-y cola persistente deben implementarse/probarse en firmware, no se afirman hechos.
-Si no puede guardar la reserva, no publicar con identidad/secuencia reutilizadas.
-Si se borra la memoria persistente, detener envío y reconciliar el contador antes
-de retomar esa identidad. No usar millis() ni hora del reloj como contador persistente.
-
-| Resultado HTTP | Interpretación del productor/bridge |
+| Campo | Validación / significado |
 |---|---|
-| 201 | Persistencia confirmada; retirar ese mensaje de pendientes |
-| 409 | La pareja ya existe; no crear otra sequence para evadir el conflicto |
-| 422 | Error de contrato; registrar error, corregir origen, no reintentar ciegamente |
-| timeout / conexión / 5xx | Resultado incierto; reintentar MISMO objeto con espera creciente acotada |
+| message_version | Entero JSON 2 obligatorio para v2; no cadena "2" |
+| device_id | Identidad estable, string no vacío de hasta 64; MQTT restringe a letras/dígitos/_/- |
+| sequence | Entero positivo hasta bigint; misma adquisición pendiente conserva objeto y secuencia |
+| reason / sample_number | Opcionales; límites heredados v1 |
+| temperature_c | Número 0–50 °C |
+| light_lux | Número 0–100 000 lux; no PAR ni porcentaje |
+| water_present | Booleano JSON; false es nivel bajo válido, no dato faltante |
+| ph | Número 0–14, sin unidad |
+| tds_ppm | Número 0–1000 ppm; no EC |
+| sources | Cinco claves de sensores exactas; cada una `real` o `simulated` |
 
-Un 409 no demuestra igualdad del contenido. Solo puede tratarse como reentrega
-confirmada cuando se sabe que el objeto es idéntico a un envío previo; en otro
-caso registrar conflicto y detener esa entrega para revisión. La API conserva la
-primera fila y no sobrescribe sus valores. QoS MQTT por sí solo no confirma INSERT.
-Política de cola, duración/retención y calendario de reintentos: próximo incremento
-de integración, no implementados por este documento.
+v2 exige los cinco valores y su origen. Sensor inválido/null bloquea registro;
+firmware no sustituye por cero ni publica una lectura antigua como nueva.
+No enviar porcentajes/estados v1 junto a v2. Campos antiguos quedan null en BD
+para v2; v1 conserva sus valores y tiene campos nuevos null.
+Estos límites son del prototipo, no objetivos de cultivo ni prueba de autenticidad.
+El origen lo declara el productor; la API no comprueba físicamente el sensor.
 
-## Sensores desconectados o todavía no instalados
-v1 actual exige todos los valores físicos. null, campo omitido o fuera de rango
-produce 422 y no guarda una medición parcial. No reutilizar una lectura antigua
-como nueva ni sustituir por 0. Un cero solo significa una lectura real válida.
-El flotador físico no mide porcentaje de llenado y BH1750 entrega otra magnitud:
-no atribuirles resolución/calibración que no tienen. Antes de conectar hardware,
-definir representación de nivel discreto y luz real. Mantener esos cambios y
-telemetría parcial/quality como evolución explícita, no conversiones inventadas.
-La app puede desarrollarse ahora con fixtures completos e identificados.
+## MQTT y confirmación de persistencia
 
-## Tiempo y visualización
-created_at/updated_at los asigna Laravel: son hora de recepción/persistencia, no
-hora de adquisición. Las respuestas JSON usan fecha ISO-8601; Android la convierte
-a zona local. No enviar timestamp/measured_at esperando que hoy se almacenen.
-Con una cola y entrega tardía, latest significa última recepción, no lectura más
-reciente tomada. No etiquetar datos como "en vivo" solo porque el GET respondió.
-Mostrar "Recibido a...", identificación de torre y estado sin datos/errores.
-La cadencia y el umbral de dato antiguo se decidirán con firmware; no confundir
-respuesta API saludable con sensor o dispositivo conectado.
+- Telemetría: `hydromate/{device_id}/telemetry`, JSON UTF-8, no retained.
+- ACK: `hydromate/{device_id}/ack`, `{"sequence":1,"status":"stored"}`.
+- Estados ACK: stored, rejected, conflict. Solo stored permite retirar pendiente.
+- PubSubClient publica QoS 0 y reintenta idéntico objeto cada 5 s; ACK de aplicación
+  confirma persistencia y es distinto del ACK de transporte MQTT.
+- Bridge Paho suscribe QoS 1, confirma transporte después de guardar bandeja
+  SQLite local y procesa POST sin acceder directamente a PostgreSQL.
+- API 201 → stored; 422/otros 4xx → rejected; timeout/conexión/5xx → pendiente,
+  reintentos con espera creciente hasta 30 s. No renumera ni altera el payload.
+- 409 → stored solo si consulta y verifica igualdad de todos los campos enviados.
+  Búsqueda limitada a 100 recepciones; si no prueba igualdad marca conflict para
+  revisión. Mismo identificador con otro contenido no sobrescribe la bandeja.
+- Firmware conserva una muestra pendiente en NVS y reserva bloques de 100 antes
+  de usar secuencias. Reiniciar salta el bloque; huecos permitidos.
+- Si se borra NVS, reconciliar identidad/secuencia antes de reutilizar torre.
+- Bandeja bridge persiste tras reinicio. Límites/retención por espacio y pruebas
+  de corte eléctrico/reinicio físico todavía pendientes.
 
-Propuesta de ensayo documentada el 04/10 en [ENERGY_OPTIMIZATION.md](ENERGY_OPTIMIZATION.md):
-adquisición 5 s, publicación estable 300 s y prueba temporal 30 s, más eventos.
-No cambia este contrato ni impone tiempos físicos. Medidas parciales, alarmas sin
-valores completos, lotes y hora de adquisición requieren ampliación explícita.
-La integración de cola tardía deberá resolver su antigüedad antes de presentarla
-como estado actual; no sustituir campos ausentes ni convertir agregados en muestras.
+## Tiempo, cadencia y etiquetas
 
-## Ejemplos y comprobación
-- valid.json → 201; repetir → 409.
-- invalid-ph.json (pH 50) → 422.
-- unavailable-sensor.json (pH null) → 422, sin inventar lectura.
-Estos fixtures se prueban mediante PHPUnit en SQLite en memoria, sin tocar
-PostgreSQL real. El contrato de respuesta REST está en API.md.
+Laravel asigna created_at/updated_at en UTC: recepción, no adquisición. Android
+muestra fecha local, última recepción e historial. No se afirma "en vivo".
+PoC toma una muestra cada 30 s cuando no hay pendiente; con red caída conserva
+una sola lectura, no un historial completo durante el corte. Entrega tardía puede
+mostrar una muestra vieja con recepción nueva: limitación explícita. Resolver
+hora de adquisición/antigüedad de cola antes del controlador final.
+
+TDS fijo 650 ppm simulado, identificado en Android. Ensayos PC usan `test-*`,
+synthetic_test y TODOS los sources simulated. No son filas de sensores físicos.
+
+## Red de banco y nube
+
+Banco: API 127.0.0.1:8000; teléfono por adb reverse; broker autenticado 1884
+en loopback e IP Wi-Fi. MQTT LAN sin TLS es excepción acotada de banco. Mosquitto
+anterior 1883 conservado. BD local no cambia exposición previa.
+Nube pendiente: HTTPS, MQTT/TLS y ACL por torre, API protegida, credenciales/datos
+separados del compañero. Firmware incluye TLS con CA, sin fallback inseguro.

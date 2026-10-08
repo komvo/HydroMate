@@ -1,0 +1,76 @@
+{
+  "date_local": "2026-10-07",
+  "backend": {
+    "tests": 19,
+    "assertions": 118,
+    "passed": true,
+    "database": "SQLite :memory:"
+  },
+  "android": {
+    "build": "assembleDebug testDebugUnitTest lintDebug",
+    "passed": true,
+    "suites": [
+      {
+        "name": "com.hydromate.mobile.AeroBehaviorTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.hydromate.mobile.ReadingStateTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.hydromate.mobile.RepositoryTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.hydromate.mobile.TelemetryTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0"
+      }
+    ],
+    "apk_installed_usb": true,
+    "visual_current": "Inicio/Historial observed with physical ESP32 data and explicit simulated TDS"
+  },
+  "postgres": {
+    "existing_volume_preserved": true,
+    "private_backup_before_migration": true,
+    "v2_migration_applied": true,
+    "recovered_after_docker_restart": true
+  },
+  "network": {
+    "private_profile_authorized": true,
+    "mqtt_rule_enabled": true,
+    "port": 1884,
+    "scope": "Private LocalSubnet"
+  },
+  "pdf": {
+    "pages": 5,
+    "rendered_visual_review": true,
+    "provisional": true
+  },
+  "hardware": {
+    "physical_serial_api_passed": true,
+    "verified_sequences": [
+      101,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409
+    ],
+    "broker_outage_recovery_passed": true,
+    "frontend_approximate_ms": 8241.77,
+    "frontend_scope": "One sample, acquisition complete to UI inspection; includes app restart and ADB; local only"
+  }
+}

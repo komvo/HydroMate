@@ -1,4 +1,17 @@
-# Arranque local comprobado — 2026-09-30
+# Arranque local comprobado — 2026-10-07
+
+## Actualización Taller 5 — 2026-10-07
+
+Guía detallada: ../talleres/taller-05/procedimiento-local.md. API/PostgreSQL
+arrancados; respaldo antes de migración v2 en .local/backups (privado). Migración
+aditiva ejecutada únicamente por --path; Sanctum sigue pendiente.
+`scripts/start_local.ps1 -WithLanMqtt` reutiliza configuración y procesos de banco.
+Broker autenticado separado 1884, configuración/ACL/usuarios en .local/mqtt;
+bridge con .local/mqtt-venv (Paho 2.1.0) y bandeja SQLite privada.
+Red Wi-Fi doméstica privada autorizada; regla solo 1884/Private/LocalSubnet.
+El script de regla necesita PowerShell administrador: scripts/enable_mqtt_lan.ps1.
+Firmware y dependencias: embedded/README.md; secretos privados en secrets.h.
+No migrar estas credenciales ni artisan serve como servicio final de nube.
 
 ## PostgreSQL
 Abrir Docker Desktop y comprobar el contenedor existente hydromate-postgres.

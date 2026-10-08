@@ -10,6 +10,13 @@ El ESP32 controla localmente; Laravel procesa funciones no críticas y expone AP
 PostgreSQL persiste; Android consume REST. Mosquitto es el broker definitivo.
 
 ## Incremento vigente
+Actualización 07/10: usuario solicita ejecutar primero local y documentar pasos.
+Contratos v1/v2 compatibles, Android lux/flotador/origen e integrador Paho con
+bandeja y ACK implementados; firmware nuevo cargado y diez entregas verificadas. Cuatro
+variables físicas y TDS simulado; hardware disponible según bitácora 05/10.
+Ensayos/resultados actuales en STATUS; comentarios anteriores se conservan
+como historial. VPS compartido aceptado como candidato, no contratado/desplegado.
+
 El usuario eliminó Wokwi como requisito y eligió Android mínimo como primer
 frontend. Primero base de datos y API probadas con datos sintéticos; después app
 en teléfono; finalmente conectar el armado ESP32 real mediante MQTT/integración.

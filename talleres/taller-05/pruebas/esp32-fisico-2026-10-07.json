@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-08T03:36:20.480472+00:00",
+  "device_id": "hydromate-01",
+  "passed": false,
+  "target": 10,
+  "duration_seconds": 421.34,
+  "scope": "Physical firmware declares four real variables, TDS simulated; serial samples/ACK compared to API; frontend latency and calibration not measured",
+  "events": [
+    {
+      "at": "2026-10-08T03:29:19.983276+00:00",
+      "event": "firmware_log",
+      "detail": "SENSOR_INVALID temp=28.56 lux=147.50 ph=13.87 voltage=0.0351; no se publica"
+    },
+    {
+      "at": "2026-10-08T03:29:49.993450+00:00",
+      "event": "firmware_log",
+      "detail": "SENSOR_INVALID temp=28.56 lux=153.33 ph=13.86 voltage=0.0363; no se publica"
+    },
+    {
+      "at": "2026-10-08T03:30:19.994908+00:00",
+      "event": "firmware_log",
+      "detail": "SENSOR_INVALID temp=28.56 lux=89.17 ph=13.87 voltage=0.0360; no se publica"
+    },
+    {
+      "at": "2026-10-08T03:30:49.995220+00:00",
+      "event": "firmware_log",
+      "detail": "SENSOR_INVALID temp=28.56 lux=85.00 ph=13.86 voltage=0.0364; no se publica"
+    },
+    {
+      "at": "2026-10-08T03:31:19.995666+00:00",
+      "event": "firmware_log",
+      "detail": "SENSOR_INVALID temp=28.56 lux=181.67 ph=13.86 voltage=0.0361; no se publica"
+    },
+    {
+      "at": "2026-10-08T03:31:49.995130+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=101 uptime_ms=150523"
+    },
+    {
+      "at": "2026-10-08T03:31:50.019837+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 101,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.56,
+        "light_lux": 30,
+        "water_present": false,
+        "ph": 10.54,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "event": "api_verification",
+      "status": 200,
+      "verified_sequences": [],
+      "stored_sequences": [],
+      "serial_sample_sequences": [
+        101
+      ]
+    }
+  ]
+}

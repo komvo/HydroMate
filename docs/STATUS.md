@@ -1,5 +1,60 @@
 # Estado actual — 2026-10-07
 
+## Taller 5 — implementación local del 2026-10-07
+
+- Usuario solicita ejecutar local paso a paso y explicar cómo replicarlo. Guía:
+  `talleres/taller-05/procedimiento-local.md`; plan/presupuesto/diez riesgos en
+  `plan-accion.md`. PDF técnico local provisional generado y
+  renderizado/revisado; no es reporte final ni evidencia de nube.
+- PostgreSQL existente arrancado, volumen conservado y backup privado previo
+  a migración. v2 aditiva aplicada únicamente por --path; Sanctum sigue pendiente.
+  Esquema real exportado por solo lectura en pruebas/esquema-postgresql-2026-10-07.json.
+- Contrato v2 implementado: lux, flotador booleano y origen por variable; v1
+  compatible/preservado en TELEMETRY_CONTRACT_V1.md. TDS del firmware fijo 650
+  ppm simulado; temperatura/pH/lux/flotador se leen físicamente al ejecutar placa.
+- Bridge Python/Paho con bandeja SQLite privada, reintentos y ACK después de
+  persistencia. Broker separado autenticado 1884 y ACL; 1883 previo intacto.
+  Tres ensayos de diez transmisiones sintéticas pasan (incluye posterior a
+  reinicio Docker), inválido 422 y conflicto/repetición sin sobrescribir.
+  Primera prueba fallida conservada; no cuenta como prueba física.
+- Laravel 13.33.0/PHP 8.4.26: 19 pruebas/118 assertions en memoria pasan. Android
+  assembleDebug/testDebugUnitTest/lintDebug pasan: 20 tests; APK actual reinstalada
+  por USB/reverse. `hydromate-01` configurado manualmente; estados carga/sin datos
+  y posteriormente lecturas físicas observados. Captura pública de Inicio conserva
+  pH/temperatura/lux/flotador y TDS simulado. MIUI bloquea input tap; navegación manual.
+- Usuario autorizó red doméstica Private y regla MQTT 1884/Private/LocalSubnet.
+  Requirió ejecución administrativa; ruta de programa corregida tras error
+  0x80070057, perfil/regla posteriormente verificados. Sin cambios del router.
+- Docker dio error interno/timeout PostgreSQL durante compilación; reinicio
+  normal Desktop y arranque del contenedor existente recuperaron pg_isready,
+  consulta de esquema y ensayo MQTT. No se borraron/recrearon datos/volúmenes.
+- ESP32 detectado COM3. Firmware nuevo en embedded/HydroMateTelemetry, sin
+  actuadores; original PruebaSensores1 intacto. Primera compilación pasó (79 %
+  programa/14 % RAM). Configuración privada completada; compilación final y carga
+  COM3 realizadas. pH inicialmente ~0.035 V: usuario corrigió conexión/alimentación;
+  después se capturó muestra 101 (28.56 °C, 30 lux, pH 10.54, flotador false,
+  TDS 650 simulado). No equivale a calibración. Ensayo físico de 421 s no recibió
+  ACK ni encontró registros por API; evidencia fallida conservada. El
+  usuario detectó SSID exclusivo de 5 GHz y cambió secrets.h a 2.4 GHz;
+  recompilado/cargado: 1 037 864 bytes programa/49 040 RAM. Ensayo 2.4 GHz pasa:
+  secuencias 101, 401–409 verificadas campo por campo contra API. Pendiente 101
+  recuperado tras reinicio y confirmado; no se borró NVS. Luz 1.67–185 lux y ambos
+  estados del flotador observados tras intervención física del usuario. JSON fuente:
+  pruebas/esp32-fisico-24ghz-2026-10-07.json. No es calibración de sensores.
+- Historial Android observado con gráfica y registros físicos; capturas en pruebas/.
+  Aproximación fin de adquisición–interfaz: 8.24 s en una muestra (incluye abrir
+  app/inspección ADB). Primer intento falló al extraer UI; repetición conservada.
+  Corte broker 1884: fallos MQTT, pendiente 901 conservado y entregado al recuperar;
+  901/902 verificados por API. Servicios restablecidos, datos conservados.
+- Video local Android de 10.06 s: consulta real/reapertura, fotogramas revisados.
+  No muestra montaje/nube. Evidencia en pruebas/android-consulta-local-2026-10-07.mp4.
+- Pendientes de cierre: video final conjunto del montaje; VPS contratado/desplegado con
+  TLS/HTTPS/API protegida, repetición en nube, decisión docente sobre actuador y
+  reporte final. No afirmar Taller 5 completo todavía.
+
+Esta sección sustituye los pendientes de implementación de la revisión anterior;
+las notas siguientes se conservan como historial del mismo día.
+
 ## Taller de viabilidad pendiente — revisión del 2026-10-07
 
 - Renombre solicitado: `Documentos PDC/tsts/tsts.ino` pasa a

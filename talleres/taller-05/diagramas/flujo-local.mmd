@@ -1,0 +1,12 @@
+flowchart LR
+  PC["Productor PC: sintético"] --> M["Mosquitto local 1884: autenticado"]
+  M --> I["Integrador Python: bandeja SQLite"]
+  I -->|"POST JSON v2"| A["Laravel 127.0.0.1:8000"]
+  A --> B["PostgreSQL: measurements"]
+  B --> A
+  A -->|"GET JSON"| D["Android por USB: Inicio con datos reales"]
+  A -->|"201 persistido"| I
+  I -->|"ACK stored"| M
+  M --> PC
+  E["ESP32: cuatro variables reales, TDS simulado"] --> M
+  M -->|"ACK stored"| E

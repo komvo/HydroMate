@@ -5,6 +5,11 @@ Android usará posteriormente la dirección LAN de la PC, no su propio localhost
 Sin autenticación por ahora: no exponer a Internet. Filtro no equivale a autorización.
 
 ## Registrar
+Actualización 07/10: también acepta v2 físico en los mismos endpoints. Ver
+TELEMETRY_CONTRACT.md: message_version=2 entero JSON, lux, water_present booleano
+y sources por variable. Campos antiguos se conservan para v1 y quedan null en
+filas v2. No mezclar porcentajes y lux en el mismo POST.
+
 POST /api/measurements con Content-Type: application/json:
 ```json
 {"device_id":"hydromate-01","sequence":1,"sample_number":1,"reason":["startup"],"temperature_c":24.3,"light_pct":65.2,"light_state":"MEDIA","water_level_pct":82.4,"water_level_state":"LLENO","ph":6.2,"tds_ppm":650}

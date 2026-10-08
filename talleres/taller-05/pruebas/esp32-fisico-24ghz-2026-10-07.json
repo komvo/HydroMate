@@ -1,0 +1,495 @@
+{
+  "at": "2026-10-08T03:53:15.203019+00:00",
+  "device_id": "hydromate-01",
+  "passed": true,
+  "target": 10,
+  "duration_seconds": 249.29,
+  "scope": "Physical firmware declares four real variables, TDS simulated; serial samples/ACK compared to API; frontend latency and calibration not measured",
+  "events": [
+    {
+      "at": "2026-10-08T03:49:06.380482+00:00",
+      "event": "firmware_log",
+      "detail": "RESTORED sequence=101; pendiente original conservado"
+    },
+    {
+      "at": "2026-10-08T03:49:06.404925+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 101,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.56,
+        "light_lux": 30,
+        "water_present": false,
+        "ph": 10.54,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:49:06.498023+00:00",
+      "event": "firmware_log",
+      "detail": "WIFI_STATUS code=6 uptime_ms=244"
+    },
+    {
+      "at": "2026-10-08T03:49:06.711352+00:00",
+      "event": "firmware_log",
+      "detail": "WIFI_STATUS code=0 uptime_ms=463"
+    },
+    {
+      "at": "2026-10-08T03:49:08.581497+00:00",
+      "event": "firmware_log",
+      "detail": "WIFI_STATUS code=3 uptime_ms=2333"
+    },
+    {
+      "at": "2026-10-08T03:49:08.736396+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_CONNECTED"
+    },
+    {
+      "at": "2026-10-08T03:49:08.749254+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=101 accepted=1 uptime_ms=2500"
+    },
+    {
+      "at": "2026-10-08T03:49:09.572843+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=101 uptime_ms=3324"
+    },
+    {
+      "at": "2026-10-08T03:49:09.816224+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=401 uptime_ms=3568"
+    },
+    {
+      "at": "2026-10-08T03:49:09.840976+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 401,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.56,
+        "light_lux": 28.33,
+        "water_present": false,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:49:09.849807+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=401 accepted=1 uptime_ms=3601"
+    },
+    {
+      "at": "2026-10-08T03:49:10.202808+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=401 uptime_ms=3954"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 401,
+      "elapsed_ms": 386
+    },
+    {
+      "at": "2026-10-08T03:49:39.857154+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=402 uptime_ms=33608"
+    },
+    {
+      "at": "2026-10-08T03:49:39.881500+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 402,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.38,
+        "light_lux": 22.5,
+        "water_present": false,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:49:39.890225+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=402 accepted=1 uptime_ms=33641"
+    },
+    {
+      "at": "2026-10-08T03:49:40.344440+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=402 uptime_ms=34095"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 402,
+      "elapsed_ms": 487
+    },
+    {
+      "at": "2026-10-08T03:50:09.821277+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=403 uptime_ms=63572"
+    },
+    {
+      "at": "2026-10-08T03:50:09.846016+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 403,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 181.67,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:50:09.854705+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=403 accepted=1 uptime_ms=63605"
+    },
+    {
+      "at": "2026-10-08T03:50:10.287996+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=403 uptime_ms=64039"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 403,
+      "elapsed_ms": 467
+    },
+    {
+      "at": "2026-10-08T03:50:39.822518+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=404 uptime_ms=93573"
+    },
+    {
+      "at": "2026-10-08T03:50:39.847124+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 404,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 1.67,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:50:39.856093+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=404 accepted=1 uptime_ms=93606"
+    },
+    {
+      "at": "2026-10-08T03:50:40.189200+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=404 uptime_ms=93939"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 404,
+      "elapsed_ms": 366
+    },
+    {
+      "at": "2026-10-08T03:51:09.824086+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=405 uptime_ms=123574"
+    },
+    {
+      "at": "2026-10-08T03:51:09.848530+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 405,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 185,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:51:09.857682+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=405 accepted=1 uptime_ms=123607"
+    },
+    {
+      "at": "2026-10-08T03:51:10.371995+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=405 uptime_ms=124122"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 405,
+      "elapsed_ms": 548
+    },
+    {
+      "at": "2026-10-08T03:51:39.825766+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=406 uptime_ms=153575"
+    },
+    {
+      "at": "2026-10-08T03:51:39.850365+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 406,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 184.17,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:51:39.859033+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=406 accepted=1 uptime_ms=153608"
+    },
+    {
+      "at": "2026-10-08T03:51:40.352271+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=406 uptime_ms=154102"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 406,
+      "elapsed_ms": 527
+    },
+    {
+      "at": "2026-10-08T03:52:09.851685+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 407,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 184.17,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:52:09.860481+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=407 accepted=1 uptime_ms=183609"
+    },
+    {
+      "at": "2026-10-08T03:52:10.634663+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=407 uptime_ms=184383"
+    },
+    {
+      "at": "2026-10-08T03:52:39.828491+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=408 uptime_ms=213577"
+    },
+    {
+      "at": "2026-10-08T03:52:39.853038+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 408,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 185,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:52:39.861932+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=408 accepted=1 uptime_ms=213610"
+    },
+    {
+      "at": "2026-10-08T03:52:40.245205+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=408 uptime_ms=213994"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 408,
+      "elapsed_ms": 417
+    },
+    {
+      "at": "2026-10-08T03:53:09.829679+00:00",
+      "event": "firmware_log",
+      "detail": "SAMPLE sequence=409 uptime_ms=243578"
+    },
+    {
+      "at": "2026-10-08T03:53:09.854349+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 2,
+        "device_id": "hydromate-01",
+        "sequence": 409,
+        "reason": [
+          "periodic_poc"
+        ],
+        "temperature_c": 28.44,
+        "light_lux": 185,
+        "water_present": true,
+        "ph": 5.03,
+        "tds_ppm": 650,
+        "sources": {
+          "temperature_c": "real",
+          "light_lux": "real",
+          "water_present": "real",
+          "ph": "real",
+          "tds_ppm": "simulated"
+        }
+      }
+    },
+    {
+      "at": "2026-10-08T03:53:09.863389+00:00",
+      "event": "firmware_log",
+      "detail": "SEND sequence=409 accepted=1 uptime_ms=243611"
+    },
+    {
+      "at": "2026-10-08T03:53:11.537669+00:00",
+      "event": "firmware_log",
+      "detail": "STORED sequence=409 uptime_ms=245286"
+    },
+    {
+      "event": "firmware_acquisition_end_to_persistence_ack",
+      "sequence": 409,
+      "elapsed_ms": 1708
+    },
+    {
+      "event": "api_verification",
+      "status": 200,
+      "verified_sequences": [
+        101,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409
+      ],
+      "stored_sequences": [
+        101,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409
+      ],
+      "serial_sample_sequences": [
+        101,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409
+      ]
+    }
+  ]
+}

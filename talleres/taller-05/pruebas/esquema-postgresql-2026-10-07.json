@@ -1,0 +1,130 @@
+{
+    "at": "2026-10-08T03:03:15+00:00",
+    "table": "measurements",
+    "columns": [
+        {
+            "column_name": "id",
+            "data_type": "bigint",
+            "is_nullable": "NO"
+        },
+        {
+            "column_name": "device_id",
+            "data_type": "character varying",
+            "is_nullable": "NO"
+        },
+        {
+            "column_name": "sequence",
+            "data_type": "bigint",
+            "is_nullable": "NO"
+        },
+        {
+            "column_name": "sample_number",
+            "data_type": "bigint",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "reason",
+            "data_type": "json",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "temperature_c",
+            "data_type": "numeric",
+            "is_nullable": "NO"
+        },
+        {
+            "column_name": "light_pct",
+            "data_type": "numeric",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "light_state",
+            "data_type": "character varying",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "water_level_pct",
+            "data_type": "numeric",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "water_level_state",
+            "data_type": "character varying",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "ph",
+            "data_type": "numeric",
+            "is_nullable": "NO"
+        },
+        {
+            "column_name": "tds_ppm",
+            "data_type": "numeric",
+            "is_nullable": "NO"
+        },
+        {
+            "column_name": "created_at",
+            "data_type": "timestamp without time zone",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "updated_at",
+            "data_type": "timestamp without time zone",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "message_version",
+            "data_type": "smallint",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "light_lux",
+            "data_type": "numeric",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "water_present",
+            "data_type": "boolean",
+            "is_nullable": "YES"
+        },
+        {
+            "column_name": "sources",
+            "data_type": "json",
+            "is_nullable": "YES"
+        }
+    ],
+    "constraints": [
+        {
+            "constraint_name": "measurements_pkey",
+            "constraint_type": "PRIMARY KEY"
+        },
+        {
+            "constraint_name": "measurements_device_id_sequence_unique",
+            "constraint_type": "UNIQUE"
+        },
+        {
+            "constraint_name": "2200_16470_1_not_null",
+            "constraint_type": "CHECK"
+        },
+        {
+            "constraint_name": "2200_16470_2_not_null",
+            "constraint_type": "CHECK"
+        },
+        {
+            "constraint_name": "2200_16470_3_not_null",
+            "constraint_type": "CHECK"
+        },
+        {
+            "constraint_name": "2200_16470_6_not_null",
+            "constraint_type": "CHECK"
+        },
+        {
+            "constraint_name": "2200_16470_11_not_null",
+            "constraint_type": "CHECK"
+        },
+        {
+            "constraint_name": "2200_16470_12_not_null",
+            "constraint_type": "CHECK"
+        }
+    ]
+}

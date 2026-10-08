@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-08T02:33:16.046749+00:00",
+  "device_id": "test-mqtt-a89a9af891",
+  "synthetic": true,
+  "passed": false,
+  "scope": "PC producer -> Mosquitto -> bridge -> Laravel -> PostgreSQL; API GET checked; excludes sensor and Android display latency",
+  "events": []
+}

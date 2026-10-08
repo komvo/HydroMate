@@ -10,9 +10,17 @@ import java.time.Instant
 data class Measurement(
     val sequence: Long, val device: String, val received: Instant,
     val temperature: Double, val ph: Double, val tds: Double,
-    val light: Double, val lightState: String, val water: Double,
-    val waterState: String, val synthetic: Boolean
-)
+    val light: Double?, val lightState: String, val water: Double?,
+    val waterState: String, val synthetic: Boolean,
+    val lightLux: Double? = null, val waterPresent: Boolean? = null,
+    val sources: Map<String, String> = emptyMap()
+) {
+    val tdsSimulated: Boolean get() = sources["tds_ppm"] == "simulated"
+    val lightValue: Double get() = lightLux ?: requireNotNull(light)
+    val lightUnit: String get() = if (lightLux != null) "lux" else "% relativo"
+    val waterDescription: String get() = waterPresent?.let { if (it) "Agua detectada" else "Nivel bajo / sin agua" }
+        ?: "$water % relativo · $waterState"
+}
 
 object Telemetry {
     fun endpoint(base: String, device: String): String {
@@ -42,6 +50,24 @@ object Telemetry {
             }
             val sequence = item.get("sequence").toString().toLongOrNull()
             require(sequence != null && sequence > 0) { "Secuencia no válida." }
+            val version = if (item.isNull("message_version")) 1 else {
+                require(item.get("message_version") == 2) { "Versión de telemetría no compatible." }
+                2
+            }
+            if (version == 2) {
+                val sourceObject = item.getJSONObject("sources")
+                val keys = listOf("temperature_c", "light_lux", "water_present", "ph", "tds_ppm")
+                require(sourceObject.length() == keys.size) { "Origen de sensores incompleto." }
+                val sources = keys.associateWith { key -> sourceObject.getString(key).also {
+                    require(it in listOf("real", "simulated")) { "Origen inválido en $key" }
+                } }
+                val water = item.get("water_present")
+                require(water is Boolean) { "El flotador requiere un booleano JSON." }
+                return@map Measurement(sequence, device, Instant.parse(item.getString("created_at")),
+                    number("temperature_c", 0.0..50.0), number("ph", 0.0..14.0), number("tds_ppm", 0.0..1000.0),
+                    null, "", null, "", synthetic,
+                    number("light_lux", 0.0..100000.0), water, sources)
+            }
             val lightState = item.getString("light_state")
             val waterState = item.getString("water_level_state")
             require(lightState in listOf("BAJA", "MEDIA", "ALTA") && waterState in listOf("VACIO", "MEDIO", "LLENO")) {

@@ -32,6 +32,36 @@ class MeasurementApiTest extends TestCase
         ], $changes);
     }
 
+    private function physicalPayload(): array
+    {
+        return [
+            'message_version' => 2, 'device_id' => 'test-physical-contract', 'sequence' => 1,
+            'reason' => ['synthetic_test'], 'temperature_c' => 24.3, 'light_lux' => 450.5,
+            'water_present' => true, 'ph' => 6.2, 'tds_ppm' => 650,
+            'sources' => array_fill_keys(['temperature_c', 'light_lux', 'water_present', 'ph', 'tds_ppm'], 'simulated'),
+        ];
+    }
+
+    public function test_v2_preserves_lux_discrete_level_and_simulation_labels(): void
+    {
+        $payload = $this->physicalPayload();
+        $this->postJson('/api/measurements', $payload)->assertCreated()
+            ->assertJsonPath('measurement.water_present', true)
+            ->assertJsonPath('measurement.sources.tds_ppm', 'simulated');
+        $response = $this->getJson('/api/measurements/latest?device_id=test-physical-contract')->assertOk();
+        $response->assertJsonPath('light_lux', 450.5)->assertJsonPath('light_pct', null);
+        $this->assertDatabaseCount('measurements', 1);
+    }
+
+    public function test_v2_rejects_missing_provenance_non_boolean_and_mixed_units(): void
+    {
+        foreach ([['sources' => null], ['water_present' => 1], ['light_pct' => 50],
+            ['message_version' => '2'], ['light_lux' => -1], ['ph' => null]] as $change) {
+            $this->postJson('/api/measurements', array_replace($this->physicalPayload(), $change))->assertUnprocessable();
+        }
+        $this->assertDatabaseCount('measurements', 0);
+    }
+
     public function test_measurements_are_stored_and_returned_by_device_in_deterministic_order(): void
     {
         $this->freezeTime();

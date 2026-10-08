@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-08T03:54:47.409616+00:00",
+  "passed": true,
+  "scope": "Approximate acquisition-complete -> Android UI verification via USB restart.\n\nThis includes manual-refresh-equivalent app startup and ADB inspection overhead.\nIt is one observed sample, not a polling or cloud latency benchmark.\n",
+  "device_id": "hydromate-01",
+  "sequence": 701,
+  "acquisition_complete_seen_at": "2026-10-08T03:54:48.264513+00:00",
+  "acquisition_complete_to_ack_ms": 3833.5,
+  "expected_received_label": "Recibido 07 oct 2026 · 20:54:52",
+  "acquisition_complete_to_ui_verified_ms": 8241.77,
+  "ui_verified_at": "2026-10-08T03:54:56.506291+00:00",
+  "api_measurement": {
+    "id": 69,
+    "device_id": "hydromate-01",
+    "sequence": 701,
+    "sample_number": null,
+    "reason": [
+      "periodic_poc"
+    ],
+    "temperature_c": 28.38,
+    "light_pct": null,
+    "light_state": null,
+    "water_level_pct": null,
+    "water_level_state": null,
+    "ph": 5.03,
+    "tds_ppm": 650,
+    "created_at": "2026-10-08T03:54:52.000000Z",
+    "updated_at": "2026-10-08T03:54:52.000000Z",
+    "message_version": 2,
+    "light_lux": 185.83,
+    "water_present": true,
+    "sources": {
+      "light_lux": "real",
+      "ph": "real",
+      "tds_ppm": "simulated",
+      "temperature_c": "real",
+      "water_present": "real"
+    }
+  }
+}

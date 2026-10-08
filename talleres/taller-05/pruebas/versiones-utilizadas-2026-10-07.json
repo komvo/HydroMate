@@ -1,0 +1,12 @@
+{
+  "scope": "Public source Git blob identifiers; no private config or firmware binary included",
+  "source_git_blobs": {
+    "embedded/HydroMateTelemetry/HydroMateTelemetry.ino": "ad44b1a0b472f130b87128aa4d27174fac414cca",
+    "scripts/mqtt_bridge.py": "c271323010bee39468947471871dad5297947b7f",
+    "scripts/capture_sensor_flow.py": "c93bf231dcce64c061f78a989528a032a82ea0fa",
+    "scripts/measure_android_latency.py": "f82739d1c1b1537b3eeed8fecfc41c45ba1a4bd0",
+    "hydromate-backend/app/Http/Requests/StoreMeasurementRequest.php": "581d1394a6f882ea851bbaf2455109903fc4c630",
+    "mobile/app/src/main/java/com/hydromate/mobile/Telemetry.kt": "90eaa43bfcc4b92562f4e3a3e93fc2ef81a5bd93"
+  },
+  "pdf_sha256": "d0ea0d9dd2fef4a0ea21661f668f8cb3e5090df7505286486c3429ccd6823bab"
+}

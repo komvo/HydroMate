@@ -13,7 +13,7 @@ import com.hydromate.mobile.ui.*
 
 enum class Metric(val title: String, val unit: String, val read: (Measurement) -> Double) {
     PH("pH", "", { it.ph }), TEMPERATURE("Temp.", "°C", { it.temperature }),
-    TDS("TDS", "ppm", { it.tds }), LIGHT("Luz", "% relativo", { it.light })
+    TDS("TDS", "ppm", { it.tds }), LIGHT("Luz", "% relativo", { it.lightValue })
 }
 
 class HistoryScreen(private val ui: Components) {
@@ -49,12 +49,16 @@ class HistoryScreen(private val ui: Components) {
                 }, LinearLayout.LayoutParams(0, -2, 1f).apply { if (index > 0) marginStart = dp(4) })
             }
         }
-        plotCard.addView(text(listOf(selected.title, selected.unit).filter { it.isNotEmpty() }.joinToString(" · "), 20, true))
-        plotCard.addView(TrendView(context, values, selected, ui), LinearLayout.LayoutParams(-1, dp(if (largeText) 200 else 156)))
-        val ordered = values.sortedBy { it.received }
+        val unit = if (selected == Metric.LIGHT) values.first().lightUnit else selected.unit
+        val plotted = if (selected == Metric.LIGHT) values.filter { it.lightUnit == unit } else values
+        plotCard.addView(text(listOf(selected.title, unit).filter { it.isNotEmpty() }.joinToString(" · "), 20, true))
+        if (selected == Metric.TDS && values.any { it.tdsSimulated }) plotCard.addView(badge("Incluye TDS simulado"))
+        if (plotted.size != values.size) plotCard.addView(text("Se grafican solo registros con la misma unidad: $unit.", 12, tint = muted))
+        plotCard.addView(TrendView(context, plotted, selected, ui), LinearLayout.LayoutParams(-1, dp(if (largeText) 200 else 156)))
+        val ordered = plotted.sortedBy { it.received }
         plotCard.addView(text("Desde ${date(ordered.first().received)}\nHasta ${date(ordered.last().received)}", 12, tint = muted))
-        val numbers = values.map(selected.read)
-        plotCard.addView(text("Mín. ${number(numbers.min())} · Máx. ${number(numbers.max())} ${selected.unit}", 14, tint = muted))
+        val numbers = plotted.map(selected.read)
+        plotCard.addView(text("Mín. ${number(numbers.min())} · Máx. ${number(numbers.max())} $unit", 14, tint = muted))
         plotCard.addView(text(if (values.size == 1) "Una lectura; aún no hay tendencia."
             else "Cada punto es una recepción. No se asume continuidad entre lecturas.", 14, tint = muted))
         section(root, "Recepciones", "${values.size} registros · más reciente primero")
@@ -62,8 +66,9 @@ class HistoryScreen(private val ui: Components) {
             val entry = card(root)
             entry.addView(text(date(m.received), 16, true))
             if (m.synthetic) entry.addView(badge("Datos de prueba"))
+            if (m.tdsSimulated) entry.addView(badge("TDS simulado"))
             entry.addView(text("pH ${number(m.ph)} · Temperatura ${number(m.temperature)} °C\nTDS ${number(m.tds)} ppm", 16))
-            entry.addView(text("Luz relativa ${number(m.light)} % · ${m.lightState}\nNivel relativo ${number(m.water)} % · ${m.waterState}", 14, tint = muted))
+            entry.addView(text("Luz ${number(m.lightValue)} ${m.lightUnit}\n${m.waterDescription}", 14, tint = muted))
         }
     }
 }
