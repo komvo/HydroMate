@@ -9,6 +9,28 @@
 **/.venv/
 *.log
 # Documentos PDC se incluyen por solicitud expresa del usuario.
+# Referencias retiradas de GitHub; conservar los archivos originales locales.
+/Documentos PDC/Duplicados exactos/
+/Documentos PDC/HydroMate_Duena_Milca/
+/Documentos PDC/Versiones anteriores/
+/Documentos PDC/Descripcion_Proyecto_de_carrera.pdf
+/Documentos PDC/E1P1_Plan_Basico_HydroMate (1).docx
+/Documentos PDC/E3P5_Evidencias_Paquetes_Trabajo_HydroMate.docx
+/Documentos PDC/EC0935_Producto_2_1_Plan_Detallado_HydroMate_ENTREGA (1).docx
+/Documentos PDC/HydroMate_Bitacora_Pruebas_Sensores_Diagnostico_TDS_05-10-2026.docx
+/Documentos PDC/HydroMate_Duena_Milca.zip
+/Documentos PDC/HydroMate_EC0935_Con_Hipervinculos.pptx
+/Documentos PDC/HydroMate_EC0935_Presentacion_Ejecutiva_EcoTech.pptx
+/Documentos PDC/HydroMate_EC0935_Presentacion_Ejecutiva_EcoTech_FondoBlanco.pptx
+/Documentos PDC/HydroMate_Proyecto_Seleccionado_Aprobacion.docx
+/Documentos PDC/Plan_trabajo_HydroMate_sep_nov_2026.docx
+/Documentos PDC/Plan_trabajo_HydroMate_sep_nov_2026.pdf
+/Documentos PDC/Planeacion_integral_HydroMate_actualizada_compras_20-09-2026.docx
+/Documentos PDC/Planeacion_integral_HydroMate_automatizacion_dosificacion_v2.docx
+/Documentos PDC/Planeacion_integral_HydroMate_automatizacion_dosificacion_v2__copia_1.docx
+/Documentos PDC/Planeacion_integral_HydroMate_contexto_actualizado_22-09-2026.docx
+/Documentos PDC/Planeacion_integral_torre_hidroponica_modular_con_enlaces.docx
+/Documentos PDC/Problematicas_HydroMate_FamiFinder.docx
 
 # Entornos, compilaciones y archivos de editor
 **/.gradle/

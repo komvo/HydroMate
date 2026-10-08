@@ -2,6 +2,12 @@
 
 ## Taller de viabilidad pendiente — revisión del 2026-10-07
 
+- Limpieza de documentación GitHub solicitada después de la subida: retirar de
+  la versión actual las tres carpetas y los 18 archivos señalados en capturas.
+  Originales conservados localmente y excluidos de Git; talleres y sketch `tsts`
+  conservados. Se actualizaron política, README y referencias de bitácora sin
+  cambiar sus resultados registrados ni reescribir el historial anterior.
+
 - Aclaración posterior del usuario: usar temperatura, pH, luz y flotador reales,
   más TDS simulado identificado por variable; reemplaza la propuesta inicial de
   una sola temperatura. No implementado. BH1750 debe conservar lux y flotador
@@ -42,7 +48,8 @@
   No se implementó/desplegó el plan. Aplazar comando físico requiere autorización
   docente; recepción tardía y nueva fecha de entrega todavía por acordar.
 
-Fuente: [bitácora de sensores](../Documentos%20PDC/HydroMate_Bitacora_Pruebas_Sensores_Diagnostico_TDS_05-10-2026.docx).
+Fuente local: `Documentos PDC/HydroMate_Bitacora_Pruebas_Sensores_Diagnostico_TDS_05-10-2026.docx`.
+Retirada de la versión actual de GitHub por solicitud del usuario; copia local conservada.
 
 ## Reporte en Word — 2026-10-06
 

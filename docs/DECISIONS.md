@@ -181,3 +181,7 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   errores/resultados, diagramas y archivos utilizados. Conservar fuentes y
   originales; generar reporte final con evidencia observada, sin completar
   resultados pendientes por simulación o inventar aprobación de entregables.
+- D52 — Usuario solicita retirar las tres carpetas y los 18 archivos de
+  Documentos PDC señalados en capturas. Reemplaza la inclusión exhaustiva de D50:
+  conservar originales locales mediante exclusión de Git, publicar solo las
+  fuentes de talleres seleccionadas y sketch tsts; no reescribir historial.

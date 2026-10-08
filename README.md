@@ -30,7 +30,7 @@ conservan el contexto técnico e histórico.
 |---|---|
 | `hydromate-backend/` | API Laravel, migraciones, pruebas y fixtures sintéticos |
 | `mobile/` | Aplicación Android, pruebas y recursos gráficos |
-| `Documentos PDC/` | Referencias académicas, bitácora física y sketch de sensores |
+| `Documentos PDC/` | Fuentes de talleres seleccionadas y sketch de sensores |
 | `docs/` | Contexto, contratos, arquitectura, decisiones y guías |
 | `docs/evidence/` | Evidencias y resultados registrados, con fechas |
 | `scripts/` | Herramientas de revisión y captura |
@@ -72,8 +72,9 @@ TDS simulado debe identificarse en mensaje, BD y Android; nunca usarse para
 dosificación. Lux y nivel discreto deben conservar su significado físico.
 Seguridad crítica y estado seguro pertenecen al ESP32, independientes de Internet.
 
-El usuario autorizó expresamente el repositorio público y la inclusión de los
-documentos académicos, que contienen información personal. Revisar nuevos
+El usuario autorizó expresamente el repositorio público y seleccionó los
+documentos académicos publicados. Otras referencias y la bitácora física se
+conservan solo localmente en la versión actual. Revisar nuevos
 documentos y evidencias antes de subirlos; no incluir secretos ni información
 privada de otras personas o proyectos.
 
