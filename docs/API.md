@@ -1,9 +1,7 @@
-# API de telemetría para el primer cliente Android
+# Incremento vigente: API pública — 2026-10-14
 
-Base de desarrollo: http://127.0.0.1:8000. JSON; enviar Accept: application/json.
-Android local usa USB `adb reverse tcp:8000 tcp:8000`; producción usa HTTPS.
-Sin autenticación completa de dispositivos: el administrador debe proteger el
-POST (acceso solo del bridge/red privada). Filtro no equivale a autorización.
+HTTPS8443 permite consultas GET/HEAD; POST permanece interno para el bridge.
+Guía [PUBLIC_ACCESS](PUBLIC_ACCESS.md). La referencia histórica se conserva abajo.
 
 ## Actualización de integración — 14/10/2026
 
@@ -18,6 +16,12 @@ evaluar antigüedad sin ocultar una adquisición vieja recibida recientemente.
 Todos los sensores se consultan en una misma fila; no se requieren endpoints
 separados por temperatura/pH/nivel/luz/TDS/EC. Detalles y pruebas reproducibles:
 [INTEGRATION](INTEGRATION.md).
+
+# API de telemetría para el primer cliente Android
+
+Base de desarrollo: http://127.0.0.1:8000. JSON; enviar Accept: application/json.
+Android usará posteriormente la dirección LAN de la PC, no su propio localhost.
+Sin autenticación por ahora: no exponer a Internet. Filtro no equivale a autorización.
 
 ## Registrar
 Actualización 07/10: también acepta v2 físico en los mismos endpoints. Ver

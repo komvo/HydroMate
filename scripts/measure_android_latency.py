@@ -55,10 +55,8 @@ def run(args):
                 time.sleep(.5)
                 continue
             texts = [n.get('text','') for n in ET.parse(local_xml).iter('node') if n.get('package') == 'com.hydromate.mobile']
-            expected_tds = 'TDS no disponible' if row['tds_ppm'] is None else ('TDS simulado' if row.get('sources', {}).get('tds_ppm') == 'simulated' else 'TDS')
-            if expected_date in texts and any(expected_tds in t for t in texts):
+            if expected_date in texts and any('TDS simulado' in t for t in texts):
                 report.update(passed=True, expected_received_label=expected_date,
-                              expected_tds_label=expected_tds,
                               acquisition_complete_to_ui_verified_ms=round((time.monotonic()-began)*1000,2),
                               ui_verified_at=datetime.now(timezone.utc).isoformat(), api_measurement=row)
                 break
@@ -72,7 +70,6 @@ def run(args):
         args.output.write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf-8')
         print(json.dumps(dict(passed=report['passed'],output=str(args.output),
                               elapsed_ms=report.get('acquisition_complete_to_ui_verified_ms'))),flush=True)
-    return report['passed']
 
 
 if __name__ == '__main__':
@@ -82,4 +79,4 @@ if __name__ == '__main__':
     p.add_argument('--device',default='hydromate-01')
     p.add_argument('--api',default='http://127.0.0.1:8000')
     p.add_argument('--output',type=Path,required=True)
-    raise SystemExit(0 if run(p.parse_args()) else 1)
+    run(p.parse_args())

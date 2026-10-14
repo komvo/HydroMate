@@ -1,13 +1,28 @@
-# Producción HydroMate en VPS compartida
+# Publicación vigente: HTTPS8443 / MQTT TLS8884 / Docker rootless
 
-Actualización acceso público14/10: [PUBLIC_ACCESS](PUBLIC_ACCESS.md) configura
-proxy exclusivo HydroMate8443 (perfil public), MQTT TLS8884, certificados DNS-01
-y variable única HYDROMATE_APP_URL para API/Android. API8081 sigue loopback y
-PostgreSQL interno. Usar hook `--mqtt --public`; no cambiar80/443/8883 ni recursos externos.
+Seguir primero [PUBLIC_ACCESS](PUBLIC_ACCESS.md) para hostname confirmado,
+certificados, cuentas MQTT y permisos rootless. Ejecutar como deploy-hydromate:
+
+```bash
+. deployment/require-rootless.sh
+sh deployment/prepare-rootless-secrets.sh
+sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
+```
+
+HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:8443; rutas privadas
+/etc/hydromate/https y /etc/hydromate/mqtt. El hook ya migra --force. Las variables
+sensibles actuales se conservan. No sudo docker. Los comandos base de la referencia
+siguiente solo son aplicables en el daemon rootless validado; para publicación
+usar ambos perfiles. No se accede a la VPS desde esta tarea.
+
+## Referencia original preservada
+
+# Producción HydroMate en VPS compartida
 
 Esta configuración prepara el repositorio para el ejecutor automático existente
 que descarga `main` con acceso Git de solo lectura. No contiene acceso SSH,
-credenciales de producción ni cambios al otro proyecto. Los recursos ajenos quedan fuera de toda operación de esta guía.
+credenciales de producción ni cambios al otro proyecto. Todos los recursos
+`chitiito-*` son intocables: contenedores, redes, volúmenes y configuraciones.
 
 ## Componentes y aislamiento
 
@@ -17,7 +32,6 @@ credenciales de producción ni cambios al otro proyecto. Los recursos ajenos que
 | db | PostgreSQL 16; rol de aplicación propietario de su BD, sin superusuario | **Sin puerto publicado**; red interna hydromate_database; volumen hydromate_postgres_data |
 | mosquitto (perfil mqtt) | Broker propio autenticado, ACL y MQTT TLS para ESP32 | Host **127.0.0.1:8884** por defecto; 1884 solo dentro de red Docker; volumen hydromate_mqtt_data |
 | bridge (perfil mqtt) | Paho recibe telemetría, guarda bandeja y POST a Laravel; ACK tras persistir | Sin puertos publicados; volumen hydromate_bridge_state |
-| https (perfil public) | Nginx sin privilegios propio; GET/HEAD API, POST público bloqueado | Host8443, certificados propios read-only, red application solamente |
 
 Los nombres son exclusivos bajo `-p hydromate`; no hay `container_name`, redes
 externas, volúmenes compartidos, modo host ni socket Docker montado. La API usa
@@ -31,8 +45,8 @@ servicio para liberar puertos. Revisar una modificación específica de HydroMat
 El binding loopback evita publicar la API actual sin protección. Para Android
 remoto se necesita un endpoint HTTPS protegido administrado por separado
 (por ejemplo, un puerto dedicado como 8443), que reenvíe a 127.0.0.1:8081.
-El proxy propio no necesita cambiar servicios ni redes externas. Se incluye
-ahora ese proxy propio8443 en perfil public, sin autenticación completa de usuarios.
+No modificar el proxy/configuración/red de chitiito para conseguirlo. No se
+incluye autenticación completa de usuarios ni se afirma que esté implementada.
 
 ## Archivos privados que aporta el administrador
 
@@ -50,8 +64,8 @@ Variables indispensables:
 - `HYDROMATE_DB_PASSWORD`: contraseña diferente para el rol de la aplicación.
 - `HYDROMATE_DB_DATABASE` y `HYDROMATE_DB_USERNAME`: nombres propios, por defecto
   hydromate; el usuario de aplicación no puede ser postgres.
-- `HYDROMATE_APP_URL`: https://hydromate-kevin.duckdns.org:8443, sin /api. La revisión
-  interna puede usar loopback8081; Android utiliza únicamente la URL HTTPS.
+- `HYDROMATE_APP_URL`: URL base del acceso previsto; localhost:8081 sirve para
+  revisión inicial del administrador y no es URL Android remota.
 - `HYDROMATE_IMAGE_TAG`: production por defecto; puede ser el SHA entregado por
   el ejecutor para identificar cada imagen. No modifica nombres de recursos.
 
@@ -68,12 +82,9 @@ y procedimiento propios, no copiar volúmenes compartidos.
 
 ## Ejecución de producción
 
-Desde la raíz del checkout en la VPS, como deploy-hydromate, usando siempre
-el proyecto explícito. Para permisos rootless y acceso público seguir primero
-PUBLIC_ACCESS.md. Nunca sudo docker:
+Desde la raíz del checkout en la VPS, usando siempre el proyecto explícito:
 
 ```bash
-. deployment/require-rootless.sh
 docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env config --quiet
 docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env build --pull api
 docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env up -d --wait --wait-timeout 180 db api
@@ -136,7 +147,7 @@ El administrador crea una carpeta **exclusiva HydroMate** fuera de Git y configu
 - `fullchain.pem` y `privkey.pem`: certificado y llave TLS del hostname MQTT propio.
 
 Los archivos deben ser legibles por el usuario del contenedor Mosquitto y la llave
-no debe ser pública. No compartir carpetas, certificados ni configuraciones con otros proyectos.
+no debe ser pública. No compartir carpeta/certificados/configuraciones con chitiito.
 `deployment/secrets/` está ignorada si se usa la ruta relativa sugerida; la ruta
 privada no se crea automáticamente cuando falta. El broker no arranca sin sus
 archivos; el bridge rechaza contraseña vacía al entrar.
@@ -177,7 +188,7 @@ docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/
 ```
 
 No usar prune, reiniciar Docker globalmente, borrar volúmenes, ejecutar
-migrate:fresh/reset ni operar recursos ajenos para solucionar fallos HydroMate.
+migrate:fresh/reset ni operar recursos chitiito para solucionar fallos HydroMate.
 Si se requiere detener HydroMate, nombrar servicios propios con `compose stop`;
 conservar datos y respaldos. No publicar logs con secretos o datos ajenos.
 
