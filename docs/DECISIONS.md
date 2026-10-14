@@ -225,3 +225,14 @@ Conservar main íntegro: contexto mantiene rutas docs, talleres/PDFs/evidencias
 originales idénticos. No reorganización ni limpieza de duplicados en esta rama.
 Sustituye cualquier traslado a .project propuesto en el commit anterior; alcance
 reconciliado antes de merge. Antecedentes de main permanecen sin eliminar.
+
+## D57 — Configuración Mosquitto incorporada en imagen (2026-10-14)
+
+Por diagnóstico confirmado del usuario se sustituyen únicamente bind mounts
+individuales conf/ACL por COPY --chown1883:1883/--chmod640 durante build de imagen
+basada eclipse-mosquitto:2.0.22. Dockerfile termina USER1883:1883. Secretos siguen
+externos/read-only y mqtt_data conserva su nombre/persistencia. Sustituye el
+empaquetado anterior de configuración montada, sin cambiar arquitectura/tópicos,
+TLS8884, listener privado1884, certificados ni contraseñas. Build automatizado
+incluye Mosquitto para evitar configuración antigua en imagen cacheada.
+Validación local directa/integración TLS; ninguna operación VPS realizada.
