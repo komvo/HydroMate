@@ -1,3 +1,20 @@
+# Incremento público/rootless vigente — 2026-10-14
+
+ESP32 hydromate-01 → MQTT TLS8884 → Mosquitto → bridge POST privado → Laravel
+→ PostgreSQL interno → GET HTTPS8443 → Android producción. El hostname es
+hydromate-kevin.duckdns.org. API conserva loopback8081. Docker rootless pertenece
+a deploy-hydromate; certificados montados desde /etc/hydromate/{https,mqtt}.
+Nginx propio sin privilegios permite GET/HEAD y bloquea POST externo. Los scripts
+validan cuenta/socket/daemon y preparan permisos de certificados dentro del
+namespace. Sin cambios80/443/8883 ni red host. HYDROMATE_APP_URL es única variable
+URL producción; perfiles Android separados, sin demo/fallback en producción.
+Contrato v3 admite null/origen por sensor, TDS ausente y EC independiente;
+antigüedad usa adquisición/recepción. No hay comandos de actuadores.
+Guías: PUBLIC_ACCESS.md, INTEGRATION.md, TELEMETRY_CONTRACT.md.
+Pruebas locales no acreditan el despliegue ni el namespace rootless de la VPS.
+
+## Arquitectura anterior preservada
+
 # Arquitectura vigente
 
 Fecha: 2026-10-07. Distinguir diseño seleccionado de implementación comprobada.

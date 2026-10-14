@@ -1,3 +1,17 @@
+# Android producción: incremento vigente — 2026-10-14
+
+URL base https://hydromate-kevin.duckdns.org:8443, sin /api. Se configura mediante
+HYDROMATE_APP_URL; Gradle toma por defecto solo esa línea pública de .env.example
+raíz. Nunca lee .env privado. Perfiles separados: release solo producción HTTPS,
+sin demo/fallback; debug conserva desarrollo/demo. v3 soporta sensores null/origen,
+EC independiente, TDS ausente y antigüedad; producción exige real_only=1 y rechaza
+simulaciones. Inicio/Historial manejan carga, vacío y error HTTP.
+Guías ../docs/PUBLIC_ACCESS.md y ../docs/INTEGRATION.md. Los apartados siguientes
+se preservan como antecedentes; su propiedad Gradle antigua queda reemplazada por
+HYDROMATE_APP_URL. No se empaqueta la CA exclusiva de ensayos JVM en el APK.
+
+## Documentación anterior preservada
+
 # HydroMate Android — 0.6.0 Jardín de cristal
 
 Cliente Kotlin nativo de Laravel. Consulta hasta 20 recepciones por torre;

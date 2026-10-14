@@ -1,3 +1,22 @@
+# Incremento vigente: API pública — 2026-10-14
+
+HTTPS8443 permite consultas GET/HEAD; POST permanece interno para el bridge.
+Guía [PUBLIC_ACCESS](PUBLIC_ACCESS.md). La referencia histórica se conserva abajo.
+
+## Actualización de integración — 14/10/2026
+
+Vigente [contrato v3](TELEMETRY_CONTRACT.md): seis variables con origen explícito,
+valores null para ausencia/invalidez, EC independiente y hora de adquisición UTC.
+v1/v2 siguen aceptadas. `real_only=1` filtra simulaciones en historial/última/estado;
+`sequence=N` permite recuperar una fila exacta por identidad.
+`GET /api/devices/{device_id}/status` devuelve no_data/recent/stale y fechas;
+no representa una prueba de conexión MQTT. Historial incluye cabecera
+`X-HydroMate-Freshness-Seconds` (120 por defecto), usada por Android para
+evaluar antigüedad sin ocultar una adquisición vieja recibida recientemente.
+Todos los sensores se consultan en una misma fila; no se requieren endpoints
+separados por temperatura/pH/nivel/luz/TDS/EC. Detalles y pruebas reproducibles:
+[INTEGRATION](INTEGRATION.md).
+
 # API de telemetría para el primer cliente Android
 
 Base de desarrollo: http://127.0.0.1:8000. JSON; enviar Accept: application/json.

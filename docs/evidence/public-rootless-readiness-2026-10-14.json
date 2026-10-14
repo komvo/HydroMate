@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-14",
+  "scope": "Repository readiness; isolated local Docker Desktop, not VPS/rootless runtime or new physical sensor readings",
+  "hostname": "hydromate-kevin.duckdns.org",
+  "api": "https://hydromate-kevin.duckdns.org:8443",
+  "mqtt_port": 8884,
+  "phpunit": {
+    "tests": 25,
+    "assertions": 157,
+    "passed": true
+  },
+  "bridge_unit_tests": {
+    "tests": 3,
+    "passed": true
+  },
+  "rootless_guard_tests": {
+    "tests": 3,
+    "passed": true,
+    "actual_vps_daemon_tested": false
+  },
+  "compose_policy": true,
+  "android": {
+    "tests": 28,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Warning": 3
+  },
+  "tls_negative": {
+    "untrusted_ca": "rejected",
+    "wrong_hostname": "rejected",
+    "public_post": "403 on all three exposed API paths",
+    "android_tests": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "lint": {
+      "Error": 0,
+      "Warning": 3
+    }
+  },
+  "mqtt_flow_passed": true,
+  "mqtt_cases": [
+    {
+      "sequence": 1792001024,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 2041.35
+    },
+    {
+      "sequence": 1792001025,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 374.98
+    },
+    {
+      "sequence": 1792001026,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 5978.63
+    },
+    {
+      "sequence": 1792001027,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 786.74
+    },
+    {
+      "sequence": 1792001028,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 783.96
+    },
+    {
+      "sequence": 1792001029,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 780.11
+    },
+    {
+      "sequence": 1792001030,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 425.45
+    },
+    {
+      "sequence": 1792001031,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 345.85
+    },
+    {
+      "sequence": 1792001032,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 178.44
+    },
+    {
+      "sequence": 1792001033,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 236.45
+    },
+    {
+      "sequence": 1792001024,
+      "expected": "stored",
+      "ack": "stored",
+      "mqtt_to_persistence_ack_ms": 183.44
+    },
+    {
+      "sequence": 1792001024,
+      "expected": "conflict",
+      "ack": "conflict",
+      "mqtt_to_persistence_ack_ms": 28.97
+    },
+    {
+      "sequence": 1792001034,
+      "expected": "rejected",
+      "ack": "rejected",
+      "mqtt_to_persistence_ack_ms": 521.67
+    }
+  ],
+  "http_smoke_passed": true,
+  "https_preflight_passed": true,
+  "android_public_default_verified": true,
+  "first_attempt": "Network timeouts during concurrent full builds; repeated after load reduced, all HTTP/MQTT/Android tests passed",
+  "firmware_compile": {
+    "passed": true,
+    "production_template": true,
+    "plain_lan_opt_in": false,
+    "uploaded": false,
+    "program_bytes": 712869,
+    "program_max_bytes": 1310720,
+    "static_ram_bytes": 43228,
+    "ram_max_bytes": 327680
+  },
+  "vps_access": false,
+  "public_internet_test": false,
+  "phone_required_for_local_tests": false,
+  "production_secrets_requested": false,
+  "reconciliation": {
+    "main_commit": "dccfc99b073c191aeffb7e0a0327f4b64eebdba0",
+    "strategy": "Merge main into feature branch, then restore unrelated paths; no history rewrite",
+    "git_conflicts": [],
+    "preservation": {
+      "main_files": 556,
+      "protected_assets": 382,
+      "historical_docs": 10,
+      "all_preserved": true
+    },
+    "android_repeated": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "phpunit_repeated": {
+      "tests": 25,
+      "assertions": 157,
+      "passed": true
+    },
+    "python_repeated": {
+      "tests": 6,
+      "passed": true
+    },
+    "mqtt_tls_10_repeated": true,
+    "http_smoke_repeated": true,
+    "https_repeated": true,
+    "negative_tls_and_public_post_repeated": true,
+    "firmware_repeated": true,
+    "all_main_paths_retained": true,
+    "net_deletions_or_renames": false,
+    "workshops_changed": false,
+    "context_reorganized": false
+  }
+}

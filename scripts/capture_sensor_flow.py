@@ -7,18 +7,22 @@ import re
 import time
 import urllib.parse
 import serial
-from mqtt_bridge import request
+from mqtt_bridge import request, measurement_matches_payload
 
 
 def run(args):
     events, samples, stored = [], {}, set()
     sample_uptime = {}
+    restored = set()
+    def confirmed():
+        eligible = set(sample_uptime) if args.fresh_only else set(samples)
+        return stored.intersection(samples).intersection(eligible)
     began = time.monotonic()
     passed = False
     try:
         with serial.Serial(args.port, 115200, timeout=1) as wire:
             # Opening serial can reset the ESP32; sequence reservation handles this.
-            while time.monotonic()-began < args.duration and len(stored.intersection(samples)) < args.target:
+            while time.monotonic()-began < args.duration and len(confirmed()) < args.target:
                 line = wire.readline().decode('utf-8', errors='replace').strip()
                 if not line:
                     continue
@@ -32,12 +36,15 @@ def run(args):
                             print(f"SAMPLE {sample['sequence']}", flush=True)
                     except (ValueError, AttributeError):
                         pass
-                elif line.startswith(('SAMPLE ', 'RESTORED ', 'SEND ', 'STORED ', 'SENSOR_INVALID ', 'HALT:', 'MQTT_', 'WIFI_')):
+                elif line.startswith(('SAMPLE ', 'RESTORED ', 'SEND ', 'STORED ', 'SENSOR_INVALID', 'HALT:', 'MQTT_', 'WIFI_')):
                     events.append(dict(at=now, event='firmware_log', detail=line))
                     print(line, flush=True)
                     acquisition = re.match(r'SAMPLE sequence=(\d+) uptime_ms=(\d+)', line)
                     if acquisition:
                         sample_uptime[int(acquisition.group(1))] = int(acquisition.group(2))
+                    recovery = re.match(r'RESTORED sequence=(\d+)', line)
+                    if recovery:
+                        restored.add(int(recovery.group(1)))
                     match = re.match(r'STORED sequence=(\d+)', line)
                     if match:
                         seq=int(match.group(1))
@@ -49,21 +56,24 @@ def run(args):
             code, rows = request(args.api, 'GET', '/api/measurements?' + urllib.parse.urlencode(dict(device_id=args.device,limit=100)))
             found = {r['sequence']:r for r in rows} if code == 200 else {}
             verified = []
-            for seq in sorted(stored):
+            for seq in sorted(confirmed()):
                 source = samples.get(seq)
                 row = found.get(seq)
-                if source and row and all(row.get(k) == v for k,v in source.items()):
+                if source and row and measurement_matches_payload(row, source):
                     verified.append(seq)
             passed = len(verified) >= args.target
             events.append(dict(event='api_verification', status=code, verified_sequences=verified,
-                               stored_sequences=sorted(stored), serial_sample_sequences=sorted(samples)))
+                               stored_sequences=sorted(stored), serial_sample_sequences=sorted(samples),
+                               fresh_sequences=sorted(sample_uptime), restored_sequences=sorted(restored)))
     finally:
         report = dict(at=datetime.now(timezone.utc).isoformat(), device_id=args.device, passed=passed,
                       target=args.target, duration_seconds=round(time.monotonic()-began,2),
-                      scope='Physical firmware declares four real variables, TDS simulated; serial samples/ACK compared to API; frontend latency and calibration not measured', events=events)
+                      fresh_only=args.fresh_only,
+                      scope='Physical serial payloads and persistence ACKs compared to API; sources declare provenance per sensor; frontend latency and calibration not measured', events=events)
         args.output.parent.mkdir(parents=True,exist_ok=True)
         args.output.write_text(json.dumps(report,indent=2),encoding='utf-8')
         print(json.dumps(dict(passed=passed, output=str(args.output))),flush=True)
+    return passed
 
 
 if __name__=='__main__':
@@ -73,5 +83,7 @@ if __name__=='__main__':
     p.add_argument('--api',default='http://127.0.0.1:8000')
     p.add_argument('--duration',type=float,default=420)
     p.add_argument('--target',type=int,default=10)
+    p.add_argument('--fresh-only',action='store_true',
+                   help='Count only acquisitions with a new SAMPLE log; exclude restored pending readings')
     p.add_argument('--output',type=Path,required=True)
-    run(p.parse_args())
+    raise SystemExit(0 if run(p.parse_args()) else 1)
