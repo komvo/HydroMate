@@ -46,7 +46,9 @@ transmite `null/invalid` sin bloquear los otros sensores. No hay actuadores.
   separado, sin fallback. Usa cabecera `X-HydroMate-Freshness-Seconds` del GET
   para calcular el estado de esas mismas filas, evitando mezclar respuestas.
 
-## Referencia histórica v2
+## Referencia histórica preservada
+
+# Telemetría v2 física — 2026-10-07
 
 v2 implementada en Laravel/PostgreSQL/Android e integrador local. Firmware
 preparado; ejecución física según STATUS. Contrato v1 preservado en
@@ -93,9 +95,8 @@ El origen lo declara el productor; la API no comprueba físicamente el sensor.
 - API 201 → stored; 422/otros 4xx → rejected; timeout/conexión/5xx → pendiente,
   reintentos con espera creciente hasta 30 s. No renumera ni altera el payload.
 - 409 → stored solo si consulta y verifica igualdad de todos los campos enviados.
-  Búsqueda vigente por secuencia exacta; si no prueba igualdad marca conflict para
-  revisión. Fechas se comparan por instante UTC, no por formato textual. Mismo
-  identificador con otro contenido no sobrescribe la bandeja.
+  Búsqueda limitada a 100 recepciones; si no prueba igualdad marca conflict para
+  revisión. Mismo identificador con otro contenido no sobrescribe la bandeja.
 - Firmware conserva una muestra pendiente en NVS y reserva bloques de 100 antes
   de usar secuencias. Reiniciar salta el bloque; huecos permitidos.
 - Si se borra NVS, reconciliar identidad/secuencia antes de reutilizar torre.

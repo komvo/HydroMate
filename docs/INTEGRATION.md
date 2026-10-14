@@ -132,47 +132,11 @@ definitiva permanece fuera de esta PoC; no se versiona ningún keystore.
   --duration 420 --output <reporte.json>`; puerto según detección real.
   Compara JSON serial/ACK con GET. No mide por sí solo sensor→pantalla.
 
-Resultado del pipeline TLS sintético: diez filas verificadas y pruebas de fallo
-pasadas en `talleres/taller-05/pruebas/integracion-v3-sintetica-2026-10-14.json`.
-Recuperación local v3 tras caída de API y reinicio del bridge pasa en
-`integracion-v3-recuperacion-local-2026-10-14.json`; bandeja pendiente observada,
-ACK stored y fila GET idéntica. Resumen de compilaciones/pruebas/hashes:
-`integracion-v3-verificacion-2026-10-14.json` en esa carpeta. Los 90 registros
-históricos de desarrollo permanecen sin cambios, además de las nuevas filas físicas.
-Primer ensayo físico v3 registrado en
-`talleres/taller-05/pruebas/integracion-v3-fisica-fallo-regla-lan-2026-10-14.json`:
-Wi-Fi conectado, pendiente NVS conservada y MQTT -2, sin diez nuevas entregas.
-La IP Wi-Fi de la PC cambió; el usuario corrigió la regla local HydroMate1884
-como administrador y la sesión verificó su nueva dirección. Para futuras
-correcciones de esa misma regla de banco, ejecutar como administrador:
+## Evidencias de esta rama
 
-```powershell
-& 'C:/Hydromate/scripts/enable_mqtt_lan.ps1'
-```
-
-El script modifica únicamente la regla de banco HydroMate1884 para Mosquitto,
-IP Wi-Fi actual, LocalSubnet y perfil Private; no cambia perfiles de red globales
-ni reglas ajenas, y rechaza una regla que no coincida. Repetición guardada en
-`integracion-v3-fisica-local-2026-10-14.json`: diez adquisiciones nuevas1501–1510,
-todas comparadas JSON serial/ACK/API; cuatro variables reales y TDS/EC null.
-Pendiente1201 recuperada idéntica tras el fallo, en archivo separado; temperatura
-null/invalid conservada correctamente, no se cuenta como adquisición nueva.
-
-Inicio Android muestra fecha y valores físicos nuevos, con TDS no disponible;
-Historial abierto manualmente muestra gráfica de pH y lista de20 registros;
-la fila visible1701 coincide con API en fecha/pH/temperatura y TDS null.
-Captura y `android-v3-historial-verificacion-2026-10-14.json` en pruebas/;
-es el snapshot de la última consulta, sin afirmar polling automático.
-capturas y video12s en pruebas/. Medición de una muestra1701:
-`latencia-v3-android-local-2026-10-14.json`, 7571.19ms desde fin de adquisición
-hasta pantalla verificada, incluidos Wi-Fi/arranque/ADB. No es latencia de polling
-ni nube. Mediana fin adquisición→ACK en las diez muestras:404.5ms.
-Desarrollo conserva filas v2 con TDS simulado histórico; por eso el aviso de
-variables simuladas puede persistir aunque la fila nueva v3 no tenga simulación.
-Producción usa real_only=1 y no muestra esas filas. No hay nueva calibración.
-
-Pendiente para Taller5: URL pública HTTPS, MQTT TLS público y certificados;
-configuración privada por administrador, diez adquisiciones físicas en nube,
-Android con esa URL, fallo/reconexión y tiempo sensor→pantalla aproximado del
-recorrido desplegado, video breve conjunto y constancia del actuador aplazado.
-Ni el pipeline sintético ni una captura local sustituyen esas evidencias.
+Pruebas reproducibles y alcance en docs/evidence/public-rootless-readiness-2026-10-14.json.
+Las pruebas físicas/de taller preparadas anteriormente se conservan privadamente
+fuera de este diff; esta rama no reorganiza ni cambia talleres. No acreditar nube
+con ensayos locales. Para cerrar el recorrido público: provisionar certificados,
+configuración privada, diez adquisiciones nuevas con capture_sensor_flow, Android
+producción desde red externa y verificación HTTPS/MQTT TLS según PUBLIC_ACCESS.md.

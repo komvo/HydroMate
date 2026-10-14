@@ -3,7 +3,7 @@
 Fecha: 2026-10-04. Alcance: diseño y plan de validación, **no firmware implementado ni ahorro medido**.
 El usuario confirma alimentación mediante fuente y un ESP32 que leerá sensores y controlará bombas.
 Referencias internas: [criterios](../AGENTS.md), [arquitectura](ARCHITECTURE.md),
-[contrato v1](TELEMETRY_CONTRACT.md), [estado ejecutable](../.project/context/STATUS.md), decisiones D44–D47.
+[contrato v1](TELEMETRY_CONTRACT.md), [estado ejecutable](STATUS.md), decisiones D44–D47.
 
 La dirección seleccionada es mantener disponible el controlador, separar seguridad,
 medición y comunicaciones, y reducir primero radio, trabajo innecesario y transmisiones.

@@ -1,23 +1,23 @@
+# Incremento público/rootless vigente — 2026-10-14
+
+ESP32 hydromate-01 → MQTT TLS8884 → Mosquitto → bridge POST privado → Laravel
+→ PostgreSQL interno → GET HTTPS8443 → Android producción. El hostname es
+hydromate-kevin.duckdns.org. API conserva loopback8081. Docker rootless pertenece
+a deploy-hydromate; certificados montados desde /etc/hydromate/{https,mqtt}.
+Nginx propio sin privilegios permite GET/HEAD y bloquea POST externo. Los scripts
+validan cuenta/socket/daemon y preparan permisos de certificados dentro del
+namespace. Sin cambios80/443/8883 ni red host. HYDROMATE_APP_URL es única variable
+URL producción; perfiles Android separados, sin demo/fallback en producción.
+Contrato v3 admite null/origen por sensor, TDS ausente y EC independiente;
+antigüedad usa adquisición/recepción. No hay comandos de actuadores.
+Guías: PUBLIC_ACCESS.md, INTEGRATION.md, TELEMETRY_CONTRACT.md.
+Pruebas locales no acreditan el despliegue ni el namespace rootless de la VPS.
+
+## Arquitectura anterior preservada
+
 # Arquitectura vigente
 
-Fecha: 2026-10-14. Distinguir diseño seleccionado de implementación comprobada.
-
-## Integración vigente v3
-
-Acceso público14/10: Android HTTPS8443 → Nginx sin privilegios exclusivo HydroMate →
-API privadaapi:8080; API conserva loopback8081, POST público bloqueado, DB interna.
-ESP32 TLS8884 → Mosquitto → bridge POST privado → misma API/BD. Perfil public,
-certificados propios por DNS-01, variable única HYDROMATE_APP_URL. No80/443/8883
-ni cambios chitiito. Implementación validada en Docker local; hostname confirmado; prueba VPS pendiente.
-
-ESP32 físico → MQTT/TLS Mosquitto → bridge Paho/bandeja durable → POST Laravel
-→ PostgreSQL → GET HTTPS → Android nativo. Se mantienen los tópicos y la
-identidad hydromate-01. v3 permite ausencia/invalidez por sensor y adquisición
-UTC; TDS opcional y EC separado sin valores sintéticos de sustitución. Android
-tiene perfiles desarrollo/producción separados; producción filtra simulaciones,
-sin demo ni fallback. Estado deriva de antigüedad de telemetría, no de una
-conexión MQTT observada. Arquitectura Docker aislada permanece igual.
-Validación realizada y configuración pendiente: INTEGRATION.md.
+Fecha: 2026-10-07. Distinguir diseño seleccionado de implementación comprobada.
 
 ## Empaquetado de producción — 2026-10-14
 

@@ -199,17 +199,6 @@ autorizado; VPS requiere TLS/HTTPS, API protegida y separación del compañero.
 Usuario autorizó perfil doméstico privado/regla 1884 local; configuración previa
 Mosquitto 1883 y PostgreSQL conservada. Pruebas físicas/nube según STATUS.
 
-## D54 — Cierre y VPS prestado (2026-10-14)
-
-Usuario confirma entrega final 02/12/2026 y VPS OVHcloud Ubuntu prestado, costo
-$0 para HydroMate, con proyecto del compañero ya alojado. Sustituye candidato
-por contratar de D49 y fecha sin confirmar; despliegue propio todavía pendiente.
-Credenciales SSH se introducirán por el usuario en terminal, no en chat. Revisar
-inventario, servicios, persistencia y permisos antes de desplegar; no alterar
-proyecto ajeno. Usuario comunica aplazamiento autorizado del actuador para alfa;
-adjuntar confirmación docente a la entrega. Cronograma basado en compras/trabajo
-documentados y semanas hasta 02/12, conservando planes anteriores como historial.
-
 ## D55 — Producción aislada y despliegue externo desde main (2026-10-14)
 
 Usuario limita expresamente la tarea a preparar repositorio, sin acceso SSH ni
@@ -223,41 +212,16 @@ migraciones explícitas después del arranque. Entorno local permanece separado.
 Sin autenticación completa nueva, Android en VPS ni firmware/actuadores nuevos.
 Endpoint HTTPS protegido independiente y certificados deben provisionarlos fuera
 de esta tarea; no alterar proxy de chitiito. Detalles en PRODUCTION.md.
-## D56 — Integración v3 y documentación separada (2026-10-14)
-
-Petición expresa: completar ESP32/MQTT/bridge/Laravel/PostgreSQL/Android, conservar
-demo debug y separar producción HTTPS sin simulaciones; no acceder a VPS ni
-solicitar secretos. v3 compatible con v1/v2 permite null/origen por sensor y
-adquisición UTC opcional; sustituye TDS fijo simulado de D53 por ausencia real,
-sin modificar las evidencias históricas. EC independiente preparado en contrato,
-sin convertir ppm ni seleccionar sensor ficticio. Actuadores aplazados, sin
-ampliar controlador ni autenticación completa. TLS obligatorio fuera del banco.
-
-Por petición de organización se eliminan seis copias PDF exactas de talleres,
-enlazando originales intactos; notas STATUS/PROJECT_CONTEXT/DECISIONS pasan a
-`.project/context/` y las guías técnicas siguen públicas en docs. Se preservan
-decisiones históricas, resultados, fuentes y atribuciones de recursos.
-
-## D57 — Entrada pública propia en8443 y variable URL única (2026-10-14)
-
-Petición explícita: preparar HTTPS Android y MQTT TLS8884 sin VPS/credenciales
-ni cambios chitiito. Perfil public Nginx rootless exclusivo8443 reenvía solo
-consultas a API privada; POST solo bridge interno. No80/443/8883, host network,
-Docker socket ni BD pública. Certificados por DNS-01 administrados fuera de Git;
-renovación automática del proveedor con reload solo servicios HydroMate.
-HYDROMATE_APP_URL alimenta Laravel y compilación Android, reemplazando propiedad
-Gradle hydromate.productionUrl de D56; perfiles locales se conservan. Firmware
-TLS rechaza puerto distinto de8884, CA/hostname/credenciales privados. Pruebas
-HTTPS de Kotlin en JVM con CA exclusivamente de tests; no debilitar APK. Sin
-dominio suministrado, la dirección pública real se valida posteriormente.
 
 
-## D58 — Hostname y daemon rootless confirmados (2026-10-14)
+## D56 — Publicación aislada y reconciliación de alcance (2026-10-14)
 
-Usuario confirma hydromate-kevin.duckdns.org, HTTPS8443/MQTT TLS8884 y
-daemon rootless de deploy-hydromate. Sustituye hostname pendiente de D57.
-Certificados montados desde /etc/hydromate/{https,mqtt}; permisos mediante
-namespace rootless, sin asumir GID del host. Scripts fijan socket del usuario
-y rechazan otros daemons. URL pública por HYDROMATE_APP_URL, plantilla como
-default Android; firmware ejemplo configurable, secretos locales sin cambios.
-Commit/push a rama autorizados; sin merge main, SSH ni pruebas VPS.
+Por solicitud del usuario: HTTPS8443/MQTT TLS8884 en hostname
+hydromate-kevin.duckdns.org, Docker rootless deploy-hydromate, sin SSH ni secretos.
+Certificados privados /etc/hydromate/{https,mqtt}; guard de cuenta/socket/daemon
+con permisos mediante namespace. URL única HYDROMATE_APP_URL para Laravel/Android.
+Integración v3 admite sensores null y TDS/EC ausentes, sin simulaciones producción.
+Conservar main íntegro: contexto mantiene rutas docs, talleres/PDFs/evidencias
+originales idénticos. No reorganización ni limpieza de duplicados en esta rama.
+Sustituye cualquier traslado a .project propuesto en el commit anterior; alcance
+reconciliado antes de merge. Antecedentes de main permanecen sin eliminar.

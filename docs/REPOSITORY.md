@@ -20,13 +20,10 @@ carpetas de duplicados, versiones anteriores y HydroMate_Duena_Milca, así como 
 computadora, excluidos mediante `.gitignore`; también permanecen en el historial
 anterior. No se realizó borrado local ni reescritura del historial.
 
-Desde 14/10 `talleres/` enlaza los PDF originales de `Documentos PDC/` y conserva
-materiales técnicos/evidencia única del Taller5. Se retiraron seis copias exactas
-después de verificar SHA256 y respaldarlas privadamente; originales intactos.
-T6/T7 históricos siguen pendientes de adecuación técnica. Contexto operativo,
-estado y decisiones se separan en `.project/context/`, preservando su historial;
-`docs/` conserva guías, contratos, arquitectura y evidencias para revisión.
-Esto reorganiza navegación, sin borrar atribuciones ni reescribir el historial Git.
+`talleres/` organiza copias de los PDF existentes y materiales técnicos del
+Taller 5 según el requisito docente comunicado. Las copias conservan el hash de
+sus originales. T6/T7 se conservan como históricos; su adecuación técnica sigue
+pendiente. Código/evidencia se enlazan a sus fuentes para conservar trazabilidad.
 
 ## Archivos excluidos
 

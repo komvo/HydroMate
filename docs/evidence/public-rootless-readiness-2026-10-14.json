@@ -142,5 +142,40 @@
   "vps_access": false,
   "public_internet_test": false,
   "phone_required_for_local_tests": false,
-  "production_secrets_requested": false
+  "production_secrets_requested": false,
+  "reconciliation": {
+    "main_commit": "dccfc99b073c191aeffb7e0a0327f4b64eebdba0",
+    "strategy": "Merge main into feature branch, then restore unrelated paths; no history rewrite",
+    "git_conflicts": [],
+    "preservation": {
+      "main_files": 556,
+      "protected_assets": 382,
+      "historical_docs": 10,
+      "all_preserved": true
+    },
+    "android_repeated": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "phpunit_repeated": {
+      "tests": 25,
+      "assertions": 157,
+      "passed": true
+    },
+    "python_repeated": {
+      "tests": 6,
+      "passed": true
+    },
+    "mqtt_tls_10_repeated": true,
+    "http_smoke_repeated": true,
+    "https_repeated": true,
+    "negative_tls_and_public_post_repeated": true,
+    "firmware_repeated": true,
+    "all_main_paths_retained": true,
+    "net_deletions_or_renames": false,
+    "workshops_changed": false,
+    "context_reorganized": false
+  }
 }
