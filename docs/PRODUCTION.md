@@ -1,4 +1,4 @@
-# Publicación vigente: HTTPS8443 / MQTT TLS8884 / Docker rootless
+# Publicación vigente: HTTPS9443 / MQTT TLS8884 / Docker rootless
 
 Seguir primero [PUBLIC_ACCESS](PUBLIC_ACCESS.md) para hostname confirmado,
 certificados, cuentas MQTT y permisos rootless. Ejecutar como deploy-hydromate:
@@ -9,7 +9,7 @@ sh deployment/prepare-rootless-secrets.sh
 sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
 ```
 
-HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:8443; rutas privadas
+HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:9443; rutas privadas
 /etc/hydromate/https y /etc/hydromate/mqtt. El hook ya migra --force. Las variables
 sensibles actuales se conservan. No sudo docker. Los comandos base de la referencia
 siguiente solo son aplicables en el daemon rootless validado; para publicación
@@ -44,7 +44,7 @@ servicio para liberar puertos. Revisar una modificación específica de HydroMat
 
 El binding loopback evita publicar la API actual sin protección. Para Android
 remoto se necesita un endpoint HTTPS protegido administrado por separado
-(por ejemplo, un puerto dedicado como 8443), que reenvíe a 127.0.0.1:8081.
+(por ejemplo, un puerto dedicado como 9443), que reenvíe a 127.0.0.1:8081.
 No modificar el proxy/configuración/red de chitiito para conseguirlo. No se
 incluye autenticación completa de usuarios ni se afirma que esté implementada.
 

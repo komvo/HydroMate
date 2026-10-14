@@ -236,3 +236,14 @@ empaquetado anterior de configuración montada, sin cambiar arquitectura/tópico
 TLS8884, listener privado1884, certificados ni contraseñas. Build automatizado
 incluye Mosquitto para evitar configuración antigua en imagen cacheada.
 Validación local directa/integración TLS; ninguna operación VPS realizada.
+
+## D58 — HTTPS9443 sustituye8443 (2026-10-14)
+
+Usuario confirma8443 ocupado por proyecto ajeno, intocable. Se sustituye el puerto
+HTTPS de D56 por9443 en Compose/Nginx/gate/plantilla/validadores y documentación.
+URL única HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:9443; Android
+compila ese default y conserva desarrollo independiente. MQTT permanece8884,
+listener privado1884, binario propio de Mosquitto1883:1883 y misma persistencia.
+No cambios80/443/8443/8883, reglas globales, certificados/secretos ni arquitectura.
+Registros históricos8443 se conservan como tales. Validación local no acredita
+conectividad VPS. Administrador actualiza solo APP_URL y acceso TCP9443.

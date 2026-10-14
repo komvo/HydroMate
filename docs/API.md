@@ -1,6 +1,6 @@
 # Incremento vigente: API pública — 2026-10-14
 
-HTTPS8443 permite consultas GET/HEAD; POST permanece interno para el bridge.
+HTTPS9443 permite consultas GET/HEAD; POST permanece interno para el bridge.
 Guía [PUBLIC_ACCESS](PUBLIC_ACCESS.md). La referencia histórica se conserva abajo.
 
 ## Actualización de integración — 14/10/2026

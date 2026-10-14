@@ -1,7 +1,7 @@
 # Acceso público de HydroMate
 
 Hostname confirmado: `hydromate-kevin.duckdns.org`. API Android:
-`https://hydromate-kevin.duckdns.org:8443`; MQTT TLS: mismo hostname, puerto8884.
+`https://hydromate-kevin.duckdns.org:9443`; MQTT TLS: mismo hostname, puerto8884.
 La tarea prepara el repositorio; no accede a la VPS ni acredita una prueba remota.
 Docker rootless pertenece a `deploy-hydromate`. API8081 sigue en loopback,
 PostgreSQL sin puerto publicado y MQTT1884 solo en la red propia de contenedores.
@@ -11,6 +11,17 @@ deployment/mosquitto incorpora configuración/ACL con dueño1883:1883; no se mon
 archivos individuales desde el host. Único bind del broker: secretos read-only.
 El hook construye broker/bridge en cada despliegue MQTT para aplicar cambios de
 configuración. No incorpora certificados ni passwd a la imagen.
+
+## Cambio desde el puerto anterior
+
+9443 sustituye el puerto anterior de HydroMate;8443 está ocupado y queda fuera de
+cualquier operación. Conservar certificados/cuentas MQTT existentes. El certificado
+valida el hostname y no necesita cambiar por el puerto. Cambiar únicamente
+HYDROMATE_APP_URL en /etc/hydromate/.env a la URL9443, habilitar TCP9443 mediante
+el administrador y desplegar la revisión aprobada. No retirar reglas ni modificar
+servicios de8443/80/443/8883. MQTT permanece8884.
+En Android ya instalado, actualizar la URL guardada en Conexión → Producción;
+la nueva compilación toma9443 por defecto, pero respeta preferencias guardadas.
 
 ## Configuración única
 
@@ -24,7 +35,7 @@ HYDROMATE_DB_PASSWORD=
 HYDROMATE_DB_DATABASE=hydromate
 HYDROMATE_DB_USERNAME=hydromate
 HYDROMATE_IMAGE_TAG=production
-HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:8443
+HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:9443
 HYDROMATE_HTTPS_BIND_ADDRESS=0.0.0.0
 HYDROMATE_HTTPS_SECRETS_DIR=/etc/hydromate/https
 HYDROMATE_MQTT_BIND_ADDRESS=0.0.0.0
@@ -96,7 +107,7 @@ docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/
 sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
 docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env --profile mqtt --profile public ps
 curl --fail http://127.0.0.1:8081/up
-curl --fail https://hydromate-kevin.duckdns.org:8443/up
+curl --fail https://hydromate-kevin.duckdns.org:9443/up
 ```
 
 Los tres scripts rechazan otra cuenta o un daemon que no sea rootless y fijan
@@ -117,8 +128,8 @@ sh deployment/reload-certificates.sh /etc/hydromate/.env
 
 deploy.sh ya ejecuta migrate --force después de iniciar API/DB. No cambia redes
 externas ni servicios80/443/8883. Nginx GET/HEAD público; POST público403 y bridge
-POST interno. Autorizar una sola vez TCP8443/8884 en Ubuntu/OVH mediante el
-administrador; si UFW ya está activo: `sudo ufw allow 8443/tcp` y
+POST interno. Autorizar una sola vez TCP9443/8884 en Ubuntu/OVH mediante el
+administrador; si UFW ya está activo: `sudo ufw allow 9443/tcp` y
 `sudo ufw allow 8884/tcp`. No habilitar/resetear firewall para este paso.
 
 ## Android y ESP32
@@ -128,7 +139,7 @@ e introducirla en Conexión en el debug instalado, sin USB. Para compilar en el 
 
 ```powershell
 $env:JAVA_HOME='C:/Program Files/Android/Android Studio/jbr'
-$env:HYDROMATE_APP_URL='https://hydromate-kevin.duckdns.org:8443'
+$env:HYDROMATE_APP_URL='https://hydromate-kevin.duckdns.org:9443'
 & mobile/gradlew.bat -p mobile assembleDebug assembleRelease
 ```
 
@@ -146,7 +157,7 @@ NTP y rechaza otro puerto TLS. No borrar NVS ni cambiar identidad.
 ## Validación final desde el PC/red externa
 
 ```powershell
-$env:HYDROMATE_APP_URL='https://hydromate-kevin.duckdns.org:8443'
+$env:HYDROMATE_APP_URL='https://hydromate-kevin.duckdns.org:9443'
 $taskMqttHost=([Uri]$env:HYDROMATE_APP_URL).DnsSafeHost
 curl.exe --fail "$env:HYDROMATE_APP_URL/up"
 & .local/mqtt-venv/Scripts/python.exe scripts/verify_public_access.py --api "$env:HYDROMATE_APP_URL" --mqtt-host $taskMqttHost --min-real-records 0 --output .local/public-preflight.json
@@ -164,7 +175,7 @@ Registrar tiempo sensor→pantalla y un fallo/reintento propio; grabar evidencia
 ## Alcance de las pruebas
 
 Pruebas locales aisladas: Laravel, bridge, Compose, MQTT TLS→PostgreSQL→GET,
-HTTPS8443 y cliente Kotlin por HTTPS con CA exclusiva de tests. No se debilita TLS
+HTTPS9443 y cliente Kotlin por HTTPS con CA exclusiva de tests. No se debilita TLS
 en APK. Docker Desktop local no demuestra el namespace del daemon rootless de la
 VPS: allí son obligatorios el script de permisos y el ensayo físico anterior.
 Hostname y usuario rootless confirmados por el usuario; conectividad pública y

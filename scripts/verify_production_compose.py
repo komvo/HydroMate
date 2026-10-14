@@ -19,7 +19,7 @@ def main():
                HYDROMATE_MQTT_BRIDGE_PASSWORD='validation-bridge-only',
                HYDROMATE_MQTT_BIND_ADDRESS='127.0.0.1', HYDROMATE_HTTPS_BIND_ADDRESS='127.0.0.1',
                HYDROMATE_HTTPS_SECRETS_DIR=str(root / 'deployment/secrets/https'),
-               HYDROMATE_APP_URL='https://example.invalid:8443')
+               HYDROMATE_APP_URL='https://example.invalid:9443')
     result = subprocess.run(['docker', 'compose', '-p', 'hydromate', '-f', str(root / 'compose.production.yml'),
                              '--env-file', str(root / '.env.example'), '--profile', 'mqtt', '--profile', 'public',
                              'config', '--format', 'json'], env=env, capture_output=True, text=True, check=True)
@@ -44,15 +44,16 @@ def main():
     assert broker_binds[0]['bind']['create_host_path'] is False
     assert any(mount['type'] == 'volume' and mount['target'] == '/mosquitto/data'
                and mount['source'] == 'mqtt_data' for mount in broker['volumes'])
-    assert str(config['services']['https']['ports'][0]['published']) == '8443'
+    assert str(config['services']['https']['ports'][0]['published']) == '9443'
+    assert config['services']['https']['ports'][0]['target'] == 9443
     assert set(config['services']['https']['networks']) == {'application'}
-    assert config['services']['api']['environment']['APP_URL'] == 'https://example.invalid:8443'
+    assert config['services']['api']['environment']['APP_URL'] == 'https://example.invalid:9443'
     for service in config['services'].values():
         assert service.get('network_mode') != 'host'
         assert not service.get('container_name')
         assert not service.get('privileged')
         for port in service.get('ports', []):
-            assert int(port['published']) not in {80, 443, 8883, 5432, 1883, 1884}
+            assert int(port['published']) not in {80, 443, 8443, 8883, 5432, 1883, 1884}
         for mount in service.get('volumes', []):
             assert 'docker.sock' not in mount['source']
     for kind in ['volumes', 'networks']:

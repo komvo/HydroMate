@@ -4,6 +4,15 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class TelemetryTest {
+    @Test fun compiledProductionUrlKeepsItsHttpsPortInApiRequests() {
+        val base = BuildConfig.PRODUCTION_API_URL
+        assertTrue(base.isNotBlank())
+        val configured = java.net.URI(base)
+        val endpoint = java.net.URI(Telemetry.endpoint(base, "hydromate-01", true))
+        assertEquals("https", endpoint.scheme)
+        assertEquals(configured.host, endpoint.host)
+        assertEquals(configured.port, endpoint.port)
+    }
     private val v2 = """[{"message_version":2,"device_id":"hydromate-01","sequence":1,"created_at":"2026-10-07T19:00:00Z","temperature_c":24.3,"ph":6.2,"tds_ppm":650,"light_lux":450.5,"water_present":false,"sources":{"temperature_c":"real","ph":"real","light_lux":"real","water_present":"real","tds_ppm":"simulated"}}]"""
     @Test fun parsesPhysicalUnitsAndMarksOnlyTdsSimulated() {
         val m = Telemetry.parse(v2, "hydromate-01").single()
