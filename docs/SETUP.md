@@ -1,5 +1,19 @@
 # Arranque local comprobado — 2026-10-07
 
+## Producción preparada sin acceso VPS — 2026-10-14
+
+Guía vigente: [PRODUCTION](PRODUCTION.md); `compose.production.yml` en raíz y
+Dockerfile en hydromate-backend. Ejecutar siempre
+`docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env ...`.
+Hook del ejecutor existente: `sh deployment/deploy.sh /etc/hydromate/.env [--mqtt]`.
+El usuario de Git solo descarga main; el ejecutor debe tener permiso Docker
+configurado por administrador. Secretos fuera del checkout, solo VPS; plantilla
+raíz .env.example vacía en valores sensibles. Sin cambios al .env de desarrollo.
+API loopback 8081, BD interna sin publicar5432, perfil opcional MQTT TLS8884.
+No usar puertos reservados80/443/8883 ni tocar recursos/configuración chitiito-*.
+La sección de acceso SSH anterior queda reemplazada para esta tarea por el
+empaquetado local y la ejecución automatizada descrita, sin solicitar credenciales.
+
 ## Actualización Taller 5 — 2026-10-07
 
 Guía detallada: ../talleres/taller-05/procedimiento-local.md. API/PostgreSQL

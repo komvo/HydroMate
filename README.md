@@ -49,6 +49,10 @@ Seguir [SETUP](docs/SETUP.md) para los servicios locales existentes y
 [mobile/README](mobile/README.md) para compilar e instalar Android.
 Guía completa del incremento: [procedimiento local Taller 5](talleres/taller-05/procedimiento-local.md).
 Plan, presupuesto y riesgos: [plan de acción](talleres/taller-05/plan-accion.md).
+Producción aislada y hook para el ejecutor automático de main:
+[guía de producción](docs/PRODUCTION.md). Proyecto Docker explícito hydromate;
+API 127.0.0.1:8081, PostgreSQL interno y MQTT TLS opcional 8884. Recursos chitiito
+intocables. No se necesita proporcionar acceso SSH a esta tarea.
 No recrear contenedores ni borrar volúmenes para arrancar el proyecto.
 
 Backend: pruebas PHPUnit en SQLite en memoria; el smoke HTTP conserva datos

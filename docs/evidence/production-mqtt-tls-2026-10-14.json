@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-14T09:11:24.423035+00:00",
+  "passed": true,
+  "synthetic": true,
+  "scope": "Local isolated production images: TLS localhost:8884 with one-day self-signed test CA, MQTT authenticated -> bridge -> Laravel -> PostgreSQL -> GET; no VPS or physical sensor",
+  "count": 10,
+  "events": [
+    {
+      "sequence": 1,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 262.03
+    },
+    {
+      "sequence": 2,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 114.07
+    },
+    {
+      "sequence": 3,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 104.89
+    },
+    {
+      "sequence": 4,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 100.56
+    },
+    {
+      "sequence": 5,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 102.52
+    },
+    {
+      "sequence": 6,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 98.58
+    },
+    {
+      "sequence": 7,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 98.45
+    },
+    {
+      "sequence": 8,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 102.65
+    },
+    {
+      "sequence": 9,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 98.29
+    },
+    {
+      "sequence": 10,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 102.43
+    },
+    {
+      "sequence": 1,
+      "expected": "stored",
+      "ack": "stored",
+      "elapsed_ms": 45.62
+    },
+    {
+      "sequence": 1,
+      "expected": "conflict",
+      "ack": "conflict",
+      "elapsed_ms": 48.44
+    },
+    {
+      "sequence": 11,
+      "expected": "rejected",
+      "ack": "rejected",
+      "elapsed_ms": 45.09
+    }
+  ]
+}

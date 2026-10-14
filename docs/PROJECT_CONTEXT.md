@@ -3,6 +3,12 @@
 Consolidado: 2026-09-30. Fuentes: instrucciones actuales del usuario, código local
 y documentos enumerados abajo. Estado ejecutable: ver STATUS.
 
+Instrucción posterior 14/10: preparar producción local únicamente, sin SSH ni
+solicitud de secretos. El ejecutor existente despliega main; recursos chitiito-*
+intocables. Compose y guía PRODUCTION preparados para hydromate aislado con
+API8081, PostgreSQL interno y MQTT TLS8884 opcional. Reemplaza el acceso
+interactivo anterior, sin afirmar despliegue VPS ni nueva prueba física.
+
 HydroMate automatiza y monitorea hidroponía vertical. Primera unidad física:
 torre recirculante de al menos seis plantas; evolución a múltiples torres por
 cuenta, perfiles, historial, alertas y configuración remota.

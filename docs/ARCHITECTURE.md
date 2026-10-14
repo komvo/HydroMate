@@ -2,6 +2,24 @@
 
 Fecha: 2026-10-07. Distinguir diseño seleccionado de implementación comprobada.
 
+## Empaquetado de producción — 2026-10-14
+
+`compose.production.yml`, proyecto explícito **hydromate**, prepara API
+Apache/PHP 8.4 (www-data, public como webroot), PostgreSQL 16 interno con rol
+app no superusuario y perfil mqtt opcional con Mosquitto/bridge existente.
+API publicada solo en 127.0.0.1:8081; MQTT TLS 8884, listener 1884 interno sin
+publicación. No usar 80/443/8883, network_mode host ni recursos chitiito-*.
+Red hydromate_database interna solo para db/api; hydromate_application conecta
+API/broker/bridge. Volúmenes exclusivos: postgres_data, api_storage, mqtt_data y
+bridge_state con prefijo de proyecto. Android sigue en teléfono por HTTPS; ESP32
+por MQTT/TLS, sin introducir comandos físicos ni modificar contratos v1/v2.
+La API loopback requiere endpoint HTTPS protegido independiente para Android
+remoto; no modificar el proxy/configuración de chitiito. Secretos solo en VPS.
+Preparación para ejecutor de main con checkout Git de solo lectura; hook
+`deployment/deploy.sh` construye/inicia servicios propios y migra explícitamente.
+Guía y límites: PRODUCTION.md. No acceso SSH ni despliegue VPS en esta tarea.
+Las notas locales/históricas siguientes se conservan como antecedentes.
+
 ## Incremento local del Taller 5 — 2026-10-07
 
 Productor PC sintético → Mosquitto → bridge Python con bandeja SQLite → Laravel
