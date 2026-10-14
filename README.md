@@ -96,7 +96,7 @@ para documentos académicos, código propio y recursos de terceros indistintamen
 
 ## Incremento de acceso público/rootless
 
-Preparación HTTPS8443/MQTT TLS8884 para hydromate-kevin.duckdns.org, Docker
+Preparación HTTPS9443/MQTT TLS8884 para hydromate-kevin.duckdns.org, Docker
 rootless deploy-hydromate. Configuración privada y pasos exactos en
 [PUBLIC_ACCESS](docs/PUBLIC_ACCESS.md); integración v3 en
 [INTEGRATION](docs/INTEGRATION.md). Sin acceso VPS ni merge a main desde esta tarea.

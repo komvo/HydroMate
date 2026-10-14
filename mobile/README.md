@@ -1,6 +1,6 @@
 # Android producción: incremento vigente — 2026-10-14
 
-URL base https://hydromate-kevin.duckdns.org:8443, sin /api. Se configura mediante
+URL base https://hydromate-kevin.duckdns.org:9443, sin /api. Se configura mediante
 HYDROMATE_APP_URL; Gradle toma por defecto solo esa línea pública de .env.example
 raíz. Nunca lee .env privado. Perfiles separados: release solo producción HTTPS,
 sin demo/fallback; debug conserva desarrollo/demo. v3 soporta sensores null/origen,

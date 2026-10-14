@@ -1,6 +1,6 @@
 # Integración ESP32 → Android
 
-Acceso público preparado: [PUBLIC_ACCESS](PUBLIC_ACCESS.md), HTTPS8443 propio y
+Acceso público preparado: [PUBLIC_ACCESS](PUBLIC_ACCESS.md), HTTPS9443 propio y
 MQTT TLS8884, variable única HYDROMATE_APP_URL. Configuración/validación externas
 por administrador; esta tarea no accede al VPS.
 
@@ -95,7 +95,7 @@ compilarse una vez mediante la variable de entorno `HYDROMATE_APP_URL`:
 
 ```powershell
 $env:JAVA_HOME='C:/Program Files/Android/Android Studio/jbr'
-$env:HYDROMATE_APP_URL='https://hydromate.example.com:8443'
+$env:HYDROMATE_APP_URL='https://hydromate-kevin.duckdns.org:9443'
 & mobile/gradlew.bat -p mobile assembleRelease
 ```
 
