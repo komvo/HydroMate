@@ -282,3 +282,19 @@ lectura/propiedad conf/ACL, escritura en volumen existente, política Compose,
 6 pruebas Python y10 mensajes MQTT TLS→bridge→PostgreSQL→GET/HTTPS pasan.
 Pruebas con secretos ficticios previos compatibles; sin datos físicos nuevos,
 sin VPS ni certificación del namespace remoto. Rama codex/mosquitto-baked-config.
+
+## HTTPS público9443 — 2026-10-14
+
+Por puerto8443 ocupado confirmado por usuario, HTTPS propio cambia exclusivamente
+a9443 (host/listener/healthcheck/Nginx). URL definitiva
+https://hydromate-kevin.duckdns.org:9443; MQTT8884/1884, rootless y aislamiento
+intactos. Mosquitto mantiene binario propio /usr/local/bin/hydromate-mosquitto.
+APP_URL de despliegue exige9443; preflight y Compose rechazan8443. Android toma
+la URL única de .env.example, sin URL duplicada en código; perfil guardado anterior
+se actualiza manualmente en Conexión/Producción. Guía PUBLIC_ACCESS.md.
+Observado local:25 PHPUnit/157 assertions,29 Android sin omitidas,8 Python,
+debug/release/lint (3 avisos existentes),10 mensajes MQTT TLS y GET HTTPS9443
+pasan. Gate PHP acepta9443/rechaza8443/443/ruta; CA ajena/hostname erróneo y POST
+público rechazados. Primera ejecución con compilación simultánea tuvo timeouts;
+repetición pasó. No se modifican JSON de evidencia histórica del puerto anterior.
+Sin VPS, reglas remotas ni pruebas físicas nuevas. Rama codex/https-9443.

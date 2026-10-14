@@ -13,6 +13,8 @@ def run(args):
     url = urllib.parse.urlsplit(args.api.rstrip('/'))
     if url.scheme != 'https' or not url.hostname or url.username or url.password or url.query or url.fragment or url.path:
         raise ValueError('Provide an HTTPS base URL without credentials or /api')
+    if url.port != 9443:
+        raise ValueError('Production HTTPS port must be 9443')
     if args.mqtt_port != 8884:
         raise ValueError('Production MQTT TLS port must be 8884')
     api = args.api.rstrip('/')

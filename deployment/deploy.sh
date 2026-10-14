@@ -32,7 +32,7 @@ if [ "$taskMqtt" = --mqtt ]; then
     compose --profile mqtt up -d --wait --wait-timeout 180 mosquitto bridge
 fi
 if [ "$taskPublic" = --public ]; then
-    compose exec -T api php -r '$u=parse_url(getenv("APP_URL")); if (!$u || ($u["scheme"] ?? "") !== "https" || empty($u["host"]) || ($u["port"] ?? 443) !== 8443 || !empty($u["path"]) || isset($u["user"]) || isset($u["query"]) || isset($u["fragment"])) { fwrite(STDERR, "Set HYDROMATE_APP_URL to an HTTPS base on port 8443, without /api or credentials.\n"); exit(1); }'
+    compose exec -T api php -r '$u=parse_url(getenv("APP_URL")); if (!$u || ($u["scheme"] ?? "") !== "https" || empty($u["host"]) || ($u["port"] ?? 443) !== 9443 || !empty($u["path"]) || isset($u["user"]) || isset($u["query"]) || isset($u["fragment"])) { fwrite(STDERR, "Set HYDROMATE_APP_URL to an HTTPS base on port 9443, without /api or credentials.\n"); exit(1); }'
     compose --profile public up -d --wait --wait-timeout 180 https
 fi
 compose ps
