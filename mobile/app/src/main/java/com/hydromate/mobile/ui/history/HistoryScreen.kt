@@ -11,9 +11,9 @@ import com.hydromate.mobile.Measurement
 import com.hydromate.mobile.R
 import com.hydromate.mobile.ui.*
 
-enum class Metric(val title: String, val unit: String, val read: (Measurement) -> Double) {
+enum class Metric(val title: String, val unit: String, val read: (Measurement) -> Double?) {
     PH("pH", "", { it.ph }), TEMPERATURE("Temp.", "°C", { it.temperature }),
-    TDS("TDS", "ppm", { it.tds }), LIGHT("Luz", "% relativo", { it.lightValue })
+    TDS("TDS", "ppm", { it.tds }), LIGHT("Luz", "% relativo", { it.lightValue }), EC("EC", "µS/cm", { it.ecUsCm })
 }
 
 class HistoryScreen(private val ui: Components) {
@@ -38,7 +38,7 @@ class HistoryScreen(private val ui: Components) {
         }
         val plotCard = card(root)
         plotCard.addView(badge("Registro reciente", fill = color(R.color.sky)))
-        Metric.entries.chunked(if (largeText) 2 else 4).forEach { group ->
+        Metric.entries.filter { it != Metric.EC || values.any { row -> row.ecUsCm != null } }.chunked(if (largeText) 2 else 4).forEach { group ->
             val selector = row()
             plotCard.addView(selector, LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(8) })
             group.forEachIndexed { index, metric ->
@@ -50,15 +50,16 @@ class HistoryScreen(private val ui: Components) {
             }
         }
         val unit = if (selected == Metric.LIGHT) values.first().lightUnit else selected.unit
-        val plotted = if (selected == Metric.LIGHT) values.filter { it.lightUnit == unit } else values
+        val plotted = values.filter { selected.read(it) != null && (selected != Metric.LIGHT || it.lightUnit == unit) }
         plotCard.addView(text(listOf(selected.title, unit).filter { it.isNotEmpty() }.joinToString(" · "), 20, true))
         if (selected == Metric.TDS && values.any { it.tdsSimulated }) plotCard.addView(badge("Incluye TDS simulado"))
         if (plotted.size != values.size) plotCard.addView(text("Se grafican solo registros con la misma unidad: $unit.", 12, tint = muted))
         plotCard.addView(TrendView(context, plotted, selected, ui), LinearLayout.LayoutParams(-1, dp(if (largeText) 200 else 156)))
         val ordered = plotted.sortedBy { it.received }
-        plotCard.addView(text("Desde ${date(ordered.first().received)}\nHasta ${date(ordered.last().received)}", 12, tint = muted))
-        val numbers = plotted.map(selected.read)
-        plotCard.addView(text("Mín. ${number(numbers.min())} · Máx. ${number(numbers.max())} $unit", 14, tint = muted))
+        if (ordered.isNotEmpty()) plotCard.addView(text("Desde ${date(ordered.first().received)}\nHasta ${date(ordered.last().received)}", 12, tint = muted))
+        val numbers = plotted.mapNotNull(selected.read)
+        if (numbers.isNotEmpty()) plotCard.addView(text("Mín. ${number(numbers.min())} · Máx. ${number(numbers.max())} $unit", 14, tint = muted))
+        else plotCard.addView(text("${selected.title} sin lecturas disponibles. No se sustituyen por cero.", 14, tint = muted))
         plotCard.addView(text(if (values.size == 1) "Una lectura; aún no hay tendencia."
             else "Cada punto es una recepción. No se asume continuidad entre lecturas.", 14, tint = muted))
         section(root, "Recepciones", "${values.size} registros · más reciente primero")
@@ -67,16 +68,19 @@ class HistoryScreen(private val ui: Components) {
             entry.addView(text(date(m.received), 16, true))
             if (m.synthetic) entry.addView(badge("Datos de prueba"))
             if (m.tdsSimulated) entry.addView(badge("TDS simulado"))
-            entry.addView(text("pH ${number(m.ph)} · Temperatura ${number(m.temperature)} °C\nTDS ${number(m.tds)} ppm", 16))
-            entry.addView(text("Luz ${number(m.lightValue)} ${m.lightUnit}\n${m.waterDescription}", 14, tint = muted))
+            fun display(value: Double?) = value?.let(::number) ?: "—"
+            entry.addView(text("pH ${display(m.ph)} · Temperatura ${display(m.temperature)} °C\nTDS ${display(m.tds)} ppm", 16))
+            if (m.tds == null) entry.addView(badge("TDS no disponible"))
+            m.ecUsCm?.let { entry.addView(text("EC ${number(it)} µS/cm", 14)) }
+            entry.addView(text("Luz ${display(m.lightValue)} ${m.lightUnit}\n${m.waterDescription}", 14, tint = muted))
         }
     }
 }
 
 private class TrendView @JvmOverloads constructor(context: Context, rows: List<Measurement> = emptyList(),
                         private val metric: Metric = Metric.PH, private val ui: Components = Components(context)) : View(context) {
-    private val points = rows.sortedBy { it.received }
-    private val numbers = points.map(metric.read)
+    private val points = rows.filter { metric.read(it) != null }.sortedBy { it.received }
+    private val numbers = points.mapNotNull(metric.read)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val pointRadius = ui.dp(5).toFloat()
     private val pearl = RadialGradient(-pointRadius * .3f, -pointRadius * .35f, pointRadius * 1.4f,

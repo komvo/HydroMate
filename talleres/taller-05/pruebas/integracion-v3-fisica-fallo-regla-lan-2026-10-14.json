@@ -1,0 +1,471 @@
+{
+  "at": "2026-10-14T10:46:52.673533+00:00",
+  "device_id": "hydromate-01",
+  "passed": false,
+  "target": 10,
+  "duration_seconds": 421.09,
+  "fresh_only": true,
+  "scope": "Physical serial payloads and persistence ACKs compared to API; sources declare provenance per sensor; frontend latency and calibration not measured",
+  "events": [
+    {
+      "at": "2026-10-14T10:39:52.051573+00:00",
+      "event": "firmware_log",
+      "detail": "RESTORED sequence=1201; pendiente original conservado"
+    },
+    {
+      "at": "2026-10-14T10:39:52.081999+00:00",
+      "event": "sample_serial",
+      "payload": {
+        "message_version": 3,
+        "device_id": "hydromate-01",
+        "sequence": 1201,
+        "reason": [
+          "periodic_poc"
+        ],
+        "water_present": false,
+        "sources": {
+          "temperature_c": "invalid",
+          "light_lux": "real",
+          "ph": "real",
+          "tds_ppm": "unavailable",
+          "water_present": "real",
+          "ec_us_cm": "unavailable"
+        },
+        "temperature_c": null,
+        "light_lux": 0.83,
+        "ph": 5.1,
+        "tds_ppm": null,
+        "ec_us_cm": null,
+        "captured_at": null
+      }
+    },
+    {
+      "at": "2026-10-14T10:39:52.180860+00:00",
+      "event": "firmware_log",
+      "detail": "WIFI_STATUS code=6 uptime_ms=254"
+    },
+    {
+      "at": "2026-10-14T10:39:52.312442+00:00",
+      "event": "firmware_log",
+      "detail": "WIFI_STATUS code=0 uptime_ms=393"
+    },
+    {
+      "at": "2026-10-14T10:39:55.492491+00:00",
+      "event": "firmware_log",
+      "detail": "WIFI_STATUS code=3 uptime_ms=3573"
+    },
+    {
+      "at": "2026-10-14T10:39:58.494591+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:03.497607+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:08.499610+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:13.501902+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:18.503749+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:23.505781+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:28.507852+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:33.511030+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:38.512989+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:43.515107+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:48.517033+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:40:58.521345+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:03.523326+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:08.526373+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:13.528534+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:18.530384+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:23.532753+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:28.534756+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:33.536584+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:38.538706+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:43.540666+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:48.543728+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:53.545882+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:41:58.547881+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:03.549964+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:08.552053+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:18.557131+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:23.559205+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:28.561244+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:33.563277+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:38.566439+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:43.568540+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:48.570443+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:53.572583+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:42:58.574568+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:03.576594+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:08.578661+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:13.580633+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:18.582715+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:23.584763+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:28.587787+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:38.591899+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:43.594793+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:48.596030+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:53.598067+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:43:58.601171+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:03.603143+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:08.605506+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:13.607388+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:18.609360+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:23.612396+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:28.614432+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:33.616531+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:38.618475+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:43.620636+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:48.622737+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:53.624834+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:44:58.627757+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:03.629717+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:08.631803+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:13.633942+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:18.635874+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:23.639050+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:28.641057+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:33.643054+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:38.645245+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:43.647328+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:48.650534+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:53.652467+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:45:58.654431+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:03.656446+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:08.658415+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:13.660456+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:18.663634+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:23.665521+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:28.667774+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:33.669674+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:38.671765+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:43.674850+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "at": "2026-10-14T10:46:48.676805+00:00",
+      "event": "firmware_log",
+      "detail": "MQTT_FAIL code=-2"
+    },
+    {
+      "event": "api_verification",
+      "status": 200,
+      "verified_sequences": [],
+      "stored_sequences": [],
+      "serial_sample_sequences": [
+        1201
+      ],
+      "fresh_sequences": [],
+      "restored_sequences": [
+        1201
+      ]
+    }
+  ]
+}

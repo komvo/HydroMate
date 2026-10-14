@@ -7,7 +7,7 @@ class TelemetryTest {
     private val v2 = """[{"message_version":2,"device_id":"hydromate-01","sequence":1,"created_at":"2026-10-07T19:00:00Z","temperature_c":24.3,"ph":6.2,"tds_ppm":650,"light_lux":450.5,"water_present":false,"sources":{"temperature_c":"real","ph":"real","light_lux":"real","water_present":"real","tds_ppm":"simulated"}}]"""
     @Test fun parsesPhysicalUnitsAndMarksOnlyTdsSimulated() {
         val m = Telemetry.parse(v2, "hydromate-01").single()
-        assertEquals(450.5, m.lightValue, 0.001)
+        assertEquals(450.5, m.lightValue!!, 0.001)
         assertEquals("lux", m.lightUnit)
         assertEquals(false, m.waterPresent)
         assertEquals("Nivel bajo / sin agua", m.waterDescription)
@@ -25,7 +25,7 @@ class TelemetryTest {
     @Test fun parsesContractNumbersAndServerTimestamp() {
         val reading = Telemetry.parse(body, "test-01").single()
         assertEquals(3000000000L, reading.sequence)
-        assertEquals(650.0, reading.tds, 0.001)
+        assertEquals(650.0, reading.tds!!, 0.001)
         assertEquals("2026-09-30T19:00:00Z", reading.received.toString())
         assertTrue(reading.synthetic)
     }

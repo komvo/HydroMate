@@ -1,94 +1,62 @@
 # HydroMate
 
-Prototipo de monitoreo y control local para hidroponía vertical. Este repositorio
-conserva el código, los documentos académicos, las pruebas y las evidencias del
-proyecto. Repositorio público: [komvo/HydroMate](https://github.com/komvo/HydroMate).
+Prototipo de monitoreo y control local para hidroponía vertical.
+Repositorio: [komvo/HydroMate](https://github.com/komvo/HydroMate).
+Entrega final: 2 de diciembre de 2026.
 
-## Estado al 7 de octubre de 2026
+## Integración actual — 14/10/2026
 
-- Backend Laravel y PostgreSQL comprobados localmente con datos sintéticos.
-- Android nativo Kotlin compilado e instalado; integración real y QA manual
-  parcialmente pendientes.
-- ESP32 con DS18B20, BH1750, flotador, ADS1115 y pH probados según la bitácora
-  del 5 de octubre. TDS defectuoso: reemplazo pendiente.
-- Código de pruebas físicas conservado en `Documentos PDC/tests/PruebaSensores1.ino`.
-  Todavía no contiene Wi-Fi ni publicación MQTT.
-- Taller 5 pendiente: demostrar sensores físicos → ESP32 → backend en nube →
-  PostgreSQL → Android, diez transmisiones y evidencia de fallos y tiempos.
-- Alcance solicitado: temperatura, pH, luz y nivel reales; TDS simulado con
-  identificación por variable. Contrato v2/API/BD/Android e integrador local
-  implementados; diez transmisiones sintéticas verificadas. Firmware nuevo en
-  `embedded/`, prueba física y despliegue según STATUS.
-- VPS-1 de OVHcloud compartido con otro proyecto es la opción aceptada para
-  preparar el despliegue; contratación y despliegue no comprobados.
+ESP32 → MQTT/TLS → Mosquitto → bridge → Laravel → PostgreSQL → Android HTTPS.
+Código v3 implementado con temperatura, luz, flotador y pH; TDS opcional y EC
+independiente aceptan ausencia sin valores inventados. Android tiene perfiles
+separados de desarrollo y producción, sin datos demo en producción.
 
-El [estado actual](docs/STATUS.md) distingue pruebas realizadas y pendientes.
-La [arquitectura](docs/ARCHITECTURE.md) y las [decisiones](docs/DECISIONS.md)
-conservan el contexto técnico e histórico.
+Backend y Android pasan sus pruebas. Pipeline MQTT TLS probado **localmente**
+con diez mensajes simulados, duplicado, conflicto, dato inválido y GET.
+Firmware v3 compilado/cargado; diez adquisiciones nuevas1501–1510 verificadas
+localmente contra API. Android muestra lectura real, fecha y TDS no disponible;
+capturas/video conservados. Tiempo aproximado7.57s hasta pantalla, con arranque
+de app/ADB; no es latencia de nube. [Resultados](talleres/taller-05/pruebas/README.md).
+Las pruebas del 7/10 quedan como antecedentes, con TDS simulado identificado.
 
-## Contenido
+Producción Docker preparada y aislada: API loopback8081, PostgreSQL interno y
+MQTT TLS8884. VPS Ubuntu OVHcloud prestada ($0 según usuario), compartida;
+esta tarea no accede al servidor ni toca recursos `chitiito-*`.
+Faltan dirección pública HTTPS, MQTT TLS accesible y evidencia física desplegada.
+`127.0.0.1:8081` de la VPS no es la dirección pública para Android.
+
+## Código y documentación
 
 | Ruta | Contenido |
 |---|---|
-| `hydromate-backend/` | API Laravel, migraciones, pruebas y fixtures sintéticos |
-| `mobile/` | Aplicación Android, pruebas y recursos gráficos |
-| `embedded/` | Firmware ESP32 MQTT, plantilla privada y guía de compilación |
-| `Documentos PDC/` | Fuentes de talleres seleccionadas y sketch de sensores |
-| `docs/` | Contexto, contratos, arquitectura, decisiones y guías |
-| `docs/evidence/` | Evidencias y resultados registrados, con fechas |
-| `scripts/` | Integrador MQTT, arranque, preparación y herramientas de prueba/captura |
-| `reports/` | Informes elaborados sobre el proyecto |
-| `talleres/` | PDF por taller e índice técnico del Taller 5 |
+| `embedded/` | Firmware ESP32 y plantilla privada sin secretos |
+| `hydromate-backend/` | API Laravel, migraciones y pruebas |
+| `mobile/` | Android nativo y pruebas; no se ejecuta en VPS |
+| `scripts/` | Integrador MQTT, arranque y validación |
+| `deployment/` | Configuración aislada de PostgreSQL/Mosquitto y hook de despliegue |
+| `docs/` | Guías, arquitectura, contratos y evidencia técnica |
+| `Documentos PDC/` | Originales académicos y sketch histórico de sensores |
+| `talleres/` | Índice de originales y material único de Taller5 |
+| `reports/` | Informes del proyecto |
 
-Infraestructura de nube pendiente de contratación y validación.
-Una carpeta prevista no representa una función terminada.
+Empezar por [integración ESP32–Android](docs/INTEGRATION.md) y
+[documentación técnica](docs/README.md). Ver [API](docs/API.md),
+[contrato de telemetría](docs/TELEMETRY_CONTRACT.md),
+[producción](docs/PRODUCTION.md) y [Android](mobile/README.md).
 
-## Ejecutar y verificar
+Último acceso preparado: [HTTPS público8443 y MQTT TLS8884](docs/PUBLIC_ACCESS.md),
+con variable URL única HYDROMATE_APP_URL, certificados propios y validación final.
+Pruebas HTTPS locales/Kotlin pasan; dominio y confirmación desde Internet pendientes.
 
-Seguir [SETUP](docs/SETUP.md) para los servicios locales existentes y
-[mobile/README](mobile/README.md) para compilar e instalar Android.
-Guía completa del incremento: [procedimiento local Taller 5](talleres/taller-05/procedimiento-local.md).
-Plan, presupuesto y riesgos: [plan de acción](talleres/taller-05/plan-accion.md).
-Producción aislada y hook para el ejecutor automático de main:
-[guía de producción](docs/PRODUCTION.md). Proyecto Docker explícito hydromate;
-API 127.0.0.1:8081, PostgreSQL interno y MQTT TLS opcional 8884. Recursos chitiito
-intocables. No se necesita proporcionar acceso SSH a esta tarea.
-No recrear contenedores ni borrar volúmenes para arrancar el proyecto.
+## Taller5
 
-Backend: pruebas PHPUnit en SQLite en memoria; el smoke HTTP conserva datos
-sintéticos en PostgreSQL. Android: pruebas JVM, lint y compilación; las pruebas
-físicas y HTTP se distinguen de los ejemplos y revisiones visuales.
+[Índice técnico](talleres/taller-05/README.md),
+[matriz de cumplimiento](talleres/taller-05/cumplimiento-2026-10-14.md),
+[cronograma, presupuesto y riesgos](talleres/taller-05/plan-accion.md).
+Pendiente la demostración física en nube, diez adquisiciones, Android remoto,
+tiempo/fallo y video conjunto. Actuador aplazado según comunicación del usuario;
+anexar constancia docente. No presentar simulaciones como mediciones físicas.
 
-Contrato actual: [TELEMETRY_CONTRACT](docs/TELEMETRY_CONTRACT.md).
-Endpoints actuales: [API](docs/API.md).
-
-## Guardar avances
-
-Cada incremento debe conservar código y evidencia observada, actualizar el estado
-y registrar las decisiones que cambien. Un commit guarda una versión local;
-un push sincroniza los commits con GitHub. No hay sincronización automática.
-
-Ver [política del repositorio](docs/REPOSITORY.md) para documentos, secretos y archivos grandes.
-Los documentos originales se conservan sin modificar salvo solicitud explícita.
-
-## Seguridad y datos
-
-No subir `.env`, contraseñas Wi-Fi/MQTT/BD, llaves, tokens, configuraciones privadas,
-respaldos operativos ni datos privados del proyecto del compañero. `.env.example`
-solo debe contener nombres de configuración y valores ficticios o vacíos.
-
-TDS simulado debe identificarse en mensaje, BD y Android; nunca usarse para
-dosificación. Lux y nivel discreto deben conservar su significado físico.
-Seguridad crítica y estado seguro pertenecen al ESP32, independientes de Internet.
-
-El usuario autorizó expresamente el repositorio público y seleccionó los
-documentos académicos publicados. Otras referencias y la bitácora física se
-conservan solo localmente en la versión actual. Revisar nuevos
-documentos y evidencias antes de subirlos; no incluir secretos ni información
-privada de otras personas o proyectos.
-
-## Recursos de terceros
-
-Consultar [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES) y
-[procedencia de recursos](docs/recursos.json). No se declara una licencia global
-para documentos académicos, código propio y recursos de terceros indistintamente.
+Secretos/configuración privada fuera de Git; originales y evidencia histórica
+se conservan. Notas de continuidad separadas de entregables técnicos.
+Ver [política del repositorio](docs/REPOSITORY.md) y [avisos de recursos](THIRD_PARTY_NOTICES).

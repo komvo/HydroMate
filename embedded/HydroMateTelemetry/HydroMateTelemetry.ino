@@ -9,6 +9,8 @@
 #include <DallasTemperature.h>
 #include <Adafruit_ADS1X15.h>
 #include <math.h>
+#include <time.h>
+#include "sensor_config.h"
 #if __has_include("secrets.h")
 #include "secrets.h"
 #else
@@ -83,28 +85,49 @@ void sample() {
   }
   float ph = PH_M * voltage + PH_B;
   bool water = digitalRead(FLOAT_PIN) == LOW;
-  if (!isfinite(temp) || temp == DEVICE_DISCONNECTED_C || temp < 0 || temp > 50 ||
-      !isfinite(lux) || lux < 0 || lux > 100000 || !isfinite(ph) || ph < 0 || ph > 14 ||
-      !isfinite(voltage) || voltage <= 0.05f || voltage >= 3.3f) {
-    Serial.printf("SENSOR_INVALID temp=%.2f lux=%.2f ph=%.2f voltage=%.4f; no se publica\n", temp,lux,ph,voltage);
-    return;
+  bool tempValid = isfinite(temp) && temp != DEVICE_DISCONNECTED_C && temp >= 0 && temp <= 50;
+  bool lightValid = isfinite(lux) && lux >= 0 && lux <= 100000;
+  bool phValid = isfinite(ph) && ph >= 0 && ph <= 14 && isfinite(voltage) && voltage > 0.05f && voltage < 3.3f;
+  float tds = NAN;
+  bool tdsValid = false;
+  if (HYDROMATE_TDS_SENSOR_ENABLED && adsReady && tempValid) {
+    float raw = ads.computeVolts(ads.readADC_SingleEnded(HYDROMATE_TDS_ADC_CHANNEL));
+    if (isfinite(raw) && raw > 0.05f && raw < 2.3f) {
+      float compensated = raw / (1.0f + 0.02f * (temp - 25.0f));
+      tds = (133.42f * powf(compensated, 3) - 255.86f * powf(compensated, 2) + 857.39f * compensated) * 0.5f * HYDROMATE_TDS_CALIBRATION_FACTOR;
+      tdsValid = isfinite(tds) && tds >= 0 && tds <= 1000;
+    }
   }
+  if (!tempValid || !lightValid || !phValid) Serial.println("SENSOR_INVALID: muestra parcial; campos afectados null, nunca cero inventado");
   if (nextSequence >= limitSequence && !reserveRange()) { halt("No se pudo reservar secuencia"); return; }
   pendingSequence = nextSequence++;
   JsonDocument doc;
-  doc["message_version"] = 2;
+  doc["message_version"] = 3;
   doc["device_id"] = DEVICE_ID;
   doc["sequence"] = pendingSequence;
   doc["reason"].to<JsonArray>().add("periodic_poc");
-  doc["temperature_c"] = round(static_cast<double>(temp)*100.0)/100.0;
-  doc["light_lux"] = round(static_cast<double>(lux)*100.0)/100.0;
   doc["water_present"] = water;
-  doc["ph"] = round(static_cast<double>(ph)*100.0)/100.0;
-  doc["tds_ppm"] = 650; // Fixed, explicit simulation. Never read defective TDS.
   auto sources = doc["sources"].to<JsonObject>();
-  sources["temperature_c"] = "real"; sources["light_lux"] = "real";
-  sources["water_present"] = "real"; sources["ph"] = "real";
-  sources["tds_ppm"] = "simulated";
+  auto sensor = [&](const char* key, float value, bool valid, bool available) {
+    if (valid) doc[key] = round(static_cast<double>(value)*100.0)/100.0;
+    else doc[key] = nullptr;
+    sources[key] = valid ? "real" : (available ? "invalid" : "unavailable");
+  };
+  sensor("temperature_c", temp, tempValid, true);
+  sensor("light_lux", lux, lightValid, lightReady);
+  sensor("ph", ph, phValid, adsReady);
+  sensor("tds_ppm", tds, tdsValid, HYDROMATE_TDS_SENSOR_ENABLED);
+  sources["water_present"] = "real";
+  doc["ec_us_cm"] = nullptr; // No independent EC probe/driver selected; do not infer EC from ppm.
+  sources["ec_us_cm"] = "unavailable";
+  time_t acquired = time(nullptr);
+  if (acquired >= 1704067200) {
+    struct tm utc;
+    gmtime_r(&acquired, &utc);
+    char timestamp[21];
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%dT%H:%M:%SZ", &utc);
+    doc["captured_at"] = timestamp;
+  } else doc["captured_at"] = nullptr;
   serializeJson(doc, pending);
   if (storage.putString("pending", pending) != pending.length()) { halt("No se pudo guardar pendiente"); return; }
   Serial.printf("SAMPLE sequence=%llu uptime_ms=%lu\n",pendingSequence,millis());
@@ -134,20 +157,27 @@ void setup() {
   ackTopic = String("hydromate/") + DEVICE_ID + "/ack";
   if (!strlen(WIFI_SSID) || !strlen(MQTT_HOST)) { halt("Completar secrets.h privado"); return; }
   if (MQTT_TLS) {
+    if (MQTT_PORT != 8884) { halt("Produccion MQTT TLS requiere puerto 8884"); return; }
     if (!strlen(MQTT_ROOT_CA)) { halt("Falta CA TLS; no se usa conexion insegura"); return; }
     secure.setCACert(MQTT_ROOT_CA);
     mqtt.setClient(secure);
-    configTime(0, 0, "pool.ntp.org");
-  } else mqtt.setClient(plain);
+  } else {
+    IPAddress address;
+    bool parsed = address.fromString(MQTT_HOST);
+    bool privateLan = parsed && (address[0] == 10 || (address[0] == 172 && address[1] >= 16 && address[1] <= 31) || (address[0] == 192 && address[1] == 168));
+    if (!HYDROMATE_ALLOW_PLAIN_LAN || !privateLan) { halt("MQTT plano solo banco LAN privado con opt-in; nube requiere TLS"); return; }
+    mqtt.setClient(plain);
+  }
   mqtt.setServer(MQTT_HOST, MQTT_PORT);
   mqtt.setCallback(received);
   mqtt.setBufferSize(2048);
   mqtt.setSocketTimeout(3);
   WiFi.setAutoReconnect(true);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  configTime(0, 0, "pool.ntp.org");
   lastSample = millis() - SAMPLE_MS;
   lastConnect = millis() - RETRY_MS;
-  Serial.println("PoC: sensores reales + TDS SIMULADO; sin actuadores; 30 s por muestra.");
+  Serial.println("Telemetria v3: sensores reales, ausencia/invalidez null; TDS opcional; sin actuadores; 30 s.");
 }
 
 void loop() {
@@ -163,7 +193,8 @@ void loop() {
     WiFi.reconnect();
     Serial.println("WIFI_RETRY");
   }
-  if (WiFi.status() == WL_CONNECTED && !mqtt.connected() && now-lastConnect >= RETRY_MS) {
+  bool clockReady = !MQTT_TLS || time(nullptr) >= 1704067200;
+  if (WiFi.status() == WL_CONNECTED && !mqtt.connected() && now-lastConnect >= RETRY_MS && clockReady) {
     lastConnect = now;
     String clientId = String("hm-") + DEVICE_ID;
     if (mqtt.connect(clientId.c_str(), MQTT_USER, MQTT_PASSWORD)) {
@@ -173,7 +204,7 @@ void loop() {
     } else Serial.printf("MQTT_FAIL code=%d\n", mqtt.state());
   }
   mqtt.loop();
-  if (pending.isEmpty() && now-lastSample >= SAMPLE_MS) { lastSample = now; sample(); }
+  if (pending.isEmpty() && clockReady && now-lastSample >= SAMPLE_MS) { lastSample = now; sample(); }
   if (!pending.isEmpty() && mqtt.connected() && now-lastRetry >= RETRY_MS) {
     lastRetry = now;
     bool sent = mqtt.publish(telemetryTopic.c_str(), pending.c_str(), false);

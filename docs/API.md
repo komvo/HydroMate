@@ -1,8 +1,23 @@
 # API de telemetría para el primer cliente Android
 
 Base de desarrollo: http://127.0.0.1:8000. JSON; enviar Accept: application/json.
-Android usará posteriormente la dirección LAN de la PC, no su propio localhost.
-Sin autenticación por ahora: no exponer a Internet. Filtro no equivale a autorización.
+Android local usa USB `adb reverse tcp:8000 tcp:8000`; producción usa HTTPS.
+Sin autenticación completa de dispositivos: el administrador debe proteger el
+POST (acceso solo del bridge/red privada). Filtro no equivale a autorización.
+
+## Actualización de integración — 14/10/2026
+
+Vigente [contrato v3](TELEMETRY_CONTRACT.md): seis variables con origen explícito,
+valores null para ausencia/invalidez, EC independiente y hora de adquisición UTC.
+v1/v2 siguen aceptadas. `real_only=1` filtra simulaciones en historial/última/estado;
+`sequence=N` permite recuperar una fila exacta por identidad.
+`GET /api/devices/{device_id}/status` devuelve no_data/recent/stale y fechas;
+no representa una prueba de conexión MQTT. Historial incluye cabecera
+`X-HydroMate-Freshness-Seconds` (120 por defecto), usada por Android para
+evaluar antigüedad sin ocultar una adquisición vieja recibida recientemente.
+Todos los sensores se consultan en una misma fila; no se requieren endpoints
+separados por temperatura/pH/nivel/luz/TDS/EC. Detalles y pruebas reproducibles:
+[INTEGRATION](INTEGRATION.md).
 
 ## Registrar
 Actualización 07/10: también acepta v2 físico en los mismos endpoints. Ver

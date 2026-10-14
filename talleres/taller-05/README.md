@@ -1,5 +1,12 @@
 # Taller 5 Prueba de viabilidad
 
+Actualización vigente 14/10: v3 implementada, TDS sin valor fijo y EC opcional.
+Pruebas software/pipeline TLS sintético pasan. Firmware cargado; repetición
+física pasa diez adquisiciones nuevas1501–1510, pantalla real y tiempo aproximado
+7.57s verificados localmente tras corregir regla LAN. Nube sin URL pública
+verificada. Entrega final 02/12. [Guía](../../docs/INTEGRATION.md).
+Los apartados del 7/10 siguientes son históricos.
+
 Estado al 7 de octubre de 2026: entrega pendiente desde el 16 de septiembre.
 Este índice organiza materiales. El recorrido físico local pasó diez entregas;
 todavía no es el reporte final ni acredita despliegue en nube. Fecha final sin confirmar.
@@ -10,7 +17,9 @@ Temperatura, pH, iluminación en lux y flotador físicos; TDS simulado identific
 por variable. ESP32 → MQTT/TLS → Mosquitto → integración → Laravel en nube →
 PostgreSQL → Android HTTPS en nube. Contrato v2 y bridge local implementados;
 ensayos sintéticos y diez entregas del ESP32 pasan. Nube y cierre según STATUS.
-OVHcloud VPS-1 compartido es opción aceptada; no se afirma que esté contratado.
+Actualización 14/10: usuario dispone de VPS OVHcloud Ubuntu prestado ($0), ya
+alojando otro proyecto. Despliegue HydroMate no verificado. Entrega final 02/12/2026;
+aplazamiento de actuador comunicado, adjuntar autorización docente.
 
 ## Material disponible
 
@@ -19,7 +28,7 @@ OVHcloud VPS-1 compartido es opción aceptada; no se afirma que esté contratado
 | Sketch de sensores | [PruebaSensores1.ino](../../Documentos%20PDC/tests/PruebaSensores1.ino) | Lectura local; sin publicación MQTT |
 | Bitácora física | Referencia local, retirada de GitHub por solicitud del usuario | Sensores funcionales y diagnóstico TDS registrados; resumen en STATUS |
 | Backend y pruebas | [Laravel](../../hydromate-backend/) | Código y tests existentes |
-| Contrato actual | [Telemetría v2](../../docs/TELEMETRY_CONTRACT.md) | Lux, flotador y origen; v1 preservado compatible |
+| Contrato actual | [Telemetría v3](../../docs/TELEMETRY_CONTRACT.md) | Sensores parciales/origen y adquisición; v1/v2 compatibles |
 | API local | [Evidencia HTTP](../../docs/evidence/backend-step1-http.json) | Prueba histórica sintética; no es sensor ni nube |
 | BD local | [Evidencia PostgreSQL](../../docs/evidence/postgres-step1.json) | Prueba histórica local |
 | Android y pruebas | [Proyecto Kotlin](../../mobile/) | App instalada; integración final pendiente |
@@ -31,6 +40,8 @@ OVHcloud VPS-1 compartido es opción aceptada; no se afirma que esté contratado
 
 - [Procedimiento local paso a paso](procedimiento-local.md): estructura, comandos y conceptos.
 - [Plan de acción, presupuesto y riesgos](plan-accion.md): secuencia y criterios de cierre.
+- [Matriz completa de cumplimiento](cumplimiento-2026-10-14.md): cómo, dónde y con qué evidencia se cubre cada punto.
+- [Guía de acceso y despliegue VPS](despliegue-vps.md): credenciales en terminal privada, inventario y cierre en nube.
 - [Bitácora de errores/resultados](errores-resultados/bitacora-2026-10-07.md): ensayos auténticos y límites.
 - [Firmware nuevo](../../embedded/README.md), [integrador](../../scripts/mqtt_bridge.py) y pruebas en `pruebas/`.
 

@@ -1,8 +1,8 @@
 # HydroMate — instrucciones permanentes
 
 ## Recuperación rápida del contexto
-Leer primero este archivo, `docs/STATUS.md`, `docs/PROJECT_CONTEXT.md` y
-`docs/DECISIONS.md`. Consultar `docs/ARCHITECTURE.md` para arquitectura y contratos.
+Leer primero este archivo, `.project/context/STATUS.md`, `.project/context/PROJECT_CONTEXT.md` y
+`.project/context/DECISIONS.md`. Consultar `docs/ARCHITECTURE.md` para arquitectura y contratos.
 Leer únicamente el código y documentos relacionados con la tarea actual.
 No repetir auditorías completas salvo solicitud explícita o evidencia de contexto
 desactualizado. Los documentos académicos en `Documentos PDC/` son referencias:
@@ -13,6 +13,10 @@ ese documento. No modificarlos sin solicitud explícita.
 Prioridad actual (cambio del usuario el 30/09): PostgreSQL → Laravel API → app
 Android mínima → ESP32 físico. Wokwi no es necesario; no crear dashboard Blade
 como frontend paralelo. Usar lecturas sintéticas identificadas hasta tener sensores.
+Incremento solicitado el 14/10: integración ESP32/MQTT/bridge/API/Android v3;
+sensores reales con ausencia/invalidez null, TDS opcional y EC independiente.
+Producción HTTPS separada sin demo/fallback. Administrador externo opera nube:
+no SSH, secretos ni recursos chitiito; no ampliar actuadores/autenticación completa.
 Backend/BD probados y contrato en docs/TELEMETRY_CONTRACT.md. Android en mobile/
 compilado e instalado por USB; QA manual e integración real parcialmente pendientes. No iniciar
 funciones avanzadas.
@@ -26,7 +30,8 @@ Mantenerlos como evolución, sin crear anticipadamente todas las tablas.
   explícitamente marcada, sin fallback automático ni órdenes simuladas.
 - Arquitectura seleccionada: ESP32, MQTT/TLS, Mosquitto, Laravel, PostgreSQL,
   Android nativo por HTTPS/REST. Android nunca accede directamente a la BD.
-- PoC anterior Wokwi/Blade reemplazada en prioridad; MQTT/bridge se abordarán al conectar ESP32 físico.
+- PoC Wokwi/Blade reemplazada; MQTT/bridge y firmware v3 implementados.
+  Validación física/nube según .project/context/STATUS.md.
 - Conservar identidad de cada torre; la PoC puede usar solo una.
 - Seguridad crítica local en ESP32: nivel bajo, sensores inválidos, límites de
   dosis, mezcla, exclusión pH Up/Down, tiempos máximos y reinicio seguro.

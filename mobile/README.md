@@ -1,7 +1,17 @@
-# HydroMate Android — 0.6.0 Jardín de cristal
+# HydroMate Android — 0.7.0 Integración
 
 Cliente Kotlin nativo de Laravel. Consulta hasta 20 recepciones por torre;
 Android no accede directamente a PostgreSQL, MQTT ni actuadores.
+
+Integración vigente v3: sensores null con origen, TDS no disponible, EC opcional
+independiente y antigüedad de adquisición/recepción. Conexión tiene perfiles
+desarrollo/producción separados. Producción exige HTTPS y solo lecturas sin
+simulación; release permite únicamente ese perfil. URL desde Conexión o
+variable de entorno `HYDROMATE_APP_URL`, sin credenciales backend en la app.
+Sin override, Gradle toma únicamente la URL pública de `.env.example` raíz:
+`https://hydromate-kevin.duckdns.org:8443`. Nunca lee el `.env` privado de la VPS.
+Guía de integración y configuración: [INTEGRATION](../docs/INTEGRATION.md).
+Los apartados históricos v1/v2 siguientes se conservan como antecedentes.
 
 ## Dirección vigente
 
@@ -28,8 +38,9 @@ anteriores se retiraron; se conserva su aviso MIT histórico.
 
 ## Datos y demostración
 
-No cambió la lógica funcional en este incremento: recepción no equivale a
-captura; luz/nivel son porcentajes relativos, sin rangos agronómicos configurados.
+Actualización v2 del 07/10: luz en lux, nivel por flotador booleano y origen por
+variable; TDS simulado explícito. v1 conserva porcentajes históricos, sin mezclarlos
+con lux. Recepción no equivale a captura, sin rangos agronómicos configurados.
 Servidor disponible no confirma ESP32 ni sensores. Valores ausentes: raya.
 Contrato v1 estricto y protección de respuestas tardías conservados.
 

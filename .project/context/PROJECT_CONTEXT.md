@@ -1,7 +1,32 @@
 # Contexto del proyecto
 
+Incremento vigente 14/10: integración v3 con sensor null/origen, TDS ausente y EC
+independiente. Perfiles Android desarrollo/producción separados; TLS/HTTPS nube.
+Pruebas software/pipeline sintético pasan; firmware cargado, diez adquisiciones
+físicas nuevas1501–1510 y pantalla Android pasan en banco local el 14/10.
+Regla local corregida por usuario; recuperación de pendiente y tiempo aproximado
+7.57s hasta pantalla observados. Nube no verificada.
+Guía pública docs/INTEGRATION.md; notas separadas en .project/context.
+Actuadores aplazados según usuario, sin nueva implementación.
+
+Publicación confirmada posteriormente: hydromate-kevin.duckdns.org y daemon
+rootless deploy-hydromate; guard de socket/cuenta y permisos certificados
+mediante namespace. Prueba pública sigue pendiente, sin acceso VPS.
+Acceso público preparado posteriormente: HTTPS8443 propio y MQTT TLS8884,
+variable única HYDROMATE_APP_URL para Laravel/Android, certificados propios DNS-01.
+Guía docs/PUBLIC_ACCESS.md; no acceso VPS ni modificación chitiito. Ensayo HTTPS
+local/Kotlin pasa; dominio y prueba desde red externa aún pendientes.
+
 Consolidado: 2026-09-30. Fuentes: instrucciones actuales del usuario, código local
 y documentos enumerados abajo. Estado ejecutable: ver STATUS.
+
+Actualización 14/10/2026: entrega final 02/12/2026 confirmada por usuario. VPS
+OVHcloud Ubuntu prestado ($0), ya aloja otro proyecto; despliegue HydroMate
+pendiente de acceso/inventario. Aplazamiento de actuador comunicado por usuario,
+anexar autorización docente. Cronograma actualizado con historia documental y
+semanas restantes en talleres/taller-05/plan-accion.md. Matriz requisito por
+requisito y guía VPS en esa carpeta. Los textos históricos siguientes no
+sustituyen el estado más reciente de STATUS.
 
 Instrucción posterior 14/10: preparar producción local únicamente, sin SSH ni
 solicitud de secretos. El ejecutor existente despliega main; recursos chitiito-*

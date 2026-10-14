@@ -12,6 +12,8 @@ class Measurement extends Model
         'light_lux',
         'water_present',
         'sources',
+        'captured_at',
+        'ec_us_cm',
         'sequence',
         'sample_number',
         'reason',
@@ -30,6 +32,8 @@ class Measurement extends Model
         'message_version' => 'integer',
         'light_lux' => 'float',
         'water_present' => 'boolean',
+        'captured_at' => 'immutable_datetime',
+        'ec_us_cm' => 'float',
 
         'temperature_c' => 'float',
         'light_pct' => 'float',

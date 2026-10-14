@@ -1,5 +1,5 @@
 # Android HydroMate
-Leer ../AGENTS.md y ../docs/STATUS.md antes de cambios.
+Leer ../AGENTS.md y ../.project/context/STATUS.md antes de cambios.
 Contrato: ../docs/TELEMETRY_CONTRACT.md y ../docs/API.md.
 Kotlin, interfaz nativa mínima, solo consultas. No inventar datos ni agregar login,
 actuadores o MQTT directo en la app. HTTP solo en variante debug para pruebas locales.

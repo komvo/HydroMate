@@ -1,5 +1,8 @@
 # Arranque local comprobado — 2026-10-07
 
+HTTPS público propio8443 y MQTT TLS8884: [PUBLIC_ACCESS](PUBLIC_ACCESS.md).
+Es un perfil de producción opt-in; no modifica el banco local ni recursos ajenos.
+
 ## Producción preparada sin acceso VPS — 2026-10-14
 
 Guía vigente: [PRODUCTION](PRODUCTION.md); `compose.production.yml` en raíz y
@@ -13,6 +16,23 @@ API loopback 8081, BD interna sin publicar5432, perfil opcional MQTT TLS8884.
 No usar puertos reservados80/443/8883 ni tocar recursos/configuración chitiito-*.
 La sección de acceso SSH anterior queda reemplazada para esta tarea por el
 empaquetado local y la ejecución automatizada descrita, sin solicitar credenciales.
+
+## Recuperación observada 14/10/2026
+
+Docker Desktop 4.62.0 no arrancó por sockets temporales inaccesibles en
+`%LOCALAPPDATA%/Docker/run/dockerInference` y
+`%LOCALAPPDATA%/docker-secrets-engine/engine.sock`. Tras cerrar procesos verificados,
+conservar ambas carpetas temporales y recrearlas juntas, el engine respondió.
+No usar Reset to factory defaults como reparación: el usuario comunica haberlo
+pulsado; se comprobó después persistencia del contenedor/volumen y registros.
+Copia privada del disco detenido en .local/backups/docker-recovery-2026-10-14;
+carpetas de sockets anteriores conservadas fuera del repositorio. Este procedimiento
+no es una receta de borrado general ni exige restablecer la configuración.
+
+Se ejecutó `scripts/start_local.ps1` sin -WithLanMqtt: PostgreSQL y Laravel
+loopback disponibles; GET conserva registros históricos y esquema v2 exportado.
+MQTT/bridge LAN y hardware no se revalidaron en este arranque. Para nube seguir
+`../talleres/taller-05/despliegue-vps.md`; necesita inventario/acceso SSH propios.
 
 ## Actualización Taller 5 — 2026-10-07
 
@@ -104,3 +124,11 @@ al capturar. Verificador: argumentos `--build-log`, `--baseline`, `--evidence-di
 y `--report` completos en AERO_ACCEPTANCE.md. Evidencia previa conservada.
 Más → Apariencia → Usar Jardín claro evita la variante nocturna del sistema;
 seleccionado en este teléfono para atender la petición de fondo mucho más claro.
+## Integración actual v3
+
+Configuración ESP32 MQTT/TLS, perfiles Android y ensayo completo:
+[INTEGRATION](INTEGRATION.md). Producción conserva Compose aislado de
+[PRODUCTION](PRODUCTION.md). Aplicar migración
+`2026_10_14_000001_add_partial_telemetry_v3.php` con `php artisan migrate --force`
+después de respaldo y arranque; no usar migrate:fresh/reset. Los pasos locales
+anteriores siguen vigentes, con firmware v3 y TDS null en lugar de fijo simulado.

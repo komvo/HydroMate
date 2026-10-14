@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-14T14:54:48.693577+00:00",
+  "passed": true,
+  "scope": "Physical pending payload preserved during local firewall outage, delivered after administrator corrected own bank rule; API comparison only, not a new acquisition or cloud test",
+  "sequence": 1201,
+  "original_failed_evidence": "integracion-v3-fisica-fallo-regla-lan-2026-10-14.json",
+  "original_payload": {
+    "message_version": 3,
+    "device_id": "hydromate-01",
+    "sequence": 1201,
+    "reason": [
+      "periodic_poc"
+    ],
+    "water_present": false,
+    "sources": {
+      "temperature_c": "invalid",
+      "light_lux": "real",
+      "ph": "real",
+      "tds_ppm": "unavailable",
+      "water_present": "real",
+      "ec_us_cm": "unavailable"
+    },
+    "temperature_c": null,
+    "light_lux": 0.83,
+    "ph": 5.1,
+    "tds_ppm": null,
+    "ec_us_cm": null,
+    "captured_at": null
+  },
+  "persisted_api_row": {
+    "id": 148,
+    "device_id": "hydromate-01",
+    "sequence": 1201,
+    "sample_number": null,
+    "reason": [
+      "periodic_poc"
+    ],
+    "temperature_c": null,
+    "light_pct": null,
+    "light_state": null,
+    "water_level_pct": null,
+    "water_level_state": null,
+    "ph": 5.1,
+    "tds_ppm": null,
+    "created_at": "2026-10-14T14:45:40.000000Z",
+    "updated_at": "2026-10-14T14:45:40.000000Z",
+    "message_version": 3,
+    "light_lux": 0.83,
+    "water_present": false,
+    "sources": {
+      "ec_us_cm": "unavailable",
+      "light_lux": "real",
+      "ph": "real",
+      "tds_ppm": "unavailable",
+      "temperature_c": "invalid",
+      "water_present": "real"
+    },
+    "ec_us_cm": null,
+    "captured_at": null
+  }
+}

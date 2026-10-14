@@ -7,6 +7,32 @@ import org.junit.Assume.assumeTrue
 import org.junit.Test
 
 class RepositoryTest {
+    @Test fun readsProductionApiOverVerifiedHttpsWhenRequested() {
+        val base = System.getenv("HYDROMATE_TEST_HTTPS_API")
+        assumeTrue("Opt-in HTTPS API transport test", !base.isNullOrBlank())
+        val snapshot = TelemetryRepository().loadSnapshot(Telemetry.endpoint(base!!, "hydromate-01", true), "hydromate-01", true)
+        assertTrue(snapshot.readings.isNotEmpty())
+        assertTrue(snapshot.readings.all { !it.synthetic && "simulated" !in it.sources.values })
+        assertTrue(snapshot.readings.any { it.version == 3 && it.tds == null && it.sources["tds_ppm"] == "unavailable" })
+    }
+    @Test fun interpretsPhysicalApiExportWithProductionValidationWhenRequested() {
+        val path = System.getenv("HYDROMATE_TEST_PHYSICAL_RESPONSE")
+        assumeTrue("Opt-in read-only physical API response", !path.isNullOrBlank())
+        val rows = Telemetry.parse(java.io.File(path!!).readText(), "hydromate-01", true)
+        assertTrue(rows.isNotEmpty())
+        assertTrue(rows.all { it.version == 3 && !it.synthetic && "simulated" !in it.sources.values })
+        assertTrue(rows.all { it.tds == null && it.sources["tds_ppm"] == "unavailable" && it.ecUsCm == null })
+        assertTrue(rows.any { it.temperature != null && it.ph != null && it.lightLux != null && it.waterPresent != null })
+        assertTrue(rows.filter { it.temperature == null }.all { it.sources["temperature_c"] in listOf("invalid", "unavailable") })
+    }
+    @Test fun interpretsResponseExportedByMqttPipelineWhenRequested() {
+        val path = System.getenv("HYDROMATE_TEST_RESPONSE")
+        assumeTrue("Opt-in MQTT/bridge/API response", !path.isNullOrBlank())
+        val rows = Telemetry.parse(java.io.File(path!!).readText(), "hydromate-01")
+        assertEquals(10, rows.size)
+        assertTrue(rows.all { it.version == 3 && it.synthetic && it.tds == null && it.ecUsCm == null && it.waterPresent == false })
+        assertThrows(IllegalArgumentException::class.java) { Telemetry.parse(java.io.File(path).readText(), "hydromate-01", true) }
+    }
     @Test fun reportsServerErrorsAndEmptyHistoryOverHttp() {
         val server = HttpServer.create(InetSocketAddress("127.0.0.1", 0), 0)
         server.createContext("/empty") { exchange ->

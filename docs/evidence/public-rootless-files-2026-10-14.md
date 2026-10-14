@@ -1,0 +1,104 @@
+# Archivos de la rama de publicación pública
+
+Incluye la integración v3 y documentación preparada previamente, necesarias para
+publicar firmware/backend/Android coherentes. Las evidencias físicas son de banco
+local; no acreditan VPS. A=añadido, M=modificado, D=retirado. Documentos académicos
+nuevos ajenos a esta publicación quedan fuera del commit.
+
+```text
+A	.project/context/DECISIONS.md
+A	.project/context/PROJECT_CONTEXT.md
+A	.project/context/STATUS.md
+A	deployment/https/default.conf
+A	deployment/prepare-rootless-secrets.sh
+A	deployment/reload-certificates.sh
+A	deployment/require-rootless.sh
+A	docs/INTEGRATION.md
+A	docs/PUBLIC_ACCESS.md
+A	docs/README.md
+A	docs/evidence/public-access-local-2026-10-14.json
+A	docs/evidence/public-rootless-files-2026-10-14.md
+A	docs/evidence/public-rootless-readiness-2026-10-14.json
+A	docs/evidence/repository-organization-2026-10-14.json
+A	embedded/HydroMateTelemetry/sensor_config.h
+A	hydromate-backend/config/telemetry.php
+A	hydromate-backend/database/migrations/2026_10_14_000001_add_partial_telemetry_v3.php
+A	hydromate-backend/tests/Feature/PartialTelemetryTest.php
+A	mobile/app/src/main/java/com/hydromate/mobile/ConnectionEnvironment.kt
+A	mobile/app/src/test/java/com/hydromate/mobile/PartialTelemetryTest.kt
+A	scripts/test_bridge.py
+A	scripts/test_deployment.py
+A	scripts/verify_public_access.py
+A	talleres/taller-05/cumplimiento-2026-10-14.md
+A	talleres/taller-05/pruebas/android-v3-historial-real-2026-10-14.png
+A	talleres/taller-05/pruebas/android-v3-historial-verificacion-2026-10-14.json
+A	talleres/taller-05/pruebas/android-v3-real-local-2026-10-14.mp4
+A	talleres/taller-05/pruebas/android-v3-real-local-2026-10-14.png
+A	talleres/taller-05/pruebas/android-v3-real-local-final-2026-10-14.png
+A	talleres/taller-05/pruebas/esquema-postgresql-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v1-http-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v3-fisica-fallo-regla-lan-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v3-fisica-local-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v3-recuperacion-fisica-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v3-recuperacion-local-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v3-sintetica-2026-10-14.json
+A	talleres/taller-05/pruebas/integracion-v3-verificacion-2026-10-14.json
+A	talleres/taller-05/pruebas/latencia-v3-android-local-2026-10-14.json
+A	talleres/taller-05/pruebas/persistencia-local-2026-10-14.json
+A	talleres/taller-05/pruebas/verificacion-captura-2026-10-14.json
+A	talleres/taller-05/revision-cierre-2026-10-14.md
+D	docs/DECISIONS.md
+D	docs/PROJECT_CONTEXT.md
+D	docs/STATUS.md
+D	talleres/taller-01/reporte.pdf
+D	talleres/taller-02/reporte.pdf
+D	talleres/taller-03/reporte.pdf
+D	talleres/taller-04/reporte.pdf
+D	talleres/taller-06/reporte.pdf
+D	talleres/taller-07/reporte.pdf
+M	.env.example
+M	AGENTS.md
+M	README.md
+M	compose.production.yml
+M	deployment/deploy.sh
+M	docs/API.md
+M	docs/ARCHITECTURE.md
+M	docs/ENERGY_OPTIMIZATION.md
+M	docs/PRODUCTION.md
+M	docs/REPOSITORY.md
+M	docs/SETUP.md
+M	docs/TELEMETRY_CONTRACT.md
+M	embedded/HydroMateTelemetry/HydroMateTelemetry.ino
+M	embedded/HydroMateTelemetry/secrets.example.h
+M	embedded/README.md
+M	hydromate-backend/AGENTS.md
+M	hydromate-backend/app/Http/Controllers/Api/MeasurementController.php
+M	hydromate-backend/app/Http/Requests/StoreMeasurementRequest.php
+M	hydromate-backend/app/Models/Measurement.php
+M	hydromate-backend/routes/api.php
+M	mobile/AGENTS.md
+M	mobile/README.md
+M	mobile/app/build.gradle.kts
+M	mobile/app/src/main/java/com/hydromate/mobile/ConnectionStore.kt
+M	mobile/app/src/main/java/com/hydromate/mobile/MainActivity.kt
+M	mobile/app/src/main/java/com/hydromate/mobile/Telemetry.kt
+M	mobile/app/src/main/java/com/hydromate/mobile/ui/ReadingState.kt
+M	mobile/app/src/main/java/com/hydromate/mobile/ui/dashboard/DashboardScreen.kt
+M	mobile/app/src/main/java/com/hydromate/mobile/ui/history/HistoryScreen.kt
+M	mobile/app/src/main/java/com/hydromate/mobile/ui/settings/SettingsScreen.kt
+M	mobile/app/src/test/java/com/hydromate/mobile/RepositoryTest.kt
+M	mobile/app/src/test/java/com/hydromate/mobile/TelemetryTest.kt
+M	scripts/capture_sensor_flow.py
+M	scripts/enable_mqtt_lan.ps1
+M	scripts/measure_android_latency.py
+M	scripts/mqtt_bridge.py
+M	scripts/test_mqtt_flow.py
+M	scripts/verify_production_compose.py
+M	talleres/README.md
+M	talleres/taller-05/README.md
+M	talleres/taller-05/despliegue-vps.md
+M	talleres/taller-05/diagramas/conexiones.md
+M	talleres/taller-05/diagramas/flujo-local.mmd
+M	talleres/taller-05/plan-accion.md
+M	talleres/taller-05/pruebas/README.md
+```

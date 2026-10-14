@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-14T10:51:45.530476+00:00",
+  "synthetic": true,
+  "project": "hydromate-validation",
+  "sequence": 1791975105530,
+  "passed": true,
+  "scope": "Local isolated API outage and durable bridge restart; excludes physical ESP32, Android display and VPS",
+  "pending_during_api_outage": true,
+  "ack": "stored",
+  "verified_api_row": {
+    "id": 81,
+    "device_id": "hydromate-01",
+    "sequence": 1791975105530,
+    "sample_number": null,
+    "reason": [
+      "synthetic_test",
+      "recovery_test"
+    ],
+    "temperature_c": 24.3,
+    "light_pct": null,
+    "light_state": null,
+    "water_level_pct": null,
+    "water_level_state": null,
+    "ph": 6.2,
+    "tds_ppm": null,
+    "created_at": "2026-10-14T10:52:01.000000Z",
+    "updated_at": "2026-10-14T10:52:01.000000Z",
+    "message_version": 3,
+    "light_lux": 450.5,
+    "water_present": false,
+    "sources": {
+      "ec_us_cm": "unavailable",
+      "light_lux": "simulated",
+      "ph": "simulated",
+      "tds_ppm": "unavailable",
+      "temperature_c": "simulated",
+      "water_present": "simulated"
+    },
+    "ec_us_cm": null,
+    "captured_at": "2026-10-14T10:51:45.000000Z"
+  }
+}

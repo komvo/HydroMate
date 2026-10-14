@@ -1,6 +1,23 @@
 # Arquitectura vigente
 
-Fecha: 2026-10-07. Distinguir diseño seleccionado de implementación comprobada.
+Fecha: 2026-10-14. Distinguir diseño seleccionado de implementación comprobada.
+
+## Integración vigente v3
+
+Acceso público14/10: Android HTTPS8443 → Nginx sin privilegios exclusivo HydroMate →
+API privadaapi:8080; API conserva loopback8081, POST público bloqueado, DB interna.
+ESP32 TLS8884 → Mosquitto → bridge POST privado → misma API/BD. Perfil public,
+certificados propios por DNS-01, variable única HYDROMATE_APP_URL. No80/443/8883
+ni cambios chitiito. Implementación validada en Docker local; hostname confirmado; prueba VPS pendiente.
+
+ESP32 físico → MQTT/TLS Mosquitto → bridge Paho/bandeja durable → POST Laravel
+→ PostgreSQL → GET HTTPS → Android nativo. Se mantienen los tópicos y la
+identidad hydromate-01. v3 permite ausencia/invalidez por sensor y adquisición
+UTC; TDS opcional y EC separado sin valores sintéticos de sustitución. Android
+tiene perfiles desarrollo/producción separados; producción filtra simulaciones,
+sin demo ni fallback. Estado deriva de antigüedad de telemetría, no de una
+conexión MQTT observada. Arquitectura Docker aislada permanece igual.
+Validación realizada y configuración pendiente: INTEGRATION.md.
 
 ## Empaquetado de producción — 2026-10-14
 

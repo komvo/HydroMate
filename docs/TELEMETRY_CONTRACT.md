@@ -1,4 +1,52 @@
-# Telemetría v2 física — 2026-10-07
+# Telemetría v3 parcial — 2026-10-14
+
+Contrato vigente: v3. Laravel y Android mantienen compatibilidad con v1/v2;
+la descripción v2 más abajo queda como referencia histórica.
+
+## Mensaje v3
+
+```json
+{"message_version":3,"device_id":"hydromate-01","sequence":901,"reason":["periodic_poc"],"captured_at":"2026-10-14T19:00:00Z","temperature_c":24.3,"light_lux":450.5,"water_present":false,"ph":6.2,"tds_ppm":null,"ec_us_cm":null,"sources":{"temperature_c":"real","light_lux":"real","water_present":"real","ph":"real","tds_ppm":"unavailable","ec_us_cm":"unavailable"}}
+```
+
+Ejemplo de formato, no evidencia física. Los seis campos de sensores y las seis
+claves `sources` son obligatorios. Cada origen es `real`, `simulated`,
+`unavailable` o `invalid`; estos últimos dos requieren valor `null`. Un valor
+presente requiere `real` o `simulated`. Números JSON, nunca cadenas; flotador
+booleano (`false` es una lectura válida). Se conservan los límites v2;
+`ec_us_cm` acepta 0–100000 µS/cm. Productor redondea a dos decimales para
+coincidir con almacenamiento. No se convierte TDS en EC ni se inventan valores.
+
+`captured_at` es opcional/null si el reloj no está sincronizado; cuando existe,
+UTC exacto `YYYY-MM-DDTHH:mm:ssZ`, como máximo un minuto en el futuro.
+`created_at` sigue siendo la recepción asignada por Laravel. La antigüedad usa
+el mayor intervalo entre adquisición/recepción y la hora actual; una entrega
+tardía no vuelve reciente una adquisición vieja. Sin reloj se informa recepción.
+
+El firmware usa los sensores físicos existentes. TDS está deshabilitado por
+defecto y transmite `null/unavailable`; el driver opcional requiere seleccionar
+canal ADS1115 y validar sensor/calibración. EC queda `null/unavailable` hasta
+seleccionar un driver independiente. Sensor conectado con lectura inválida
+transmite `null/invalid` sin bloquear los otros sensores. No hay actuadores.
+
+## Consultas y estado
+
+- `POST /api/measurements`: 201 registrado, 422 campos incorrectos, 409 identidad
+  `(device_id, sequence)` duplicada; mensajes comprensibles y errores por campo.
+- `GET /api/measurements?device_id=hydromate-01&limit=20`: historial por recepción.
+  `sequence=N&limit=1` permite recuperar exactamente una identidad para reintentos.
+- `GET /api/measurements/latest?device_id=hydromate-01`: última fila, 404 sin datos.
+- `GET /api/devices/hydromate-01/status`: `no_data`, `recent` o `stale`, fechas,
+  edad y umbral. Describe antigüedad de telemetría, no presencia MQTT ni salud
+  eléctrica. Umbral 120 s por defecto (`TELEMETRY_FRESHNESS_SECONDS`).
+- `real_only=1` en consultas/estado excluye versiones sin origen, identidades
+  `test-*` y sensores simulados. Origen declarado no autentica un sensor.
+- Android producción solicita `real_only=1`, exige HTTPS y rechaza además
+  `synthetic_test` o cualquier origen simulado. Conserva desarrollo/demo debug
+  separado, sin fallback. Usa cabecera `X-HydroMate-Freshness-Seconds` del GET
+  para calcular el estado de esas mismas filas, evitando mezclar respuestas.
+
+## Referencia histórica v2
 
 v2 implementada en Laravel/PostgreSQL/Android e integrador local. Firmware
 preparado; ejecución física según STATUS. Contrato v1 preservado en
@@ -45,8 +93,9 @@ El origen lo declara el productor; la API no comprueba físicamente el sensor.
 - API 201 → stored; 422/otros 4xx → rejected; timeout/conexión/5xx → pendiente,
   reintentos con espera creciente hasta 30 s. No renumera ni altera el payload.
 - 409 → stored solo si consulta y verifica igualdad de todos los campos enviados.
-  Búsqueda limitada a 100 recepciones; si no prueba igualdad marca conflict para
-  revisión. Mismo identificador con otro contenido no sobrescribe la bandeja.
+  Búsqueda vigente por secuencia exacta; si no prueba igualdad marca conflict para
+  revisión. Fechas se comparan por instante UTC, no por formato textual. Mismo
+  identificador con otro contenido no sobrescribe la bandeja.
 - Firmware conserva una muestra pendiente en NVS y reserva bloques de 100 antes
   de usar secuencias. Reiniciar salta el bloque; huecos permitidos.
 - Si se borra NVS, reconciliar identidad/secuencia antes de reutilizar torre.

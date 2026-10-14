@@ -7,13 +7,13 @@ Solo adquisición y transmisión; no conecta ni gobierna salidas de bombas.
 - DS18B20 GPIO 4, flotador GPIO 27 (LOW = agua).
 - I2C SDA 21 / SCL 22: BH1750 y ADS1115 0x48; pH en A0.
 - pH conserva M=-5.579 y B=14.066 de la prueba previa; no es nueva calibración.
-- TDS fijo 650 ppm **simulado**, declarado en `sources.tds_ppm`.
-- JSON v2 cada 30 s en banco; si hay pendiente no toma otra muestra para envío.
+- TDS opcional, deshabilitado por defecto: `null/unavailable`, nunca 650 inventado.
+- JSON v3 cada 30 s; si hay pendiente no toma otra muestra para envío.
 - NVS reserva secuencias por bloques de 100 y guarda un objeto pendiente antes de
   publicar. Reintenta ese mismo objeto cada 5 s hasta ACK `stored` del integrador.
 - `rejected`/`conflict` detienen envío y conservan pendiente para diagnóstico.
-- Sensores fuera de rango/detectados como inválidos bloquean la muestra completa;
-  no se sustituyen por cero. Flotador no permite detectar por software un cable roto.
+- Sensores inválidos transmiten `null/invalid`; los no disponibles, `null/unavailable`.
+  Los otros sensores siguen transmitiéndose. Flotador no detecta un cable roto.
 - Estado Wi-Fi se registra como código numérico sin imprimir credenciales; si no
   conecta, reintenta cada 30 s. El ESP32 requiere una red compatible con 2.4 GHz.
 - No borrar NVS ni cambiar DEVICE_ID con mensajes pendientes sin reconciliar la
@@ -30,6 +30,22 @@ Copiar `secrets.example.h` a `secrets.h`, excluido de Git. Configurar Wi-Fi y br
 MQTT sin TLS es únicamente la etapa de banco LAN; para nube usar MQTT_TLS=true,
 puerto TLS, CA válida, reloj sincronizado y credenciales/ACL del despliegue real.
 No se usa `setInsecure()` ni hay fallback de TLS a conexión sin cifrado.
+Producción TLS exige puerto8884; cualquier otro puerto detiene el envío. Host,
+usuario, contraseña y CA se conservan en secrets.h privado. Acceso público y
+certificados: [PUBLIC_ACCESS](../docs/PUBLIC_ACCESS.md).
+TLS espera sincronización NTP antes de conectarse; adquisición usa hora UTC si
+está disponible. Conexión plana solo con opt-in de compilación
+`-DHYDROMATE_ALLOW_PLAIN_LAN=1` y broker IPv4 RFC1918 del banco privado.
+No usar esa opción para Internet. Compilar sin opt-in es el modo de producción.
+
+`sensor_config.h` permite habilitar TDS con
+`HYDROMATE_TDS_SENSOR_ENABLED=1`, canal ADS1115 A1 por defecto y factor de
+calibración. Se requiere temperatura válida, tensión 0.05–2.3 V y resultado en
+0–1000 ppm. La ecuación procede del
+[ejemplo de medida del fabricante](https://wiki.dfrobot.com/sen0244/docs/20305).
+Es preparación del driver, sin validación/calibración física de TDS. EC permanece
+`null/unavailable`: requiere seleccionar sensor/driver independiente; no se
+presenta una conversión de ppm como medida física de conductividad.
 
 Compilar desde raíz, con Arduino CLI incluido en Arduino IDE:
 
@@ -42,7 +58,7 @@ $cli = "$env:LOCALAPPDATA/Programs/Arduino IDE/resources/app/lib/backend/resourc
 & $cli monitor --port COM3 --config baudrate=115200
 ```
 
-Estado de carga/ejecución física y límites de evidencia: `docs/STATUS.md`.
+Estado de carga/ejecución física y límites de evidencia: `.project/context/STATUS.md`.
 La configuración aislada conserva `directories.data` en Arduino15 instalado y
 usa `.local/arduino-user` como sketchbook; las cinco bibliotecas de sensores se
 copiaron desde la instalación existente a `.local/arduino-libraries`, sin cambiar
