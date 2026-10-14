@@ -249,3 +249,23 @@ evolución compatible de TELEMETRY_CONTRACT descrita en ENERGY_OPTIMIZATION.
 Implementar/medir el ahorro por etapas; no afirmar sensores calibrados, comandos
 físicos ni consumo reducido sin prueba. Si se prepara nube, resolver acceso y
 MQTT/bridge sin asumir que un web service gratuito cubre el sistema completo.
+
+
+## Reconciliación pública/rootless — 2026-10-14
+
+Rama codex/public-rootless-hydromate reconciliada con origin/main; sin merge a main.
+Se restauran íntegramente talleres/PDFs/evidencias originales y rutas de contexto
+originales en docs; sin .project ni reorganización documental. Cambios limitados
+al acceso HTTPS8443/MQTT TLS8884/rootless y dependencia funcional v3.
+Hostname confirmado hydromate-kevin.duckdns.org; cuenta deploy-hydromate.
+Guía PUBLIC_ACCESS.md. Pruebas públicas físicas/VPS pendientes, sin SSH/secretos.
+La información anterior es histórica; el contrato v3 sustituye TDS simulado por
+null/origen, producción Android HTTPS/real_only y configuración separada.
+
+Validación repetida después de reconciliar:25 PHPUnit/157 assertions,28 Android
+sin omitidas,6 Python,Compose,MQTT TLS diez mensajes,smokeHTTP/HTTPS y firmware
+pasan. Debug/release/lint pasan;3 avisos existentes,0 errores. CA/hostname
+incorrectos rechazados y POST público403. Conservados556 archivos de main y382
+activos protegidos; originales completos de10 documentos preservados. Cero
+eliminaciones/renombres netos; sin conflictos Git ni acceso VPS. Registro en
+evidence/public-rootless-readiness-2026-10-14.json.

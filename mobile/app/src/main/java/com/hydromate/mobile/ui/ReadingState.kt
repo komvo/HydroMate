@@ -2,6 +2,7 @@ package com.hydromate.mobile.ui
 
 import com.hydromate.mobile.Measurement
 import com.hydromate.mobile.TelemetryHttpException
+import com.hydromate.mobile.TelemetryState
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.time.Duration
@@ -29,7 +30,7 @@ sealed class ReadingState {
     data object Idle : ReadingState()
     data object Loading : ReadingState()
     data class Empty(val checked: Instant) : ReadingState()
-    data class Ready(val values: List<Measurement>, val checked: Instant) : ReadingState()
+    data class Ready(val values: List<Measurement>, val checked: Instant, val deviceState: TelemetryState? = null) : ReadingState()
     data class Failed(val kind: FailureKind, val detail: String) : ReadingState()
 }
 

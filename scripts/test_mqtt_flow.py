@@ -9,16 +9,19 @@ import time
 import urllib.parse
 import uuid
 import paho.mqtt.client as mqtt
-from mqtt_bridge import request
+from mqtt_bridge import request, validate_transport
 
 
 def run(args):
-    device = 'test-mqtt-' + uuid.uuid4().hex[:10]
+    validate_transport(args)
+    device = args.device or 'test-mqtt-' + uuid.uuid4().hex[:10]
     replies = queue.Queue()
     ready = queue.Queue()
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
     if os.getenv('MQTT_USERNAME'):
         client.username_pw_set(os.environ['MQTT_USERNAME'], os.getenv('MQTT_PASSWORD'))
+    if args.ca:
+        client.tls_set(ca_certs=str(args.ca))
     def connected(c, u, f, code, props):
         c.subscribe(f'hydromate/{device}/ack', 1)
     def subscribed(c, u, mid, codes, props):
@@ -30,9 +33,12 @@ def run(args):
     client.loop_start()
     events = []
     passed = False
-    payload = dict(message_version=2, device_id=device, sequence=1, reason=['synthetic_test'],
-                   temperature_c=24.3, ph=6.2, tds_ppm=650, light_lux=450.5, water_present=True,
-                   sources={k:'simulated' for k in ['temperature_c','ph','tds_ppm','light_lux','water_present']})
+    first = int(time.time()) if args.device else 1
+    payload = dict(message_version=3, device_id=device, sequence=first, reason=['synthetic_test'],
+                   captured_at=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+                   temperature_c=24.3, ph=6.2, tds_ppm=None, ec_us_cm=None, light_lux=450.5, water_present=False,
+                   sources={k:'simulated' for k in ['temperature_c','ph','light_lux','water_present']} |
+                           dict(tds_ppm='unavailable', ec_us_cm='unavailable'))
     def send(value, expected):
         start = time.perf_counter()
         client.publish(f'hydromate/{device}/telemetry', json.dumps(value), qos=1).wait_for_publish(5)
@@ -53,15 +59,20 @@ def run(args):
         assert ack['status'] == expected, ack
     try:
         ready.get(timeout=8)
-        for seq in range(1,11):
+        for seq in range(first,first+10):
             send(payload | {'sequence':seq}, 'stored')
         send(payload, 'stored')
         send(payload | {'ph':7}, 'conflict')
-        send(payload | {'sequence':11, 'ph':50}, 'rejected')
+        send(payload | {'sequence':first+10, 'ph':50}, 'rejected')
         code, history = request(args.api, 'GET', '/api/measurements?' + urllib.parse.urlencode(dict(device_id=device,limit=20)))
-        assert code == 200 and len(history) == 10
-        assert {r['sequence'] for r in history} == set(range(1,11))
-        assert all(r['sources']['tds_ppm'] == 'simulated' for r in history)
+        assert code == 200
+        history = [r for r in history if first <= r['sequence'] < first+10]
+        assert len(history) == 10
+        assert {r['sequence'] for r in history} == set(range(first,first+10))
+        assert all(r['tds_ppm'] is None and r['sources']['tds_ppm'] == 'unavailable' for r in history)
+        if args.response_output:
+            args.response_output.parent.mkdir(parents=True, exist_ok=True)
+            args.response_output.write_text(json.dumps(history, indent=2), encoding='utf-8')
         passed = True
     finally:
         client.disconnect(); client.loop_stop()
@@ -76,5 +87,8 @@ if __name__ == '__main__':
     parser.add_argument('--host',default='127.0.0.1')
     parser.add_argument('--port',type=int,default=1883)
     parser.add_argument('--api',default='http://127.0.0.1:8000')
+    parser.add_argument('--ca',type=Path,help='Trusted CA for MQTT TLS; never disables verification')
+    parser.add_argument('--device',help='Only for an isolated test stack with a restricted test ACL; messages remain synthetic')
+    parser.add_argument('--response-output',type=Path,help='API response fixture for the Android parser test')
     parser.add_argument('--output',type=Path,required=True)
     run(parser.parse_args())

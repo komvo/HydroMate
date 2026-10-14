@@ -212,3 +212,16 @@ migraciones explícitas después del arranque. Entorno local permanece separado.
 Sin autenticación completa nueva, Android en VPS ni firmware/actuadores nuevos.
 Endpoint HTTPS protegido independiente y certificados deben provisionarlos fuera
 de esta tarea; no alterar proxy de chitiito. Detalles en PRODUCTION.md.
+
+
+## D56 — Publicación aislada y reconciliación de alcance (2026-10-14)
+
+Por solicitud del usuario: HTTPS8443/MQTT TLS8884 en hostname
+hydromate-kevin.duckdns.org, Docker rootless deploy-hydromate, sin SSH ni secretos.
+Certificados privados /etc/hydromate/{https,mqtt}; guard de cuenta/socket/daemon
+con permisos mediante namespace. URL única HYDROMATE_APP_URL para Laravel/Android.
+Integración v3 admite sensores null y TDS/EC ausentes, sin simulaciones producción.
+Conservar main íntegro: contexto mantiene rutas docs, talleres/PDFs/evidencias
+originales idénticos. No reorganización ni limpieza de duplicados en esta rama.
+Sustituye cualquier traslado a .project propuesto en el commit anterior; alcance
+reconciliado antes de merge. Antecedentes de main permanecen sin eliminar.

@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-14T15:39:29.551147+00:00",
+  "passed": true,
+  "scope": "Read-only API/TLS check; historical rows are not proof of new physical transmissions",
+  "api": "https://localhost:8443",
+  "mqtt_host": "localhost",
+  "mqtt_port": 8884,
+  "mqtt_tls_version": "TLSv1.3",
+  "api_health": 200,
+  "verified_v3_sequences": [
+    1502
+  ],
+  "device_state": "stale",
+  "mqtt_scope": "Verified certificate chain/hostname and TLS socket; authentication confirmed separately by ESP32/bridge",
+  "local_only": true,
+  "project": "hydromate-validation",
+  "actual_public_vps_verified": false,
+  "android": {
+    "suites": [
+      {
+        "name": "com.hydromate.mobile.AeroBehaviorTest",
+        "tests": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.hydromate.mobile.PartialTelemetryTest",
+        "tests": 5,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.hydromate.mobile.ReadingStateTest",
+        "tests": 3,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.hydromate.mobile.RepositoryTest",
+        "tests": 5,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.hydromate.mobile.TelemetryTest",
+        "tests": 11,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      }
+    ],
+    "https_repository_verified": true,
+    "debug_release_build": true,
+    "lint_pass": true,
+    "test_ca_packaged": false,
+    "public_real_phone_test_pending": true
+  },
+  "checks": {
+    "public_post_status": 403,
+    "untrusted_ca_rejected": true,
+    "reload_https_mqtt_passed": true,
+    "canonical_url_env_verified": true,
+    "http_production_url_rejected": true,
+    "release_example_url_removed": true,
+    "firmware_tls_8884_guard_compiled": true,
+    "deploy_reload_bash_syntax": true,
+    "documented_sql_command_executed_only_in_validation": true,
+    "deployment_public_url_gate_tested": true
+  },
+  "fixture_scope": "One historical physical payload1502 replayed into isolated test DB; not a new ESP32/cloud transmission",
+  "remaining_manual": [
+    "own DNS A and public certificate DNS-01/renewal",
+    "private VPS environment, certificate permissions and MQTT accounts",
+    "authorize only TCP8443/8884",
+    "publish/approve main deployment with --mqtt --public",
+    "private ESP32 production config/flash and Android production URL",
+    "external physical flow and phone confirmation"
+  ]
+}

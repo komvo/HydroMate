@@ -7,6 +7,32 @@ x-logging: &logging
     max-file: "3"
 
 services:
+  https:
+    image: nginxinc/nginx-unprivileged:stable-alpine
+    profiles: [public]
+    restart: unless-stopped
+    ports:
+      - "${HYDROMATE_HTTPS_BIND_ADDRESS:-127.0.0.1}:8443:8443"
+    volumes:
+      - ./deployment/https/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - type: bind
+        source: ${HYDROMATE_HTTPS_SECRETS_DIR:-./deployment/secrets/https}
+        target: /etc/hydromate/tls
+        read_only: true
+        bind:
+          create_host_path: false
+    networks: [application]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 8443"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    security_opt: ["no-new-privileges:true"]
+    logging: *logging
+
   db:
     image: postgres:16-bookworm
     restart: unless-stopped

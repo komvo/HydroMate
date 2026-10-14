@@ -2,6 +2,7 @@
 import argparse
 from datetime import datetime, timezone
 import json
+import ipaddress
 import os
 from pathlib import Path
 import queue
@@ -33,7 +34,44 @@ def request(api, method, suffix, payload=None):
         return response.status, json.loads(body)
 
 
+def measurement_matches_payload(row, payload):
+    """Compare acquisition time by instant: Laravel serializes UTC with microseconds."""
+    for key, value in payload.items():
+        actual = row.get(key)
+        if key == 'captured_at' and value is not None:
+            try:
+                if datetime.fromisoformat(value.replace('Z', '+00:00')) != datetime.fromisoformat(actual.replace('Z', '+00:00')):
+                    return False
+            except (ValueError, AttributeError, TypeError):
+                return False
+        elif actual != value:
+            return False
+    return True
+
+
+def private_host(host, aliases=()):
+    if host in ('localhost', *aliases):
+        return True
+    try:
+        address = ipaddress.ip_address(host)
+        return address.is_loopback or (address.version == 4 and any(address in ipaddress.ip_network(n)
+            for n in ('10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16')))
+    except ValueError:
+        return False
+
+
+def validate_transport(args):
+    if not args.ca and not private_host(args.host, ('mosquitto',)):
+        raise ValueError('Public MQTT requires TLS and --ca; no insecure Internet connection')
+    url = urllib.parse.urlsplit(args.api)
+    if url.scheme not in ('http', 'https') or not url.hostname or url.username or url.password or url.query or url.fragment:
+        raise ValueError('Provide an HTTP(S) API base without credentials/query/fragment')
+    if url.scheme == 'http' and not private_host(url.hostname, ('api',)):
+        raise ValueError('Public API requires HTTPS')
+
+
 def run(args):
+    validate_transport(args)
     args.state.parent.mkdir(parents=True, exist_ok=True)
     db = sqlite3.connect(args.state)
     db.execute('CREATE TABLE IF NOT EXISTS inbox (device TEXT, seq INTEGER, payload TEXT, state TEXT, attempts INTEGER DEFAULT 0, next_try REAL DEFAULT 0, PRIMARY KEY(device,seq))')
@@ -111,11 +149,11 @@ def run(args):
                 if status == 201:
                     outcome = 'stored'
                 elif status == 409:
-                    query = urllib.parse.urlencode(dict(device_id=device, limit=100))
+                    query = urllib.parse.urlencode(dict(device_id=device, sequence=seq, limit=1))
                     code, rows = request(args.api, 'GET', '/api/measurements?' + query)
                     existing = next((r for r in rows if r['sequence'] == seq), None) if code == 200 and isinstance(rows, list) else None
                     # Conflict is success only if the persisted content is identical.
-                    outcome = 'stored' if existing and all(existing.get(k) == v for k, v in payload.items()) else 'conflict'
+                    outcome = 'stored' if existing and measurement_matches_payload(existing, payload) else 'conflict'
                 elif 400 <= status < 500:
                     outcome = 'rejected'
                 log('http_result', device=device, sequence=seq, status=status, outcome=outcome,

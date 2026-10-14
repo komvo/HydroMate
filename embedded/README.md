@@ -1,3 +1,18 @@
+# Firmware de producción: incremento vigente — 2026-10-14
+
+embedded/HydroMateTelemetry implementa v3: DS18B20, BH1750, flotador y pH ADS1115;
+TDS opcional/deshabilitado en sensor_config.h, EC independiente sin driver todavía.
+Ausencia/invalidez transmite null y origen; no TDS simulado de sustitución.
+Conserva identidad, pendiente NVS, secuencias y ACK después de persistencia.
+Copiar secrets.example.h como secrets.h privado: Wi-Fi, MQTT_HOST público
+hydromate-kevin.duckdns.org, MQTT_PORT8884, cuenta MQTT, TLStrue y CA raíz emisora.
+No setInsecure; espera NTP y valida CA/hostname. Compilar sin
+HYDROMATE_ALLOW_PLAIN_LAN; el opt-in solo habilita banco RFC1918. Desarrollo y
+configuración privada actuales permanecen independientes, sin carga automática.
+Guía ../docs/PUBLIC_ACCESS.md y ../docs/INTEGRATION.md; contrato v3 en docs.
+
+## Documentación anterior preservada
+
 # Firmware de telemetría del Taller 5
 
 `HydroMateTelemetry/HydroMateTelemetry.ino` adapta el sketch original de sensores,

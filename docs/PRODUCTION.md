@@ -1,3 +1,22 @@
+# Publicación vigente: HTTPS8443 / MQTT TLS8884 / Docker rootless
+
+Seguir primero [PUBLIC_ACCESS](PUBLIC_ACCESS.md) para hostname confirmado,
+certificados, cuentas MQTT y permisos rootless. Ejecutar como deploy-hydromate:
+
+```bash
+. deployment/require-rootless.sh
+sh deployment/prepare-rootless-secrets.sh
+sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
+```
+
+HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:8443; rutas privadas
+/etc/hydromate/https y /etc/hydromate/mqtt. El hook ya migra --force. Las variables
+sensibles actuales se conservan. No sudo docker. Los comandos base de la referencia
+siguiente solo son aplicables en el daemon rootless validado; para publicación
+usar ambos perfiles. No se accede a la VPS desde esta tarea.
+
+## Referencia original preservada
+
 # Producción HydroMate en VPS compartida
 
 Esta configuración prepara el repositorio para el ejecutor automático existente

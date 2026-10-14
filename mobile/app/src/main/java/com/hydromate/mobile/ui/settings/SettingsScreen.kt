@@ -7,20 +7,24 @@ import android.widget.*
 import com.hydromate.mobile.PreviewSupport
 import com.hydromate.mobile.R
 import com.hydromate.mobile.Telemetry
+import com.hydromate.mobile.ConnectionEnvironment
+import com.hydromate.mobile.BuildConfig
 import com.hydromate.mobile.ui.*
 
-data class ConnectionSettings(val server: String, val device: String, val name: String, val ageMinutes: Int) {
-    fun draft() = ConnectionDraft(server, device, name, ageMinutes.toString())
+data class ConnectionSettings(val server: String, val device: String, val name: String, val ageMinutes: Int,
+    val environment: ConnectionEnvironment = ConnectionEnvironment.DEVELOPMENT) {
+    fun draft() = ConnectionDraft(server, device, name, ageMinutes.toString(), environment)
 }
-data class ConnectionDraft(val server: String, val device: String, val name: String, val age: String) {
+data class ConnectionDraft(val server: String, val device: String, val name: String, val age: String,
+    val environment: ConnectionEnvironment = ConnectionEnvironment.DEVELOPMENT) {
     fun validated(): ConnectionSettings {
         val url = server.trim().trimEnd('/')
         val tower = device.trim()
-        Telemetry.endpoint(url, tower)
+        Telemetry.endpoint(url, tower, environment == ConnectionEnvironment.PRODUCTION)
         require(name.trim().isNotEmpty() && name.trim().length <= 64) { "El nombre debe tener entre 1 y 64 caracteres." }
         val minutes = age.toIntOrNull()
         require(minutes != null && minutes in 0..10080) { "La referencia debe ser un entero entre 0 y 10080 minutos." }
-        return ConnectionSettings(url, tower, name.trim(), minutes)
+        return ConnectionSettings(url, tower, name.trim(), minutes, environment)
     }
 }
 
@@ -31,17 +35,20 @@ class SettingsScreen(private val ui: Components) {
     private var age: EditText? = null
     private var diagnostic: LinearLayout? = null
     private var connectionStatus: TextView? = null
+    private var environment = ConnectionEnvironment.DEVELOPMENT
     var advanced = false
     var diagnostics = false
 
     fun draft(): ConnectionDraft? = server?.let {
-        ConnectionDraft(it.text.toString(), device!!.text.toString(), name!!.text.toString(), age!!.text.toString())
+        ConnectionDraft(it.text.toString(), device!!.text.toString(), name!!.text.toString(), age!!.text.toString(), environment)
     }
 
     fun render(root: LinearLayout, config: ConnectionDraft, state: ReadingState, save: () -> Unit,
                equipment: () -> Unit, appearance: String, changeAppearance: (String) -> Unit,
                scenario: Int, changeScenario: (Int) -> Unit, saved: List<ConnectionSettings>,
-               chooseTower: (ConnectionSettings) -> Unit) = with(ui) {
+               chooseTower: (ConnectionSettings) -> Unit,
+               chooseEnvironment: (ConnectionEnvironment) -> Unit = {}) = with(ui) {
+        environment = config.environment
         portalHeader(root, "Tu HydroMate", "Centro de conexión y preferencias", GlassSymbol.SETTINGS)
         section(root, "Torre")
         val tower = card(root)
@@ -67,6 +74,15 @@ class SettingsScreen(private val ui: Components) {
         }, false))
         section(root, "Conexión")
         val connection = card(root)
+        connection.addView(button("Entorno: ${config.environment.title}", {
+            val environments = if (BuildConfig.DEBUG) ConnectionEnvironment.entries else listOf(ConnectionEnvironment.PRODUCTION)
+            AlertDialog.Builder(context).setTitle("Seleccionar conexión")
+                .setItems(environments.map { it.title }.toTypedArray()) { _, index -> chooseEnvironment(environments[index]) }
+                .setNegativeButton("Cancelar", null).show()
+        }, false))
+        connection.addView(text(if (config.environment == ConnectionEnvironment.PRODUCTION)
+            "HTTPS obligatorio. Solo telemetría con origen real o sensor no disponible; no hay datos demo ni fallback local."
+            else "Banco local por USB o red privada. La dirección de producción se guarda por separado.", 14, tint = muted))
         connectionStatus = text("", 14, true).also { connection.addView(it) }
         disclosure(connection, "conexión avanzada", advanced, { advanced = it }) { form ->
             device = field(form, "Identificador de torre (device_id)", config.device, 102)
@@ -91,7 +107,7 @@ class SettingsScreen(private val ui: Components) {
         }, false))
         design.addView(text("Movimiento breve al navegar; se respeta la desactivación de animaciones de Android.", 14, tint = muted))
 
-        if (PreviewSupport.options.isNotEmpty()) {
+        if (PreviewSupport.options.isNotEmpty() && config.environment == ConnectionEnvironment.DEVELOPMENT) {
             section(root, "Demostración · solo debug")
             val demo = card(root)
             demo.addView(text("Escenarios locales sin conexión al equipo. No se activan al fallar el servidor.", 14, tint = muted))
@@ -111,7 +127,7 @@ class SettingsScreen(private val ui: Components) {
         credits.addView(button("Acerca del diseño", {
             help("HydroMate · Aero Eco", "Inspirado en el optimismo ecológico de Frutiger Aero y los portales de internet clásicos.\n\nEl emblema es decorativo: no representa volumen, plantas activas ni estado físico. El cristal se dibuja por capas; no refracta contenido en tiempo real.\n\nLas referencias visuales, procedencia y avisos están en la documentación del proyecto.")
         }, false))
-        credits.addView(text("HydroMate 0.6.0 · Jardín de cristal", 12, tint = muted))
+        credits.addView(text("HydroMate ${BuildConfig.VERSION_NAME} · Jardín de cristal", 12, tint = muted))
     }
 
     fun updateState(state: ReadingState, demonstration: Boolean) = with(ui) {

@@ -4,6 +4,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import com.hydromate.mobile.R
+import com.hydromate.mobile.TelemetryState
 import com.hydromate.mobile.ui.*
 import java.time.Instant
 
@@ -38,14 +39,14 @@ class DashboardScreen(private val ui: Components) {
         hero.setOnClickListener { cultivation() }
 
         val latest = (state as? ReadingState.Ready)?.values?.firstOrNull()
-        val old = latest?.let { isOld(it.received, Instant.now(), ageMinutes) } == true
+        val old = (state as? ReadingState.Ready)?.deviceState == TelemetryState.STALE || latest?.let { isOld(it.captured ?: it.received, Instant.now(), ageMinutes) } == true
         val status = card(root, color(if (state is ReadingState.Failed || old) R.color.warning_soft else R.color.surface))
         status.setPadding(dp(12), dp(9), dp(12), dp(9))
         val message = when (state) {
             is ReadingState.Failed -> "No podemos actualizar las lecturas"
             is ReadingState.Loading -> "Actualizando lecturas…"
             is ReadingState.Empty -> "Sin lecturas para esta torre"
-            is ReadingState.Ready -> "${if (old) "Lectura antigua · " else ""}Recibido ${latest?.let { date(it.received) }.orEmpty()}"
+            is ReadingState.Ready -> "${if (old) "Sin datos recientes · " else ""}Recibido ${latest?.let { date(it.received) }.orEmpty()}"
             else -> "Consulta las lecturas de tu torre"
         }
         status.addView(text(message, 13, state is ReadingState.Failed,
@@ -62,7 +63,8 @@ class DashboardScreen(private val ui: Components) {
             Instrument("pH", latest?.ph, "", GlassSymbol.CHEMISTRY),
             Instrument("Temp.", latest?.temperature, "°C", GlassSymbol.THERMOMETER),
             Instrument(if (latest?.tdsSimulated == true) "TDS simulado" else "TDS", latest?.tds, "ppm", GlassSymbol.TDS),
-            Instrument("Luz", latest?.lightValue, latest?.lightUnit ?: "lux", GlassSymbol.SUN))
+            Instrument("Luz", latest?.lightValue, latest?.lightUnit ?: "lux", GlassSymbol.SUN)) +
+            if (latest?.ecUsCm != null) listOf(Instrument("EC", latest.ecUsCm, "µS/cm", GlassSymbol.TDS)) else emptyList()
         items.chunked(if (twoColumns) 2 else 1).forEach { group ->
             val line = row().apply { gravity = Gravity.TOP }
             root.addView(line, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(12) })
@@ -82,7 +84,7 @@ class DashboardScreen(private val ui: Components) {
                     fontFeatureSettings = "tnum"; setPadding(dp(4), 0, 0, 0)
                 })
                 instrument.addView(text(when {
-                    item.value == null -> "Sin lectura"
+                    item.value == null -> if (item.label == "TDS") "TDS no disponible" else "Sin lectura"
                     old -> "Lectura antigua"
                     else -> "Sin rango configurado"
                 }, 12, tint = muted).apply { setPadding(dp(4), 0, 0, 0) })
@@ -92,7 +94,7 @@ class DashboardScreen(private val ui: Components) {
         val waterRow = row()
         waterRow.addView(icon(GlassSymbol.DROPLET, 54))
         val waterCopy = column()
-        waterCopy.addView(text(if (latest?.waterPresent != null) "Flotador · nivel discreto" else "Nivel relativo · prototipo", 14, true))
+        waterCopy.addView(text(if (latest != null && (latest.version >= 2 || latest.waterPresent != null)) "Flotador · nivel discreto" else "Nivel relativo · prototipo", 14, true))
         waterCopy.addView(text(latest?.waterDescription ?: "—", 20, true))
         waterCopy.addView(text(if (latest == null) "Sin lectura" else if (old) "Lectura antigua" else "Sin rango configurado", 12, tint = muted))
         waterRow.addView(waterCopy, LinearLayout.LayoutParams(0, -2, 1f).apply { marginStart = dp(10) })

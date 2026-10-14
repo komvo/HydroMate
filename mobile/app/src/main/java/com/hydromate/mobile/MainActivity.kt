@@ -63,7 +63,7 @@ class MainActivity : Activity() {
         draft = ConnectionDraft(savedInstanceState?.getString("draft_server") ?: config.server,
             savedInstanceState?.getString("draft_device") ?: config.device,
             savedInstanceState?.getString("draft_name") ?: config.name,
-            savedInstanceState?.getString("draft_age_text") ?: config.ageMinutes.toString())
+            savedInstanceState?.getString("draft_age_text") ?: config.ageMinutes.toString(), config.environment)
         destination = Destination.entries.find { it.name == savedInstanceState?.getString("destination_name") } ?: Destination.HOME
         controlOrigin = Destination.entries.find { it.name == savedInstanceState?.getString("control_origin") } ?: Destination.HOME
         controlExpanded = savedInstanceState?.getBoolean("control_expanded") ?: false
@@ -71,6 +71,7 @@ class MainActivity : Activity() {
         settings.diagnostics = savedInstanceState?.getBoolean("diagnostics") ?: false
         metric = Metric.entries.getOrElse(savedInstanceState?.getInt("metric") ?: 0) { Metric.PH }
         scenario = (savedInstanceState?.getInt("scenario") ?: 0).takeIf { it in PreviewSupport.options.indices } ?: 0
+        if (config.environment == ConnectionEnvironment.PRODUCTION) scenario = 0
         state = PreviewSupport.load(scenario) ?: ReadingState.Idle
         if (scenario == 0) savedInstanceState?.getString("failure_kind")?.let { kind ->
             FailureKind.entries.find { it.name == kind }?.let {
@@ -150,41 +151,50 @@ class MainActivity : Activity() {
             ui.help("Revisa la configuración", error.message.orEmpty()); return
         }
         invalidateRequest(); config = validated; connections.save(config)
+        if (config.environment == ConnectionEnvironment.PRODUCTION) scenario = 0
         state = if (scenario > 0) PreviewSupport.load(scenario)!! else ReadingState.Idle
         if (scenario == 0) refresh() else settings.updateState(state, true)
     }
     private fun selectSavedTower(value: ConnectionSettings) {
         captureDraft(); invalidateRequest()
         config = value; draft = value.draft(); connections.save(value)
+        if (config.environment == ConnectionEnvironment.PRODUCTION) scenario = 0
         state = if (scenario > 0) PreviewSupport.load(scenario)!! else ReadingState.Idle
         render()
         if (scenario == 0) refresh()
     }
     private fun selectScenario(value: Int) {
-        captureDraft(); invalidateRequest(); scenario = value
+        captureDraft(); invalidateRequest(); scenario = if (config.environment == ConnectionEnvironment.PRODUCTION) 0 else value
         state = PreviewSupport.load(scenario) ?: ReadingState.Idle
         render()
         if (scenario == 0) refresh()
     }
-    private fun requestIdentity() = "${config.server}\n${config.device}"
+    private fun chooseEnvironment(value: ConnectionEnvironment) {
+        captureDraft(); invalidateRequest()
+        config = connections.profile(value); draft = config.draft(); connections.save(config)
+        if (value == ConnectionEnvironment.PRODUCTION) scenario = 0
+        state = ReadingState.Idle; render()
+    }
+    private fun requestIdentity() = "${config.environment}\n${config.server}\n${config.device}"
     private fun refresh() {
         if (!active || (state is ReadingState.Loading && scenario == 0)) return
         if (scenario > 0) {
             state = PreviewSupport.load(scenario)!!; presentState(); return
         }
-        val endpoint = try { Telemetry.endpoint(config.server, config.device) }
+        val endpoint = try { Telemetry.endpoint(config.server, config.device, config.environment == ConnectionEnvironment.PRODUCTION) }
         catch (error: IllegalArgumentException) {
             state = ReadingState.Failed(FailureKind.ADDRESS, error.message.orEmpty()); presentState(); return
         }
         state = ReadingState.Loading; presentState()
         val ticket = requests.begin(requestIdentity())
         val requestedDevice = config.device
+        val production = config.environment == ConnectionEnvironment.PRODUCTION
         pending = executor.submit {
-            val result = runCatching { repository.load(endpoint, requestedDevice) }
+            val result = runCatching { repository.loadSnapshot(endpoint, requestedDevice, production) }
             runOnUiThread {
                 if (!active || isDestroyed || isFinishing || scenario != 0 || !requests.accepts(ticket, requestIdentity())) return@runOnUiThread
-                state = result.fold(onSuccess = { values ->
-                    if (values.isEmpty()) ReadingState.Empty(Instant.now()) else ReadingState.Ready(values, Instant.now())
+                state = result.fold(onSuccess = { snapshot ->
+                    if (snapshot.readings.isEmpty()) ReadingState.Empty(Instant.now()) else ReadingState.Ready(snapshot.readings, Instant.now(), snapshot.deviceState)
                 }, onFailure = ::failure)
                 presentState()
             }
@@ -226,7 +236,7 @@ class MainActivity : Activity() {
                     captureDraft()
                     getSharedPreferences("appearance", MODE_PRIVATE).edit().putString("mode", value).apply()
                     recreate()
-                }, scenario, ::selectScenario, connections.saved(), ::selectSavedTower)
+                }, scenario, ::selectScenario, connections.saved(), ::selectSavedTower, ::chooseEnvironment)
         }
         navigation.show(destination, ::navigate)
     }
