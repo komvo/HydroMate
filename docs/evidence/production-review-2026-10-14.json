@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-14T09:26:54.233420+00:00",
+  "passed": true,
+  "synthetic": true,
+  "scope": "Repeated local production validation before branch commit; no VPS or physical sensor; one-day localhost TLS test certificate",
+  "phpunit": {
+    "tests": 19,
+    "assertions": 118,
+    "passed": true
+  },
+  "compose_isolation_passed": true,
+  "api_and_bridge_images_rebuilt": true,
+  "migration_recheck_passed": true,
+  "http_smoke_passed": true,
+  "mqtt_tls_new_synthetic_records": 10,
+  "mqtt_events": [
+    {
+      "sequence": 201,
+      "ack": "stored",
+      "elapsed_ms": 363.13
+    },
+    {
+      "sequence": 202,
+      "ack": "stored",
+      "elapsed_ms": 55.74
+    },
+    {
+      "sequence": 203,
+      "ack": "stored",
+      "elapsed_ms": 98.23
+    },
+    {
+      "sequence": 204,
+      "ack": "stored",
+      "elapsed_ms": 98.17
+    },
+    {
+      "sequence": 205,
+      "ack": "stored",
+      "elapsed_ms": 102.41
+    },
+    {
+      "sequence": 206,
+      "ack": "stored",
+      "elapsed_ms": 114.63
+    },
+    {
+      "sequence": 207,
+      "ack": "stored",
+      "elapsed_ms": 102.12
+    },
+    {
+      "sequence": 208,
+      "ack": "stored",
+      "elapsed_ms": 102.51
+    },
+    {
+      "sequence": 209,
+      "ack": "stored",
+      "elapsed_ms": 98.19
+    },
+    {
+      "sequence": 210,
+      "ack": "stored",
+      "elapsed_ms": 98.04
+    },
+    {
+      "sequence": 201,
+      "ack": "stored",
+      "elapsed_ms": 45.73
+    },
+    {
+      "sequence": 201,
+      "ack": "conflict",
+      "elapsed_ms": 44.11
+    },
+    {
+      "sequence": 211,
+      "ack": "rejected",
+      "elapsed_ms": 45.0
+    }
+  ],
+  "development_historical_rows_unchanged": 90,
+  "source_hashes": {
+    "compose.production.yml": "e6c797682fadcd895388b49bd9edb2cd1cf421908a9682adb82803865c716d5c",
+    "hydromate-backend/Dockerfile": "ba6c2cc8f82cc4225d44cf824f41583d08fcdeedf6dc903bd0c2717336f0dcc5",
+    "scripts/Dockerfile.bridge": "fc3b3b3d1f27353331f6e8ac97ed93f6d55fdf4c1a318d60bcdbe008676f1d77"
+  }
+}

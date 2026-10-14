@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-14T09:14:23.895099+00:00",
+  "passed": true,
+  "scope": "Local Docker production packaging validation; test project hydromate-validation, synthetic data and one-day self-signed localhost test certificate; no VPS, SSH, Android or physical sensor",
+  "phpunit": {
+    "tests": 19,
+    "assertions": 118,
+    "passed": true
+  },
+  "images_built": [
+    "hydromate-api:validation",
+    "hydromate-bridge:validation"
+  ],
+  "api_healthcheck_passed": true,
+  "migrate_force_passed": true,
+  "application_role_superuser": false,
+  "api_image_user_uid": 33,
+  "api_image_contains_env": false,
+  "api_image_contains_phpunit": false,
+  "compose_isolation_passed": true,
+  "http_smoke_passed": true,
+  "mqtt_tls_ten_synthetic_passed": true,
+  "anonymous_mqtt_rejected": true,
+  "untrusted_tls_certificate_rejected": true,
+  "durable_sequence_12_recovered_after_api_bridge_db_stop_start": true,
+  "historical_http_test_rows_preserved_after_restart": 11,
+  "development_historical_rows_unchanged": 90,
+  "source_hashes": {
+    "compose.production.yml": "e6c797682fadcd895388b49bd9edb2cd1cf421908a9682adb82803865c716d5c",
+    "hydromate-backend/Dockerfile": "ba6c2cc8f82cc4225d44cf824f41583d08fcdeedf6dc903bd0c2717336f0dcc5",
+    "scripts/Dockerfile.bridge": "fc3b3b3d1f27353331f6e8ac97ed93f6d55fdf4c1a318d60bcdbe008676f1d77"
+  },
+  "final_image_health_and_tls_retry_passed": true,
+  "final_stop_exit_codes": {
+    "hydromate-validation-api-1": 0,
+    "hydromate-validation-bridge-1": 143
+  },
+  "forced_kill_during_initial_shutdown_test_corrected": true
+}

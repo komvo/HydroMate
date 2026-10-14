@@ -1,0 +1,5 @@
+*
+!Dockerfile.bridge
+!requirements-mqtt.txt
+!mqtt_bridge.py
+!docker-bridge-entrypoint.sh

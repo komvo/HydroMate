@@ -1,0 +1,142 @@
+name: hydromate
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  db:
+    image: postgres:16-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${HYDROMATE_DB_DATABASE:-hydromate}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${HYDROMATE_POSTGRES_PASSWORD:?Set the private PostgreSQL administrator password}
+      HYDROMATE_DB_USERNAME: ${HYDROMATE_DB_USERNAME:-hydromate}
+      HYDROMATE_DB_PASSWORD: ${HYDROMATE_DB_PASSWORD:?Set the private application database password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deployment/postgres/init-app-role.sh:/docker-entrypoint-initdb.d/10-hydromate-role.sh:ro
+    networks: [database]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d \"$$POSTGRES_DB\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    logging: *logging
+
+  api:
+    image: hydromate-api:${HYDROMATE_IMAGE_TAG:-production}
+    build:
+      context: ./hydromate-backend
+      target: production
+    restart: unless-stopped
+    init: true
+    stop_signal: SIGTERM
+    environment:
+      APP_NAME: HydroMate
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_KEY: ${HYDROMATE_APP_KEY:?Set the private Laravel application key}
+      APP_URL: ${HYDROMATE_APP_URL:-http://localhost:8081}
+      APP_LOCALE: es
+      LOG_CHANNEL: stderr
+      LOG_LEVEL: warning
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_DATABASE: ${HYDROMATE_DB_DATABASE:-hydromate}
+      DB_USERNAME: ${HYDROMATE_DB_USERNAME:-hydromate}
+      DB_PASSWORD: ${HYDROMATE_DB_PASSWORD:?Set the private application database password}
+      SESSION_DRIVER: file
+      CACHE_STORE: file
+      QUEUE_CONNECTION: sync
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - api_storage:/var/www/html/storage
+    networks: [application, database]
+    depends_on:
+      db:
+        condition: service_healthy
+    security_opt: ["no-new-privileges:true"]
+    logging: *logging
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    profiles: [mqtt]
+    restart: unless-stopped
+    ports:
+      - "${HYDROMATE_MQTT_BIND_ADDRESS:-127.0.0.1}:8884:8884"
+    volumes:
+      - ./deployment/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./deployment/mosquitto/acl:/mosquitto/config/acl:ro
+      - type: bind
+        source: ${HYDROMATE_MQTT_SECRETS_DIR:-./deployment/secrets/mqtt}
+        target: /mosquitto/secrets
+        read_only: true
+        bind:
+          create_host_path: false
+      - mqtt_data:/mosquitto/data
+    networks: [application]
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 1884"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    logging: *logging
+
+  bridge:
+    image: hydromate-bridge:${HYDROMATE_IMAGE_TAG:-production}
+    build:
+      context: ./scripts
+      dockerfile: Dockerfile.bridge
+    profiles: [mqtt]
+    restart: unless-stopped
+    init: true
+    environment:
+      MQTT_USERNAME: hydromate-bridge
+      MQTT_PASSWORD: ${HYDROMATE_MQTT_BRIDGE_PASSWORD:-}
+    command:
+      - python
+      - -u
+      - mqtt_bridge.py
+      - --host
+      - mosquitto
+      - --port
+      - "1884"
+      - --api
+      - http://api:8080
+      - --client-id
+      - hydromate-production-bridge
+      - --state
+      - /state/inbox.sqlite
+    volumes:
+      - bridge_state:/state
+    networks: [application]
+    depends_on:
+      api:
+        condition: service_healthy
+      mosquitto:
+        condition: service_healthy
+    security_opt: ["no-new-privileges:true"]
+    logging: *logging
+
+networks:
+  application:
+    name: ${COMPOSE_PROJECT_NAME:-hydromate}_application
+  database:
+    name: ${COMPOSE_PROJECT_NAME:-hydromate}_database
+    internal: true
+
+volumes:
+  postgres_data:
+    name: ${COMPOSE_PROJECT_NAME:-hydromate}_postgres_data
+  api_storage:
+    name: ${COMPOSE_PROJECT_NAME:-hydromate}_api_storage
+  mqtt_data:
+    name: ${COMPOSE_PROJECT_NAME:-hydromate}_mqtt_data
+  bridge_state:
+    name: ${COMPOSE_PROJECT_NAME:-hydromate}_bridge_state

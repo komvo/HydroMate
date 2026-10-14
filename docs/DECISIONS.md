@@ -198,3 +198,17 @@ reserva de secuencia y un pendiente. MQTT sin TLS solamente en banco doméstico
 autorizado; VPS requiere TLS/HTTPS, API protegida y separación del compañero.
 Usuario autorizó perfil doméstico privado/regla 1884 local; configuración previa
 Mosquitto 1883 y PostgreSQL conservada. Pruebas físicas/nube según STATUS.
+
+## D55 — Producción aislada y despliegue externo desde main (2026-10-14)
+
+Usuario limita expresamente la tarea a preparar repositorio, sin acceso SSH ni
+solicitar credenciales. Sustituye la propuesta previa de acceso interactivo: ejecutor
+existente despliega main con lectura Git; se entrega hook de operación Docker
+propia, no workflow con secretos SSH. chitiito-* (incluidas redes/volúmenes/config)
+intocable. Proyecto Docker hydromate, API inicialmente 8081 loopback, PostgreSQL
+interno y MQTT TLS opcional8884 (1884 únicamente interno). No80/443/8883, host
+network ni volúmenes compartidos. .env real solo VPS, configuración por entorno;
+migraciones explícitas después del arranque. Entorno local permanece separado.
+Sin autenticación completa nueva, Android en VPS ni firmware/actuadores nuevos.
+Endpoint HTTPS protegido independiente y certificados deben provisionarlos fuera
+de esta tarea; no alterar proxy de chitiito. Detalles en PRODUCTION.md.

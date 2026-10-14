@@ -1,0 +1,11 @@
+FROM python:3.13-slim-bookworm
+WORKDIR /app
+COPY requirements-mqtt.txt ./
+RUN pip install --no-cache-dir -r requirements-mqtt.txt \
+    && useradd --uid 10001 --create-home hydromate \
+    && mkdir /state && chown hydromate:hydromate /state
+COPY mqtt_bridge.py ./
+COPY --chmod=755 docker-bridge-entrypoint.sh /usr/local/bin/hydromate-bridge-entrypoint
+USER hydromate
+ENTRYPOINT ["hydromate-bridge-entrypoint"]
+CMD ["python", "-u", "mqtt_bridge.py"]

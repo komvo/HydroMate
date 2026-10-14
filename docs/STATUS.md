@@ -1,4 +1,56 @@
-# Estado actual — 2026-10-07
+# Estado actual — 2026-10-14
+
+## Producción preparada para ejecutor externo — 2026-10-14
+
+- Petición posterior sustituye acceso SSH: preparar únicamente repositorio para
+  despliegue automático de main; no pedir secretos ni entrar al VPS. Todos los
+  recursos/configuraciones chitiito-* intocables. D55 y PRODUCTION.md.
+- Dockerfile backend multietapa: PHP8.4/Apache en8080, www-data, dependencias
+  composer.lock sin dev; .env/cachés/logs excluidos del contexto. Healthcheck
+  /up + SELECT1 sin escribir datos. Binario Composer y PHPUnit fuera de imagen
+  final; dependencias instaladas en etapa separada.
+- compose.production.yml, proyecto hydromate: API127.0.0.1:8081, PostgreSQL16
+  en red interna sin publicar5432; rol app no superusuario. Redes/volúmenes
+  exclusivos con prefijo propio, sin host network ni enlaces a chitiito.
+  Perfil mqtt opcional: Mosquitto autenticado/TLS8884,1884 solo interno;
+  bridge Paho existente con bandeja persistente propia. Android fuera de VPS.
+- Plantilla raíz .env.example sin secretos; .env real solo VPS. Archivo externo
+  /etc/hydromate/.env para checkout de solo lectura; hook deployment/deploy.sh
+  usa siempre -p hydromate, build/up de servicios propios y migrate --force.
+  Sin workflow SSH, cambios de firewall ni servicios80/443/8883.
+- Observado localmente: ambas imágenes construidas; entorno **hydromate-validation**
+  con volúmenes separados y valores ficticios. API/BD saludables, migraciones
+  completas aplicadas y segunda ejecución «Nothing to migrate». UID33 en API,
+  sin .env/PHPUnit en imagen; rol DB hydromate sin superuser/createdb/createrole.
+- PHPUnit existente:19 tests/118 assertions pasan. Smoke HTTP existente en
+  puerto8081 pasa (11 filas sintéticas,201/422/409/GET). Diez publicaciones
+  sintéticas por TLS8884 pasan y coinciden campo por campo con API; reenvío
+  idéntico sin duplicado, conflicto e inválido detectados. MQTT anónimo rechazado;
+  conexión sin confiar en CA de prueba rechazada. Certificado efímero localhost
+  y cuentas ficticias solo en .local, no certificados/secretos de producción.
+- Corte solo API de ensayo: secuencia12 conservada pending en SQLite; después
+  de stop/start de API/bridge/BD propia se recuperó y se verificó por GET.
+  Filas sintéticas HTTP también conservadas tras reinicio. Consulta local8000
+  preserva exactamente90 filas históricas; no se modificó .env/backend local.
+  Entorno de ensayo detenido al terminar, contenedores/volúmenes conservados.
+- Revisión de parada: API/bridge inicialmente agotaban timeout (137). Se añadió
+  init a ambos, SIGTERM para API y límite Apache de parada gradual; imagen/API
+  revalidada y ensayo final detenido sin kill forzado (API0, bridge143).
+- Evidencia: docs/evidence/production-stack-2026-10-14.json,
+  production-http-2026-10-14.json y production-mqtt-tls-2026-10-14.json.
+  Verificador de aislamiento: scripts/verify_production_compose.py, usa fixtures
+  y no inicia servicios. Shell/PHP y git diff --check pasan.
+- Revisión previa al commit: ambas imágenes reconstruidas, PHPUnit19/118,
+  aislamiento Compose, migrate --force sin pendientes, smoke HTTP y diez nuevos
+  mensajes MQTT TLS sintéticos pasan; reenvío/conflicto/inválido comprobados.
+  Desarrollo conserva sus90 filas idénticas. Evidencia adicional:
+  production-review-2026-10-14.json y production-review-http-2026-10-14.json.
+  Rama nueva codex/production-shared-vps; publicación autorizada sin merge a main.
+- Pendiente fuera de esta tarea: administrador provisiona configuración privada,
+  certificados y endpoint HTTPS protegido independiente, conecta ejecutor de main,
+  despliega y repite pruebas físicas/nube. No afirmar VPS desplegada. Los cambios
+  de producción se revisan para commit/push autorizado en rama nueva, sin merge
+  a main. Las modificaciones previas ajenas a producción se conservan locales.
 
 ## Taller 5 — implementación local del 2026-10-07
 

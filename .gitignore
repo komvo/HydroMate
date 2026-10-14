@@ -53,6 +53,7 @@ Thumbs.db
 secrets.h
 secrets.json
 credentials.json
+deployment/secrets/
 service-account*.json
 
 # Datos operativos y exportaciones privadas
