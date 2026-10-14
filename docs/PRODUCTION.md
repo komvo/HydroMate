@@ -158,7 +158,7 @@ los tópicos HydroMate. No usar cuentas ni tópicos del otro proyecto. La inclus
 de otra torre requiere su propia identidad/cuenta y ACL revisada.
 
 ```bash
-docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env --profile mqtt build --pull bridge
+docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env --profile mqtt build --pull mosquitto bridge
 docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env --profile mqtt up -d --wait mosquitto bridge
 ```
 
