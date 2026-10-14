@@ -28,7 +28,7 @@ compose up -d --wait --wait-timeout 180 db api
 compose exec -T api php artisan migrate --force --no-interaction
 compose exec -T api php /usr/local/bin/hydromate-healthcheck.php
 if [ "$taskMqtt" = --mqtt ]; then
-    compose --profile mqtt build --pull bridge
+    compose --profile mqtt build --pull mosquitto bridge
     compose --profile mqtt up -d --wait --wait-timeout 180 mosquitto bridge
 fi
 if [ "$taskPublic" = --public ]; then

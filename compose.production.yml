@@ -91,15 +91,16 @@ services:
     logging: *logging
 
   mosquitto:
-    image: eclipse-mosquitto:2.0.22
+    image: hydromate-mosquitto:${HYDROMATE_IMAGE_TAG:-production}
+    build:
+      context: ./deployment/mosquitto
+      dockerfile: Dockerfile
     user: "1883:1883"
     profiles: [mqtt]
     restart: unless-stopped
     ports:
       - "${HYDROMATE_MQTT_BIND_ADDRESS:-127.0.0.1}:8884:8884"
     volumes:
-      - ./deployment/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
-      - ./deployment/mosquitto/acl:/mosquitto/config/acl:ro
       - type: bind
         source: ${HYDROMATE_MQTT_SECRETS_DIR:-./deployment/secrets/mqtt}
         target: /mosquitto/secrets
