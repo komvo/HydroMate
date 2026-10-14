@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-10-14T09:09:39.298557+00:00",
+  "device_id": "test-api-2b8d411ef102",
+  "synthetic": true,
+  "passed": true,
+  "latency_scope": "HTTP client to API response",
+  "events": [
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 1,
+      "status": 201,
+      "elapsed_ms": 282.97
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 2,
+      "status": 201,
+      "elapsed_ms": 39.73
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 3,
+      "status": 201,
+      "elapsed_ms": 28.24
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 4,
+      "status": 201,
+      "elapsed_ms": 47.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 5,
+      "status": 201,
+      "elapsed_ms": 29.49
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 6,
+      "status": 201,
+      "elapsed_ms": 26.51
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 7,
+      "status": 201,
+      "elapsed_ms": 23.17
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 8,
+      "status": 201,
+      "elapsed_ms": 21.82
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 9,
+      "status": 201,
+      "elapsed_ms": 25.57
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 10,
+      "status": 201,
+      "elapsed_ms": 29.42
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 11,
+      "status": 422,
+      "elapsed_ms": 25.23
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 1,
+      "status": 409,
+      "elapsed_ms": 33.49
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 12,
+      "status": 409,
+      "elapsed_ms": 37.13
+    },
+    {
+      "method": "POST",
+      "path": "/api/measurements",
+      "sequence": 12,
+      "status": 201,
+      "elapsed_ms": 38.0
+    },
+    {
+      "method": "GET",
+      "path": "/api/measurements?device_id=test-api-2b8d411ef102&limit=100",
+      "sequence": null,
+      "status": 200,
+      "elapsed_ms": 41.72
+    },
+    {
+      "method": "GET",
+      "path": "/api/measurements/latest?device_id=test-api-2b8d411ef102",
+      "sequence": null,
+      "status": 200,
+      "elapsed_ms": 25.49
+    },
+    {
+      "method": "GET",
+      "path": "/api/measurements/latest?device_id=test-api-2b8d411ef102-absent",
+      "sequence": null,
+      "status": 404,
+      "elapsed_ms": 23.48
+    }
+  ]
+}

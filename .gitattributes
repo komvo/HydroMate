@@ -1,3 +1,7 @@
 *.pdf binary
 *.png binary
 *.mp4 binary
+# Linux container entrypoints/init scripts must not become CRLF on Windows.
+*.sh text eol=lf
+Dockerfile* text eol=lf
+*.conf text eol=lf
