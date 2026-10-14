@@ -91,7 +91,7 @@ services:
     logging: *logging
 
   mosquitto:
-    image: eclipse-mosquitto:2
+    image: eclipse-mosquitto:2.0.22
     profiles: [mqtt]
     restart: unless-stopped
     ports:
