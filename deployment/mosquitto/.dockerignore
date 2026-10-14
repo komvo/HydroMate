@@ -1,0 +1,5 @@
+# Only the public broker configuration belongs in the build context.
+*
+!Dockerfile
+!mosquitto.conf
+!acl

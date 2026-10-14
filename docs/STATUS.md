@@ -269,3 +269,16 @@ incorrectos rechazados y POST público403. Conservados556 archivos de main y382
 activos protegidos; originales completos de10 documentos preservados. Cero
 eliminaciones/renombres netos; sin conflictos Git ni acceso VPS. Registro en
 evidence/public-rootless-readiness-2026-10-14.json.
+
+## Imagen Mosquitto propia para rootless — 2026-10-14
+
+Diagnóstico VPS comunicado por usuario: bind mounts individuales de conf/ACL
+impiden abrir configuración, aunque son legibles por1883. Se sustituyen por
+COPY en imagen hydromate-mosquitto basada2.0.22, ambos archivos1883:1883/640.
+UID/GID de ejecución1883; único bind secretos read-only, volumen mqtt_data intacto.
+Hook --mqtt construye broker y bridge. No cambian ACL, certificados ni passwords.
+Observado local: build, arranque directo mosquitto -c config -v, Compose saludable,
+lectura/propiedad conf/ACL, escritura en volumen existente, política Compose,
+6 pruebas Python y10 mensajes MQTT TLS→bridge→PostgreSQL→GET/HTTPS pasan.
+Pruebas con secretos ficticios previos compatibles; sin datos físicos nuevos,
+sin VPS ni certificación del namespace remoto. Rama codex/mosquitto-baked-config.

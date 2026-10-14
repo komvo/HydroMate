@@ -6,6 +6,12 @@ La tarea prepara el repositorio; no accede a la VPS ni acredita una prueba remot
 Docker rootless pertenece a `deploy-hydromate`. API8081 sigue en loopback,
 PostgreSQL sin puerto publicado y MQTT1884 solo en la red propia de contenedores.
 
+Mosquitto usa imagen propia `hydromate-mosquitto`, basada en2.0.22. Dockerfile en
+deployment/mosquitto incorpora configuración/ACL con dueño1883:1883; no se montan
+archivos individuales desde el host. Único bind del broker: secretos read-only.
+El hook construye broker/bridge en cada despliegue MQTT para aplicar cambios de
+configuración. No incorpora certificados ni passwd a la imagen.
+
 ## Configuración única
 
 Conservar las claves y contraseñas existentes en `/etc/hydromate/.env`, sin rotarlas.
