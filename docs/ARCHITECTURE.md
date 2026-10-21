@@ -1,5 +1,22 @@
 # Incremento público/rootless vigente — 2026-10-14
 
+Revisión académica acotada21/10 (D61):
+[T8 revisado](../Documentos%20PDC/T8_PDC_1288703.docx).
+Conserva la arquitectura principal y distingue interfaces existentes de decisiones
+de diseño (Sanctum/FCM/BLE y actuación). Continuidad de firmware: Arduino-ESP32
+modular con tareas FreeRTOS donde corresponda; sustituye la preferencia de migrar
+a ESP-IDF del informe ampliado. Sin cambios de código, servicios o contratos.
+
+Base documental integral1.0 (D59): [DOCX](../reports/arquitectura-integral-2026-10-14/HydroMate_Arquitectura_Integral.docx)
+y [PDF](../reports/arquitectura-integral-2026-10-14/HydroMate_Arquitectura_Integral.pdf).
+Consolida electrónica, módulos, despliegue, mensajes, estados y ADR.
+Contrato ejecutable vigente: v3 en TELEMETRY_CONTRACT.md; v1/v2 compatibles.
+Control/seguridad modular, hm-control-1, tablas de dominio y salidas propuestas
+son diseño pendiente, no implementación ni esquema de PCB. No habilitar dosis
+con TDS ausente/simulado, calibración faltante o cierre físico no verificado.
+Conserva responsabilidades actuales, tópicos y puertos9443/8884; no confirma
+montaje de actuadores ni integración física en nube.
+
 ESP32 hydromate-01 → MQTT TLS8884 → Mosquitto → bridge POST privado → Laravel
 → PostgreSQL interno → GET HTTPS9443 → Android producción. El hostname es
 hydromate-kevin.duckdns.org. API conserva loopback8081. Docker rootless pertenece

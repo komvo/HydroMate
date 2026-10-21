@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="650" viewBox="0 0 1680 650"><rect width="1680" height="650" fill="white"/>
+<text x="30" y="48" font-family="Arial" font-size="36" font-weight="700" fill="#162b35">Conexiones de señal utilizadas por el firmware</text>
+<rect x="30" y="90" width="400" height="110" rx="12" fill="#edf4f7" stroke="#9eafb8" stroke-width="2"/>
+<text x="48" y="139" font-family="Arial" font-size="29" font-weight="700" fill="#162b35">DS18B20</text>
+<text x="48" y="179" font-family="Arial" font-size="23" font-weight="400" fill="#162b35">Datos a GPIO 4</text>
+<rect x="30" y="250" width="400" height="110" rx="12" fill="#edf4f7" stroke="#9eafb8" stroke-width="2"/>
+<text x="48" y="299" font-family="Arial" font-size="29" font-weight="700" fill="#162b35">Flotador</text>
+<text x="48" y="339" font-family="Arial" font-size="23" font-weight="400" fill="#162b35">Contacto a GPIO 27 y GND</text>
+<rect x="30" y="410" width="400" height="110" rx="12" fill="#edf4f7" stroke="#9eafb8" stroke-width="2"/>
+<text x="48" y="459" font-family="Arial" font-size="29" font-weight="700" fill="#162b35">BH1750</text>
+<text x="48" y="499" font-family="Arial" font-size="23" font-weight="400" fill="#162b35">I2C compartido</text>
+<rect x="570" y="220" width="460" height="155" rx="12" fill="#edf4f7" stroke="#9eafb8" stroke-width="2"/>
+<text x="588" y="269" font-family="Arial" font-size="29" font-weight="700" fill="#162b35">ESP32</text>
+<text x="588" y="309" font-family="Arial" font-size="23" font-weight="400" fill="#162b35">GPIO 21 SDA y GPIO 22 SCL</text>
+<line x1="430" y1="145" x2="570" y2="255" stroke="#36596b" stroke-width="4"/>
+<polygon points="570.0,255.0 554.4,251.6 563.0,240.6" fill="#36596b"/>
+<line x1="430" y1="305" x2="570" y2="300" stroke="#36596b" stroke-width="4"/>
+<polygon points="570.0,300.0 555.9,307.5 555.4,293.6" fill="#36596b"/>
+<line x1="430" y1="465" x2="570" y2="345" stroke="#36596b" stroke-width="4"/>
+<polygon points="570.0,345.0 563.6,359.7 554.5,349.1" fill="#36596b"/>
+<rect x="1170" y="220" width="470" height="155" rx="12" fill="#edf4f7" stroke="#9eafb8" stroke-width="2"/>
+<text x="1188" y="269" font-family="Arial" font-size="29" font-weight="700" fill="#162b35">ADS1115 dirección 0x48</text>
+<text x="1188" y="309" font-family="Arial" font-size="23" font-weight="400" fill="#162b35">A0 pH     A1 TDS</text>
+<line x1="1030" y1="295" x2="1170" y2="295" stroke="#36596b" stroke-width="4"/>
+<polygon points="1170.0,295.0 1155.6,302.0 1155.6,288.0" fill="#36596b"/>
+<rect x="1170" y="420" width="470" height="110" rx="12" fill="#edf4f7" stroke="#9eafb8" stroke-width="2"/>
+<text x="1188" y="469" font-family="Arial" font-size="29" font-weight="700" fill="#162b35">Módulos analógicos</text>
+<text x="1188" y="509" font-family="Arial" font-size="23" font-weight="400" fill="#162b35">pH a A0     TDS a A1</text>
+<line x1="1400" y1="420" x2="1400" y2="375" stroke="#36596b" stroke-width="4"/>
+<polygon points="1400.0,375.0 1407.0,389.4 1393.0,389.4" fill="#36596b"/>
+<text x="35" y="602" font-family="Arial" font-size="27" font-weight="400" fill="#162b35">Diagrama de señales según código. Verificar alimentación y masa común en el montaje.</text>
+</svg>

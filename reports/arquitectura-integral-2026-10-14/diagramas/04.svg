@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="950" viewBox="0 0 1500 950">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 4  Alimentación y mecanismos de actuación preliminares</text>
+<rect x="35" y="130" width="310" height="130" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="47" y="162" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">P01 Fuente 24 V / 5 A</text>
+<text x="47" y="188" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Entrada protegida</text>
+<text x="47" y="214" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">120 W nominales</text>
+<rect x="420" y="130" width="300" height="130" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="432" y="162" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">P02 Distribución 24 V</text>
+<text x="432" y="188" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Fusibles por rama</text>
+<text x="432" y="214" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Retorno en estrella</text>
+<rect x="850" y="130" width="590" height="130" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="862" y="162" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">A01 Recirculación</text>
+<text x="862" y="188" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">24 V → fusible → D4184 → bomba brushless 25 W</text>
+<text x="862" y="214" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">GPIO25 → entrada lógica; estado OFF sin control</text>
+<rect x="420" y="380" width="300" height="155" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="432" y="412" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">P03 XL4015 a 5 V</text>
+<text x="432" y="438" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Rama lógica independiente</text>
+<text x="432" y="464" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">ESP32 por entrada 5 V</text>
+<text x="432" y="490" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">PH-4502C5 V</text>
+<rect x="35" y="380" width="310" height="155" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="47" y="412" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">P04 Lógica 3.3 V</text>
+<text x="47" y="438" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Regulador placa: verificar</text>
+<text x="47" y="464" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">DS18B20, BH1750, ADS</text>
+<text x="47" y="490" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Pull-ups I2C / 1-Wire</text>
+<rect x="850" y="380" width="590" height="155" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="862" y="412" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">A03–A06 Cuatro canales</text>
+<text x="862" y="438" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">A / B / Up / Down: driver y rail según mecanismo</text>
+<text x="862" y="464" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Servo/pinch: rail propio, cierre sin energía por probar</text>
+<text x="862" y="490" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Bomba alternativa: driver DC y protección inductiva</text>
+<rect x="850" y="665" width="590" height="155" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="862" y="697" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">A02 Luz y A07 alarma</text>
+<text x="862" y="723" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Lámpara: tensión/adaptador aún no confirmados</text>
+<text x="862" y="749" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Driver/relé según carga; GPIO26 señal, no energía</text>
+<text x="862" y="775" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Alarma opcional: GPIO23 → driver si exige corriente</text>
+<rect x="35" y="665" width="685" height="155" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="47" y="697" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">P05 Protección analógica y S09 TDS</text>
+<text x="47" y="723" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">pH PO 5 V potencial → divisor/buffer/protección → ADS A0</text>
+<text x="47" y="749" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">TDS A → ADS A1; switch high-side en V+; no cortar GND</text>
+<text x="47" y="775" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Rails 12 V o servo solo si la carga definitiva los requiere</text>
+<polyline points="345,195 420,195" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="420,195 408.0,190.0 408.0,200.0" fill="#435B6E"/>
+<rect x="326.0" y="100" width="113.0" height="19" fill="white"/>
+<text x="329.0" y="117" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Potencia 24 V</text>
+<polyline points="720,195 850,195" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="850,195 838.0,190.0 838.0,200.0" fill="#435B6E"/>
+<rect x="739.5" y="100" width="91.0" height="19" fill="white"/>
+<text x="742.5" y="117" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Rama 24 V</text>
+<polyline points="570,260 570,380" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="570,380 575.0,368.0 565.0,368.0" fill="#435B6E"/>
+<rect x="579.0" y="309.0" width="109.0" height="19.0" fill="white"/>
+<text x="582.0" y="326.0" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">24 V → buck</text>
+<polyline points="420,457 345,457" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="345,457 357.0,462.0 357.0,452.0" fill="#435B6E"/>
+<rect x="314.0" y="350" width="138.0" height="23" fill="white"/>
+<text x="317.0" y="367" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">5 V → regulador</text>
+<polyline points="720,195 780,195 780,340 1145,340 1145,380" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="1145,380 1150.0,368.0 1140.0,368.0" fill="#435B6E"/>
+<rect x="777" y="301" width="148" height="19" fill="white"/>
+<text x="780" y="318" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Rail condicionado</text>
+<text x="35" y="310" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">GND común DC en estrella.</text>
+<text x="35" y="340" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Retorno analógico separado.</text>
+<text x="35" y="595" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">PE / tierra de protección: chasis/fuente según clase. No confundir con señal GND.</text>
+<text x="35" y="903" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Potencia: flechas de esta figura. Señales GPIO: figura 3 y tabla E/S. No es esquema de PCB.</text>
+<text x="35" y="930" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="860" viewBox="0 0 1500 860">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 2  Despliegue actual y alternativa remota</text>
+<rect x="35" y="140" width="300" height="180" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="47" y="172" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Nodo torre</text>
+<text x="47" y="198" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">ESP32 + firmware + NVS</text>
+<text x="47" y="224" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Sensores y drivers futuros</text>
+<text x="47" y="250" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Actuadores futuros</text>
+<rect x="405" y="140" width="290" height="180" rx="8" fill="#FCE9D0" stroke="#526371" stroke-width="2"/>
+<text x="417" y="172" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Nodo red doméstica</text>
+<text x="417" y="198" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">AP Wi-Fi 2.4 GHz</text>
+<text x="417" y="224" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Salida Internet</text>
+<text x="417" y="250" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">No acceso directo GPIO</text>
+<rect x="790" y="140" width="660" height="180" rx="8" fill="#E1F0E6" stroke="#526371" stroke-width="2"/>
+<text x="802" y="172" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Desarrollo actual en PC</text>
+<text x="802" y="198" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Laravel HTTP 8000; Mosquitto LAN 1884</text>
+<text x="802" y="224" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">PostgreSQL existente; bridge Python / SQLite</text>
+<text x="802" y="250" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Android por USB adb reverse; excepción de banco</text>
+<rect x="790" y="460" width="660" height="220" rx="8" fill="#FCE9D0" stroke="#526371" stroke-width="2"/>
+<text x="802" y="492" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Despliegue objetivo alternativo</text>
+<text x="802" y="518" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">VPS compartido / cuenta deploy-hydromate / Docker rootless</text>
+<text x="802" y="544" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">HTTPS9443 → Nginx → API8080; loopback host 8081</text>
+<text x="802" y="570" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">MQTT TLS8884 → Mosquitto; interno 1884 → bridge</text>
+<text x="802" y="596" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">PostgreSQL5432 interno; volúmenes exclusivos hydromate</text>
+<text x="802" y="622" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">No operar sobre chitiito ni puertos 80/443/8443/8883</text>
+<rect x="35" y="460" width="300" height="180" rx="8" fill="#E1F0E6" stroke="#526371" stroke-width="2"/>
+<text x="47" y="492" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Nodo Android</text>
+<text x="47" y="518" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">App nativa + HTTPS</text>
+<text x="47" y="544" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Preferencias limitadas</text>
+<text x="47" y="570" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">BLE futuro</text>
+<rect x="405" y="460" width="290" height="180" rx="8" fill="#EEEEEE" stroke="#526371" stroke-width="2"/>
+<text x="417" y="492" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Firebase externo</text>
+<text x="417" y="518" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">FCM futuro</text>
+<text x="417" y="544" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Sin despliegue confirmado</text>
+<polyline points="335,230 405,230" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="405,230 393.0,225.0 393.0,235.0" fill="#435B6E"/>
+<rect x="346.0" y="110" width="48.0" height="19" fill="white"/>
+<text x="349.0" y="127" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Wi-Fi</text>
+<polyline points="695,230 790,230" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="790,230 778.0,225.0 778.0,235.0" fill="#435B6E"/>
+<rect x="694.0" y="110" width="97.0" height="19" fill="white"/>
+<text x="697.0" y="127" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Banco LAN</text>
+<polyline points="550,320 550,370 740,370 740,570 790,570" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="790,570 778.0,565.0 778.0,575.0" fill="#435B6E"/>
+<rect x="547" y="341" width="115" height="19" fill="white"/>
+<text x="550" y="358" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Internet / TLS</text>
+<polyline points="185,640 185,730 1120,730 1120,680" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="1120,680 1115.0,692.0 1125.0,692.0" fill="#435B6E"/>
+<rect x="477" y="703" width="105" height="19" fill="white"/>
+<text x="480" y="720" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">HTTPS9443</text>
+<polyline points="790,570 742,570 742,550 695,550" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="695,550 707.0,555.0 707.0,545.0" fill="#435B6E"/>
+<rect x="676.5" y="430" width="132.0" height="19" fill="white"/>
+<text x="679.5" y="447" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">HTTPS saliente</text>
+<polyline points="185,320 185,460" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="185,460 190.0,448.0 180.0,448.0" fill="#435B6E"/>
+<polygon points="185,320 180.0,332.0 190.0,332.0" fill="#435B6E"/>
+<rect x="197" y="361" width="124" height="19" fill="white"/>
+<text x="200" y="378" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">BLE alta inicial</text>
+<polyline points="405,550 335,550" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="335,550 347.0,555.0 347.0,545.0" fill="#435B6E"/>
+<rect x="325.5" y="430" width="89.0" height="23" fill="white"/>
+<text x="328.5" y="447" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">FCM push</text>
+<text x="35" y="813" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">PC y VPS son ambientes alternativos de la misma arquitectura; no requieren operación simultánea.</text>
+<text x="35" y="840" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>

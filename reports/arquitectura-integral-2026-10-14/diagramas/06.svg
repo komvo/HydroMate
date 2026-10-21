@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 6  Secuencia química prevista y rutas de error</text>
+<rect x="15" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="27" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Scheduler</text>
+<polyline points="80,160 80,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="205" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="217" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">SensorMgr</text>
+<polyline points="270,160 270,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="395" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="407" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">TDS Power</text>
+<polyline points="460,160 460,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="585" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="597" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">PHService</text>
+<polyline points="650,160 650,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="775" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="787" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">TDSService</text>
+<polyline points="840,160 840,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="965" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="977" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">ADS1115</text>
+<polyline points="1030,160 1030,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="1155" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="1167" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">DS18B20</text>
+<polyline points="1220,160 1220,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="1345" y="95" width="145" height="65" rx="8" fill="#F9DEDE" stroke="#526371" stroke-width="2"/>
+<text x="1357" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">SafetyMgr</text>
+<polyline points="1410,160 1410,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<rect x="1535" y="95" width="145" height="65" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="1547" y="127" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">EventLogger</text>
+<polyline points="1600,160 1600,905" fill="none" stroke="#A0ABB4" stroke-width="3" stroke-dasharray="10 10"/>
+<polyline points="80,205 270,205" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="270,205 258.0,200.0 258.0,210.0" fill="#435B6E"/>
+<rect x="85" y="180" width="109" height="19" fill="white"/>
+<text x="88" y="197" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 iniciar ciclo</text>
+<polyline points="270,252 460,252" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="460,252 448.0,247.0 448.0,257.0" fill="#435B6E"/>
+<rect x="275" y="227" width="130" height="19" fill="white"/>
+<text x="278" y="244" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">2 OFF real / V+</text>
+<polyline points="270,299 650,299" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="650,299 638.0,294.0 638.0,304.0" fill="#435B6E"/>
+<rect x="275" y="274" width="159" height="23" fill="white"/>
+<text x="278" y="291" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">3 tras t_PH estable</text>
+<polyline points="650,346 1030,346" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="1030,346 1018.0,341.0 1018.0,351.0" fill="#435B6E"/>
+<rect x="655" y="321" width="140" height="19" fill="white"/>
+<text x="658" y="338" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">4 N muestras A0</text>
+<polyline points="1030,393 650,393" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="650,393 662.0,398.0 662.0,388.0" fill="#435B6E"/>
+<rect x="655" y="368" width="136" height="23" fill="white"/>
+<text x="658" y="385" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">5 voltajes / error</text>
+<polyline points="650,440 270,440" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="270,440 282.0,445.0 282.0,435.0" fill="#435B6E"/>
+<rect x="275" y="415" width="122" height="23" fill="white"/>
+<text x="278" y="432" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">6 pH + calidad</text>
+<polyline points="270,487 460,487" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="460,487 448.0,482.0 448.0,492.0" fill="#435B6E"/>
+<rect x="275" y="462" width="114" height="23" fill="white"/>
+<text x="278" y="479" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">7 ON / t_TDS</text>
+<polyline points="270,534 1220,534" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="1220,534 1208.0,529.0 1208.0,539.0" fill="#435B6E"/>
+<rect x="275" y="509" width="131" height="19" fill="white"/>
+<text x="278" y="526" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">8 conversión T°</text>
+<polyline points="1220,581 840,581" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="840,581 852.0,586.0 852.0,576.0" fill="#435B6E"/>
+<rect x="845" y="556" width="91" height="19" fill="white"/>
+<text x="848" y="573" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">9 T° válida</text>
+<polyline points="840,628 1030,628" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="1030,628 1018.0,623.0 1018.0,633.0" fill="#435B6E"/>
+<rect x="845" y="603" width="132" height="19" fill="white"/>
+<text x="848" y="620" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">10 muestras A1</text>
+<polyline points="1030,675 840,675" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="840,675 852.0,680.0 852.0,670.0" fill="#435B6E"/>
+<rect x="845" y="650" width="89" height="23" fill="white"/>
+<text x="848" y="667" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">11 V_TDS</text>
+<polyline points="840,722 270,722" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="270,722 282.0,727.0 282.0,717.0" fill="#435B6E"/>
+<rect x="275" y="697" width="189" height="23" fill="white"/>
+<text x="278" y="714" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">12 compensar / validar</text>
+<polyline points="270,769 460,769" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="460,769 448.0,764.0 448.0,774.0" fill="#435B6E"/>
+<rect x="275" y="744" width="143" height="23" fill="white"/>
+<text x="278" y="761" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">13 OFF en finally</text>
+<polyline points="270,816 1410,816" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="1410,816 1398.0,811.0 1398.0,821.0" fill="#435B6E"/>
+<rect x="275" y="791" width="168" height="23" fill="white"/>
+<text x="278" y="808" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">14 snapshot / inhibir</text>
+<polyline points="1410,863 1600,863" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="1600,863 1588.0,858.0 1588.0,868.0" fill="#435B6E"/>
+<rect x="1415" y="838" width="176" height="23" fill="white"/>
+<text x="1418" y="855" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">15 registrar resultado</text>
+<text x="35" y="965" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">ALT: ausente, inválido, fuera de rango, timeout o I2C → OFF TDS + null/calidad + inhibir dosificación.</text>
+<text x="35" y="1053" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Secuencia objetivo; t_PH, t_TDS, N y timeout deben medirse. No ejecutada con reemplazo TDS.</text>
+<text x="35" y="1080" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>

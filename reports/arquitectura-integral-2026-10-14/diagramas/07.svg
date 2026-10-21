@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 7  Máquina de estados de recirculación</text>
+<rect x="35" y="180" width="285" height="110" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="47" y="212" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">INITIALIZING</text>
+<text x="47" y="238" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">OFF / autoprueba</text>
+<rect x="405" y="180" width="285" height="110" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="417" y="212" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">READY</text>
+<text x="417" y="238" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Config válida</text>
+<rect x="775" y="180" width="285" height="110" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="787" y="212" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">IDLE</text>
+<text x="787" y="238" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Esperar agenda</text>
+<rect x="1145" y="180" width="285" height="110" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="1157" y="212" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">RUNNING</text>
+<text x="1157" y="238" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Bomba ON / timer</text>
+<polyline points="320,235 405,235" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="405,235 393.0,230.0 393.0,240.0" fill="#435B6E"/>
+<rect x="307" y="156" width="89" height="19" fill="white"/>
+<text x="310" y="173" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Validación</text>
+<polyline points="690,235 775,235" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="775,235 763.0,230.0 763.0,240.0" fill="#435B6E"/>
+<rect x="677" y="156" width="73" height="19" fill="white"/>
+<text x="680" y="173" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Habilitar</text>
+<polyline points="1060,235 1145,235" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="1145,235 1133.0,230.0 1133.0,240.0" fill="#435B6E"/>
+<rect x="1046" y="156" width="129" height="23" fill="white"/>
+<text x="1050" y="173" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Agenda segura</text>
+<rect x="1145" y="460" width="285" height="125" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="1157" y="492" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">MANUAL_CONTROL</text>
+<text x="1157" y="518" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Mismo veto y timeout</text>
+<rect x="35" y="460" width="655" height="155" rx="8" fill="#F9DEDE" stroke="#526371" stroke-width="2"/>
+<text x="47" y="492" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">LOW_WATER_LOCKOUT / SENSOR_FAULT</text>
+<text x="47" y="518" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">OFF obligatorio; nivel/sensor no válido</text>
+<text x="47" y="544" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Recuperar + estabilidad + reconocimiento → READY</text>
+<text x="47" y="570" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">No reactivar la orden anterior</text>
+<rect x="775" y="460" width="285" height="125" rx="8" fill="#F9DEDE" stroke="#526371" stroke-width="2"/>
+<text x="787" y="492" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">SAFE_SHUTDOWN</text>
+<text x="787" y="518" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">OFF / fallo interno</text>
+<polyline points="1287,290 1287,460" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="1287,460 1292.0,448.0 1282.0,448.0" fill="#435B6E"/>
+<rect x="1296.5" y="364.0" width="115.0" height="19.0" fill="white"/>
+<text x="1299.5" y="381.0" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Modo manual</text>
+<polyline points="177,290 177,365 362,365 362,460" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="362,460 367.0,448.0 357.0,448.0" fill="#435B6E"/>
+<rect x="32" y="336" width="185" height="23" fill="white"/>
+<text x="35" y="353" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Cualquier estado: fallo</text>
+<text x="35" y="720" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">RUNNING → IDLE: fin de duración o stop. MANUAL_CONTROL → IDLE: fin/stop/vencimiento.</text>
+<text x="35" y="755" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Cualquier estado → SAFE_SHUTDOWN: watchdog, configuración corrupta o apagado solicitado.</text>
+<text x="35" y="833" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Eventos y guardas completos en sección 10. Estados de diseño; no firmware de actuadores ejecutado.</text>
+<text x="35" y="860" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>
