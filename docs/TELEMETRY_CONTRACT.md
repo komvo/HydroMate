@@ -23,11 +23,32 @@ UTC exacto `YYYY-MM-DDTHH:mm:ssZ`, como máximo un minuto en el futuro.
 el mayor intervalo entre adquisición/recepción y la hora actual; una entrega
 tardía no vuelve reciente una adquisición vieja. Sin reloj se informa recepción.
 
-El firmware usa los sensores físicos existentes. TDS está deshabilitado por
-defecto y transmite `null/unavailable`; el driver opcional requiere seleccionar
-canal ADS1115 y validar sensor/calibración. EC queda `null/unavailable` hasta
+El firmware usa TDS Meter V1.0/Gravity analógico en ADS1115 **A1**, habilitado en
+sensor_config.h. Su voltaje se filtra por mediana y se convierte a ppm con la
+fórmula del fabricante. Si DS18B20 es válido, compensa con su temperatura; si es
+inválido, usa referencia25°C y Android indica «sin compensación térmica»;
+temperature_c sigue null/invalid. No equivale a una calibración nueva.
+Una lectura TDS fuera de rango transmite null/invalid. EC queda null/unavailable hasta
 seleccionar un driver independiente. Sensor conectado con lectura inválida
 transmite `null/invalid` sin bloquear los otros sensores. No hay actuadores.
+
+## Cambios y solicitud de adquisición
+
+Además del respaldo periódico30s, el productor compara lecturas filtradas con la
+última muestra preparada. Motivos: light_change, water_change, ph_change,
+temperature_change, tds_change y sensor_state_change; umbrales en sensor_config.h.
+El flotador usa antirrebote150ms; adquisición cada500ms y separación mínima750ms
+entre muestras. No son umbrales de cultivo ni órdenes de dosificación.
+Un pendiente NVS conserva identidad/contenido hasta STORED; cambios durante una
+desconexión se agregan para enviar el estado reciente tras recuperar el pendiente,
+sin garantizar un archivo de cada transición intermedia.
+
+El bridge publica QoS1/no-retained en hydromate/{device_id}/commands/measure:
+`{"action":"measure","request_id":"UUID","expires_at":1792564870}`.
+expires_at es Unix UTC; el ESP32 valida tipo, UUID, vencimiento y duplicados.
+Una adquisición solicitada incluye reason=["requested","request:UUID",...].
+Solo una medición v3 real/invalid/unavailable correlacionada, adquirida dentro
+del plazo y persistida, satisface la solicitud; una fila periódica no la satisface.
 
 ## Consultas y estado
 

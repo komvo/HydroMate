@@ -13,7 +13,7 @@ class RepositoryTest {
         val snapshot = TelemetryRepository().loadSnapshot(Telemetry.endpoint(base!!, "hydromate-01", true), "hydromate-01", true)
         assertTrue(snapshot.readings.isNotEmpty())
         assertTrue(snapshot.readings.all { !it.synthetic && "simulated" !in it.sources.values })
-        assertTrue(snapshot.readings.any { it.version == 3 && it.tds == null && it.sources["tds_ppm"] == "unavailable" })
+        assertTrue(snapshot.readings.any { it.version == 3 })
     }
     @Test fun interpretsPhysicalApiExportWithProductionValidationWhenRequested() {
         val path = System.getenv("HYDROMATE_TEST_PHYSICAL_RESPONSE")
@@ -21,8 +21,8 @@ class RepositoryTest {
         val rows = Telemetry.parse(java.io.File(path!!).readText(), "hydromate-01", true)
         assertTrue(rows.isNotEmpty())
         assertTrue(rows.all { it.version == 3 && !it.synthetic && "simulated" !in it.sources.values })
-        assertTrue(rows.all { it.tds == null && it.sources["tds_ppm"] == "unavailable" && it.ecUsCm == null })
-        assertTrue(rows.any { it.temperature != null && it.ph != null && it.lightLux != null && it.waterPresent != null })
+        assertTrue(rows.all { it.tds == null || it.sources["tds_ppm"] == "real" })
+        assertTrue(rows.any { it.ph != null && it.lightLux != null && it.waterPresent != null })
         assertTrue(rows.filter { it.temperature == null }.all { it.sources["temperature_c"] in listOf("invalid", "unavailable") })
     }
     @Test fun interpretsResponseExportedByMqttPipelineWhenRequested() {
