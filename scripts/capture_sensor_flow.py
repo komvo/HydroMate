@@ -36,7 +36,7 @@ def run(args):
                             print(f"SAMPLE {sample['sequence']}", flush=True)
                     except (ValueError, AttributeError):
                         pass
-                elif line.startswith(('SAMPLE ', 'RESTORED ', 'SEND ', 'STORED ', 'SENSOR_INVALID', 'HALT:', 'MQTT_', 'WIFI_')):
+                elif line.startswith(('SAMPLE ', 'RESTORED ', 'SEND ', 'STORED ', 'SENSOR_INVALID', 'HALT:', 'MQTT_', 'WIFI_', 'SENSORS ', 'SAMPLE_REQUEST ', 'TDS_REFERENCE_TEMP')):
                     events.append(dict(at=now, event='firmware_log', detail=line))
                     print(line, flush=True)
                     acquisition = re.match(r'SAMPLE sequence=(\d+) uptime_ms=(\d+)', line)

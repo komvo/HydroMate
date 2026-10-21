@@ -26,7 +26,7 @@ class HistoryScreen(private val ui: Components) {
             val empty = card(root)
             empty.addView(icon(GlassSymbol.HISTORY, 52))
             empty.addView(text(when (state) {
-                is ReadingState.Loading -> "Actualizando historial…"
+                is ReadingState.Loading -> if (state.requested) "Solicitando medición al ESP32…" else "Actualizando historial…"
                 is ReadingState.Failed -> "No podemos actualizar las lecturas"
                 else -> "Aún no hay lecturas"
             }, 20, true))
@@ -71,6 +71,7 @@ class HistoryScreen(private val ui: Components) {
             fun display(value: Double?) = value?.let(::number) ?: "—"
             entry.addView(text("pH ${display(m.ph)} · Temperatura ${display(m.temperature)} °C\nTDS ${display(m.tds)} ppm", 16))
             if (m.tds == null) entry.addView(badge("TDS no disponible"))
+            if (m.tdsUsesReferenceTemperature) entry.addView(badge("TDS sin compensación térmica · ref. 25 °C"))
             m.ecUsCm?.let { entry.addView(text("EC ${number(it)} µS/cm", 14)) }
             entry.addView(text("Luz ${display(m.lightValue)} ${m.lightUnit}\n${m.waterDescription}", 14, tint = muted))
         }

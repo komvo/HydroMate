@@ -3,6 +3,8 @@ package com.hydromate.mobile.ui
 import com.hydromate.mobile.Measurement
 import com.hydromate.mobile.TelemetryHttpException
 import com.hydromate.mobile.TelemetryState
+import com.hydromate.mobile.AcquisitionTimeoutException
+import com.hydromate.mobile.AcquisitionUnavailableException
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.time.Duration
@@ -17,6 +19,9 @@ enum class Destination(val title: String, val icon: GlassSymbol) {
 }
 
 enum class FailureKind(val title: String, val explanation: String) {
+    DEVICE_TIMEOUT("No llegó una medición nueva", "El equipo no confirmó la solicitud a tiempo. Revisa su conexión y vuelve a intentarlo."),
+    REQUEST_UNAVAILABLE("Solicitud no disponible", "Esta API o torre todavía no admite solicitudes de lectura. Revisa la versión desplegada."),
+    RATE_LIMIT("Espera antes de solicitar otra lectura", "Se alcanzó el límite de solicitudes. Intenta de nuevo en un minuto."),
     TIMEOUT("El servidor está tardando", "La consulta no terminó a tiempo. Puedes volver a intentarlo."),
     NETWORK("No pudimos acceder al servidor", "Revisa el servidor y la conexión USB o Wi-Fi del teléfono."),
     INVALID("No pudimos interpretar las lecturas", "La respuesta está incompleta o no coincide con esta torre. No mostramos valores dudosos."),
@@ -28,7 +33,7 @@ enum class FailureKind(val title: String, val explanation: String) {
 
 sealed class ReadingState {
     data object Idle : ReadingState()
-    data object Loading : ReadingState()
+    data class Loading(val requested: Boolean = false) : ReadingState()
     data class Empty(val checked: Instant) : ReadingState()
     data class Ready(val values: List<Measurement>, val checked: Instant, val deviceState: TelemetryState? = null) : ReadingState()
     data class Failed(val kind: FailureKind, val detail: String) : ReadingState()
@@ -36,10 +41,13 @@ sealed class ReadingState {
 
 fun failure(error: Throwable): ReadingState.Failed {
     val kind = when (error) {
+        is AcquisitionTimeoutException -> FailureKind.DEVICE_TIMEOUT
+        is AcquisitionUnavailableException -> FailureKind.REQUEST_UNAVAILABLE
         is SocketTimeoutException -> FailureKind.TIMEOUT
         is TelemetryHttpException -> when (error.status) {
             401, 403 -> FailureKind.AUTH
             422 -> FailureKind.PARAMETERS
+            429 -> FailureKind.RATE_LIMIT
             else -> FailureKind.SERVER
         }
         is IOException -> FailureKind.NETWORK

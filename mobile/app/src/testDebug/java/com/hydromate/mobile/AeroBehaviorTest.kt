@@ -47,7 +47,7 @@ class AeroBehaviorTest {
     }
 
     @Test fun demoCoversErrorsWithoutRelaxingMissingSensorContract() {
-        assertEquals(ReadingState.Loading, PreviewSupport.load(2))
+        assertEquals(ReadingState.Loading(), PreviewSupport.load(2))
         assertTrue(PreviewSupport.load(3) is ReadingState.Empty)
         assertEquals(FailureKind.NETWORK, (PreviewSupport.load(4) as ReadingState.Failed).kind)
         assertEquals(FailureKind.INVALID, (PreviewSupport.load(6) as ReadingState.Failed).kind)
