@@ -18,6 +18,8 @@ data class Measurement(
     val ecUsCm: Double? = null, val captured: Instant? = null, val version: Int = 1
 ) {
     val tdsSimulated: Boolean get() = sources["tds_ppm"] == "simulated"
+    val tdsUsesReferenceTemperature: Boolean get() = version == 3 && tds != null &&
+        sources["tds_ppm"] == "real" && temperature == null
     val lightValue: Double? get() = lightLux ?: light
     val lightUnit: String get() = if (version >= 2 || lightLux != null) "lux" else "% relativo"
     val waterDescription: String get() = waterPresent?.let { if (it) "Agua detectada" else "Nivel bajo / sin agua" }
@@ -112,9 +114,90 @@ object Telemetry {
 }
 
 class TelemetryHttpException(val status: Int) : IllegalStateException("HTTP $status")
+class AcquisitionTimeoutException : java.io.IOException("El ESP32 no confirmó una medición nueva a tiempo.")
+class AcquisitionUnavailableException : java.io.IOException("La API todavía no admite solicitudes de medición para esta torre.")
 
 class TelemetryRepository {
     fun load(endpoint: String, device: String): List<Measurement> = loadSnapshot(endpoint, device).readings
+
+    fun requestFreshSnapshot(endpoint: String, device: String, production: Boolean = false,
+                             timeoutMs: Long = 35_000, pollMs: Long = 500): TelemetrySnapshot {
+        require(!production || URI(endpoint).scheme == "https") { "Producción requiere HTTPS." }
+        val address = apiPath(endpoint, "/devices/$device/measurement-requests")
+        val created = try { exchange(address, "POST", 202) }
+            catch (error: TelemetryHttpException) {
+                if (error.status in listOf(403, 404)) throw AcquisitionUnavailableException()
+                throw error
+            }
+        val id = created.getString("id")
+        require(java.util.UUID.fromString(id).toString() == id.lowercase()) { "Identificador de solicitud inválido." }
+        require(created.getString("device_id") == device) { "Solicitud de otra torre." }
+        val notBefore = Instant.parse(created.getString("created_at")).truncatedTo(java.time.temporal.ChronoUnit.SECONDS)
+        val deadline = System.nanoTime() + timeoutMs * 1_000_000
+        while (System.nanoTime() < deadline) {
+            if (Thread.currentThread().isInterrupted) throw InterruptedException()
+            val result = try { exchange(apiPath(endpoint, "/measurement-requests/$id"), "GET", 200) }
+                catch (error: TelemetryHttpException) {
+                    if (error.status == 404) throw AcquisitionTimeoutException()
+                    throw error
+                }
+            require(result.getString("id") == id && result.getString("device_id") == device)
+            when (result.getString("state")) {
+                "stored" -> {
+                    val item = result.getJSONObject("measurement")
+                    val reasons = item.getJSONArray("reason")
+                    require((0 until reasons.length()).any { reasons.getString(it) == "request:$id" })
+                    val acquired = Telemetry.parse(JSONArray().put(item).toString(), device, production).single()
+                    require(acquired.captured != null && !acquired.captured.isBefore(notBefore)) {
+                        "La respuesta no corresponde a una adquisición nueva."
+                    }
+                    val snapshot = loadSnapshot(endpoint, device, production)
+                    val rows = (snapshot.readings + acquired).distinctBy { it.sequence }.sortedByDescending { it.received }.take(20)
+                    return snapshot.copy(readings = rows, deviceState = telemetryState(rows, Instant.now(), snapshot.freshnessSeconds))
+                }
+                "expired" -> throw AcquisitionTimeoutException()
+                "pending" -> Thread.sleep(pollMs)
+                else -> throw IllegalArgumentException("Estado de solicitud desconocido.")
+            }
+        }
+        throw AcquisitionTimeoutException()
+    }
+
+    private fun apiPath(endpoint: String, suffix: String): String {
+        val uri = URI(endpoint)
+        require(uri.path.endsWith("/measurements")) { "Endpoint de mediciones inválido." }
+        return URI(uri.scheme, null, uri.host, uri.port, uri.path.removeSuffix("/measurements") + suffix, null, null).toString()
+    }
+
+    private fun exchange(address: String, method: String, expected: Int): JSONObject {
+        val connection = URI(address).toURL().openConnection() as HttpURLConnection
+        try {
+            connection.connectTimeout = 8000; connection.readTimeout = 8000
+            connection.instanceFollowRedirects = false
+            connection.useCaches = false
+            connection.requestMethod = method
+            connection.setRequestProperty("Accept", "application/json")
+            if (method == "POST") {
+                connection.doOutput = true
+                connection.setRequestProperty("Content-Type", "application/json")
+                connection.setFixedLengthStreamingMode(2)
+                connection.outputStream.use { it.write("{}".toByteArray(Charsets.UTF_8)) }
+            }
+            val status = connection.responseCode
+            if (status != expected) throw TelemetryHttpException(status)
+            val body = connection.inputStream.bufferedReader(Charsets.UTF_8).use { reader ->
+                val text = StringBuilder(); val buffer = CharArray(4096)
+                while (true) {
+                    val count = reader.read(buffer)
+                    if (count < 0) break
+                    require(text.length + count <= 1_000_000) { "Respuesta demasiado grande." }
+                    text.append(buffer, 0, count)
+                }
+                text.toString()
+            }
+            return JSONObject(body)
+        } finally { connection.disconnect() }
+    }
 
     fun loadSnapshot(endpoint: String, device: String, production: Boolean = false): TelemetrySnapshot {
         require(!production || URI(endpoint).scheme == "https") { "Producción requiere HTTPS." }
@@ -123,6 +206,7 @@ class TelemetryRepository {
             connection.connectTimeout = 8000
             connection.readTimeout = 8000
             connection.instanceFollowRedirects = false
+            connection.useCaches = false
             connection.setRequestProperty("Accept", "application/json")
             val status = connection.responseCode
             if (status != 200) {

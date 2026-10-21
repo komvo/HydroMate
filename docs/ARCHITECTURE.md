@@ -4,14 +4,24 @@ ESP32 hydromate-01 → MQTT TLS8884 → Mosquitto → bridge POST privado → La
 → PostgreSQL interno → GET HTTPS9443 → Android producción. El hostname es
 hydromate-kevin.duckdns.org. API conserva loopback8081. Docker rootless pertenece
 a deploy-hydromate; certificados montados desde /etc/hydromate/{https,mqtt}.
-Nginx propio sin privilegios permite GET/HEAD y bloquea POST externo. Los scripts
+Nginx propio sin privilegios permite GET/HEAD y un POST público limitado a
+solicitar adquisición; bloquea la inserción externa de mediciones. Los scripts
 validan cuenta/socket/daemon y preparan permisos de certificados dentro del
 namespace. Sin cambios80/443/8883 ni red host. HYDROMATE_APP_URL es única variable
 URL producción; perfiles Android separados, sin demo/fallback en producción.
-Contrato v3 admite null/origen por sensor, TDS ausente y EC independiente;
+Contrato v3 admite null/origen por sensor, TDS real opcional y EC independiente;
 antigüedad usa adquisición/recepción. No hay comandos de actuadores.
 Guías: PUBLIC_ACCESS.md, INTEGRATION.md, TELEMETRY_CONTRACT.md.
 Pruebas locales no acreditan el despliegue ni el namespace rootless de la VPS.
+
+Incremento21/10 (D60): TDS analógico en ADS1115 A1 y temperatura GPIO4; envío por
+cambio de sensor además del respaldo30s. Android solicita una adquisición mediante
+POST de cuerpo vacío; Laravel conserva un UUID efímero en su caché de archivos.
+El bridge consulta una ruta interna y publica commands/measure por el broker ya
+existente. ESP32 adquiere y responde mediante telemetría v3 con request:<UUID>.
+Laravel solo confirma tras persistencia correlacionada en PostgreSQL. No nuevas
+tablas, servicios ni comandos de actuación. Poll de vistas Android cada2s en
+primer plano. Las pruebas físicas previas no prueban este incremento nuevo.
 
 ## Arquitectura anterior preservada
 

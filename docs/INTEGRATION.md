@@ -4,9 +4,10 @@ Acceso público preparado: [PUBLIC_ACCESS](PUBLIC_ACCESS.md), HTTPS9443 propio y
 MQTT TLS8884, variable única HYDROMATE_APP_URL. Configuración/validación externas
 por administrador; esta tarea no accede al VPS.
 
-Actualizado 14/10/2026. Código preparado para ESP32 → MQTT/TLS → Mosquitto →
-bridge → Laravel → PostgreSQL → Android por HTTPS. El taller solo podrá cerrarse
-cuando exista evidencia de este recorrido físico con el backend desplegado.
+Flujo físico comprobado21/10/2026:14 muestras nuevas consecutivas confirmadas y
+mostradas en Inicio/Historial Android por HTTPS. Evidencia en
+evidence/public-flow-esp32-android-2026-10-21.json. Esa prueba precede al incremento
+TDS/cambios/solicitudes, cuya validación física se registra por separado en STATUS.
 `127.0.0.1:8081` en la VPS es loopback de la VPS: no sirve como URL del teléfono.
 Esta tarea no accede al servidor ni modifica recursos externos.
 
@@ -15,13 +16,13 @@ Esta tarea no accede al servidor ni modifica recursos externos.
 | Tramo | Archivo / comportamiento |
 |---|---|
 | Entrada física | `embedded/HydroMateTelemetry/HydroMateTelemetry.ino`: DS18B20 GPIO4, BH1750 I2C21/22, flotador GPIO27 y pH ADS1115 A0 |
-| Procesamiento | Promedio de diez tensiones de pH y ecuación de la prueba previa; límites de rango, redondeo a dos decimales; ausencia/invalidez null con origen |
-| Transporte | Tópicos `hydromate/hydromate-01/telemetry` y `/ack`; 30 s, reserva de secuencias y pendiente NVS; nube TLS con CA y NTP, sin fallback inseguro |
+| Procesamiento | Medianas de tensiones y fórmula pH previa; TDS A1, límites de rango, dos decimales; invalidez null con origen |
+| Transporte | Telemetry/ack y commands/measure; respaldo30s, cambios filtrados y solicitud UUID; NVS/ACK; TLS con CA y NTP |
 | Integrador | `scripts/mqtt_bridge.py`: bandeja SQLite durable, POST, reintento de timeout/5xx; confirma persistencia, no solo entrega MQTT |
 | Validación / registro | `StoreMeasurementRequest.php`, `MeasurementController.php` y migraciones: v1/v2 compatibles, v3 parcial, id y secuencia única, fecha de recepción y adquisición opcional |
 | Consultas | Historial, última fila y estado de antigüedad en `docs/API.md`; filtro `real_only=1` |
 | Android | `Telemetry.kt`, `ConnectionStore.kt`, Inicio/Historial/Conexión: HTTPS producción separado, valores reales, null, error HTTP, ausencia y telemetría antigua |
-| TDS / EC | TDS deshabilitado por defecto, driver opcional ADS1115; EC null hasta seleccionar driver independiente. Ningún 650 fijo de sustitución |
+| TDS / EC | TDS real ADS1115 A1; sin DS18 válido se informa referencia25°C/no compensado. EC null hasta disponer de driver independiente |
 
 No se controla ningún actuador. Aplazamiento comunicado por el usuario; anexar
 la autorización docente a la evidencia académica. No hay nueva calibración.
@@ -86,8 +87,10 @@ Compilación/cableado: embedded/README.md y diagrama de Taller5.
 En debug, Conexión → Entorno permite dos perfiles separados. Desarrollo conserva
 el banco `http://127.0.0.1:8000` por USB reverse y la demo marcada explícitamente.
 Producción exige URL HTTPS, dispositivo hydromate-01 y no ofrece demo. Guardar
-la conexión y actualizar Inicio; Historial muestra filas almacenadas. TDS ausente
-se muestra «TDS no disponible», no cero. EC aparece si llega una lectura válida.
+la conexión y actualizar Inicio; Historial muestra filas almacenadas. TDS real de
+A1 aparece en ppm; si es ausente/inválido se muestra «TDS no disponible», no cero.
+EC aparece si llega una lectura válida. Refrescar solicita adquisición nueva;
+las vistas abiertas consultan automáticamente cada2s sin pedir más adquisiciones.
 Una adquisición antigua recibida ahora se conserva antigua.
 
 Release permite solo producción. La URL puede introducirse en Conexión o

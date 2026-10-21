@@ -4,8 +4,13 @@ URL base https://hydromate-kevin.duckdns.org:9443, sin /api. Se configura median
 HYDROMATE_APP_URL; Gradle toma por defecto solo esa línea pública de .env.example
 raíz. Nunca lee .env privado. Perfiles separados: release solo producción HTTPS,
 sin demo/fallback; debug conserva desarrollo/demo. v3 soporta sensores null/origen,
-EC independiente, TDS ausente y antigüedad; producción exige real_only=1 y rechaza
+EC independiente, TDS real opcional y antigüedad; producción exige real_only=1 y rechaza
 simulaciones. Inicio/Historial manejan carga, vacío y error HTTP.
+Desde el incremento del21/10, Inicio/Historial abiertos consultan cada2s sin
+solicitar adquisiciones. Refrescar manualmente sí pide una adquisición al ESP32
+y espera su UUID confirmado; informa falta de respuesta, API antigua o límite
+de solicitudes. Requiere desplegar también API/bridge/ACL/Nginx de esta versión.
+TDS usa temperatura real si existe; si falta, muestra su referencia de25°C.
 Guías ../docs/PUBLIC_ACCESS.md y ../docs/INTEGRATION.md. Los apartados siguientes
 se preservan como antecedentes; su propiedad Gradle antigua queda reemplazada por
 HYDROMATE_APP_URL. No se empaqueta la CA exclusiva de ensayos JVM en el APK.
