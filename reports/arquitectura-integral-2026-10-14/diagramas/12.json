@@ -1,0 +1,138 @@
+{
+  "figure": 12,
+  "title": "Android nativo existente y extensiones",
+  "nodes": {
+    "ui": {
+      "rect": [
+        35,
+        150,
+        350,
+        190
+      ],
+      "title": "UI nativa",
+      "body": "Inicio / Historial\nCultivo / Control / Más\nAeroComponents y navegación\nCultivo/Control sin órdenes",
+      "kind": "sw"
+    },
+    "present": {
+      "rect": [
+        475,
+        150,
+        440,
+        190
+      ],
+      "title": "Presentación equivalente",
+      "body": "MainActivity / ReadingState\nExecutor + RequestFence\nSin ViewModel obligatorio\nFuente real / demo debug",
+      "kind": "sw"
+    },
+    "repo": {
+      "rect": [
+        1000,
+        150,
+        450,
+        190
+      ],
+      "title": "Repository / API Client",
+      "body": "TelemetryRepository\nHttpURLConnection / parse v3\nHTTPS / real_only producción\nGET por torre",
+      "kind": "sw"
+    },
+    "settings": {
+      "rect": [
+        35,
+        520,
+        350,
+        190
+      ],
+      "title": "Settings vigente",
+      "body": "ConnectionStore / ambiente\nNombre, URL y preferencias\nSin caché de mediciones",
+      "kind": "sw"
+    },
+    "future": {
+      "rect": [
+        475,
+        520,
+        440,
+        190
+      ],
+      "title": "Extensiones propuestas",
+      "body": "Authentication / SessionManager\nLocalCache acotada\nDeviceProvisioning BLE\nNotifications FCM",
+      "kind": "ext"
+    },
+    "api": {
+      "rect": [
+        1000,
+        520,
+        450,
+        190
+      ],
+      "title": "Laravel API",
+      "body": "Mediciones e historial vigentes\nAuth / control futuros\nESP32 recibe vía MQTT",
+      "kind": "sw"
+    }
+  },
+  "edges": [
+    {
+      "from": "ui",
+      "to": "present",
+      "label": "Acción / estado",
+      "points": [
+        [
+          385,
+          245.0
+        ],
+        [
+          475,
+          245.0
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "present",
+      "to": "repo",
+      "label": "Carga / snapshot",
+      "points": [
+        [
+          915,
+          245.0
+        ],
+        [
+          1000,
+          245.0
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "repo",
+      "to": "api",
+      "label": "HTTPS9443",
+      "points": [
+        [
+          1225.0,
+          340
+        ],
+        [
+          1225.0,
+          520
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "settings",
+      "to": "ui",
+      "label": "Config local",
+      "points": [
+        [
+          210.0,
+          520
+        ],
+        [
+          210.0,
+          340
+        ]
+      ],
+      "proposed": false
+    }
+  ]
+}

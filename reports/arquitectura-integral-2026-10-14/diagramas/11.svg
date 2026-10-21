@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1080" viewBox="0 0 1500 1080">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 11  Modelo relacional objetivo complementario</text>
+<rect x="35" y="120" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="47" y="152" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">devices [P]</text>
+<text x="47" y="178" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">device_id PK</text>
+<rect x="520" y="120" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="532" y="152" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">commands [P]</text>
+<text x="532" y="178" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">command_id UUID PK</text>
+<text x="532" y="204" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">device_id FK / expires_at / status</text>
+<rect x="1035" y="120" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="1047" y="152" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">command_acks [P]</text>
+<text x="1047" y="178" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK / command_id FK</text>
+<text x="1047" y="204" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">UNIQUE(command_id,ack_sequence)</text>
+<rect x="35" y="350" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="47" y="382" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">crop_profiles [P]</text>
+<text x="47" y="408" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK / creator_user_id FK</text>
+<rect x="520" y="350" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="532" y="382" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">profile_versions [P]</text>
+<text x="532" y="408" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK / profile_id FK</text>
+<text x="532" y="434" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">UNIQUE(profile_id,version)</text>
+<rect x="1035" y="350" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="1047" y="382" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">device_configuration [P]</text>
+<text x="1047" y="408" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">device_id FK / revision</text>
+<text x="1047" y="434" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">profile_version_id FK</text>
+<rect x="35" y="585" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="47" y="617" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">device_events [P]</text>
+<text x="47" y="643" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">event_id UUID PK / device_id FK</text>
+<rect x="520" y="585" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="532" y="617" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">alerts [P]</text>
+<text x="532" y="643" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK / device_id FK</text>
+<text x="532" y="669" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">event_id FK nullable</text>
+<rect x="1035" y="585" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="1047" y="617" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">dosing_events [P]</text>
+<text x="1047" y="643" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK / event_id FK UNIQUE</text>
+<text x="1047" y="669" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">channel / volume / calibration_id</text>
+<rect x="35" y="815" width="410" height="145" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="47" y="847" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">device_credentials [P]</text>
+<text x="47" y="873" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK / device_id FK</text>
+<text x="47" y="899" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">secret_ref / revoked_at</text>
+<polyline points="445,192 520,192" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="520,192 508.0,187.0 508.0,197.0" fill="#435B6E"/>
+<rect x="447" y="93" width="44" height="19" fill="white"/>
+<text x="450" y="110" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<polyline points="930,192 1035,192" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="1035,192 1023.0,187.0 1023.0,197.0" fill="#435B6E"/>
+<rect x="932" y="93" width="44" height="19" fill="white"/>
+<text x="935" y="110" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<polyline points="445,422 520,422" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="520,422 508.0,417.0 508.0,427.0" fill="#435B6E"/>
+<rect x="447" y="323" width="44" height="19" fill="white"/>
+<text x="450" y="340" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<polyline points="930,422 1035,422" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="1035,422 1023.0,417.0 1023.0,427.0" fill="#435B6E"/>
+<rect x="932" y="323" width="44" height="19" fill="white"/>
+<text x="935" y="340" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<polyline points="445,657 520,657" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="520,657 508.0,652.0 508.0,662.0" fill="#435B6E"/>
+<rect x="447" y="558" width="44" height="19" fill="white"/>
+<text x="450" y="575" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<text x="520" y="847" font-family="Arial" font-size="22" font-weight="bold" text-anchor="start" fill="#17212B">FK adicionales mediante conectores de referencia</text>
+<text x="520" y="890" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">devices 1 → N config / events / alerts / credentials</text>
+<text x="520" y="918" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">events 1 → 0..1 dosing_events; command 1 → 0..N events</text>
+<text x="520" y="946" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">users 1 → N profiles; users 1 → N audit_log [P]</text>
+<text x="520" y="974" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">No migraciones nuevas aplicadas por este documento.</text>
+<text x="35" y="1033" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Todas las cajas [P] son propuestas de diseño. Cardinalidades y campos detallados en sección 12.</text>
+<text x="35" y="1060" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>

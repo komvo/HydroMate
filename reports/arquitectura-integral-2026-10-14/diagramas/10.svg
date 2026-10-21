@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="860" viewBox="0 0 1500 860">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 10  Modelo de datos real y relación futura de identidad</text>
+<rect x="35" y="160" width="330" height="190" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="47" y="192" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">users existente</text>
+<text x="47" y="218" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK bigint / name / email</text>
+<text x="47" y="244" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">password hash / timestamps</text>
+<text x="47" y="270" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Sin asociación de torre actual</text>
+<rect x="525" y="160" width="350" height="190" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="537" y="192" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">devices propuesta</text>
+<text x="537" y="218" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">device_id PK varchar 64</text>
+<text x="537" y="244" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">name / owner lógico / estado</text>
+<text x="537" y="270" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Identidad estable, no secuencia</text>
+<rect x="1035" y="160" width="420" height="300" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="1047" y="192" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">measurements vigente</text>
+<text x="1047" y="218" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">id PK bigint; device_id varchar 64</text>
+<text x="1047" y="244" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">sequence bigint</text>
+<text x="1047" y="270" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">UNIQUE(device_id,sequence)</text>
+<text x="1047" y="296" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">message_version / sources JSON</text>
+<text x="1047" y="322" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">T°, pH, ppm, lux, EC nullable</text>
+<text x="1047" y="348" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">water_present boolean nullable</text>
+<text x="1047" y="374" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">captured_at timestamptz nullable</text>
+<text x="1047" y="400" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">created_at / updated_at recepción</text>
+<rect x="525" y="540" width="350" height="150" rx="8" fill="#EDE2F5" stroke="#526371" stroke-width="2"/>
+<text x="537" y="572" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">user_device_access propuesta</text>
+<text x="537" y="598" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">user_id FK / device_id FK</text>
+<text x="537" y="624" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">role / UNIQUE(user_id,device_id)</text>
+<text x="537" y="650" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Relación usuarios N:M torres</text>
+<polyline points="875,255 955,255 955,310 1035,310" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="1035,310 1023.0,305.0 1023.0,315.0" fill="#435B6E"/>
+<rect x="882" y="126" width="123" height="19" fill="white"/>
+<text x="885" y="143" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N futura FK</text>
+<polyline points="700,350 700,540" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="700,540 705.0,528.0 695.0,528.0" fill="#435B6E"/>
+<rect x="709.0" y="434.0" width="44.0" height="19.0" fill="white"/>
+<text x="712.0" y="451.0" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<polyline points="200,350 200,460 460,460 460,615 525,615" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="525,615 513.0,610.0 513.0,620.0" fill="#435B6E"/>
+<rect x="247" y="433" width="44" height="19" fill="white"/>
+<text x="250" y="450" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">1 : N</text>
+<text x="35" y="760" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Hoy measurements.device_id es texto sin FK a devices. Reconciliar filas test-* antes de añadir FK.</text>
+<text x="35" y="813" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Continua: interfaz definida. Discontinua: propuesta pendiente. Colores identifican dominios.</text>
+<text x="35" y="840" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>

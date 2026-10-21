@@ -1,0 +1,62 @@
+{
+  "fecha": "2026-10-21",
+  "moneda": "MXN",
+  "fuente": "Confirmación explícita del responsable; comprobantes no revisados en esta etapa",
+  "componentes": [
+    {
+      "componente": "Kit de 840 cables jumper",
+      "cantidad": "1 kit",
+      "precio_total": "154.00"
+    },
+    {
+      "componente": "Sensor flotador",
+      "cantidad": "1",
+      "precio_total": "65.00"
+    },
+    {
+      "componente": "Módulo MOSFET dual Noyito",
+      "cantidad": "1",
+      "precio_total": "60.00"
+    },
+    {
+      "componente": "Sensor de pH PH014",
+      "cantidad": "1",
+      "precio_total": "339.00"
+    },
+    {
+      "componente": "Convertidor XL4015",
+      "cantidad": "2",
+      "precio_total": "139.98"
+    },
+    {
+      "componente": "Kit DS18B20 (2 sensores)",
+      "cantidad": "1 kit",
+      "precio_total": "119.28"
+    },
+    {
+      "componente": "BH1750 GY-302",
+      "cantidad": "1",
+      "precio_total": "57.99"
+    },
+    {
+      "componente": "Fuente de alimentación 24 V, 5 A",
+      "cantidad": "1",
+      "precio_total": "162.75"
+    },
+    {
+      "componente": "ADS1115",
+      "cantidad": "1",
+      "precio_total": "76.23"
+    }
+  ],
+  "suma_desglose": "1174.23",
+  "electronica_pagada": "1168.00",
+  "diferencia_desglose_pagado": "6.23",
+  "motivo_diferencia": null,
+  "compras_anteriores": "2055.94",
+  "segundo_tds": "270.00",
+  "total": "3493.94",
+  "presupuesto_maximo": "6000.00",
+  "disponible": "2506.06",
+  "vps": "0.00"
+}
