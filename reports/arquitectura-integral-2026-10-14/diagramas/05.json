@@ -1,0 +1,182 @@
+{
+  "figure": 5,
+  "title": "Firmware objetivo por capas",
+  "nodes": {
+    "safe": {
+      "rect": [
+        35,
+        120,
+        350,
+        160
+      ],
+      "title": "SafetyManager",
+      "body": "LevelMonitor + HealthMonitor\nVeto inmediato de actuación\nNo depende de red",
+      "kind": "safe"
+    },
+    "ctl": {
+      "rect": [
+        475,
+        120,
+        440,
+        160
+      ],
+      "title": "Controladores",
+      "body": "Irrigation / Dosing / Lighting\nProfileManager / TimeManager\nSolicitudes → árbitro seguro",
+      "kind": "hw"
+    },
+    "net": {
+      "rect": [
+        1000,
+        120,
+        450,
+        160
+      ],
+      "title": "Comunicación y persistencia",
+      "body": "CommunicationManager\nConfigurationStorage NVS\nEventLogger / cola acotada",
+      "kind": "net"
+    },
+    "sensor": {
+      "rect": [
+        475,
+        390,
+        440,
+        160
+      ],
+      "title": "SensorManager",
+      "body": "Temperature / PH / TDS / Light\nLevelMonitor / PowerMonitor opc.\nLectura, calidad y caducidad",
+      "kind": "hw"
+    },
+    "hal": {
+      "rect": [
+        475,
+        665,
+        440,
+        120
+      ],
+      "title": "HAL",
+      "body": "GPIO / I2C / 1-Wire / ADC\nActuatorDriver / TDS Power",
+      "kind": "hw"
+    },
+    "physical": {
+      "rect": [
+        35,
+        665,
+        350,
+        120
+      ],
+      "title": "Drivers físicos",
+      "body": "S01–S07 y S09\nA01–A07; figuras 3 y 4",
+      "kind": "hw"
+    }
+  },
+  "edges": [
+    {
+      "from": "ctl",
+      "to": "safe",
+      "label": "Solicitud de salida",
+      "points": [
+        [
+          475,
+          200.0
+        ],
+        [
+          385,
+          200.0
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "sensor",
+      "to": "ctl",
+      "label": "Snapshot validado",
+      "points": [
+        [
+          695.0,
+          390
+        ],
+        [
+          695.0,
+          280
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "hal",
+      "to": "sensor",
+      "label": "Valores / errores",
+      "points": [
+        [
+          695.0,
+          665
+        ],
+        [
+          695.0,
+          550
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "physical",
+      "to": "hal",
+      "label": "Interfaces",
+      "points": [
+        [
+          385,
+          725.0
+        ],
+        [
+          475,
+          725.0
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "net",
+      "to": "ctl",
+      "label": "Comando validado",
+      "points": [
+        [
+          1000,
+          200.0
+        ],
+        [
+          915,
+          200.0
+        ]
+      ],
+      "proposed": true
+    },
+    {
+      "from": "safe",
+      "to": "hal",
+      "label": "Salida permitida / OFF",
+      "points": [
+        [
+          105.0,
+          280
+        ],
+        [
+          105,
+          590
+        ],
+        [
+          420,
+          590
+        ],
+        [
+          420,
+          689
+        ],
+        [
+          475,
+          689.0
+        ]
+      ],
+      "proposed": false
+    }
+  ]
+}

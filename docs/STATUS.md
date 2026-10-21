@@ -1,5 +1,48 @@
 # Estado actual — 2026-10-21
 
+## Corrección del presupuesto T5 — 2026-10-21
+
+Importes actualizados por confirmación del responsable: compras anteriores
+$2,055.94; electrónica pagada $1,168.00; segundo TDS $270.00; total $3,493.94;
+máximo vigente $6,000.00; disponible $2,506.06. Desglose electrónico $1,174.23,
+diferencia $6.23 respecto de lo pagado, sin causa informada. Sustituye cifras
+preliminares del T5; no altera documentos históricos. Nombres de compra PH014 y
+MOSFET dual Noyito no demuestran equivalencia con PH-4502C/D4184.
+Versión actual renombrada por el responsable en Documentos PDC/
+T5_PDC_1288703.docx y PDF,17 páginas. Copia de entrega,
+generador e índice de presupuesto actualizados conservando las otras ediciones.
+
+## Taller 8 revisado y acotado — 2026-10-21
+
+Partiendo del Word corregido por el usuario: Documentos PDC/
+T8_PDC_1288703.docx y PDF,15 páginas. Tres diagramas (arquitectura y
+despliegue combinados, hardware y módulos), tablas de interfaces y trazabilidad
+de los16 mínimos. Se retiran bitácora, ADR repetidos y ejemplos extensos; se
+expresan decisiones con justificación y referencias oficiales, sin atribuir
+implementación a auth/FCM/BLE/actuadores. Original del usuario preservado.
+Revisión visual completa y comprobación de cobertura; D61 registra continuidad.
+
+## Talleres 5 y 8 con formato académico — 2026-10-21
+
+Copias Word/PDF en Documentos PDC/T5_PDC_1288703 y T8_PDC_1288703.
+Formato tomado de T7: portada institucional, borde verde, Arial, tablas y pie
+por taller. T5 conserva evidencias y fotos del 21/10 (18 páginas); T8 conserva
+el contenido y corte de diseño del 14/10 (43 páginas), con láminas horizontales
+amplias para diagramas y matrices. Exportados con Word y revisados como imágenes.
+Originales preservados; adaptación de presentación, sin cambios de implementación.
+
+## Documento de evidencias del Taller 5 — 2026-10-21
+
+Entrega organizada en talleres/taller-05/entrega-2026-10-21/: Word de17 páginas
+revisadas mediante exportación Word16 y rasterizador empaquetado; seis figuras
+(dos diagramas, Inicio/Historial nuevos y dos fotos físicas aportadas), video30s
+de producción, consultas HTTPS200 y20 registros reales. Matriz de requisitos,
+cronograma al2/12, presupuesto preliminar con cargos por conciliar y ocho riesgos.
+Fuentes históricas y límites local/nube explícitos; sin afirmar calibración ni
+actuadores probados. Sin modificaciones de código o configuración ni acceso SSH.
+Seguimiento operativo privado, fuera del reporte/anexos: .local/seguimiento/
+refresco-medicion-2026-10-21.md. Por instrucción del usuario no se diagnostica ahora.
+
 ## Flujo físico público comprobado — 2026-10-21
 
 Red privada corregida y firmware cargado en COM3 con hash verificado, NVS
@@ -46,10 +89,11 @@ Android Historial observado muestra fila4718: TDS768.76ppm/23.50°C,01:16:39 loc
 Evidencia JSON/PNG: docs/evidence/tds-events-2026-10-21.json y
 tds-android-history-2026-10-21.png. Sin calibración ni latencia hasta pantalla medida.
 
-Pendiente exclusivo del nuevo botón: VPS requiere desplegar API/bridge/ACL e
-incorporar rutas Nginx nuevas; sin variables privadas ni puertos nuevos. Adquisición
-solicitada comprobada localmente, no aún con el ESP32 público. Operación del
-administrador, sin SSH del asistente. Rama autorizada: codex/tds-events-refresh.
+Responsable informa posteriormente que desplegó la actualización y el botón
+solicita lecturas; es confirmación del usuario, sin nueva validación de esa función
+en esta etapa documental. Seguimiento reservado en la ruta privada indicada arriba.
+Operación remota del administrador, sin SSH del asistente.
+Rama autorizada del incremento de código: codex/tds-events-refresh.
 
 ## Producción preparada para ejecutor externo — 2026-10-14
 
@@ -385,3 +429,18 @@ y cero STORED; puerto serie liberado al terminar.
 Android observado en Producción indica servidor disponible en última consulta;
 eso aún no demuestra recepción de nuevas mediciones del ESP32 en la nube.
 No acceso SSH/VPS, secretos versionados ni cambios de infraestructura.
+
+
+## Taller de arquitectura integral — 2026-10-14
+
+Entregable documental en reports/arquitectura-integral-2026-10-14/: DOCX/PDF de
+41 páginas, 12 diagramas SVG/PNG, 14 ADR, 17 tablas, 26 requisitos trazados y 10
+mensajes ilustrativos. Originales académicos conservados; referencias técnicas
+consultadas. D59 ratifica responsabilidades/contratos existentes y etiqueta
+propuestas de control, seguridad modular y dominio futuro. Física dosificación,
+TDS, pines/voltajes/cierres/tiempos siguen pendientes de validación.
+Render observado mediante Word 16 + rasterizador; páginas revisadas, JSON completo
+por página, SVG válidos y propuesta de pines sin colisiones. qa.json conserva
+límites/hashes; sin pruebas físicas/backend/VPS nuevas ni commit/push. Se incorpora
+la carga v3 y monitoreo fallido 14/10 registrados por otro incremento, sin afirmar
+recepción en nube. No se modifican sus cambios de firmware/librerías/credenciales.

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="53" font-family="Arial" font-size="28" font-weight="bold" text-anchor="start" fill="#17212B">Figura 5  Firmware objetivo por capas</text>
+<rect x="35" y="120" width="350" height="160" rx="8" fill="#F9DEDE" stroke="#526371" stroke-width="2"/>
+<text x="47" y="152" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">SafetyManager</text>
+<text x="47" y="178" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">LevelMonitor + HealthMonitor</text>
+<text x="47" y="204" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Veto inmediato de actuación</text>
+<text x="47" y="230" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">No depende de red</text>
+<rect x="475" y="120" width="440" height="160" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="487" y="152" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Controladores</text>
+<text x="487" y="178" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Irrigation / Dosing / Lighting</text>
+<text x="487" y="204" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">ProfileManager / TimeManager</text>
+<text x="487" y="230" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Solicitudes → árbitro seguro</text>
+<rect x="1000" y="120" width="450" height="160" rx="8" fill="#FCE9D0" stroke="#526371" stroke-width="2"/>
+<text x="1012" y="152" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Comunicación y persistencia</text>
+<text x="1012" y="178" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">CommunicationManager</text>
+<text x="1012" y="204" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">ConfigurationStorage NVS</text>
+<text x="1012" y="230" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">EventLogger / cola acotada</text>
+<rect x="475" y="390" width="440" height="160" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="487" y="422" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">SensorManager</text>
+<text x="487" y="448" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Temperature / PH / TDS / Light</text>
+<text x="487" y="474" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">LevelMonitor / PowerMonitor opc.</text>
+<text x="487" y="500" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Lectura, calidad y caducidad</text>
+<rect x="475" y="665" width="440" height="120" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="487" y="697" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">HAL</text>
+<text x="487" y="723" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">GPIO / I2C / 1-Wire / ADC</text>
+<text x="487" y="749" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">ActuatorDriver / TDS Power</text>
+<rect x="35" y="665" width="350" height="120" rx="8" fill="#DCEAF7" stroke="#526371" stroke-width="2"/>
+<text x="47" y="697" font-family="Arial" font-size="20" font-weight="bold" text-anchor="start" fill="#17212B">Drivers físicos</text>
+<text x="47" y="723" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">S01–S07 y S09</text>
+<text x="47" y="749" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">A01–A07; figuras 3 y 4</text>
+<polyline points="475,200 385,200" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="385,200 397.0,205.0 397.0,195.0" fill="#435B6E"/>
+<rect x="354.5" y="90" width="151.0" height="19" fill="white"/>
+<text x="357.5" y="107" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Solicitud de salida</text>
+<polyline points="695,390 695,280" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="695,280 690.0,292.0 700.0,292.0" fill="#435B6E"/>
+<rect x="704.0" y="324.0" width="154.0" height="23.0" fill="white"/>
+<text x="707.0" y="341.0" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Snapshot validado</text>
+<polyline points="695,665 695,550" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="695,550 690.0,562.0 700.0,562.0" fill="#435B6E"/>
+<rect x="704.0" y="596.5" width="139.0" height="19.0" fill="white"/>
+<text x="707.0" y="613.5" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Valores / errores</text>
+<polyline points="385,725 475,725" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="475,725 463.0,720.0 463.0,730.0" fill="#435B6E"/>
+<rect x="387.5" y="635" width="85.0" height="19" fill="white"/>
+<text x="390.5" y="652" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Interfaces</text>
+<polyline points="1000,200 915,200" fill="none" stroke="#435B6E" stroke-width="3" stroke-dasharray="10 10"/>
+<polygon points="915,200 927.0,205.0 927.0,195.0" fill="#435B6E"/>
+<rect x="879.5" y="90" width="156.0" height="19" fill="white"/>
+<text x="882.5" y="107" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Comando validado</text>
+<polyline points="105,280 105,590 420,590 420,689 475,689" fill="none" stroke="#435B6E" stroke-width="3"/>
+<polygon points="475,689 463.0,684.0 463.0,694.0" fill="#435B6E"/>
+<rect x="32" y="555" width="186" height="23" fill="white"/>
+<text x="35" y="572" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Salida permitida / OFF</text>
+<text x="1000" y="402" font-family="Arial" font-size="22" font-weight="bold" text-anchor="start" fill="#17212B">Implementación actual</text>
+<text x="1000" y="440" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Sketch Arduino monolítico:</text>
+<text x="1000" y="470" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">adquisición, MQTT y NVS.</text>
+<text x="1000" y="510" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">Controladores y árbitro seguro</text>
+<text x="1000" y="540" font-family="Arial" font-size="20" font-weight="normal" text-anchor="start" fill="#17212B">son diseño pendiente.</text>
+<text x="35" y="853" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Dependencias representadas por interfaces; red no puede escribir directamente GPIO de actuadores.</text>
+<text x="35" y="880" font-family="Arial" font-size="18" font-weight="normal" text-anchor="start" fill="#17212B">Azul hardware | Verde software | Naranja red | Morado datos | Rojo seguridad | Gris externo</text>
+</svg>

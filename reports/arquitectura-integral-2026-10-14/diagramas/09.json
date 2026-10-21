@@ -1,0 +1,138 @@
+{
+  "figure": 9,
+  "title": "Backend vigente y módulos de dominio objetivo",
+  "nodes": {
+    "bridge": {
+      "rect": [
+        35,
+        130,
+        320,
+        150
+      ],
+      "title": "MQTT Integration",
+      "body": "Python/Paho vigente\nSQLite inbox persistente\nACK stored tras Laravel",
+      "kind": "net"
+    },
+    "router": {
+      "rect": [
+        440,
+        130,
+        420,
+        150
+      ],
+      "title": "API Router / Controller",
+      "body": "MeasurementController\nstore / index / latest / status\nStoreMeasurementRequest",
+      "kind": "sw"
+    },
+    "db": {
+      "rect": [
+        960,
+        130,
+        480,
+        150
+      ],
+      "title": "Measurement Storage",
+      "body": "Eloquent Measurement → PostgreSQL\nUNIQUE device_id + sequence\nCurrent State por antigüedad",
+      "kind": "db"
+    },
+    "auth": {
+      "rect": [
+        35,
+        460,
+        320,
+        190
+      ],
+      "title": "Authentication / Authorization",
+      "body": "Sanctum objetivo\nAcceso por torre\nDevice Management\nDevice Credentials",
+      "kind": "sw"
+    },
+    "domain": {
+      "rect": [
+        440,
+        460,
+        420,
+        190
+      ],
+      "title": "Servicios de dominio objetivo",
+      "body": "Irrigation / Dosing Events\nCrop Profiles / Configuration\nCommand Management\nAudit Logging",
+      "kind": "sw"
+    },
+    "alerts": {
+      "rect": [
+        960,
+        460,
+        480,
+        190
+      ],
+      "title": "Alerts / Notifications objetivo",
+      "body": "Eventos → reglas → alerta persistida\nFCM con registro de entrega\nNo sustituye SafetyManager",
+      "kind": "sw"
+    }
+  },
+  "edges": [
+    {
+      "from": "bridge",
+      "to": "router",
+      "label": "POST",
+      "points": [
+        [
+          355,
+          205.0
+        ],
+        [
+          440,
+          205.0
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "router",
+      "to": "db",
+      "label": "Validación → persistencia",
+      "points": [
+        [
+          860,
+          205.0
+        ],
+        [
+          960,
+          205.0
+        ]
+      ],
+      "proposed": false
+    },
+    {
+      "from": "auth",
+      "to": "domain",
+      "label": "Policy de torre",
+      "points": [
+        [
+          355,
+          555.0
+        ],
+        [
+          440,
+          555.0
+        ]
+      ],
+      "proposed": true
+    },
+    {
+      "from": "domain",
+      "to": "alerts",
+      "label": "Evento",
+      "points": [
+        [
+          860,
+          555.0
+        ],
+        [
+          960,
+          555.0
+        ]
+      ],
+      "proposed": true
+    }
+  ]
+}

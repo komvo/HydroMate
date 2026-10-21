@@ -1,0 +1,16 @@
+[
+  {
+    "path": "evidencias/sensores-en-agua.jpeg",
+    "title": "Sensores en la prueba con agua",
+    "intro": "Para la prueba se colocaron las sondas en una hielera con agua. Este montaje permite adquirir datos físicos sin esperar a que la torre y el depósito definitivos estén terminados.",
+    "caption": "Figura 5. Sondas utilizadas en el banco con agua. Fotografía proporcionada por el responsable para documentar el montaje de la prueba.",
+    "width": 6.8
+  },
+  {
+    "path": "evidencias/esp32-protoboard.jpeg",
+    "title": "ESP32 y módulos sobre protoboard",
+    "intro": "El ESP32 se conecta por USB y concentra las entradas de los sensores en la protoboard. En la imagen se distinguen la placa, el ADS1115, los módulos y el cableado de señal; el flotador aparece junto al montaje.",
+    "caption": "Figura 6. ESP32 y conexiones físicas del banco. La correspondencia de GPIO y entradas A0/A1 se consulta en la figura 2 y en el firmware.",
+    "width": 5.1
+  }
+]

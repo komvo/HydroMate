@@ -1,0 +1,657 @@
+{
+  "checked_at": "2026-10-21T08:38:00.300222+00:00",
+  "base_url": "https://hydromate-kevin.duckdns.org:9443",
+  "scope": "Read-only public HTTPS checks; no SSH or production writes",
+  "results": {
+    "health": {
+      "http_status": 200,
+      "content_type": "application/json",
+      "data": {
+        "status": "up"
+      }
+    },
+    "history": {
+      "http_status": 200,
+      "content_type": "application/json",
+      "data": [
+        {
+          "id": 200,
+          "device_id": "hydromate-01",
+          "sequence": 4766,
+          "sample_number": null,
+          "reason": [
+            "sensor_change",
+            "light_change"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.73,
+          "tds_ppm": 777.96,
+          "created_at": "2026-10-21T08:37:39.000000Z",
+          "updated_at": "2026-10-21T08:37:39.000000Z",
+          "message_version": 3,
+          "light_lux": 8.33,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:37:39.000000Z"
+        },
+        {
+          "id": 199,
+          "device_id": "hydromate-01",
+          "sequence": 4765,
+          "sample_number": null,
+          "reason": [
+            "sensor_change",
+            "light_change"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.79,
+          "tds_ppm": 774.17,
+          "created_at": "2026-10-21T08:37:39.000000Z",
+          "updated_at": "2026-10-21T08:37:39.000000Z",
+          "message_version": 3,
+          "light_lux": 17.5,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:37:36.000000Z"
+        },
+        {
+          "id": 198,
+          "device_id": "hydromate-01",
+          "sequence": 4764,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.8,
+          "tds_ppm": 772.53,
+          "created_at": "2026-10-21T08:37:35.000000Z",
+          "updated_at": "2026-10-21T08:37:35.000000Z",
+          "message_version": 3,
+          "light_lux": 264.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:37:34.000000Z"
+        },
+        {
+          "id": 197,
+          "device_id": "hydromate-01",
+          "sequence": 4763,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.79,
+          "tds_ppm": 772.77,
+          "created_at": "2026-10-21T08:37:04.000000Z",
+          "updated_at": "2026-10-21T08:37:04.000000Z",
+          "message_version": 3,
+          "light_lux": 260,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:37:04.000000Z"
+        },
+        {
+          "id": 196,
+          "device_id": "hydromate-01",
+          "sequence": 4762,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.81,
+          "tds_ppm": 772.53,
+          "created_at": "2026-10-21T08:36:35.000000Z",
+          "updated_at": "2026-10-21T08:36:35.000000Z",
+          "message_version": 3,
+          "light_lux": 260.83,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:36:34.000000Z"
+        },
+        {
+          "id": 195,
+          "device_id": "hydromate-01",
+          "sequence": 4761,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.82,
+          "tds_ppm": 772.36,
+          "created_at": "2026-10-21T08:36:04.000000Z",
+          "updated_at": "2026-10-21T08:36:04.000000Z",
+          "message_version": 3,
+          "light_lux": 262.5,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:36:04.000000Z"
+        },
+        {
+          "id": 194,
+          "device_id": "hydromate-01",
+          "sequence": 4760,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.82,
+          "tds_ppm": 772.61,
+          "created_at": "2026-10-21T08:35:34.000000Z",
+          "updated_at": "2026-10-21T08:35:34.000000Z",
+          "message_version": 3,
+          "light_lux": 259.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:35:34.000000Z"
+        },
+        {
+          "id": 193,
+          "device_id": "hydromate-01",
+          "sequence": 4759,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.81,
+          "tds_ppm": 772.36,
+          "created_at": "2026-10-21T08:35:05.000000Z",
+          "updated_at": "2026-10-21T08:35:05.000000Z",
+          "message_version": 3,
+          "light_lux": 264.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:35:04.000000Z"
+        },
+        {
+          "id": 192,
+          "device_id": "hydromate-01",
+          "sequence": 4758,
+          "sample_number": null,
+          "reason": [
+            "sensor_change",
+            "ph_change"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.81,
+          "tds_ppm": 772.12,
+          "created_at": "2026-10-21T08:34:34.000000Z",
+          "updated_at": "2026-10-21T08:34:34.000000Z",
+          "message_version": 3,
+          "light_lux": 264.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:34:34.000000Z"
+        },
+        {
+          "id": 191,
+          "device_id": "hydromate-01",
+          "sequence": 4757,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.61,
+          "tds_ppm": 774.5,
+          "created_at": "2026-10-21T08:34:08.000000Z",
+          "updated_at": "2026-10-21T08:34:08.000000Z",
+          "message_version": 3,
+          "light_lux": 264.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:34:08.000000Z"
+        },
+        {
+          "id": 190,
+          "device_id": "hydromate-01",
+          "sequence": 4756,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.61,
+          "tds_ppm": 773.18,
+          "created_at": "2026-10-21T08:33:38.000000Z",
+          "updated_at": "2026-10-21T08:33:38.000000Z",
+          "message_version": 3,
+          "light_lux": 264.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:33:37.000000Z"
+        },
+        {
+          "id": 189,
+          "device_id": "hydromate-01",
+          "sequence": 4755,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.6,
+          "tds_ppm": 773.43,
+          "created_at": "2026-10-21T08:33:08.000000Z",
+          "updated_at": "2026-10-21T08:33:08.000000Z",
+          "message_version": 3,
+          "light_lux": 263.33,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:33:07.000000Z"
+        },
+        {
+          "id": 188,
+          "device_id": "hydromate-01",
+          "sequence": 4754,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.6,
+          "tds_ppm": 771.54,
+          "created_at": "2026-10-21T08:32:38.000000Z",
+          "updated_at": "2026-10-21T08:32:38.000000Z",
+          "message_version": 3,
+          "light_lux": 261.67,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:32:37.000000Z"
+        },
+        {
+          "id": 187,
+          "device_id": "hydromate-01",
+          "sequence": 4753,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.61,
+          "tds_ppm": 769.91,
+          "created_at": "2026-10-21T08:32:08.000000Z",
+          "updated_at": "2026-10-21T08:32:08.000000Z",
+          "message_version": 3,
+          "light_lux": 261.67,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:32:07.000000Z"
+        },
+        {
+          "id": 186,
+          "device_id": "hydromate-01",
+          "sequence": 4752,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.6,
+          "tds_ppm": 769.66,
+          "created_at": "2026-10-21T08:31:37.000000Z",
+          "updated_at": "2026-10-21T08:31:37.000000Z",
+          "message_version": 3,
+          "light_lux": 261.67,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:31:37.000000Z"
+        },
+        {
+          "id": 185,
+          "device_id": "hydromate-01",
+          "sequence": 4751,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.59,
+          "tds_ppm": 770.4,
+          "created_at": "2026-10-21T08:31:08.000000Z",
+          "updated_at": "2026-10-21T08:31:08.000000Z",
+          "message_version": 3,
+          "light_lux": 260,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:31:07.000000Z"
+        },
+        {
+          "id": 184,
+          "device_id": "hydromate-01",
+          "sequence": 4750,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.57,
+          "tds_ppm": 770.15,
+          "created_at": "2026-10-21T08:30:37.000000Z",
+          "updated_at": "2026-10-21T08:30:37.000000Z",
+          "message_version": 3,
+          "light_lux": 262.5,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:30:37.000000Z"
+        },
+        {
+          "id": 183,
+          "device_id": "hydromate-01",
+          "sequence": 4749,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.58,
+          "tds_ppm": 768.68,
+          "created_at": "2026-10-21T08:30:07.000000Z",
+          "updated_at": "2026-10-21T08:30:07.000000Z",
+          "message_version": 3,
+          "light_lux": 258.33,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:30:07.000000Z"
+        },
+        {
+          "id": 182,
+          "device_id": "hydromate-01",
+          "sequence": 4748,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.53,
+          "tds_ppm": 770.89,
+          "created_at": "2026-10-21T08:29:37.000000Z",
+          "updated_at": "2026-10-21T08:29:37.000000Z",
+          "message_version": 3,
+          "light_lux": 259.17,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:29:37.000000Z"
+        },
+        {
+          "id": 181,
+          "device_id": "hydromate-01",
+          "sequence": 4747,
+          "sample_number": null,
+          "reason": [
+            "periodic_poc"
+          ],
+          "temperature_c": 23.5,
+          "light_pct": null,
+          "light_state": null,
+          "water_level_pct": null,
+          "water_level_state": null,
+          "ph": 9.54,
+          "tds_ppm": 771.13,
+          "created_at": "2026-10-21T08:29:07.000000Z",
+          "updated_at": "2026-10-21T08:29:07.000000Z",
+          "message_version": 3,
+          "light_lux": 260.83,
+          "water_present": true,
+          "sources": {
+            "ec_us_cm": "unavailable",
+            "light_lux": "real",
+            "ph": "real",
+            "tds_ppm": "real",
+            "temperature_c": "real",
+            "water_present": "real"
+          },
+          "ec_us_cm": null,
+          "captured_at": "2026-10-21T08:29:07.000000Z"
+        }
+      ]
+    },
+    "status": {
+      "http_status": 200,
+      "content_type": "application/json",
+      "data": {
+        "device_id": "hydromate-01",
+        "state": "recent",
+        "freshness_seconds": 120,
+        "age_seconds": 23,
+        "last_sequence": 4766,
+        "last_received_at": "2026-10-21T08:37:39.000000Z",
+        "last_captured_at": "2026-10-21T08:37:39.000000Z",
+        "basis": "telemetry_age_not_live_connection"
+      }
+    }
+  }
+}
