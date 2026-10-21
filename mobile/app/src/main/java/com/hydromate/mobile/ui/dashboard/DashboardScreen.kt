@@ -17,7 +17,7 @@ class DashboardScreen(private val ui: Components) {
         identity.addView(text("HydroMate", if (largeText) 22 else 28, true, backdropInk))
         if (!largeText) identity.addView(text("Agua, vida y tecnología", 13, tint = backdropMuted))
         heading.addView(identity, LinearLayout.LayoutParams(0, -2, 1f))
-        heading.addView(iconButton(R.drawable.aero_refresh, "Actualizar lecturas", refresh).apply {
+        heading.addView(iconButton(R.drawable.aero_refresh, "Solicitar medición nueva", refresh).apply {
             isEnabled = state !is ReadingState.Loading
             alpha = if (isEnabled) 1f else .45f
         }, LinearLayout.LayoutParams(dp(52), dp(52)))
@@ -44,7 +44,7 @@ class DashboardScreen(private val ui: Components) {
         status.setPadding(dp(12), dp(9), dp(12), dp(9))
         val message = when (state) {
             is ReadingState.Failed -> "No podemos actualizar las lecturas"
-            is ReadingState.Loading -> "Actualizando lecturas…"
+            is ReadingState.Loading -> if (state.requested) "Solicitando medición al ESP32…" else "Actualizando lecturas…"
             is ReadingState.Empty -> "Sin lecturas para esta torre"
             is ReadingState.Ready -> "${if (old) "Sin datos recientes · " else ""}Recibido ${latest?.let { date(it.received) }.orEmpty()}"
             else -> "Consulta las lecturas de tu torre"
@@ -86,6 +86,7 @@ class DashboardScreen(private val ui: Components) {
                 instrument.addView(text(when {
                     item.value == null -> if (item.label == "TDS") "TDS no disponible" else "Sin lectura"
                     old -> "Lectura antigua"
+                    item.label == "TDS" && latest?.tdsUsesReferenceTemperature == true -> "Sin compensación térmica · ref. 25 °C"
                     else -> "Sin rango configurado"
                 }, 12, tint = muted).apply { setPadding(dp(4), 0, 0, 0) })
             }

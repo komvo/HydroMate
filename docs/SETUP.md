@@ -6,7 +6,9 @@ certificados propios, HTTPS9443 y MQTT TLS8884. Compilar Android exportando solo
 HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:9443; por defecto Gradle lee
 únicamente esa variable pública en .env.example raíz. Nunca copia .env VPS al PC.
 Firmware: secrets.h privado, hostname/puerto8884/TLS/CA raíz y credenciales propias;
-compilar sin HYDROMATE_ALLOW_PLAIN_LAN. TDS ausente null; EC independiente.
+compilar sin HYDROMATE_ALLOW_PLAIN_LAN. TDS habilitado en ADS1115 A1;
+DS18B20 GPIO4, pH A0; EC independiente. Sin temperatura válida, TDS usa25°C
+de referencia y la app lo identifica como no compensado.
 Contrato y ensayo: TELEMETRY_CONTRACT.md, INTEGRATION.md. No se requiere teléfono
 USB para pruebas JVM; ensayo físico remoto en Android sigue siendo manual.
 

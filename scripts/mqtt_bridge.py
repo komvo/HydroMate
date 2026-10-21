@@ -70,6 +70,43 @@ def validate_transport(args):
         raise ValueError('Public API requires HTTPS')
 
 
+def relay_sample_requests(client, api, sent, clock=time.monotonic):
+    """Resend short-lived acquisition requests until persistence; never retained."""
+    status, items = request(api, 'GET', '/api/internal/measurement-requests')
+    if status == 404:  # Compatible with the previous backend during rollout.
+        return
+    if status != 200 or not isinstance(items, list) or len(items) > 100:
+        raise ValueError('invalid measurement request response')
+    now = datetime.now(timezone.utc)
+    tick = clock()
+    active = set()
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        device, identity = item.get('device_id'), item.get('id')
+        if not isinstance(device, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,64}', device):
+            continue
+        if not isinstance(identity, str) or not re.fullmatch(r'[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}', identity):
+            continue
+        try:
+            expires = datetime.fromisoformat(item['expires_at'].replace('Z', '+00:00'))
+            remaining = (expires - now).total_seconds()
+        except (ValueError, TypeError, KeyError, AttributeError):
+            continue
+        if not 0 < remaining <= 35:
+            continue
+        active.add(identity)
+        if tick - sent.get(identity, float('-inf')) < 2:
+            continue
+        body = json.dumps(dict(action='measure', request_id=identity, expires_at=int(expires.timestamp())))
+        result = client.publish(f'hydromate/{device}/commands/measure', body, qos=1, retain=False)
+        if result.rc == mqtt.MQTT_ERR_SUCCESS:
+            sent[identity] = tick
+            log('sample_request_published', device=device, request_id=identity)
+    for identity in set(sent) - active:
+        del sent[identity]
+
+
 def run(args):
     validate_transport(args)
     args.state.parent.mkdir(parents=True, exist_ok=True)
@@ -100,12 +137,21 @@ def run(args):
     client.on_message = message
     client.connect_async(args.host, args.port, keepalive=30)
     client.loop_start()
+    last_requests_poll = float('-inf')
+    sent_requests = {}
 
     def ack(device, seq, status):
         client.publish(f'hydromate/{device}/ack', json.dumps(dict(sequence=seq, status=status)), qos=1, retain=False)
 
     try:
         while True:
+            if client.is_connected() and time.monotonic() - last_requests_poll >= 1:
+                last_requests_poll = time.monotonic()
+                try:
+                    relay_sample_requests(client, args.api, sent_requests)
+                except (OSError, ValueError) as error:
+                    log('sample_requests_unavailable', error_type=type(error).__name__)
+                    last_requests_poll += 4
             try:
                 msg = incoming.get(timeout=.2)
             except queue.Empty:

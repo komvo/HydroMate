@@ -1,4 +1,55 @@
-# Estado actual — 2026-10-14
+# Estado actual — 2026-10-21
+
+## Flujo físico público comprobado — 2026-10-21
+
+Red privada corregida y firmware cargado en COM3 con hash verificado, NVS
+conservada. Usuario sincronizó cuentas MQTT en su VPS; bridge conectado y
+suscrito según logs aportados. Observación local ESP32: MQTT TLS8884 conectado,
+14 muestras nuevas consecutivas4201–4214 con ACK STORED y pendiente1801 también
+confirmada. Cero publish fallidos y cero fallos MQTT después de conectar;
+un rechazo previo a sincronizar cuenta. SAMPLE→STORED258–577ms (media409ms),
+sin incluir frontend. Android Producción/HTTPS9443/hydromate-01: Inicio e
+Historial muestran pH/lux/flotador; segunda consulta cambia fecha/valores.
+Evidencia public-flow-esp32-android-2026-10-21.json y PNG en docs/evidence/.
+Temperatura invalid/null; TDS/EC unavailable en esa prueba. Calibración pH no
+revalidada. Sin acceso SSH/VPS del asistente; operaciones remotas hechas por usuario.
+
+Usuario confirma reemplazo TDS funcionando en ADS1115 A1 y DS18B20 GPIO4.
+Temperatura recuperada: GET público de secuencia4408 muestra23.5°C/origen real.
+La evidencia anterior se conserva tal como ocurrió.
+
+## TDS, eventos y refresco con adquisición — incremento21/10
+
+Implementado: TDS A1 con mediana/compensación DS18B20; eventos configurables de
+luz/nivel/pH/temperatura/TDS, respaldo30s y pendiente NVS intacto hasta ACK.
+Solicitud Android→POST HTTPS→caché UUID30s→bridge→commands/measure→ESP32→v3
+correlacionada→PostgreSQL. Vistas Android visibles consultan cada2s; botón pide
+adquisición nueva y distingue caducidad/API antigua. D60 y PUBLIC_ACCESS.md.
+
+Observado localmente: PHP29/194, Python10/10 incluyendo guardas rootless; pruebas
+C++ de conversión/mediana/eventos. Android debug/release y lint pasan; JVM33
+pruebas,31 ejecutadas sin fallos y2 opt-in omitidas; incluye HTTPS con CA de test,
+respuesta del pipeline MQTT y TDS con temperatura válida/ausente. Nueva APK debug
+instalada por USB conservando configuración. Docker aislado hydromate-validation:
+solicitud HTTPS→comando MQTT TLS no retenido→productor simulado→bridge→PostgreSQL
+→GET correlacionado pasa; registro anterior no satisface, caducidad sin respuesta
+y límites públicos403/404/422 comprobados. Regresión MQTT TLS10 transmisiones,
+duplicado/conflicto/inválido pasa. Solo fixtures locales; ensayo detenido sin
+borrar volúmenes. Esa prueba local no acredita recepción física pública.
+
+Firmware compilado (1076345bytes,82%; RAM50812bytes,15%) y cargado en COM3 con
+hash verificado, NVS conservada. Captura física4601–4604: cuatro muestras nuevas,
+cuatro STORED, coincidencia completa con GET público; TDS770.32–771.05ppm y
+temperatura23.50°C real. Cambios del flotador generan water_change antes de30s.
+Usuario cubre/destapa BH1750: API guarda light_change hasta13.33lux y recuperación.
+Android Historial observado muestra fila4718: TDS768.76ppm/23.50°C,01:16:39 local.
+Evidencia JSON/PNG: docs/evidence/tds-events-2026-10-21.json y
+tds-android-history-2026-10-21.png. Sin calibración ni latencia hasta pantalla medida.
+
+Pendiente exclusivo del nuevo botón: VPS requiere desplegar API/bridge/ACL e
+incorporar rutas Nginx nuevas; sin variables privadas ni puertos nuevos. Adquisición
+solicitada comprobada localmente, no aún con el ESP32 público. Operación del
+administrador, sin SSH del asistente. Rama autorizada: codex/tds-events-refresh.
 
 ## Producción preparada para ejecutor externo — 2026-10-14
 
@@ -123,9 +174,9 @@ las notas siguientes se conservan como historial del mismo día.
   más TDS simulado identificado por variable; reemplaza la propuesta inicial de
   una sola temperatura. No implementado. BH1750 debe conservar lux y flotador
   nivel discreto; v1 necesita evolución antes de integrar esos datos.
-- Sketch localizado y revisado: `Documentos PDC/tests/PruebaSensores1.ino`; conserva pruebas
-  locales, sin Wi-Fi/MQTT. Anuncia TDS en A1 pero lee A3: discrepancia histórica
-  pendiente de resolver al integrar reemplazo; no se modificó el original.
+- Sketch original de pruebas: `Documentos PDC/tests/PruebaSensores1.ino`.
+  Conexión vigente confirmada21/10: TDS en ADS1115 A1. El firmware de telemetría
+  y documentación operativa usan esa entrada.
 - OVHcloud VPS-1 compartido con un proyecto similar aceptado para preparar la
   PoC. Sin compra/despliegue comprobados; separar aplicaciones/datos/permisos.
 - Usuario solicita primero repositorio GitHub en `komvo`, con documentos,
@@ -298,3 +349,39 @@ pasan. Gate PHP acepta9443/rechaza8443/443/ruta; CA ajena/hostname erróneo y PO
 público rechazados. Primera ejecución con compilación simultánea tuvo timeouts;
 repetición pasó. No se modifican JSON de evidencia histórica del puerto anterior.
 Sin VPS, reglas remotas ni pruebas físicas nuevas. Rama codex/https-9443.
+
+## Arduino IDE y carga de telemetría TLS — 2026-10-14
+
+ArduinoJson7.4.2 estaba en las bibliotecas CLI aisladas pero faltaba en el
+sketchbook del IDE. Copiada allí desde la instalación local; helper idempotente
+scripts/install_arduino_ide_libraries.ps1 y procedimiento en embedded/README.md.
+CA privada inicialmente no era PEM: configuradas raíces públicas oficiales
+ISRG Root X1/X2 en secrets.h ignorado, conservando las credenciales MQTT.
+Compilación ESP32 Dev Module/core3.3.11 correcta (1069905 bytes,81%; RAM15%);
+carga COM3 verificada por hash, sin erase/NVS ni actuadores. Primer monitoreo95s:
+Wi-Fi no encuentra SSID, sin conexión MQTT ni muestras confirmadas. Usuario
+corrigió Wi-Fi localmente; segunda compilación/carga verificadas (1069889 bytes).
+Configuración incorporada contrastada con header generado y binario; red nueva
+todavía no encontrada por ESP32. Comprobación de red2.4GHz física pendiente.
+Repetición95s tras usuario activar/corregir red: sigue WL_NO_SSID_AVAIL,
+cero conexiones MQTT y cero confirmaciones STORED. Android Inicio sigue sin
+lecturas para esta torre. Firmware coincide con Wi-Fi privado actual.
+Diagnóstico USB del teléfono: hotspot activo a5240MHz (5GHz), incompatible
+con radio2.4GHz del ESP32. Solicitado cambio de banda del hotspot, sin tocar
+SSID/password ni firmware. Guardado2.4GHz aún mantenía AP activo5GHz; tras
+reinicio manual del hotspot, frecuencia2412MHz y ESP32 WL_CONNECTED observados.
+MQTT TLS alcanza broker, pero CONNECT rechazado con código5 (no autorizado).
+MQTT_USER coincide con cuenta prevista hydromate-device; password privado
+no vacío ni igual a plantilla. Pendiente contrastar autenticación con passwd
+del broker, sin solicitar secretos ni cambiar cuentas/remoto. Sin STORED aún.
+Usuario corrigió MQTT_PASSWORD en secrets.h privado; recompilación y carga
+COM3 verificadas. Usuario/password contrastados con binario, sin escapes
+desconocidos. Wi-Fi2412MHz y CA/puerto TLS preservados; broker aún responde
+CONNECT5. Pendiente administrador comprobar cuenta montada y logs de Mosquitto
+mediante comandos de solo lectura del proyecto hydromate. No cambiar passwords
+ni desactivar autenticación como solución; todavía sin STORED/lecturas nuevas.
+Última observación180s tras carga:35 rechazos MQTT5, cero conexiones aceptadas
+y cero STORED; puerto serie liberado al terminar.
+Android observado en Producción indica servidor disponible en última consulta;
+eso aún no demuestra recepción de nuevas mediciones del ESP32 en la nube.
+No acceso SSH/VPS, secretos versionados ni cambios de infraestructura.

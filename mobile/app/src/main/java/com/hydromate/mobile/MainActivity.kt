@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.WindowInsets
@@ -21,11 +23,21 @@ import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
 class MainActivity : Activity() {
-    private val executor = Executors.newSingleThreadExecutor()
+    private val executor = Executors.newFixedThreadPool(2)
     private var pending: Future<*>? = null
     private val repository = TelemetryRepository()
     private val requests = RequestFence()
     private var active = false
+    private val pollHandler = Handler(Looper.getMainLooper())
+    private val poll = object : Runnable {
+        override fun run() {
+            if (active && scenario == 0 && destination in listOf(Destination.HOME, Destination.HISTORY)
+                && (state is ReadingState.Ready || state is ReadingState.Empty) && pending?.isDone != false) {
+                refreshData(requestNew = false, background = true)
+            }
+            if (active) pollHandler.postDelayed(this, 2000)
+        }
+    }
     private var state: ReadingState = ReadingState.Idle
     private var destination = Destination.HOME
     private var controlOrigin = Destination.HOME
@@ -119,8 +131,9 @@ class MainActivity : Activity() {
 
     override fun onStart() {
         super.onStart(); active = true
-        if (state == ReadingState.Idle) refresh()
+        if (state == ReadingState.Idle) refreshData()
         else presentState()
+        pollHandler.removeCallbacks(poll); pollHandler.postDelayed(poll, 2000)
     }
 
     private fun captureDraft() {
@@ -131,7 +144,7 @@ class MainActivity : Activity() {
         if (next == Destination.CONTROL && destination != Destination.CONTROL) controlOrigin = destination
         destination = next
         scroll.scrollTo(0, 0); render(); ui.fade(content)
-        if (state == ReadingState.Idle && next in listOf(Destination.HOME, Destination.HISTORY)) refresh()
+        if (state == ReadingState.Idle && next in listOf(Destination.HOME, Destination.HISTORY)) refreshData()
     }
     private fun goBack() {
         when (destination) {
@@ -153,7 +166,7 @@ class MainActivity : Activity() {
         invalidateRequest(); config = validated; connections.save(config)
         if (config.environment == ConnectionEnvironment.PRODUCTION) scenario = 0
         state = if (scenario > 0) PreviewSupport.load(scenario)!! else ReadingState.Idle
-        if (scenario == 0) refresh() else settings.updateState(state, true)
+        if (scenario == 0) refreshData() else settings.updateState(state, true)
     }
     private fun selectSavedTower(value: ConnectionSettings) {
         captureDraft(); invalidateRequest()
@@ -161,13 +174,13 @@ class MainActivity : Activity() {
         if (config.environment == ConnectionEnvironment.PRODUCTION) scenario = 0
         state = if (scenario > 0) PreviewSupport.load(scenario)!! else ReadingState.Idle
         render()
-        if (scenario == 0) refresh()
+        if (scenario == 0) refreshData()
     }
     private fun selectScenario(value: Int) {
         captureDraft(); invalidateRequest(); scenario = if (config.environment == ConnectionEnvironment.PRODUCTION) 0 else value
         state = PreviewSupport.load(scenario) ?: ReadingState.Idle
         render()
-        if (scenario == 0) refresh()
+        if (scenario == 0) refreshData()
     }
     private fun chooseEnvironment(value: ConnectionEnvironment) {
         captureDraft(); invalidateRequest()
@@ -176,7 +189,8 @@ class MainActivity : Activity() {
         state = ReadingState.Idle; render()
     }
     private fun requestIdentity() = "${config.environment}\n${config.server}\n${config.device}"
-    private fun refresh() {
+    private fun refresh() = refreshData(requestNew = true)
+    private fun refreshData(requestNew: Boolean = false, background: Boolean = false) {
         if (!active || (state is ReadingState.Loading && scenario == 0)) return
         if (scenario > 0) {
             state = PreviewSupport.load(scenario)!!; presentState(); return
@@ -185,18 +199,28 @@ class MainActivity : Activity() {
         catch (error: IllegalArgumentException) {
             state = ReadingState.Failed(FailureKind.ADDRESS, error.message.orEmpty()); presentState(); return
         }
-        state = ReadingState.Loading; presentState()
+        if (!background) {
+            invalidateRequest()
+            state = ReadingState.Loading(requestNew); presentState()
+        }
         val ticket = requests.begin(requestIdentity())
         val requestedDevice = config.device
         val production = config.environment == ConnectionEnvironment.PRODUCTION
         pending = executor.submit {
-            val result = runCatching { repository.loadSnapshot(endpoint, requestedDevice, production) }
+            val result = runCatching {
+                if (requestNew) repository.requestFreshSnapshot(endpoint, requestedDevice, production)
+                else repository.loadSnapshot(endpoint, requestedDevice, production)
+            }
             runOnUiThread {
                 if (!active || isDestroyed || isFinishing || scenario != 0 || !requests.accepts(ticket, requestIdentity())) return@runOnUiThread
+                val previous = state
                 state = result.fold(onSuccess = { snapshot ->
                     if (snapshot.readings.isEmpty()) ReadingState.Empty(Instant.now()) else ReadingState.Ready(snapshot.readings, Instant.now(), snapshot.deviceState)
                 }, onFailure = ::failure)
-                presentState()
+                val old = previous as? ReadingState.Ready
+                val updated = state as? ReadingState.Ready
+                if (!background || old == null || updated == null || old.values != updated.values || old.deviceState != updated.deviceState)
+                    presentState()
             }
         }
     }
@@ -254,6 +278,7 @@ class MainActivity : Activity() {
         super.onSaveInstanceState(outState)
     }
     override fun onStop() {
+        pollHandler.removeCallbacks(poll)
         captureDraft(); active = false; invalidateRequest()
         if (state is ReadingState.Loading && scenario == 0) state = ReadingState.Idle
         super.onStop()

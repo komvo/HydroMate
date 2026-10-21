@@ -1,7 +1,25 @@
 # Incremento vigente: API pública — 2026-10-14
 
-HTTPS9443 permite consultas GET/HEAD; POST permanece interno para el bridge.
+HTTPS9443 permite consultas GET/HEAD y la solicitud limitada de adquisición
+descrita abajo. POST /api/measurements permanece interno para el bridge.
 Guía [PUBLIC_ACCESS](PUBLIC_ACCESS.md). La referencia histórica se conserva abajo.
+
+## Solicitar una medición nueva — incremento21/10/2026
+
+- POST /api/devices/{device_id}/measurement-requests con cuerpo {}:202 con id UUID,
+  state=pending y expires_at. Solo torres ya registradas, máximo12 solicitudes/min;
+  clics concurrentes reutilizan una solicitud pendiente. No acepta acciones ni
+  parámetros de actuadores. 404 torre desconocida,422 cuerpo incorrecto,429 límite.
+- GET /api/measurement-requests/{UUID}: pending, stored o expired; stored incluye
+  la measurement correlacionada. Nunca sustituye una respuesta pendiente por
+  una lectura anterior. Plazo30s; metadata efímera90s en caché de archivos existente.
+- GET /api/internal/measurement-requests: exclusivo de la red privada; el bridge
+  consulta solicitudes y las publica por MQTT. No expuesto por Nginx público.
+
+Este incremento conserva lecturas públicas y limita la nueva escritura a pedir
+adquisiciones; no incorpora autenticación completa ni comandos genéricos.
+Android consulta automáticamente lecturas en primer plano cada2s. Su botón de
+refresco crea solicitud, espera medición correlacionada y luego consulta historial.
 
 ## Actualización de integración — 14/10/2026
 

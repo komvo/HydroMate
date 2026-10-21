@@ -247,3 +247,21 @@ listener privado1884, binario propio de Mosquitto1883:1883 y misma persistencia.
 No cambios80/443/8443/8883, reglas globales, certificados/secretos ni arquitectura.
 Registros históricos8443 se conservan como tales. Validación local no acredita
 conectividad VPS. Administrador actualiza solo APP_URL y acceso TCP9443.
+
+## D60 — TDS real, eventos y adquisición solicitada (2026-10-21)
+
+Usuario confirma reemplazo TDS analógico conectado a ADS1115 A1 y DS18B20 GPIO4.
+Se reemplaza la deshabilitación previa: mediana de9 conversiones, transferencia
+del módulo y compensación con temperatura medida. Si falta temperatura, referencia
+25°C identificada en Android; nunca inventar temperatura ni EC. Sin calibración
+acreditada. El ESP32 detecta cambios con umbrales configurables, antirrebote y
+respaldo30s; conserva el pendiente original hasta ACK de persistencia.
+
+Refrescar debe adquirir y no limitarse a consultar la BD. POST público limitado
+para torre conocida, cuerpo vacío y12/min; UUID de30s en caché file existente,
+sin migración. El bridge consulta solo por red interna y publica comando measure
+QoS1 no retenido; ESP32 valida UUID/caducidad y responde por telemetría v3. Se
+confirma únicamente tras guardar una adquisición correlacionada. Sin actuadores,
+auth completa ni microservicio nuevo. Android consulta automáticamente cada2s
+solo en vistas visibles. Requiere desplegar API/bridge/ACL/Nginx y actualizar
+firmware/app; pruebas locales no equivalen a aceptación física pública.

@@ -127,8 +127,9 @@ sh deployment/reload-certificates.sh /etc/hydromate/.env
 ```
 
 deploy.sh ya ejecuta migrate --force después de iniciar API/DB. No cambia redes
-externas ni servicios80/443/8883. Nginx GET/HEAD público; POST público403 y bridge
-POST interno. Autorizar una sola vez TCP9443/8884 en Ubuntu/OVH mediante el
+externas ni servicios80/443/8883. Nginx permite GET/HEAD y únicamente el POST
+de solicitud de adquisición descrito en API.md. POST /api/measurements público
+devuelve403; solo el bridge interno inserta. Autorizar una sola vez TCP9443/8884 en Ubuntu/OVH mediante el
 administrador; si UFW ya está activo: `sudo ufw allow 9443/tcp` y
 `sudo ufw allow 8884/tcp`. No habilitar/resetear firewall para este paso.
 
@@ -169,7 +170,7 @@ Verificar COM3 antes de capturar. El ESP necesita USB para registrar SAMPLE/SEND
 STORED; el teléfono puede usar datos móviles. verify_public_access verifica cadena
 TLS/hostname y GET, pero su socket MQTT no autentica ni publica. La captura compara
 diez nuevas adquisiciones con GET de la API. En Android Producción, Inicio e
-Historial deben mostrar los mismos valores/fecha, TDS ausente y estado reciente.
+Historial deben mostrar los mismos valores/fecha, TDS real en ppm y estado reciente.
 Registrar tiempo sensor→pantalla y un fallo/reintento propio; grabar evidencia.
 
 ## Alcance de las pruebas
@@ -178,5 +179,35 @@ Pruebas locales aisladas: Laravel, bridge, Compose, MQTT TLS→PostgreSQL→GET,
 HTTPS9443 y cliente Kotlin por HTTPS con CA exclusiva de tests. No se debilita TLS
 en APK. Docker Desktop local no demuestra el namespace del daemon rootless de la
 VPS: allí son obligatorios el script de permisos y el ensayo físico anterior.
-Hostname y usuario rootless confirmados por el usuario; conectividad pública y
-lecturas nuevas en nube pendientes del administrador. No acceso remoto realizado.
+El flujo físico público anterior al nuevo incremento quedó comprobado el21/10:
+evidence/public-flow-esp32-android-2026-10-21.json. No acredita todavía las nuevas
+solicitudes de adquisición ni el TDS habilitado. No acceso remoto realizado.
+
+## Actualizar TDS, eventos y adquisición desde Android — 2026-10-21
+
+No requiere variables privadas nuevas, cambios de puertos ni migraciones nuevas.
+Una vez publicada y revisada esta versión, el administrador actualiza el checkout
+con su procedimiento habitual y ejecuta, desde la raíz y como deploy-hydromate:
+
+```bash
+export DOCKER_HOST="unix:///run/user/$(id -u)/docker.sock"
+unset DOCKER_CONTEXT DOCKER_TLS_VERIFY DOCKER_CERT_PATH
+sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
+# Recrear solo HTTPS para montar la versión nueva del fichero de rutas.
+docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env --profile public up -d --no-deps --force-recreate --wait https
+docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env --profile public exec -T https nginx -t
+```
+
+El despliegue reconstruye API, bridge y Mosquitto: su ACL incorporada añade solo
+commands/measure. Conserva secretos, volúmenes y puertos. Instalar la nueva app
+y cargar el firmware sin borrar NVS; conservar secrets.h privado.
+
+Prueba física: con hydromate-01 en Producción, pulsar refrescar. Debe aparecer
+una solicitud de medición nueva, llegar SAMPLE_REQUEST al ESP32 y luego una fila
+con reason=request:<UUID> en GET /api/measurements. La API devuelve stored solo
+para esa adquisición; un registro periódico anterior no satisface la solicitud.
+Si el ESP32 no responde en30s, se informa el fallo y no se presenta el dato viejo
+como nuevo. Cubrir el BH1750 y mover el flotador debe producir sensor_change
+antes del respaldo de30s; las vistas abiertas consultan la API cada2s.
+Verificar TDS no nulo en A1 y temperatura real GPIO4; si esta falta, la app
+identifica la referencia de25°C. Esto no acredita calibración del sensor.

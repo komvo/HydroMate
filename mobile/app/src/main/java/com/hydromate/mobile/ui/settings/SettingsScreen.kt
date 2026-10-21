@@ -133,7 +133,7 @@ class SettingsScreen(private val ui: Components) {
     fun updateState(state: ReadingState, demonstration: Boolean) = with(ui) {
         connectionStatus?.text = if (demonstration) "Fuente de demostración · sin consultar servidor" else when (state) {
             is ReadingState.Ready, is ReadingState.Empty -> "Servidor disponible en la última consulta"
-            is ReadingState.Loading -> "Consultando servidor…"
+            is ReadingState.Loading -> if (state.requested) "Esperando medición nueva del ESP32…" else "Consultando servidor…"
             is ReadingState.Failed -> "No podemos actualizar las lecturas"
             else -> "Conexión sin comprobar"
         }

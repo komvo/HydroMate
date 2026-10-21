@@ -1,7 +1,9 @@
 user hydromate-device
 topic write hydromate/hydromate-01/telemetry
 topic read hydromate/hydromate-01/ack
+topic read hydromate/hydromate-01/commands/measure
 
 user hydromate-bridge
 topic read hydromate/+/telemetry
 topic write hydromate/+/ack
+topic write hydromate/+/commands/measure
