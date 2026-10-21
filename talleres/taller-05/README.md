@@ -1,5 +1,18 @@
 # Taller 5 Prueba de viabilidad
 
+## Entrega organizada al 21 de octubre de 2026
+
+[Documento Word y anexos actuales](entrega-2026-10-21/README.md): flujo físico
+público comprobado, TDS/temperatura reales, capturas nuevas de Inicio/Historial,
+video, fotografías del montaje, diagramas y trazabilidad de los requisitos.
+Incluye cronograma hasta el 2 de diciembre, presupuesto actualizado y ocho riesgos.
+VPS prestada sin costo para el proyecto. La aprobación corresponde al docente.
+
+Los materiales siguientes conservan el estado histórico del 7 de octubre;
+sus pendientes de nube/TDS/fecha se actualizan en la entrega anterior.
+
+## Antecedentes del 7 de octubre
+
 Estado al 7 de octubre de 2026: entrega pendiente desde el 16 de septiembre.
 Este índice organiza materiales. El recorrido físico local pasó diez entregas;
 todavía no es el reporte final ni acredita despliegue en nube. Fecha final sin confirmar.

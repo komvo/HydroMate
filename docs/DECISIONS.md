@@ -248,6 +248,20 @@ No cambios80/443/8443/8883, reglas globales, certificados/secretos ni arquitectu
 Registros históricos8443 se conservan como tales. Validación local no acredita
 conectividad VPS. Administrador actualiza solo APP_URL y acceso TCP9443.
 
+## D59 — Base documental de arquitectura integral (2026-10-14)
+
+Usuario solicita congelar la arquitectura principal en un taller académico.
+Se consolidan ESP32/control local, Mosquitto MQTT/TLS, consumidor Paho con
+bandeja, Laravel/PostgreSQL y Android HTTPS; se preservan v3, identidad
+device_id/sequence y tópicos actuales. Base1.0 con14 ADR,12 figuras y trazabilidad:
+reports/arquitectura-integral-2026-10-14/. Ratifica decisiones existentes, sin
+implementar módulos de control ni migraciones futuras. hm-control-1, nuevas
+rutas/tópicos, firmware modular y GPIO de actuación son propuestas etiquetadas.
+Cuatro canales A/B/Up/Down conservan mecanismo físico pendiente; límites,
+calibraciones, cierre sin energía y tiempos deben validarse antes de habilitarlos.
+No reemplaza evidencia histórica ni acredita recepción ESP32→VPS o despliegue
+completo. Cambios posteriores mediante ADR sucesor y revisión de contratos.
+
 ## D60 — TDS real, eventos y adquisición solicitada (2026-10-21)
 
 Usuario confirma reemplazo TDS analógico conectado a ADS1115 A1 y DS18B20 GPIO4.
@@ -265,3 +279,18 @@ confirma únicamente tras guardar una adquisición correlacionada. Sin actuadore
 auth completa ni microservicio nuevo. Android consulta automáticamente cada2s
 solo en vistas visibles. Requiere desplegar API/bridge/ACL/Nginx y actualizar
 firmware/app; pruebas locales no equivalen a aceptación física pública.
+
+## D61 — T8 acotado y decisiones de continuidad (2026-10-21)
+
+Por solicitud del usuario se concentra el diseño de D59 en los mínimos del taller;
+la versión corregida del usuario se conserva y la revisión queda en Documentos
+PDC/T8_PDC_1288703.docx y PDF. Sustituye para esta entrega el informe
+ampliado de D59; el original permanece como antecedente, sin borrar su historial.
+Se ratifican ESP32/MQTT TLS/bridge/Laravel/PostgreSQL/Android HTTPS, pines reales
+A0 pH/A1 TDS y despliegue rootless9443/8884. Sanctum, FCM y BLE se expresan como
+decisiones de diseño para usuarios, avisos y alta Wi-Fi, no como implementación.
+Se elige conservar Arduino-ESP32 y modularizar con tareas FreeRTOS donde proceda,
+en lugar de la preferencia de migrar a ESP-IDF del informe ampliado: reutiliza el
+firmware probado y el core ya admite tareas. Fuentes oficiales citadas en el T8.
+Control hm-control-1 conserva su envoltorio separado de telemetría v3; ningún
+contrato ejecutable ni componente cambia en esta revisión documental.
