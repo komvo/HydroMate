@@ -1,0 +1,82 @@
+{
+  "screen": "HOME",
+  "scenario": 1,
+  "width_dp": 360,
+  "font_scale": 1,
+  "two_columns": true,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Solicitar medición nueva",
+      "width_dp": 52,
+      "height_dp": 52
+    },
+    {
+      "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+      "width_dp": 328,
+      "height_dp": 159.66667
+    },
+    {
+      "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+      "width_dp": 159,
+      "height_dp": 159.66667
+    },
+    {
+      "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+      "width_dp": 159,
+      "height_dp": 159.66667
+    },
+    {
+      "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+      "width_dp": 159,
+      "height_dp": 176
+    },
+    {
+      "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+      "width_dp": 159,
+      "height_dp": 176
+    },
+    {
+      "label": "Cómo llegan tus datos. De la torre a este teléfono",
+      "width_dp": 296,
+      "height_dp": 72.666664
+    },
+    {
+      "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+      "width_dp": 296,
+      "height_dp": 72.666664
+    },
+    {
+      "label": "Ver equipo y control. Integración pendiente",
+      "width_dp": 296,
+      "height_dp": 72.666664
+    },
+    {
+      "label": "Inicio, seleccionado",
+      "width_dp": 64.333336,
+      "height_dp": 58
+    },
+    {
+      "label": "Historial",
+      "width_dp": 64.333336,
+      "height_dp": 58
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 64.333336,
+      "height_dp": 58
+    },
+    {
+      "label": "Control",
+      "width_dp": 64.333336,
+      "height_dp": 58
+    },
+    {
+      "label": "Más",
+      "width_dp": 64.666664,
+      "height_dp": 58
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

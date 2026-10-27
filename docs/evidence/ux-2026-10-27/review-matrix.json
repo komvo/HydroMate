@@ -1,0 +1,1501 @@
+[
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 320,
+    "font_scale": 1,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52.148148,
+        "height_dp": 52.148148
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 288,
+        "height_dp": 159.11111
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 159.7037
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 159.7037
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 159.7037
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 175.7037
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 256,
+        "height_dp": 72.888885
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 256,
+        "height_dp": 90.96296
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 256,
+        "height_dp": 72.888885
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 56.296295,
+        "height_dp": 58.074074
+      },
+      {
+        "label": "Historial",
+        "width_dp": 56.296295,
+        "height_dp": 58.074074
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 56.296295,
+        "height_dp": 58.074074
+      },
+      {
+        "label": "Control",
+        "width_dp": 56.592594,
+        "height_dp": 58.074074
+      },
+      {
+        "label": "Más",
+        "width_dp": 56.592594,
+        "height_dp": 58.074074
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-320-font1.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 320,
+    "font_scale": 1.3,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52.148148,
+        "height_dp": 52.148148
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 288,
+        "height_dp": 123.85185
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 180.14815
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 180.14815
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 180.14815
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 201.18518
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 256,
+        "height_dp": 134.51852
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 256,
+        "height_dp": 134.51852
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 256,
+        "height_dp": 85.03704
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 56.296295,
+        "height_dp": 58.37037
+      },
+      {
+        "label": "Historial",
+        "width_dp": 56.296295,
+        "height_dp": 58.37037
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 56.296295,
+        "height_dp": 58.37037
+      },
+      {
+        "label": "Control",
+        "width_dp": 56.592594,
+        "height_dp": 58.37037
+      },
+      {
+        "label": "Más",
+        "width_dp": 56.592594,
+        "height_dp": 58.37037
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-320-font1.3.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 320,
+    "font_scale": 2,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52.148148,
+        "height_dp": 52.148148
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 288,
+        "height_dp": 205.92592
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 240
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 240
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 240
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 288,
+        "height_dp": 272
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 256,
+        "height_dp": 189.33333
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 256,
+        "height_dp": 224.88889
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 256,
+        "height_dp": 189.33333
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Historial",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Control",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Más",
+        "width_dp": 59.851852,
+        "height_dp": 60.74074
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-320-font2.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 176
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 176
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-360-font1.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 360,
+    "font_scale": 1.3,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 123.333336
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 179.66667
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 179.66667
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 179.66667
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 200.66667
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 84
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 107.333336
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 84
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58.333332
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58.333332
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58.333332
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58.333332
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58.333332
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-360-font1.3.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 360,
+    "font_scale": 2,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 206.33333
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 239.66667
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 239.66667
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 239.66667
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 328,
+        "height_dp": 272
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 189
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 189
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 189
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 67.333336,
+        "height_dp": 60.666668
+      },
+      {
+        "label": "Historial",
+        "width_dp": 67.666664,
+        "height_dp": 60.666668
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 67.666664,
+        "height_dp": 60.666668
+      },
+      {
+        "label": "Control",
+        "width_dp": 67.666664,
+        "height_dp": 60.666668
+      },
+      {
+        "label": "Más",
+        "width_dp": 67.666664,
+        "height_dp": 60.666668
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-360-font2.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 412,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 51.933174,
+        "height_dp": 51.933174
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 380.3341,
+        "height_dp": 133.26968
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 185.20285,
+        "height_dp": 159.23627
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 185.20285,
+        "height_dp": 159.23627
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 185.20285,
+        "height_dp": 175.65631
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 185.20285,
+        "height_dp": 175.65631
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 348.25775,
+        "height_dp": 71.78997
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 348.25775,
+        "height_dp": 71.78997
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 348.25775,
+        "height_dp": 71.78997
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 74.844864,
+        "height_dp": 58.042957
+      },
+      {
+        "label": "Historial",
+        "width_dp": 74.844864,
+        "height_dp": 58.042957
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 74.844864,
+        "height_dp": 58.042957
+      },
+      {
+        "label": "Control",
+        "width_dp": 74.844864,
+        "height_dp": 58.042957
+      },
+      {
+        "label": "Más",
+        "width_dp": 74.844864,
+        "height_dp": 58.042957
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-412-font1.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 412,
+    "font_scale": 1.3,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 51.933174,
+        "height_dp": 51.933174
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 380.3341,
+        "height_dp": 123.341286
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 179.47493
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 179.47493
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 179.47493
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 200.85918
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 348.25775,
+        "height_dp": 83.627686
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 348.25775,
+        "height_dp": 83.627686
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 348.25775,
+        "height_dp": 83.627686
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 74.844864,
+        "height_dp": 58.42482
+      },
+      {
+        "label": "Historial",
+        "width_dp": 74.844864,
+        "height_dp": 58.42482
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 74.844864,
+        "height_dp": 58.42482
+      },
+      {
+        "label": "Control",
+        "width_dp": 74.844864,
+        "height_dp": 58.42482
+      },
+      {
+        "label": "Más",
+        "width_dp": 74.844864,
+        "height_dp": 58.42482
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-412-font1.3.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 412,
+    "font_scale": 2,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 51.933174,
+        "height_dp": 51.933174
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 380.3341,
+        "height_dp": 206.20525
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 239.4272
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 239.4272
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 239.4272
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 380.3341,
+        "height_dp": 271.88544
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 348.25775,
+        "height_dp": 188.25775
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 348.25775,
+        "height_dp": 188.25775
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 348.25775,
+        "height_dp": 152.36276
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 77.89976,
+        "height_dp": 60.71599
+      },
+      {
+        "label": "Historial",
+        "width_dp": 77.89976,
+        "height_dp": 60.71599
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 77.89976,
+        "height_dp": 60.71599
+      },
+      {
+        "label": "Control",
+        "width_dp": 78.281624,
+        "height_dp": 60.71599
+      },
+      {
+        "label": "Más",
+        "width_dp": 78.281624,
+        "height_dp": 60.71599
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-412-font2.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 2,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "pH: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "Temperatura de la solución: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "TDS: sin lectura. TDS no disponible. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Luz: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-state2-360.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 3,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "Reintentar",
+        "width_dp": 144,
+        "height_dp": 52
+      },
+      {
+        "label": "Conexión",
+        "width_dp": 144,
+        "height_dp": 52
+      },
+      {
+        "label": "pH: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "Temperatura de la solución: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "TDS: sin lectura. TDS no disponible. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Luz: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-state3-360.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 4,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "Reintentar",
+        "width_dp": 144,
+        "height_dp": 52
+      },
+      {
+        "label": "Conexión",
+        "width_dp": 144,
+        "height_dp": 52
+      },
+      {
+        "label": "pH: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "Temperatura de la solución: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "TDS: sin lectura. TDS no disponible. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Luz: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-state4-360.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 5,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "pH: 6.10 . Lectura antigua. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 159.33333
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. Lectura antigua. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 159.33333
+      },
+      {
+        "label": "TDS: 510 ppm. Lectura antigua. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 175.66667
+      },
+      {
+        "label": "Luz: 60 % relativo. Lectura antigua. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 175.66667
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-state5-360.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 6,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "Reintentar",
+        "width_dp": 144,
+        "height_dp": 52
+      },
+      {
+        "label": "Conexión",
+        "width_dp": 144,
+        "height_dp": 52
+      },
+      {
+        "label": "pH: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "Temperatura de la solución: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 127.333336
+      },
+      {
+        "label": "TDS: sin lectura. TDS no disponible. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Luz: sin lectura. Sin lectura. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 143.66667
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-state6-360.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 7,
+    "width_dp": 360,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52,
+        "height_dp": 52
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 328,
+        "height_dp": 159.66667
+      },
+      {
+        "label": "pH: 6.10 . Sin lectura anterior para comparar. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 142.66667
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. Sin lectura anterior para comparar. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 142.66667
+      },
+      {
+        "label": "TDS: 510 ppm. Sin lectura anterior para comparar. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 159
+      },
+      {
+        "label": "Luz: 60 % relativo. Sin lectura anterior para comparar. Abrir historial.",
+        "width_dp": 159,
+        "height_dp": 159
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 296,
+        "height_dp": 72.666664
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Historial",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Control",
+        "width_dp": 64.333336,
+        "height_dp": 58
+      },
+      {
+        "label": "Más",
+        "width_dp": 64.666664,
+        "height_dp": 58
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-state7-360.png"
+  },
+  {
+    "screen": "HOME",
+    "scenario": 1,
+    "width_dp": 393,
+    "font_scale": 1,
+    "two_columns": true,
+    "night": true,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Solicitar medición nueva",
+        "width_dp": 52.11845,
+        "height_dp": 52.11845
+      },
+      {
+        "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+        "width_dp": 361.54895,
+        "height_dp": 132.30067
+      },
+      {
+        "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+        "width_dp": 175.67198,
+        "height_dp": 158.54213
+      },
+      {
+        "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+        "width_dp": 176.03644,
+        "height_dp": 158.54213
+      },
+      {
+        "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+        "width_dp": 175.67198,
+        "height_dp": 174.57858
+      },
+      {
+        "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+        "width_dp": 176.03644,
+        "height_dp": 174.57858
+      },
+      {
+        "label": "Cómo llegan tus datos. De la torre a este teléfono",
+        "width_dp": 329.47607,
+        "height_dp": 71.799545
+      },
+      {
+        "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+        "width_dp": 329.47607,
+        "height_dp": 71.799545
+      },
+      {
+        "label": "Ver equipo y control. Integración pendiente",
+        "width_dp": 329.47607,
+        "height_dp": 71.799545
+      },
+      {
+        "label": "Inicio, seleccionado",
+        "width_dp": 71.07061,
+        "height_dp": 57.949883
+      },
+      {
+        "label": "Historial",
+        "width_dp": 71.07061,
+        "height_dp": 57.949883
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 71.07061,
+        "height_dp": 57.949883
+      },
+      {
+        "label": "Control",
+        "width_dp": 71.07061,
+        "height_dp": 57.949883
+      },
+      {
+        "label": "Más",
+        "width_dp": 71.435074,
+        "height_dp": 57.949883
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "home-night-393.png"
+  },
+  {
+    "screen": "SETTINGS",
+    "scenario": 1,
+    "width_dp": 320,
+    "font_scale": 2,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Nombre en este teléfono",
+        "width_dp": 256,
+        "height_dp": 68.44444
+      },
+      {
+        "label": "Equipo y control",
+        "width_dp": 256,
+        "height_dp": 56
+      },
+      {
+        "label": "Entorno: Desarrollo local",
+        "width_dp": 256,
+        "height_dp": 91.25926
+      },
+      {
+        "label": "Ver conexión avanzada",
+        "width_dp": 256,
+        "height_dp": 91.25926
+      },
+      {
+        "label": "Guardar conexión real",
+        "width_dp": 256,
+        "height_dp": 91.25926
+      },
+      {
+        "label": "Ver diagnóstico",
+        "width_dp": 256,
+        "height_dp": 56
+      },
+      {
+        "label": "Usar Jardín claro, seleccionado",
+        "width_dp": 247.7037,
+        "height_dp": 49.185184
+      },
+      {
+        "label": "Seguir tema del sistema",
+        "width_dp": 247.7037,
+        "height_dp": 49.185184
+      },
+      {
+        "label": "Escenario: Lecturas de ejemplo",
+        "width_dp": 256,
+        "height_dp": 126.51852
+      },
+      {
+        "label": "Salir de la demostración",
+        "width_dp": 256,
+        "height_dp": 91.25926
+      },
+      {
+        "label": "Acerca del diseño",
+        "width_dp": 256,
+        "height_dp": 91.25926
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Historial",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Control",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Más, seleccionado",
+        "width_dp": 59.851852,
+        "height_dp": 60.74074
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "settings-font2-320.png"
+  },
+  {
+    "screen": "CONTROL",
+    "scenario": 1,
+    "width_dp": 320,
+    "font_scale": 2,
+    "two_columns": false,
+    "night": false,
+    "text_issues": [],
+    "touch_targets": [
+      {
+        "label": "Ver detalles de integración",
+        "width_dp": 256,
+        "height_dp": 91.25926
+      },
+      {
+        "label": "Volver",
+        "width_dp": 288,
+        "height_dp": 56
+      },
+      {
+        "label": "Inicio",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Historial",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Cultivo",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Control, seleccionado",
+        "width_dp": 59.555557,
+        "height_dp": 60.74074
+      },
+      {
+        "label": "Más",
+        "width_dp": 59.851852,
+        "height_dp": 60.74074
+      }
+    ],
+    "scope": "Native Android layout review; no network, preferences, injected input or physical states",
+    "capture": "control-font2-320.png"
+  }
+]

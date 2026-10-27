@@ -1,0 +1,82 @@
+{
+  "screen": "HOME",
+  "scenario": 1,
+  "width_dp": 360,
+  "font_scale": 2,
+  "two_columns": false,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Solicitar medición nueva",
+      "width_dp": 52,
+      "height_dp": 52
+    },
+    {
+      "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+      "width_dp": 328,
+      "height_dp": 206.33333
+    },
+    {
+      "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+      "width_dp": 328,
+      "height_dp": 239.66667
+    },
+    {
+      "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+      "width_dp": 328,
+      "height_dp": 239.66667
+    },
+    {
+      "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+      "width_dp": 328,
+      "height_dp": 239.66667
+    },
+    {
+      "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+      "width_dp": 328,
+      "height_dp": 272
+    },
+    {
+      "label": "Cómo llegan tus datos. De la torre a este teléfono",
+      "width_dp": 296,
+      "height_dp": 189
+    },
+    {
+      "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+      "width_dp": 296,
+      "height_dp": 189
+    },
+    {
+      "label": "Ver equipo y control. Integración pendiente",
+      "width_dp": 296,
+      "height_dp": 189
+    },
+    {
+      "label": "Inicio, seleccionado",
+      "width_dp": 67.333336,
+      "height_dp": 60.666668
+    },
+    {
+      "label": "Historial",
+      "width_dp": 67.666664,
+      "height_dp": 60.666668
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 67.666664,
+      "height_dp": 60.666668
+    },
+    {
+      "label": "Control",
+      "width_dp": 67.666664,
+      "height_dp": 60.666668
+    },
+    {
+      "label": "Más",
+      "width_dp": 67.666664,
+      "height_dp": 60.666668
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

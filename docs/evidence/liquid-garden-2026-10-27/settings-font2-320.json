@@ -1,0 +1,92 @@
+{
+  "screen": "SETTINGS",
+  "scenario": 1,
+  "width_dp": 320,
+  "font_scale": 2,
+  "two_columns": false,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Nombre en este teléfono",
+      "width_dp": 256,
+      "height_dp": 68.44444
+    },
+    {
+      "label": "Equipo y control",
+      "width_dp": 256,
+      "height_dp": 56
+    },
+    {
+      "label": "Entorno: Desarrollo local",
+      "width_dp": 256,
+      "height_dp": 91.25926
+    },
+    {
+      "label": "Ver conexión avanzada",
+      "width_dp": 256,
+      "height_dp": 91.25926
+    },
+    {
+      "label": "Guardar conexión real",
+      "width_dp": 256,
+      "height_dp": 91.25926
+    },
+    {
+      "label": "Ver diagnóstico",
+      "width_dp": 256,
+      "height_dp": 56
+    },
+    {
+      "label": "Usar Jardín claro, seleccionado",
+      "width_dp": 247.7037,
+      "height_dp": 49.185184
+    },
+    {
+      "label": "Seguir tema del sistema",
+      "width_dp": 247.7037,
+      "height_dp": 49.185184
+    },
+    {
+      "label": "Escenario: Lecturas de ejemplo",
+      "width_dp": 256,
+      "height_dp": 126.51852
+    },
+    {
+      "label": "Salir de la demostración",
+      "width_dp": 256,
+      "height_dp": 91.25926
+    },
+    {
+      "label": "Acerca del diseño",
+      "width_dp": 256,
+      "height_dp": 91.25926
+    },
+    {
+      "label": "Inicio",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Historial",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Control",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Más, seleccionado",
+      "width_dp": 59.851852,
+      "height_dp": 60.74074
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

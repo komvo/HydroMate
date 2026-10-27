@@ -25,7 +25,7 @@ import org.json.JSONObject
  */
 class VisualCheckActivity : Activity() {
     private lateinit var ui: Components
-    private lateinit var frame: LinearLayout
+    private lateinit var frame: GlassScaffold
     private lateinit var body: LinearLayout
     private lateinit var nav: AeroBottomNavigation
     private lateinit var scroll: ScrollView
@@ -52,14 +52,11 @@ class VisualCheckActivity : Activity() {
         ui = Components(reviewContext)
         screen = Destination.entries.find { it.name == intent.getStringExtra("screen") } ?: Destination.HOME
         scenario = intent.getIntExtra("scenario", 1).coerceIn(1, 7)
-        frame = ui.column().apply { background = AeroSky(ui) }
-        frame.addView(ui.badge("Prueba visual · datos simulados").apply { gravity = Gravity.CENTER })
-        scroll = ScrollView(reviewContext).apply { isFillViewport = true }
-        body = ui.column().apply { setPadding(ui.dp(16), ui.dp(12), ui.dp(16), ui.dp(24)) }
-        scroll.addView(body)
-        frame.addView(scroll, LinearLayout.LayoutParams(-1, 0, 1f))
-        nav = AeroBottomNavigation(ui)
-        frame.addView(nav)
+        frame = GlassScaffold(ui)
+        frame.provenance.addView(ui.badge("Prueba visual · datos simulados").apply { gravity = Gravity.CENTER }, LinearLayout.LayoutParams(-1, -2))
+        scroll = frame.scroll
+        body = frame.content
+        nav = frame.navigation
         setContentView(frame)
         @Suppress("DEPRECATION")
         window.statusBarColor = ui.color(R.color.background)
@@ -78,7 +75,7 @@ class VisualCheckActivity : Activity() {
         when (screen) {
             Destination.HOME -> DashboardScreen(ui).render(body, state, "Torre de demostración",
                 PreviewSupport.referenceAge(scenario, 0), { render() }, settings,
-                { move(Destination.CULTIVATION) }, { move(Destination.CONTROL) })
+                { move(Destination.CULTIVATION) }, { move(Destination.CONTROL) }, { metric = it; move(Destination.HISTORY) })
             Destination.HISTORY -> HistoryScreen(ui).render(body, state, metric, { metric = it; render() }, { render() }, settings)
             Destination.CULTIVATION -> CultivationScreen(ui).render(body)
             Destination.CONTROL -> ControlScreen(ui).render(body, { move(Destination.HOME) }, expanded, { expanded = it })

@@ -1,21 +1,28 @@
 <resources>
-    <color name="background">#E3F1D7</color>
-    <color name="surface">#EFFBDD</color>
-    <color name="glass">#C7EBA9</color>
-    <color name="ink">#143B27</color>
-    <color name="muted">#36503C</color>
-    <color name="primary">#205632</color>
-    <color name="water">#006C74</color>
-    <color name="water_soft">#CBEABB</color>
-    <color name="outline">#88BC75</color>
+    <!-- Cristal líquido · Jardín (día). Texto validado sobre vidrio con fondo desenfocado y velo. -->
+    <color name="background">#E6F3DE</color>
+    <color name="surface">#EFF9E6</color>
+    <color name="glass">#E3F4D6</color>
+    <color name="ink">#10301F</color>
+    <color name="muted">#3B5545</color>
+    <color name="primary">#1F6B35</color>
+    <color name="water">#00707A</color>
+    <color name="water_soft">#D3EFE3</color>
     <color name="warning">#8A4A00</color>
-    <color name="warning_soft">#FFF4DC</color>
+    <color name="warning_soft">#FFF1D6</color>
     <color name="critical">#A51F1B</color>
-    <color name="sky">#CEEAB4</color>
+    <color name="sky">#DDF1D0</color>
     <color name="sky_deep">#3D7C40</color>
-    <color name="aqua">#8FD05A</color>
-    <color name="lime">#C9EE8A</color>
+    <color name="lime">#D8F2B4</color>
     <color name="disabled_surface">#D1E0C6</color>
-    <color name="backdrop_ink">#143B27</color>
+    <color name="backdrop_ink">#10301F</color>
     <color name="backdrop_muted">#294B31</color>
+    <color name="veil">#EFF8E6</color>
+    <color name="glass_control">#FFFFFF</color>
+    <color name="selected">#CDEFC0</color>
+    <color name="prominent_top">#2F7D3E</color>
+    <color name="prominent_bottom">#1D5A2C</color>
+    <color name="on_prominent">#FFFFFF</color>
+    <color name="leaf_light">#8FD05A</color>
+    <color name="leaf_deep">#2F7D3E</color>
 </resources>

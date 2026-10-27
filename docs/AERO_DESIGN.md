@@ -1,87 +1,70 @@
-# HydroMate — Jardín de cristal
+# HydroMate — Jardín líquido
 
-2026-10-04 · Android 0.6.0-garden. Dirección vigente D43 (aclarado final solicitado por el usuario).
-Base: los dos MD Aero Cristal y Eco 90s del usuario; ajustes posteriores del propio
-usuario tienen prioridad. La paleta celeste de 0.4/0.5 queda reemplazada por jardín verde
-luminoso y cristal verde claro translúcido. Se conserva Frutiger Aero/Eco y el portal ecológico.
+2026-10-27 · Dirección visual vigente D63, solicitada por el usuario: modernizar el
+Frutiger Aero/Eco de 0.6 (aspecto de portal web de los 90) con la jerarquía de
+materiales translúcidos que Apple describe para Liquid Glass, sin perder el enfoque
+ecológico. Dirección anterior (Jardín de cristal, D43) conservada en
+[AERO_DESIGN_HISTORY_2026-10-04](AERO_DESIGN_HISTORY_2026-10-04.md).
+Estado: implementado y revisado en teléfono con capturas nativas (ver AERO_ACCEPTANCE);
+TalkBack y medición de fluidez/contraste pendientes.
 
-## Composición y material
+## Principios adoptados (adaptados a vistas nativas Android)
 
-Fondo botánico con hojas naturales en los bordes, agua y centro tranquilo. Imagen
-local background_botanical.jpg, 720×1601, 127 952 bytes; se decodifica una sola vez
-por contenedor. AeroSky la encuadra sin deformarla y aplica un velo menta luminoso
-(#EFFADD, alfa 189 de día; #05190F, alfa 191 de noche). Las plantas son decoración,
-no un cultivo activo. No hay carga remota ni animación permanente.
+- **Dos capas.** Contenido en paneles de vidrio esmerilado; navegación y controles
+  en una capa flotante superior. La barra inferior es una cápsula flotante y el
+  contenido termina siempre por encima de ella.
+- **Material.** El fondo botánico se decodifica una vez; se prepara una copia
+  reducida, desenfocada (3 pasadas de caja), con saturación 1.35 y velo. Cada
+  superficie muestrea esa copia en su posición de ventana: las hojas se ven
+  esmeriladas detrás del vidrio. No hay desenfoque por fotograma ni refracción del
+  contenido que pasa debajo; solo del fondo local.
+- **Luz.** Borde especular diagonal, brillo superior suave (no el reflejo duro de
+  media altura de 0.6), banda de lente interior en controles para sugerir espesor.
+- **Formas concéntricas.** Paneles de 26 dp, controles en cápsula, campos de 16 dp,
+  pozos circulares para iconos.
+- **Estilos** (`GlassStyle`): PANEL, TINTED, FIELD (contenido); CONTROL, PROMINENT,
+  SELECTED (controles). No se apila vidrio sobre vidrio: SELECTED no muestrea fondo.
+- **Interacción.** Controles crecen 3 % al presionar (150–180 ms); se respeta la
+  desactivación de animadores. Foco con anillo verde de 3 dp.
+- **Borde de scroll.** Degradado superior de 18 dp que funde el contenido en el velo.
 
-Paneles verde claro (#C7EBA9), superficies #EFFBDD, texto #143B27 y secundario
-#36503C. Titulares diurnos sobre el fondo: #143B27 y #294B31; claros en la variante nocturna. AeroSurface mantiene
-degradado, bisel, reflejo superior curvo y luz interior; base alfa 110/255 y placa
-de lectura alfa 68/255 sobre ella de día. Se ve el follaje a través del cristal;
-la zona de datos combina ambas capas para mantener contraste. De noche base
-180/255 y placa 130/255. No se promete blur ni refracción dinámica.
-Los reflejos quedan dentro del contorno; sombras suaves y foco nativo.
+## Ecológico y elementos conservados
 
-Tema inicial: Jardín con paneles claros. La opción guardada de seguir el sistema
-se conserva y usa cristal verde profundo por la noche. Barras del sistema adaptadas
-al tema claro/nocturno. Instalar no migra preferencias automáticamente; en el teléfono
-de revisión se seleccionó Jardín claro para cumplir la última petición del usuario.
+Fondo botánico local (`background_botanical.jpg`), emblema de torre, los 16 PNG de
+cristal y las cuatro variantes de barra D41 se conservan sin cambios. Nuevo:
+hoja nativa (`LeafGlyph`) junto a cada título de sección, decorativa y sin estado.
+Paleta día: tinta #10301F, secundario #3B5545, hoja #1F6B35, prominente
+#2F7D3E→#1D5A2C con texto blanco. Noche: vidrio verde profundo y texto claro.
 
-## Iconos y navegación
+## Pantallas
 
-Emblema botánico original conservado: cabecera/torre, Cultivo y launcher.
-Familia de ilustraciones originales de cristal generada con IA, PNG RGBA de
-256 px; emblema de 512 px. Sin tintes automáticos.
+- **Inicio:** (D64: minigráficas, cambio vs. anterior, estado relativo, guía) título grande, recarga en botón circular flotante, tarjeta de cultivo
+  con vidrio verde, estado en cápsula con punto (el punto solo repite el tono del
+  texto; no indica salud del ESP32), instrumentos tipo widget con valor tabular y
+  unidad menor, nivel de agua, fila agrupada hacia Equipo y control.
+- **Historial (D64):** titular con último valor y cambio, gráfica de línea con área,
+  eje dinámico, promedio, cortes en huecos e inspección táctil; mín./prom./máx.;
+  tabla de recepciones con detalle por fila. Análisis en [UX_ANALYSIS](UX_ANALYSIS.md).
+- **Cultivo/Control/Más:** listas agrupadas, campos rehundidos, apariencia con
+  control segmentado. Textos, estados ausentes y advertencias sin cambios.
 
-La corrección de legibilidad D41 afecta **solo** a Inicio, Historial, Control y
-Más de la barra: cuatro variantes con volumen y menos reflejos internos a 36 dp.
-Cultivo mantiene el emblema a 34 dp. El intento intermedio de sustituir todos los
-iconos por glifos simples fue retirado. Components usa el recurso original de
-pantalla; únicamente AeroBottomNavigation usa navigationResource.
+Sin cambios a API, BD, firmware, Telemetry, RequestFence, ConnectionStore,
+ReadingState ni lógica de MainActivity (solo usa `GlassScaffold` para construir la
+vista). Barras del sistema transparentes de borde a borde. Sin dependencias nuevas.
+Código: `mobile/app/src/main/java/com/hydromate/mobile/ui/AeroArtwork.kt` y `Components.kt`.
 
-Cambio D42: pH conserva el matraz; TDS usa un vaso ancho con minerales como símbolo
-conceptual, sin indicar composición ni cantidad. Recarga usa una única flecha
-circular de cristal azul/verde. Las demás ilustraciones permanecen como estaban.
-Prompts completos, procedencia, dimensiones, alfa, SHA-256 y archivo histórico:
-[recursos.json](recursos.json). El arte generado no recibe la licencia MIT histórica
-de Fluent. No se incorporaron nuevas dependencias de producción.
+## Contraste (cálculo conservador, sin certificar)
 
-## Cinco pantallas y adaptación
-
-Inicio conserva un único aviso de consulta, cuatro instrumentos y nivel relativo.
-Historial conserva puntos aislados (acabado perlado) y las recepciones reales.
-Cultivo y Control mantienen perfiles/integración pendientes sin estados ficticios.
-Más conserva conexión, diagnóstico, apariencia y demo explícita solo debug.
-
-Texto nativo en sp y valores tabulares. Dos columnas desde 350 dp con fuente menor
-de 1.3; una columna con texto grande. Botones de 52 dp, celdas de barra ≥64 dp.
-Historial se abrevia Hist. desde fuente 1.5, con nombre accesible completo.
-Iconos decorativos sin foco. Movimiento breve de 150–180 ms, respetando la
-desactivación de animadores. Scroll e insets del sistema/teclado conservados.
-
-## Datos y revisión
-
-Sin cambios a API, BD, firmware, rangos, lectura/validación ni consulta. MainActivity
-conserva su lógica y el tratamiento original de barras claras/nocturnas. Telemetry,
-RequestFence, ConnectionStore y proveedores/fixtures conservan su contenido.
-Ausencia de lectura es una raya. Recepción no es captura; luz/nivel son relativos.
-
-VisualCheckActivity existe solo en debug y se abre explícitamente con marca fija
-de datos simulados. Configuración local de ancho/fuente, retrato fijo y pantalla
-encendida mientras está visible; no modifica ajustes globales, repositorio,
-preferencias ni órdenes. No acredita interacción de MainActivity ni giro físico.
-Resultados y pendientes: [AERO_ACCEPTANCE.md](AERO_ACCEPTANCE.md).
+Fondo bajo vidrio supuesto negro tras el velo: tinta ≥9:1 y secundario ≥5:1 sobre
+PANEL y CONTROL de día; blanco sobre prominente ≥5:1; noche ≥8:1. Texto sobre el
+fondo usa halo del color del velo. Pendiente repetir la medición sobre capturas.
 
 ## Referencias consultadas
 
-Todas accesibles durante esta sesión; solo inspiración de material/composición.
-No se copiaron logos, capturas completas, CSS ni código sustancial ajeno.
+Solo inspiración de jerarquía y material; no se copiaron recursos ni código.
 
-- [makeaero.com — Botón convexo, reflejo superior curvo y presión.](https://makeaero.com/button)
-- [makeaero.com — Volumen de burbuja y reflejo localizado.](https://makeaero.com/orb)
-- [makeaero.com — Borde iluminado y espesor aparente; sin controles de escritorio.](https://makeaero.com/window-glass)
-- [makeaero.com — Cielo, onda acuática y burbujas periféricas.](https://makeaero.com/wallpaper)
-- [github.com — Referencia de implementación; no se copió código ni arte.](https://github.com/Visnalize/makeaero)
-- [docs.spline.design — Distinción entre transparencia, espesor y refracción.](https://docs.spline.design/materials-shading/shading-and-reflection/glass-layer)
-- [www.meshy.ai — Referencia de primitivas; no se usó el servicio ni se contrató un plan.](https://www.meshy.ai/3d-tools/3d-shape-generator)
-- [help.figma.com — Referencia de efectos; no se exportó un diseño Figma.](https://help.figma.com/hc/en-us/articles/360041488473-Apply-effects-to-layers)
-- [cari.institute — Gramática histórica Aero; no se reutilizaron imágenes.](https://cari.institute/aesthetics/frutiger-aero)
+- [Apple — Adopting Liquid Glass](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass)
+- [Apple — Liquid Glass overview](https://developer.apple.com/documentation/technologyoverviews/liquid-glass)
+- [Apple HIG — Materials](https://developer.apple.com/design/human-interface-guidelines/materials)
+- [WWDC25 — Meet Liquid Glass](https://developer.apple.com/videos/play/wwdc2025/219/)
+- Referencias Aero previas: ver el archivo histórico.

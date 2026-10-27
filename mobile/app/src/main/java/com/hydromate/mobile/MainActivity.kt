@@ -90,15 +90,11 @@ class MainActivity : Activity() {
                 state = ReadingState.Failed(it, savedInstanceState.getString("failure_detail").orEmpty())
             }
         }
-        val frame = ui.column().apply { background = AeroSky(ui) }
-        provenance = ui.column()
-        frame.addView(provenance)
-        scroll = RefreshScrollView(this).apply { isFillViewport = true }
-        content = ui.column().apply { setPadding(ui.dp(16), ui.dp(12), ui.dp(16), ui.dp(24)) }
-        scroll.addView(content)
-        frame.addView(scroll, LinearLayout.LayoutParams(-1, 0, 1f))
-        navigation = AeroBottomNavigation(ui)
-        frame.addView(navigation, LinearLayout.LayoutParams(-1, -2))
+        val frame = GlassScaffold(ui)
+        provenance = frame.provenance
+        scroll = frame.scroll
+        content = frame.content
+        navigation = frame.navigation
         configureInsets(frame)
         setContentView(frame)
         frame.requestApplyInsets()
@@ -250,7 +246,8 @@ class MainActivity : Activity() {
             Destination.HOME -> DashboardScreen(ui).render(content, state,
                 if (scenario > 0) "Torre de demostración" else config.name,
                 PreviewSupport.referenceAge(scenario, config.ageMinutes),
-                ::refresh, { navigate(Destination.SETTINGS) }, { navigate(Destination.CULTIVATION) }, { navigate(Destination.CONTROL) })
+                ::refresh, { navigate(Destination.SETTINGS) }, { navigate(Destination.CULTIVATION) }, { navigate(Destination.CONTROL) },
+                { metric = it; navigate(Destination.HISTORY) })
             Destination.HISTORY -> HistoryScreen(ui).render(content, state, metric, { metric = it; render() },
                 ::refresh, { navigate(Destination.SETTINGS) })
             Destination.CULTIVATION -> CultivationScreen(ui).render(content)
