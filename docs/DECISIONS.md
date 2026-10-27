@@ -294,3 +294,24 @@ en lugar de la preferencia de migrar a ESP-IDF del informe ampliado: reutiliza e
 firmware probado y el core ya admite tareas. Fuentes oficiales citadas en el T8.
 Control hm-control-1 conserva su envoltorio separado de telemetría v3; ningún
 contrato ejecutable ni componente cambia en esta revisión documental.
+
+## D63 — Rediseño visual Android «Jardín líquido» (2026-10-27)
+
+Solicitud del usuario: rediseño total que conserve Frutiger Aero y lo ecológico
+pero deje el aspecto de web de los 90, tomando como referencia los materiales de
+cristal de Apple (Liquid Glass). Reemplaza la dirección visual D43 (se conserva en
+AERO_DESIGN_HISTORY); mantiene emblema, iconos PNG, fondo botánico y variantes D41.
+Vidrio nativo con muestreo de una copia desenfocada del fondo local, barra flotante
+en cápsula y listas agrupadas. Sin dependencias, datos, contrato ni lógica nuevos.
+Revisado en teléfono el 27/10; detalle en AERO_DESIGN y AERO_ACCEPTANCE.
+
+## D64 — Historial e Inicio orientados a comprensión (2026-10-27)
+
+Solicitud del usuario: análisis UX/UI y mejoras para entender el sistema y el
+historial (UX_ANALYSIS.md). Reemplaza los puntos aislados de D43/D63 por línea con
+área, eje Y dinámico, promedio, inspección táctil y **cortes visibles** cuando un
+intervalo supera 3× la mediana. Así no se dibuja continuidad sobre recepciones faltantes.
+Inicio añade minigráficas, cambio frente a la lectura anterior en color neutro (sin
+rangos no se califica), precisión por métrica, estado relativo y guía «Entender
+HydroMate». Tabla de recepciones con detalle por fila. Sin cambios de API/contrato;
+selector de periodos y rangos por cultivo quedan como recomendaciones.

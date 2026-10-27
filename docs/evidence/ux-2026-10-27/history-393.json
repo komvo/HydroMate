@@ -1,0 +1,157 @@
+{
+  "screen": "HISTORY",
+  "scenario": 1,
+  "width_dp": 393,
+  "font_scale": 1,
+  "two_columns": true,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Mostrar pH, seleccionado",
+      "width_dp": 88.200455,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "Mostrar Temp.",
+      "width_dp": 88.200455,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "Mostrar TDS",
+      "width_dp": 88.56492,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "Mostrar Luz",
+      "width_dp": 88.56492,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 05:00:00. pH 6.10. Temp. 23.0. TDS 510. Luz 60. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:56:00. pH 6.14. Temp. 23.2. TDS 512. Luz 61. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:52:00. pH 6.18. Temp. 23.4. TDS 514. Luz 62. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:48:00. pH 6.10. Temp. 23.6. TDS 516. Luz 63. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:44:00. pH 6.14. Temp. 23.0. TDS 518. Luz 64. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:40:00. pH 6.18. Temp. 23.2. TDS 520. Luz 60. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:36:00. pH 6.10. Temp. 23.4. TDS 522. Luz 61. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:32:00. pH 6.14. Temp. 23.6. TDS 524. Luz 62. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:28:00. pH 6.18. Temp. 23.0. TDS 526. Luz 63. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:24:00. pH 6.10. Temp. 23.2. TDS 528. Luz 64. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:20:00. pH 6.14. Temp. 23.4. TDS 530. Luz 60. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:16:00. pH 6.18. Temp. 23.6. TDS 532. Luz 61. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:12:00. pH 6.10. Temp. 23.0. TDS 534. Luz 62. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:08:00. pH 6.14. Temp. 23.2. TDS 536. Luz 63. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:04:00. pH 6.18. Temp. 23.4. TDS 538. Luz 64. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 04:00:00. pH 6.10. Temp. 23.6. TDS 540. Luz 60. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 03:56:00. pH 6.14. Temp. 23.0. TDS 542. Luz 61. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 03:52:00. pH 6.18. Temp. 23.2. TDS 544. Luz 62. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 03:48:00. pH 6.10. Temp. 23.4. TDS 546. Luz 63. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "01 sept 2026 · 03:44:00. pH 6.14. Temp. 23.6. TDS 548. Luz 64. Abrir detalle.",
+      "width_dp": 329.47607,
+      "height_dp": 48.109337
+    },
+    {
+      "label": "Inicio",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Historial, seleccionado",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Control",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Más",
+      "width_dp": 71.435074,
+      "height_dp": 57.949883
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

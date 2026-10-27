@@ -444,3 +444,20 @@ por página, SVG válidos y propuesta de pines sin colisiones. qa.json conserva
 límites/hashes; sin pruebas físicas/backend/VPS nuevas ni commit/push. Se incorpora
 la carga v3 y monitoreo fallido 14/10 registrados por otro incremento, sin afirmar
 recepción en nube. No se modifican sus cambios de firmware/librerías/credenciales.
+
+## Rediseño Android Jardín líquido — 27/10/2026
+
+D63 implementado en `mobile/` (solo UI): vidrio esmerilado sobre el fondo botánico,
+barra flotante y nuevas pantallas. Build debug/release, lint y JVM (33; 4 opt-in
+omitidas) correctos. Instalado por USB y revisado con 26 capturas nativas sin
+recortes ni objetivos <48 dp tras cuatro correcciones; commit local sin push.
+Pendientes en [AERO_ACCEPTANCE](AERO_ACCEPTANCE.md).
+
+## Historial e Inicio comprensibles (D64) — 27/10/2026
+
+Análisis en [UX_ANALYSIS](UX_ANALYSIS.md). Gráfica de línea con huecos, inspección
+táctil, resumen y tabla en Historial; minigráficas, cambios y guía en Inicio.
+Build debug/release y lint correctos; JVM 39 (35 ejecutadas, 4 opt-in omitidas).
+Revisado en teléfono: 26 capturas sin recortes tras seis correcciones;
+arrastre, diálogos y TalkBack sin verificar (AERO_ACCEPTANCE).
+Commit local sin push.

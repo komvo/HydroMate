@@ -1,122 +1,186 @@
 package com.hydromate.mobile.ui.history
 
-import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.RadialGradient
-import android.graphics.Shader
+import android.app.AlertDialog
+import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import com.hydromate.mobile.Measurement
 import com.hydromate.mobile.R
 import com.hydromate.mobile.ui.*
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
-enum class Metric(val title: String, val unit: String, val read: (Measurement) -> Double?) {
-    PH("pH", "", { it.ph }), TEMPERATURE("Temp.", "°C", { it.temperature }),
-    TDS("TDS", "ppm", { it.tds }), LIGHT("Luz", "% relativo", { it.lightValue }), EC("EC", "µS/cm", { it.ecUsCm })
+val Metric.symbol get() = when (this) {
+    Metric.PH -> GlassSymbol.CHEMISTRY
+    Metric.TEMPERATURE -> GlassSymbol.THERMOMETER
+    Metric.LIGHT -> GlassSymbol.SUN
+    else -> GlassSymbol.TDS
 }
 
+// The app is Spanish-only and builds its copy inline, like every other screen.
+@android.annotation.SuppressLint("SetTextI18n")
 class HistoryScreen(private val ui: Components) {
+    private val clock = DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault()).withZone(ZoneId.systemDefault())
+    private val day = DateTimeFormatter.ofPattern("EEEE dd MMM yyyy", Locale.getDefault()).withZone(ZoneId.systemDefault())
+
     fun render(root: LinearLayout, state: ReadingState, selected: Metric, select: (Metric) -> Unit,
                refresh: () -> Unit, settings: () -> Unit) = with(ui) {
         portalHeader(root, "Historial", "Tu torre en el tiempo", GlassSymbol.HISTORY)
-        root.addView(text("Últimas 20 lecturas · por recepción", 14, tint = backdropMuted))
         val values = (state as? ReadingState.Ready)?.values.orEmpty()
         if (values.isEmpty()) {
             val empty = card(root)
-            empty.addView(icon(GlassSymbol.HISTORY, 52))
+            empty.gravity = Gravity.CENTER_HORIZONTAL
+            empty.addView(icon(GlassSymbol.HISTORY, 64))
             empty.addView(text(when (state) {
                 is ReadingState.Loading -> if (state.requested) "Solicitando medición al ESP32…" else "Actualizando historial…"
                 is ReadingState.Failed -> "No podemos actualizar las lecturas"
                 else -> "Aún no hay lecturas"
-            }, 20, true))
+            }, 20, true).apply { gravity = Gravity.CENTER })
             empty.addView(text(if (state is ReadingState.Failed) "Vuelve a intentarlo o revisa la conexión en Más."
-                else "Aquí aparecerán las recepciones de esta torre.", 16, tint = muted))
+                else "Aquí aparecerán las recepciones de esta torre.", 16, tint = muted).apply { gravity = Gravity.CENTER })
             actions(empty, button("Reintentar", refresh).apply { isEnabled = state !is ReadingState.Loading },
                 button("Conexión", settings, false))
             return@with
         }
-        val plotCard = card(root)
-        plotCard.addView(badge("Registro reciente", fill = color(R.color.sky)))
-        Metric.entries.filter { it != Metric.EC || values.any { row -> row.ecUsCm != null } }.chunked(if (largeText) 2 else 4).forEach { group ->
-            val selector = row()
-            plotCard.addView(selector, LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(8) })
-            group.forEachIndexed { index, metric ->
-                selector.addView(button(metric.title, { select(metric) }, metric == selected).apply {
-                    setPadding(dp(4), dp(8), dp(4), dp(8))
-                    isSelected = metric == selected
-                    contentDescription = "Mostrar ${metric.title}${if (isSelected) ", seleccionado" else ""}"
-                }, LinearLayout.LayoutParams(0, -2, 1f).apply { if (index > 0) marginStart = dp(4) })
+        root.addView(onBackdrop(text("Últimas ${values.size} lecturas recibidas", 14, tint = backdropMuted)))
+        val metrics = Metric.entries.filter { it != Metric.EC || values.any { row -> row.ecUsCm != null } }
+        segmented(root, metrics.map { it.title }, metrics.indexOf(selected), if (largeText) 2 else metrics.size,
+            { index, active -> "Mostrar ${metrics[index].title}${if (active) ", seleccionado" else ""}" }) { select(metrics[it]) }
+
+        val unit = selected.unitFor(values)
+        val samples = TrendMath.samples(values, selected)
+        val hero = card(root)
+        val title = row()
+        title.addView(iconWell(selected.symbol, 26))
+        title.addView(text(if (unit.isEmpty()) selected.title else "${selected.title} · $unit", 16, true, muted),
+            LinearLayout.LayoutParams(0, -2, 1f).apply { marginStart = dp(10) })
+        hero.addView(title)
+        if (samples.isEmpty()) {
+            hero.addView(text("—", 40, true).apply { setPadding(0, dp(8), 0, 0) })
+            hero.addView(text("${selected.title} sin lecturas disponibles. No se sustituyen por cero.", 14, tint = muted))
+        } else {
+            // Headline readout: the newest value, or the inspected point while dragging.
+            val readout = metric(selected.format(samples.last().value), unit, 40).apply { setPadding(0, dp(8), 0, 0) }
+            val when_ = text("", 13, tint = muted)
+            fun showLatest() {
+                readout.text = metric(selected.format(samples.last().value), unit, 40).text
+                when_.text = "Última lectura · ${relativeTime(samples.last().at)}"
+            }
+            showLatest()
+            hero.addView(readout); hero.addView(when_)
+            TrendMath.change(samples, selected, unit)?.let { hero.addView(text(it, 16, true).apply {
+                setPadding(0, dp(6), 0, dp(2)); accessibilityLiveRegion = View.ACCESSIBILITY_LIVE_REGION_POLITE
+            }) }
+            if (selected == Metric.TDS && values.any { it.tdsSimulated }) hero.addView(badge("Incluye TDS simulado"))
+            val chart = TrendChart(context, samples, selected, ui = ui) { sample ->
+                if (sample == null) showLatest() else {
+                    readout.text = metric(selected.format(sample.value), unit, 40).text
+                    when_.text = "${day.format(sample.at)} · ${clock.format(sample.at)}"
+                }
+            }
+            val segments = TrendMath.segments(samples)
+            chart.contentDescription = "Gráfica de ${selected.title}: ${samples.size} lecturas, de ${selected.format(samples.minOf { it.value })} a " +
+                "${selected.format(samples.maxOf { it.value })} $unit. ${TrendMath.change(samples, selected, unit) ?: "Una sola lectura"}. Los valores están en la tabla de recepciones."
+            hero.addView(chart, LinearLayout.LayoutParams(-1, dp(if (largeText) 240 else 210)).apply { topMargin = dp(10) })
+            if (samples.size > 1) hero.addView(text("┅ Promedio de estas lecturas: ${selected.format(samples.map { it.value }.average())} $unit".trimEnd(),
+                12, true, water).apply { setPadding(0, dp(6), 0, 0) })
+            hero.addView(text(when {
+                samples.size == 1 -> "Una lectura; aún no hay tendencia."
+                segments.size > 1 -> "Toca y desliza para ver cada lectura. La línea se corta donde faltan recepciones."
+                else -> "Toca y desliza para ver cada lectura."
+            }, 12, tint = muted).apply { setPadding(0, dp(6), 0, 0) })
+            if (samples.size != values.size) hero.addView(text(
+                if (selected == Metric.LIGHT) "Solo se grafican registros en $unit." else "${values.size - samples.size} recepciones sin ${selected.title}; no se sustituyen por cero.",
+                12, tint = muted))
+
+            // Summary statistics computed from these readings only; they are not targets.
+            val stats = row().apply { gravity = Gravity.TOP }
+            root.addView(stats, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(10) })
+            listOf("Mínimo" to samples.minOf { it.value }, "Promedio" to samples.map { it.value }.average(),
+                "Máximo" to samples.maxOf { it.value }).forEachIndexed { index, (name, value) ->
+                val tile = surface().apply { setPadding(dp(12), dp(10), dp(12), dp(12)) }
+                tile.addView(text(name, 12, true, muted))
+                tile.addView(metric(selected.format(value), if (unit.length <= 3) unit else "", 20).apply { setPadding(0, dp(2), 0, 0) })
+                stats.addView(tile, LinearLayout.LayoutParams(0, -2, 1f).apply { if (index > 0) marginStart = dp(8) })
             }
         }
-        val unit = if (selected == Metric.LIGHT) values.first().lightUnit else selected.unit
-        val plotted = values.filter { selected.read(it) != null && (selected != Metric.LIGHT || it.lightUnit == unit) }
-        plotCard.addView(text(listOf(selected.title, unit).filter { it.isNotEmpty() }.joinToString(" · "), 20, true))
-        if (selected == Metric.TDS && values.any { it.tdsSimulated }) plotCard.addView(badge("Incluye TDS simulado"))
-        if (plotted.size != values.size) plotCard.addView(text("Se grafican solo registros con la misma unidad: $unit.", 12, tint = muted))
-        plotCard.addView(TrendView(context, plotted, selected, ui), LinearLayout.LayoutParams(-1, dp(if (largeText) 200 else 156)))
-        val ordered = plotted.sortedBy { it.received }
-        if (ordered.isNotEmpty()) plotCard.addView(text("Desde ${date(ordered.first().received)}\nHasta ${date(ordered.last().received)}", 12, tint = muted))
-        val numbers = plotted.mapNotNull(selected.read)
-        if (numbers.isNotEmpty()) plotCard.addView(text("Mín. ${number(numbers.min())} · Máx. ${number(numbers.max())} $unit", 14, tint = muted))
-        else plotCard.addView(text("${selected.title} sin lecturas disponibles. No se sustituyen por cero.", 14, tint = muted))
-        plotCard.addView(text(if (values.size == 1) "Una lectura; aún no hay tendencia."
-            else "Cada punto es una recepción. No se asume continuidad entre lecturas.", 14, tint = muted))
-        section(root, "Recepciones", "${values.size} registros · más reciente primero")
-        values.forEach { m ->
-            val entry = card(root)
-            entry.addView(text(date(m.received), 16, true))
-            if (m.synthetic) entry.addView(badge("Datos de prueba"))
-            if (m.tdsSimulated) entry.addView(badge("TDS simulado"))
-            fun display(value: Double?) = value?.let(::number) ?: "—"
-            entry.addView(text("pH ${display(m.ph)} · Temperatura ${display(m.temperature)} °C\nTDS ${display(m.tds)} ppm", 16))
-            if (m.tds == null) entry.addView(badge("TDS no disponible"))
-            if (m.tdsUsesReferenceTemperature) entry.addView(badge("TDS sin compensación térmica · ref. 25 °C"))
-            m.ecUsCm?.let { entry.addView(text("EC ${number(it)} µS/cm", 14)) }
-            entry.addView(text("Luz ${display(m.lightValue)} ${m.lightUnit}\n${m.waterDescription}", 14, tint = muted))
-        }
-    }
-}
+        val about = card(root)
+        about.addView(text("Qué mide", 15, true))
+        about.addView(text(selected.about, 14, tint = muted))
+        if (selected == Metric.TDS && values.any { it.tdsUsesReferenceTemperature })
+            about.addView(text("Algunas lecturas usan la referencia de 25 °C porque faltó la temperatura.", 13, tint = muted))
 
-private class TrendView @JvmOverloads constructor(context: Context, rows: List<Measurement> = emptyList(),
-                        private val metric: Metric = Metric.PH, private val ui: Components = Components(context)) : View(context) {
-    private val points = rows.filter { metric.read(it) != null }.sortedBy { it.received }
-    private val numbers = points.mapNotNull(metric.read)
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val pointRadius = ui.dp(5).toFloat()
-    private val pearl = RadialGradient(-pointRadius * .3f, -pointRadius * .35f, pointRadius * 1.4f,
-        intArrayOf(0xFFE8FCFF.toInt(), ui.color(R.color.aqua), ui.water),
-        floatArrayOf(0f, .3f, 1f), Shader.TileMode.CLAMP)
-    init {
-        contentDescription = "Gráfica de ${metric.title}, ${rows.size} puntos por hora de recepción. Los valores están disponibles en la lista de historial."
-        importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
-    }
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        if (points.isEmpty()) return
-        val margin = ui.dp(12).toFloat()
-        val w = width - 2 * margin
-        val h = height - 2 * margin
-        val min = numbers.min(); val max = numbers.max()
-        val start = points.first().received.toEpochMilli()
-        val duration = points.last().received.toEpochMilli() - start
-        fun x(index: Int) = margin + if (duration == 0L) w / 2 else ((points[index].received.toEpochMilli() - start).toDouble() / duration * w).toFloat()
-        fun y(index: Int) = margin + if (max == min) h / 2 else (h * (1 - (numbers[index] - min) / (max - min))).toFloat()
-        paint.color = ui.color(R.color.outline); paint.strokeWidth = ui.dp(1).toFloat()
-        paint.alpha = 110
-        for (i in 0..2) canvas.drawLine(margin, margin + h * i / 2, width - margin, margin + h * i / 2, paint)
-        paint.alpha = 255
-        paint.color = ui.water
-        // Samples are isolated; the API reports no sampling cadence or continuity.
-        for (i in points.indices) {
-            canvas.save(); canvas.translate(x(i), y(i))
-            paint.shader = pearl
-            canvas.drawCircle(0f, 0f, pointRadius, paint)
-            paint.shader = null; paint.color = ui.water; paint.style = Paint.Style.STROKE
-            paint.strokeWidth = resources.displayMetrics.density * .6f
-            canvas.drawCircle(0f, 0f, pointRadius, paint)
-            paint.style = Paint.Style.FILL
-            canvas.restore()
+        section(root, "Recepciones", "Más reciente primero · toca una fila para ver el detalle")
+        if (values.all { it.synthetic }) root.addView(badge("Datos de prueba en todas las filas", fill = color(R.color.warning_soft)).apply {
+            (layoutParams as LinearLayout.LayoutParams).marginStart = dp(4)
+        })
+        val table = group(root)
+        val columns = metrics
+        fun header(m: Metric) = when (m) { Metric.PH -> "pH"; Metric.TEMPERATURE -> "°C"; Metric.TDS -> "ppm"
+            Metric.LIGHT -> if (Metric.LIGHT.unitFor(values) == "lux") "lux" else "%"; Metric.EC -> "µS" }
+        if (!largeText) {
+            val head = row().apply { setPadding(0, dp(10), 0, dp(6)) }
+            head.addView(text("Hora", 12, true, muted), LinearLayout.LayoutParams(0, -2, 1.2f))
+            columns.forEach { m -> head.addView(text(header(m), 12, true, if (m == selected) primary else muted).apply { gravity = Gravity.END },
+                LinearLayout.LayoutParams(0, -2, 1f)) }
+            table.addView(head)
         }
+        var lastDay = ""
+        values.forEach { m ->
+            val dayLabel = day.format(m.received)
+            if (dayLabel != lastDay) {
+                lastDay = dayLabel
+                if (table.childCount > 0) divider(table)
+                table.addView(text(dayLabel.replaceFirstChar { it.titlecase(Locale.getDefault()) }, 12, true, primary).apply { setPadding(0, dp(10), 0, dp(4)) })
+            } else divider(table)
+            val line = if (largeText) column() else row()
+            line.setPadding(0, dp(10), 0, dp(10)); line.minimumHeight = dp(48)
+            fun cell(metric: Metric): String {
+                val value = metric.read(m) ?: return "—"
+                return metric.format(value) + if (metric == Metric.TDS && m.tdsSimulated) "*" else ""
+            }
+            if (largeText) {
+                line.addView(text(clock.format(m.received), 16, true))
+                line.addView(text(columns.joinToString(" · ") { "${cell(it)} ${header(it)}" }, 15).apply { fontFeatureSettings = "tnum" })
+            } else {
+                line.addView(text(clock.format(m.received), 14, true).apply { fontFeatureSettings = "tnum" }, LinearLayout.LayoutParams(0, -2, 1.2f))
+                columns.forEach { metric ->
+                    line.addView(text(cell(metric), 14, metric == selected, if (metric == selected) ink else muted).apply {
+                        gravity = Gravity.END; fontFeatureSettings = "tnum"; maxLines = 1
+                    }, LinearLayout.LayoutParams(0, -2, 1f))
+                }
+            }
+            line.isClickable = true; line.isFocusable = true
+            line.background = android.graphics.drawable.StateListDrawable().apply {
+                addState(intArrayOf(android.R.attr.state_pressed), background(withAlpha(color(R.color.selected), 0x88), 12))
+                addState(intArrayOf(android.R.attr.state_focused), background(withAlpha(color(R.color.selected), 0x88), 12))
+                addState(intArrayOf(), background(android.graphics.Color.TRANSPARENT))
+            }
+            line.contentDescription = "${date(m.received)}. " + columns.joinToString(". ") { "${it.title} ${cell(it)}" } + ". Abrir detalle."
+            line.setOnClickListener { detail(m) }
+            table.addView(line, LinearLayout.LayoutParams(-1, -2))
+        }
+        if (values.any { it.tdsSimulated }) root.addView(text("* TDS simulado", 12, tint = backdropMuted).apply { onBackdrop(this); setPadding(dp(4), dp(6), 0, 0) })
+    }
+
+    private fun detail(m: Measurement) = with(ui) {
+        fun show(value: Double?, metric: Metric, unit: String) = value?.let { "${metric.format(it)} $unit".trim() } ?: "Sin lectura"
+        val lines = buildList {
+            add("Recibido: ${date(m.received)}")
+            m.captured?.let { add("Captura en el equipo: ${date(it)}") }
+            add("Secuencia: ${m.sequence}")
+            add("")
+            add("pH: ${show(m.ph, Metric.PH, "")}")
+            add("Temperatura: ${show(m.temperature, Metric.TEMPERATURE, "°C")}")
+            add("TDS: ${show(m.tds, Metric.TDS, "ppm")}${if (m.tdsSimulated) " (simulado)" else ""}${if (m.tdsUsesReferenceTemperature) " · ref. 25 °C" else ""}")
+            m.ecUsCm?.let { add("EC: ${show(it, Metric.EC, "µS/cm")}") }
+            add("Luz: ${show(m.lightValue, Metric.LIGHT, m.lightUnit)}")
+            add("Agua: ${m.waterDescription}")
+            if (m.sources.isNotEmpty()) { add(""); add("Origen: " + m.sources.entries.joinToString(", ") { "${it.key} ${it.value}" }) }
+            if (m.synthetic) { add(""); add("Datos de prueba.") }
+        }
+        AlertDialog.Builder(context).setTitle("Lectura ${clock.format(m.received)}")
+            .setMessage(lines.joinToString("\n")).setPositiveButton("Cerrar", null).show()
     }
 }

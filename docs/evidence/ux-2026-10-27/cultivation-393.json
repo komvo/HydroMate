@@ -1,0 +1,42 @@
+{
+  "screen": "CULTIVATION",
+  "scenario": 1,
+  "width_dp": 393,
+  "font_scale": 1,
+  "two_columns": true,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Sobre los perfiles",
+      "width_dp": 329.47607,
+      "height_dp": 52.11845
+    },
+    {
+      "label": "Inicio",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Historial",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Cultivo, seleccionado",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Control",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Más",
+      "width_dp": 71.435074,
+      "height_dp": 57.949883
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

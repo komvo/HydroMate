@@ -1,4 +1,49 @@
-# Aceptación HydroMate Jardín de cristal — 2026-10-04
+# Aceptación D64 — Historial e Inicio comprensibles — 2026-10-27
+
+Mismo teléfono 2207117BPG (Android 13). APK debug instalado por USB (la conexión
+USB se cortó varias veces; se reintentó y se verificó lastUpdateTime antes de capturar).
+
+- Gradle: testDebugUnitTest, lintDebug, assembleDebug y assembleRelease correctos.
+  JVM 39: 35 ejecutadas (6 nuevas de TrendMath), 4 opt-in omitidas, cero fallos.
+  Lint: solo los tres avisos previos. Log: ../.local/ux-validation.log.
+- 26 capturas y auditorías en [evidence/ux-2026-10-27](evidence/ux-2026-10-27/):
+  cero recortes y todos los objetivos ≥48 dp.
+- Corregido tras revisar capturas: etiqueta «Prom.» tapada por la línea (pasa a
+  leyenda), unidad ausente en el cambio frente a la anterior, texto de agua v1 que
+  afirmaba presencia, «Primera lectura» engañosa con una sola recepción, unidad de
+  luz partida y cápsulas ovaladas con fuente 2 (radio limitado a 40 dp).
+- No verificado: arrastre sobre la gráfica (no se inyectan toques), apertura de
+  detalle por fila y diálogos de ayuda, TalkBack y datos reales con huecos.
+
+---
+
+# Aceptación HydroMate Jardín líquido — 2026-10-27
+
+Rediseño D63 instalado por USB (install -r, configuración conservada) en el
+2207117BPG, Android 13/API 33, 1080×2400, densidad 440, navegación de tres botones.
+
+- Gradle: testDebugUnitTest, lintDebug, assembleDebug y assembleRelease correctos.
+  JVM 33: 29 ejecutadas, 4 opt-in omitidas, cero fallos. Lint: cero errores y los
+  tres avisos previos (OldTargetApi, NewerVersionAvailable, DiscouragedApi debug).
+  Log: ../.local/liquid-validation.log.
+- 26 capturas y auditorías VisualCheckActivity en
+  [evidence/liquid-garden-2026-10-27](evidence/liquid-garden-2026-10-27/):
+  Inicio 320/360/412 × fuente 1/1.3/2, estados 2–7, noche, cinco destinos, final de
+  scroll y Más/Control a 320 dp fuente 2. Resultado final: cero recortes y todos los
+  objetivos táctiles ≥48 dp.
+- Corregido durante la revisión: unidad «% relativo» que partía el valor; final de
+  scroll oculto tras la barra flotante (margen calculado al medir); segmentos de
+  44 dp (ahora 48); título y etiqueta «Control» partidos con fuente 2 a 320 dp.
+- [Captura de MainActivity](evidence/liquid-garden-2026-10-27/home-real.png) con la
+  configuración guardada: muestra la última recepción del 21/10 con aviso «Sin
+  datos recientes». Salió apaisada porque el teléfono estaba girado; no se acredita
+  una lectura nueva del ESP32 ni el giro como prueba de diseño apaisado.
+- Pendiente: TalkBack y foco, fluidez de desplazamiento medida, contraste medido
+  sobre capturas, edición con teclado, retrato de MainActivity con datos actuales.
+
+---
+
+# Antecedente: aceptación Jardín de cristal — 2026-10-04
 
 Android 0.6.0-garden compilado e instalado por USB. Fondo botánico claro y
 recuadros verdes translúcidos revisados en vistas nativas del teléfono.
