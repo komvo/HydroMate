@@ -4,14 +4,21 @@ Proteus 8.13 Professional. Proyecto editable: [`proteus/hydromate.pdsprj`](prote
 (2 hojas). Esquemático en PDF: [`hydromate-esquematico.pdf`](hydromate-esquematico.pdf).
 Capturas: [`evidencias/`](evidencias/). Propuesta de diseño: [`PROPUESTA.md`](PROPUESTA.md).
 
+Autor: Kevin Osmar Valdez Meza · Revisión 1.0.
+
 Todos los resultados de este documento se **observaron en simulación**; no hay mediciones del
 circuito físico. Los valores marcados como *supuesto* deben confirmarse con el hardware.
+
+**Cómo leer los entregables.** El PDF documenta **solo el circuito**. Fuera de una simulación, los
+instrumentos virtuales que aparecen en él muestran `+88.8`, que es su marcador y no una medición.
+Los **resultados** son las capturas de `evidencias/`, tomadas con la simulación en marcha, y las
+tablas de la §5.
 
 ## 1. Cumplimiento de requisitos
 
 | Requisito | Dónde |
 |---|---|
-| Archivo editable / PDF | `proteus/hydromate.pdsprj`, `hydromate-esquematico.pdf` |
+| Archivo editable / PDF | `proteus/hydromate.pdsprj`, `hydromate-esquematico.pdf` (solo el circuito) |
 | Componentes, señales y conectores identificados | etiquetas de red (§2) y lista (§4) |
 | Etapa de alimentación, etapa lógica, E/S críticas, protecciones | §2 |
 | Consumo estimado y capacidad de la fuente | §3.1 |
@@ -28,6 +35,15 @@ circuito físico. Los valores marcados como *supuesto* deben confirmarse con el 
   (Schottky, protección contra polaridad invertida) → zener 1N4751A de 30 V (función de TVS) → C de 470 µF.
   El riel +5V representa al XL4015 #1. Una fuente de 12 V representa al XL4015 #2, que alimenta la
   dosificación (*supuesto*). U3 LM1117-3.3 entrega `3V3_LDO`.
+- **Separación de las redes `+3V3` y `3V3_LDO` (solo en la simulación).** Proteus crea `+3V3` como
+  un riel ideal a partir del pin VCC oculto del ATmega328P; ese riel alimenta el MCU, las
+  pull-ups de las salidas y los clamps de las entradas analógicas. El LM1117 entrega `3V3_LDO` sobre una carga de prueba de 11 Ω, con la que se
+  comprobó su regulación (3.30 V en N1). Al principio las dos redes estaban unidas y la simulación se
+  detenía en ≈ 1 s, porque una fuente ideal y la salida de un regulador quedaban en paralelo; por eso
+  se separaron. En consecuencia, **el dibujo no demuestra que el LM1117 alimente toda la lógica**:
+  solo verifica el regulador por separado. En el circuito físico hay una sola red de 3.3 V, salida
+  del regulador del DevKit ESP32, que alimenta toda la lógica. El consumo de la lógica (§3.1) se
+  calculó y no se midió.
 - **Lógica.** ATmega328P con el firmware didáctico `firmware-sim/` (sustituye al ESP32). La terminal virtual
   va conectada a TX a 9600 baudios.
 - **Sensores.**
@@ -49,6 +65,19 @@ Hay cinco canales: bomba, A, B, pH Up y pH Down. Cada uno tiene:
 Cargas: la bomba M1 es un MOTOR-DC de 24 V protegido por F2; los canales de dosificación usan cargas
 de 24 Ω a 12 V (*supuesto*). Las órdenes se dan con interruptores SW-SPST y el flotador es otro
 SW-SPST conectado a GND.
+
+**Equivalencias señaladas sobre el dibujo**
+
+| En el esquemático | Representa |
+|---|---|
+| RV1 | sonda de pH + módulo PH014 |
+| RV2 (+ divisor) | módulo TDS Meter V1.0 / SEN0244 |
+| ATmega328P | ESP32 DevKit |
+| ADS1015 | ADS1115 |
+| riel +5V | XL4015 #1 |
+| fuente de 12 V | XL4015 #2 (*supuesto*) |
+| MOTOR-DC M1 / resistencias de 24 Ω | bomba de 24 V / 25 W / mecanismos de dosificación |
+| SW1–SW5 / SW6 | órdenes MQTT / flotador |
 
 **Señales principales**
 
@@ -206,6 +235,8 @@ El detalle de cada prueba y los intentos descartados están en
   El BH1750 no tiene modelo.
 - **Alimentación:** los XL4015 son fuentes ideales, sin rizado, conmutación ni eficiencia real. El
   riel +5V se usa directamente: con la pila U1 en paralelo aparecía el error «singular matrix».
+  La lógica se alimenta del riel ideal `+3V3` y no de `3V3_LDO` (ver §2); en el circuito físico,
+  el regulador alimenta toda la lógica.
 - **Protecciones:** como TVS se usa un zener 1N4751A. El fusible no modela el retardo, por eso F2 se
   funde en el arranque.
 - **Bomba y drivers:** la bomba es un MOTOR-DC genérico (7.7 Ω, arranque *supuesto* de 3×), mientras
@@ -224,3 +255,7 @@ El detalle de cada prueba y los intentos descartados están en
   `.hex` que se carga en la simulación. La compilación de 8 MHz se genera en `build/`, que no se
   versiona.
 - `evidencias/` — capturas de Proteus; `resultados-fallas.md` contiene las notas de las fallas.
+- `guia-circuito-proteus.pdf` — guía de 13 páginas que explica cada parte del esquemático con recortes
+  señalados y el componente físico que representa. Se regenera con
+  `python -I talleres/practica-proteus/guia/generar_guia.py` después de reexportar el PDF del
+  esquemático; si cambia el dibujo, hay que revisar las coordenadas de las marcas.
