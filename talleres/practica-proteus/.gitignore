@@ -1,0 +1,4 @@
+# Archivos locales que Proteus genera de nuevo
+proteus/Project Backups/
+proteus/*.workspace
+proteus/*.SDF
