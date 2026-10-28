@@ -12,13 +12,15 @@
 #include <time.h>
 #include "sensor_config.h"
 #include "telemetry_sensors.h"
+#include "pump_control.h"
 #if __has_include("secrets.h")
 #include "secrets.h"
 #else
 #include "secrets.example.h"
 #endif
 
-// Derived from Documentos PDC/tests/PruebaSensores1.ino. No actuator outputs.
+// Derived from Documentos PDC/tests/PruebaSensores1.ino. Only output: recirculation pump + alarm;
+// dosing channels A/B/pH Up/pH Down are not driven.
 constexpr uint8_t TEMP_PIN = 4, FLOAT_PIN = 27;
 constexpr float PH_M = -5.579f, PH_B = 14.066f;
 constexpr unsigned long SAMPLE_MS = HYDROMATE_PERIODIC_MS, RETRY_MS = 5000;
@@ -46,6 +48,33 @@ hydromate::Snapshot current, baseline;
 unsigned long lastSample = 0, lastRetry = 0, lastConnect = 0;
 unsigned long lastWifiRetry = 0;
 int lastWifiStatus = -1;
+// Written by the safety task, read by loop() for logging only.
+volatile hydromate::PumpState pumpState = hydromate::PumpState::BLOCKED_LOW_LEVEL;
+volatile bool sensorFault = false, alarmOn = false;
+hydromate::PumpState loggedPumpState = hydromate::PumpState::CYCLE_OFF;
+bool loggedAlarm = true;
+
+// Owns the pump and alarm pins. Runs in its own FreeRTOS task with higher priority than loop(),
+// so Wi-Fi/TLS/MQTT waits never delay a low-level shutdown. Its debounce is independent of telemetry.
+void safetyTask(void*) {
+  hydromate::PumpController pump({HYDROMATE_PUMP_RESTART_DELAY_MS, HYDROMATE_PUMP_ON_MS, HYDROMATE_PUMP_OFF_MS});
+  bool candidate = digitalRead(FLOAT_PIN) == LOW, water = false;
+  unsigned long candidateSince = millis();
+  for (;;) {
+    unsigned long now = millis();
+    bool raw = digitalRead(FLOAT_PIN) == LOW;
+    if (raw != candidate) { candidate = raw; candidateSince = now; }
+    // Losing water acts at once; regaining it must hold for the debounce time.
+    if (!candidate) water = false;
+    else if (now - candidateSince >= HYDROMATE_WATER_DEBOUNCE_MS) water = true;
+    bool run = HYDROMATE_PUMP_ENABLED && pump.update(now, water);
+    digitalWrite(HYDROMATE_PUMP_N_PIN, run ? LOW : HIGH);
+    bool alarm = !water || sensorFault || halted;
+    digitalWrite(HYDROMATE_ALARM_PIN, alarm ? HIGH : LOW);
+    pumpState = pump.state(); alarmOn = alarm;
+    vTaskDelay(pdMS_TO_TICKS(HYDROMATE_SAFETY_PERIOD_MS));
+  }
+}
 
 void halt(const char* reason) {
   halted = true;
@@ -196,8 +225,17 @@ void sample(const char* mode, unsigned changes, const String& requestId) {
 }
 
 void setup() {
+  // Outputs OFF before anything else; the external pull-ups also cover the reset interval.
+  digitalWrite(HYDROMATE_PUMP_N_PIN, HIGH);
+  pinMode(HYDROMATE_PUMP_N_PIN, OUTPUT);
+  digitalWrite(HYDROMATE_ALARM_PIN, LOW);
+  pinMode(HYDROMATE_ALARM_PIN, OUTPUT);
   Serial.begin(115200);
   pinMode(FLOAT_PIN, INPUT_PULLUP);
+  if (xTaskCreatePinnedToCore(safetyTask, "safety", 3072, nullptr, 3, nullptr, 1) != pdPASS)
+    Serial.println("SAFETY_TASK_FAIL: bomba permanece apagada");
+  Serial.printf("PUMP enabled=%d gpio=%d activo_bajo; interbloqueo fisico NOR con flotador\n",
+                HYDROMATE_PUMP_ENABLED, HYDROMATE_PUMP_N_PIN);
   Wire.begin(21,22);
   temperatureSensor.begin();
   temperatureSensor.setResolution(10);
@@ -245,10 +283,19 @@ void setup() {
   configTime(0, 0, "pool.ntp.org");
   lastSample = millis() - SAMPLE_MS;
   lastConnect = millis() - RETRY_MS;
-  Serial.println("Telemetria v3: TDS A1, cambios y solicitudes; respaldo 30s; sin actuadores.");
+  Serial.println("Telemetria v3: TDS A1, cambios y solicitudes; respaldo 30s; bomba de recirculacion local.");
+}
+
+void logActuators() {
+  hydromate::PumpState state = pumpState;
+  bool alarm = alarmOn;
+  if (state == loggedPumpState && alarm == loggedAlarm) return;
+  loggedPumpState = state; loggedAlarm = alarm;
+  Serial.printf("PUMP state=%s alarm=%d uptime_ms=%lu\n", hydromate::pumpStateName(state), alarm, millis());
 }
 
 void loop() {
+  logActuators();
   if (halted) { delay(50); return; }
   unsigned long now = millis();
   bool rawWater=digitalRead(FLOAT_PIN)==LOW;
@@ -257,6 +304,8 @@ void loop() {
   updateTemperature(now);
   if (!haveSnapshot || now-lastSensorPoll>=HYDROMATE_SENSOR_POLL_MS) {
     lastSensorPoll=now; readSensors();
+    sensorFault=!isfinite(current.temperature) || !isfinite(current.ph) ||
+                HYDROMATE_TDS_SENSOR_ENABLED && !isfinite(current.tds);
   }
   int wifiStatus = WiFi.status();
   if (wifiStatus != lastWifiStatus) {

@@ -15,7 +15,36 @@ Guía ../docs/PUBLIC_ACCESS.md y ../docs/INTEGRATION.md; contrato v3 en docs.
 
 `HydroMateTelemetry/HydroMateTelemetry.ino` adapta el sketch original de sensores,
 que permanece intacto en `Documentos PDC/tests/PruebaSensores1.ino`.
-Solo adquisición y transmisión; no conecta ni gobierna salidas de bombas.
+Además de adquirir y transmitir, gobierna **solo la bomba de recirculación y la alarma**
+(D65). No maneja los canales de dosificación A/B/pH Up/pH Down.
+
+## Salida: bomba de recirculación (D65)
+
+Cableado igual al de la práctica Proteus (`talleres/practica-proteus/`):
+- **GPIO25 (`BOMBA_N`), activo en bajo**, con pull-up de 10 kΩ a 3V3 → 74HCT02 a 5 V,
+  `NOR(NIVEL, BOMBA_N)` → R de compuerta 100 Ω + pull-down de 10 kΩ → MOSFET → bomba 24 V,
+  con diodo flyback y fusible retardado.
+- **GPIO23: alarma, activa en alto** (LED con 680 Ω).
+- El flotador (GPIO27) entra al ESP32 y a la NOR. **Sin agua, el hardware bloquea la bomba
+  aunque falle el firmware.**
+
+Lógica (`pump_control.h`, probada en PC con `scripts/tests/pump_control_test.cpp`):
+- La bomba arranca solo después de confirmar agua durante 5 s, también tras un reinicio o al
+  recuperar el nivel.
+- Funciona de forma continua mientras haya agua. El ciclo ON/OFF se activa con
+  `HYDROMATE_PUMP_OFF_MS > 0`. Son valores de banco, no un riego definido.
+- Al perder el agua se apaga de inmediato (sin esperar el antirrebote).
+- La alarma se enciende con nivel bajo, con temperatura/pH/TDS inválidos o con `HALT`.
+- La tarea FreeRTOS `safety` es la dueña de los pines. Corre cada 20 ms con prioridad mayor que
+  `loop()`, así que las esperas de Wi-Fi/TLS/MQTT no retrasan el corte. Si no se puede crear, los
+  pines quedan en apagado.
+- Serie: `PUMP state=RUNNING|WAITING_RESTART|BLOCKED_LOW_LEVEL|CYCLE_OFF alarm=0|1`.
+
+**Límites:**
+- No hay orden remota de bomba: la decisión es local y MQTT solo pide mediciones.
+- El estado de la bomba no viaja en la telemetría v3; incluirlo requiere cambiar el contrato.
+- `HYDROMATE_PUMP_ENABLED 0` deja la salida siempre apagada.
+- La corriente de arranque real de la bomba sigue sin medirse.
 
 - DS18B20 GPIO 4, flotador GPIO 27 (LOW = agua).
 - I2C SDA21/SCL22: BH1750 y ADS1115 0x48; pH A0 y TDS A1.
@@ -73,8 +102,9 @@ La configuración aislada conserva `directories.data` en Arduino15 instalado y
 usa `.local/arduino-user` como sketchbook; las cinco bibliotecas de sensores se
 copiaron desde la instalación existente a `.local/arduino-libraries`, sin cambiar
 sus fuentes originales. Evita buscar todo el sketchbook OneDrive en cada build.
-Esto no implementa el controlador final: las esperas de sensores/red se deben
-separar de las tareas de seguridad antes de añadir actuadores.
+Esto no implementa el controlador final. La bomba ya corre en una tarea de seguridad
+separada de las esperas de sensores y red; la dosificación, cuando se agregue, debe seguir
+el mismo criterio e incluir límites de dosis, exclusión Up/Down y tiempos máximos.
 
 
 ### Arduino IDE: ArduinoJson.h no encontrado
