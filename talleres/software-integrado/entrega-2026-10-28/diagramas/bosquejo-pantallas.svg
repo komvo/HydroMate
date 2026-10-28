@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="310" viewBox="0 0 1600 310"><rect width="100%" height="100%" fill="white"/>
+<rect x="20" y="15" width="730" height="210" rx="14" fill="#e3eef6" stroke="#5b7465" stroke-width="3"/>
+<text x="38" y="60" font-family="Arial" font-size="33" font-weight="700" fill="#162b24">Inicio</text>
+<text x="38" y="104" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Fecha y antigüedad | Refrescar</text>
+<text x="38" y="142" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Temperatura | pH | TDS | Luz | Nivel</text>
+<text x="38" y="180" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Navegación: Inicio / Historial / Más</text>
+<rect x="850" y="15" width="730" height="210" rx="14" fill="#e9f2eb" stroke="#5b7465" stroke-width="3"/>
+<text x="868" y="60" font-family="Arial" font-size="33" font-weight="700" fill="#162b24">Historial</text>
+<text x="868" y="104" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Variable y última recepción</text>
+<text x="868" y="142" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Gráfica | Resumen | Tabla con fechas</text>
+<text x="868" y="180" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Carga, vacío y error en la misma vista</text>
+<polyline points="750,110 850,110" fill="none" stroke="#466554" stroke-width="4"/>
+<polygon points="850,110 835,102 835,118" fill="#466554"/>
+<text x="30" y="281" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Bosquejo de estructura; Cultivo y Control conservan su alcance pendiente.</text>
+</svg>

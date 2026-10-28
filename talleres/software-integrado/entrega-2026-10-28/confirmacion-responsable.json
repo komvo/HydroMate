@@ -1,0 +1,20 @@
+{
+  "confirmacion_recibida": "2026-10-28",
+  "fecha_ejecucion": null,
+  "fuente": "Declaración directa del responsable del proyecto en esta conversación",
+  "equipo": "ESP32",
+  "declaracion": "esp, siguio funcionando sin conexion correctamente y las mediciones llegaron las mas recientes sin duplicarse",
+  "resultado": {
+    "reinicio_esp32": "Comprobado por responsable",
+    "continuidad_sin_conexion": "Confirmada por responsable",
+    "recepcion_mediciones_recientes_sin_duplicados": "Confirmada por responsable"
+  },
+  "alcance": "No acredita reinicio del bridge ni almacenamiento de todas las lecturas sin Internet. No repetida por el agente.",
+  "salida_bomba": {
+    "confirmacion_recibida": "2026-10-28",
+    "declaracion": "Implementé la salida, la armé como en el circuito de Proteus y funciona correctamente; así sin foto, solo pon que lo hicimos",
+    "cableado": "Igual que la práctica Proteus: GPIO25 activo en bajo hacia la NOR 74HCT02 con el flotador; alarma GPIO23",
+    "resultado": "Prueba P7 comprobada por el responsable",
+    "alcance": "Sin fotografía, video ni registro serie; corriente de arranque no medida. No repetida por el agente."
+  }
+}
