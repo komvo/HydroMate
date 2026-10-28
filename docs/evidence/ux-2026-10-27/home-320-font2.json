@@ -1,0 +1,82 @@
+{
+  "screen": "HOME",
+  "scenario": 1,
+  "width_dp": 320,
+  "font_scale": 2,
+  "two_columns": false,
+  "night": false,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Solicitar medición nueva",
+      "width_dp": 52.148148,
+      "height_dp": 52.148148
+    },
+    {
+      "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+      "width_dp": 288,
+      "height_dp": 205.92592
+    },
+    {
+      "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+      "width_dp": 288,
+      "height_dp": 240
+    },
+    {
+      "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+      "width_dp": 288,
+      "height_dp": 240
+    },
+    {
+      "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+      "width_dp": 288,
+      "height_dp": 240
+    },
+    {
+      "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+      "width_dp": 288,
+      "height_dp": 272
+    },
+    {
+      "label": "Cómo llegan tus datos. De la torre a este teléfono",
+      "width_dp": 256,
+      "height_dp": 189.33333
+    },
+    {
+      "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+      "width_dp": 256,
+      "height_dp": 224.88889
+    },
+    {
+      "label": "Ver equipo y control. Integración pendiente",
+      "width_dp": 256,
+      "height_dp": 189.33333
+    },
+    {
+      "label": "Inicio, seleccionado",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Historial",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Control",
+      "width_dp": 59.555557,
+      "height_dp": 60.74074
+    },
+    {
+      "label": "Más",
+      "width_dp": 59.851852,
+      "height_dp": 60.74074
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

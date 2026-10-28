@@ -1,0 +1,82 @@
+{
+  "screen": "HOME",
+  "scenario": 1,
+  "width_dp": 393,
+  "font_scale": 1,
+  "two_columns": true,
+  "night": true,
+  "text_issues": [],
+  "touch_targets": [
+    {
+      "label": "Solicitar medición nueva",
+      "width_dp": 52.11845,
+      "height_dp": 52.11845
+    },
+    {
+      "label": "Torre de demostración. Sin perfil de cultivo. Emblema decorativo sin estado físico. Abrir Cultivo.",
+      "width_dp": 361.54895,
+      "height_dp": 132.30067
+    },
+    {
+      "label": "pH: 6.10 . ↓ 0.04 vs. anterior. Abrir historial.",
+      "width_dp": 175.67198,
+      "height_dp": 158.54213
+    },
+    {
+      "label": "Temperatura de la solución: 23.0 °C. ↓ 0.2 °C vs. anterior. Abrir historial.",
+      "width_dp": 176.03644,
+      "height_dp": 158.54213
+    },
+    {
+      "label": "TDS: 510 ppm. ↓ 2 ppm vs. anterior. Abrir historial.",
+      "width_dp": 175.67198,
+      "height_dp": 174.57858
+    },
+    {
+      "label": "Luz: 60 % relativo. ↓ 1 vs. anterior. Abrir historial.",
+      "width_dp": 176.03644,
+      "height_dp": 174.57858
+    },
+    {
+      "label": "Cómo llegan tus datos. De la torre a este teléfono",
+      "width_dp": 329.47607,
+      "height_dp": 71.799545
+    },
+    {
+      "label": "Qué mide cada sensor. pH, temperatura, TDS, luz y agua",
+      "width_dp": 329.47607,
+      "height_dp": 71.799545
+    },
+    {
+      "label": "Ver equipo y control. Integración pendiente",
+      "width_dp": 329.47607,
+      "height_dp": 71.799545
+    },
+    {
+      "label": "Inicio, seleccionado",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Historial",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Cultivo",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Control",
+      "width_dp": 71.07061,
+      "height_dp": 57.949883
+    },
+    {
+      "label": "Más",
+      "width_dp": 71.435074,
+      "height_dp": 57.949883
+    }
+  ],
+  "scope": "Native Android layout review; no network, preferences, injected input or physical states"
+}

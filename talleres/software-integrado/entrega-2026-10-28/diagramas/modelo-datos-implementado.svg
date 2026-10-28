@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="690" viewBox="0 0 1600 690"><rect width="100%" height="100%" fill="white"/>
+<rect x="20" y="20" width="760" height="490" rx="14" fill="#e9f2eb" stroke="#5b7465" stroke-width="3"/>
+<text x="38" y="65" font-family="Arial" font-size="33" font-weight="700" fill="#162b24">measurements / entidad implementada</text>
+<text x="38" y="109" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">PK id : bigint</text>
+<text x="38" y="147" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">device_id : varchar(64)</text>
+<text x="38" y="185" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">sequence : bigint</text>
+<text x="38" y="223" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">message_version / reason / sample_number</text>
+<text x="38" y="261" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Sensores, origen y fechas en una fila</text>
+<text x="38" y="299" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">UNIQUE(device_id, sequence)</text>
+<text x="38" y="337" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">No FK de device_id a una tabla devices</text>
+<rect x="840" y="20" width="740" height="300" rx="14" fill="#e3eef6" stroke="#5b7465" stroke-width="3"/>
+<text x="858" y="65" font-family="Arial" font-size="33" font-weight="700" fill="#162b24">Cada fila es una adquisición</text>
+<text x="858" y="109" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Temperatura / pH / TDS / luz / nivel / EC</text>
+<text x="858" y="147" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">captured_at: adquisición opcional</text>
+<text x="858" y="185" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">created_at: recepción en el backend</text>
+<text x="858" y="223" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Null: ausencia o invalidez</text>
+<rect x="840" y="350" width="740" height="200" rx="14" fill="#f4f1e9" stroke="#5b7465" stroke-width="3"/>
+<text x="858" y="395" font-family="Arial" font-size="33" font-weight="700" fill="#162b24">Fuera de este modelo</text>
+<text x="858" y="439" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Tablas auxiliares de Laravel</text>
+<text x="858" y="477" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">SQLite del bridge y NVS no son</text>
+<text x="858" y="515" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">relaciones de measurements</text>
+<text x="30" y="599" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Torre: identidad lógica device_id; una torre produce muchas mediciones.</text>
+<text x="30" y="644" font-family="Arial" font-size="29" font-weight="400" fill="#162b24">Usuarios, permisos, comandos y alertas son diseño; no se declaran integrados.</text>
+</svg>

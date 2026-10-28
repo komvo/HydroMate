@@ -54,24 +54,24 @@ class SettingsScreen(private val ui: Components) {
         val tower = card(root)
         fun field(parent: LinearLayout, title: String, value: String, id: Int,
                   type: Int = InputType.TYPE_CLASS_TEXT): EditText {
-            val label = text(title, 14, true).apply { labelFor = id }
+            val label = text(title, 13, true, muted).apply { labelFor = id; setPadding(dp(4), dp(10), 0, dp(4)) }
             parent.addView(label)
             return EditText(context).apply {
                 this.id = id; inputType = type; setSingleLine(true); setText(value); setTextColor(ink)
                 contentDescription = title; minHeight = dp(52)
-                background = AeroSurface(ui, color(R.color.surface), radius = 10)
+                background = glass(GlassStyle.FIELD, 16)
                 backgroundTintList = null
-                setPadding(dp(8), dp(8), dp(8), dp(8))
+                setPadding(dp(14), dp(10), dp(14), dp(10))
                 parent.addView(this, LinearLayout.LayoutParams(-1, -2))
             }
         }
         name = field(tower, "Nombre en este teléfono", config.name, 101)
-        tower.addView(button("Equipo y control", equipment, false))
+        tower.addView(button("Equipo y control", equipment, false), LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(12) })
         if (saved.size > 1) tower.addView(button("Elegir torre guardada", {
             AlertDialog.Builder(context).setTitle("Torres en este teléfono")
                 .setItems(saved.map { "${it.name} · ${it.device}" }.toTypedArray()) { _, index -> chooseTower(saved[index]) }
                 .setNegativeButton("Cancelar", null).show()
-        }, false))
+        }, false), LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
         section(root, "Conexión")
         val connection = card(root)
         connection.addView(button("Entorno: ${config.environment.title}", {
@@ -82,8 +82,8 @@ class SettingsScreen(private val ui: Components) {
         }, false))
         connection.addView(text(if (config.environment == ConnectionEnvironment.PRODUCTION)
             "HTTPS obligatorio. Solo telemetría con origen real o sensor no disponible; no hay datos demo ni fallback local."
-            else "Banco local por USB o red privada. La dirección de producción se guarda por separado.", 14, tint = muted))
-        connectionStatus = text("", 14, true).also { connection.addView(it) }
+            else "Banco local por USB o red privada. La dirección de producción se guarda por separado.", 14, tint = muted).apply { setPadding(dp(4), dp(10), dp(4), dp(2)) })
+        connectionStatus = text("", 14, true, primary).also { it.setPadding(dp(4), dp(2), dp(4), dp(4)); connection.addView(it) }
         disclosure(connection, "conexión avanzada", advanced, { advanced = it }) { form ->
             device = field(form, "Identificador de torre (device_id)", config.device, 102)
             server = field(form, "Servidor · dirección base sin /api", config.server, 103,
@@ -94,18 +94,21 @@ class SettingsScreen(private val ui: Components) {
                 guide.addView(text("USB: 127.0.0.1:8000 con el enlace ADB preparado en la PC.\nEmulador Android: 10.0.2.2:8000.\nWi-Fi: requiere un servidor accesible en esa red.\nHTTP solo en debug; release requiere HTTPS.", 14, tint = muted))
             }
         }
-        connection.addView(button(if (scenario > 0) "Guardar conexión real" else "Guardar y probar conexión", save))
+        connection.addView(button(if (scenario > 0) "Guardar conexión real" else "Guardar y probar conexión", save),
+            LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(10) })
         disclosure(connection, "diagnóstico", diagnostics, { diagnostics = it }) { detail -> diagnostic = detail }
         updateState(state, scenario > 0)
 
         section(root, "Apariencia")
         val design = card(root)
-        design.addView(text("Aero Eco · Jardín de cristal", 20, true))
-        design.addView(text("Hojas, agua y cristal verde. Elige paneles claros o la apariencia de tu teléfono.", 14, tint = muted))
-        design.addView(button(if (appearance == "aero") "Seguir tema del sistema" else "Usar Jardín claro", {
-            changeAppearance(if (appearance == "aero") "system" else "aero")
-        }, false))
-        design.addView(text("Movimiento breve al navegar; se respeta la desactivación de animaciones de Android.", 14, tint = muted))
+        design.addView(text("Jardín líquido", 20, true))
+        design.addView(text("Cristal translúcido sobre hojas y agua. Elige el jardín claro o la apariencia de tu teléfono.", 14, tint = muted))
+        segmented(design, listOf("Jardín claro", "Sistema"), if (appearance == "aero") 0 else 1, if (largeText) 1 else 2,
+            { index, active -> "${if (index == 0) "Usar Jardín claro" else "Seguir tema del sistema"}${if (active) ", seleccionado" else ""}" }) { index ->
+            val value = if (index == 0) "aero" else "system"
+            if (value != appearance) changeAppearance(value)
+        }
+        design.addView(text("Movimiento breve al navegar; se respeta la desactivación de animaciones de Android.", 14, tint = muted).apply { setPadding(0, dp(10), 0, 0) })
 
         if (PreviewSupport.options.isNotEmpty() && config.environment == ConnectionEnvironment.DEVELOPMENT) {
             section(root, "Demostración · solo debug")
@@ -116,18 +119,21 @@ class SettingsScreen(private val ui: Components) {
                     .setSingleChoiceItems(PreviewSupport.options.toTypedArray(), scenario) { dialog, which ->
                         dialog.dismiss(); changeScenario(which)
                     }.setNegativeButton("Cancelar", null).show()
-            }, false))
-            if (scenario > 0) demo.addView(button("Salir de la demostración", { changeScenario(0) }))
+            }, false), LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(10) })
+            if (scenario > 0) demo.addView(button("Salir de la demostración", { changeScenario(0) }), LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
         }
 
         section(root, "Créditos")
         val credits = card(root)
-        credits.addView(icon(GlassSymbol.CULTIVATION, 60))
-        credits.addView(text("Emblema, iconos y fondo vegetal originales generados con IA para HydroMate.\nSuperficies de cristal: gráficos nativos propios.\nTipografía: sans-serif del sistema.", 14, tint = muted))
+        val creditRow = row()
+        creditRow.addView(icon(GlassSymbol.CULTIVATION, 60))
+        creditRow.addView(text("Emblema, iconos y fondo vegetal originales generados con IA para HydroMate.\nCristal: gráficos nativos propios que desenfocan el fondo local.\nTipografía: sans-serif del sistema.", 14, tint = muted),
+            LinearLayout.LayoutParams(0, -2, 1f).apply { marginStart = dp(12) })
+        credits.addView(creditRow)
         credits.addView(button("Acerca del diseño", {
-            help("HydroMate · Aero Eco", "Inspirado en el optimismo ecológico de Frutiger Aero y los portales de internet clásicos.\n\nEl emblema es decorativo: no representa volumen, plantas activas ni estado físico. El cristal se dibuja por capas; no refracta contenido en tiempo real.\n\nLas referencias visuales, procedencia y avisos están en la documentación del proyecto.")
-        }, false))
-        credits.addView(text("HydroMate ${BuildConfig.VERSION_NAME} · Jardín de cristal", 12, tint = muted))
+            help("HydroMate · Jardín líquido", "Inspirado en el optimismo ecológico de Frutiger Aero y en la jerarquía de materiales translúcidos de las interfaces actuales.\n\nEl emblema es decorativo: no representa volumen, plantas activas ni estado físico. El cristal desenfoca solo el fondo vegetal local; no refracta contenido en tiempo real.\n\nLas referencias visuales, procedencia y avisos están en la documentación del proyecto.")
+        }, false), LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(12) })
+        credits.addView(text("HydroMate ${BuildConfig.VERSION_NAME} · Jardín líquido", 12, tint = muted).apply { setPadding(0, dp(8), 0, 0) })
     }
 
     fun updateState(state: ReadingState, demonstration: Boolean) = with(ui) {
