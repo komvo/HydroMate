@@ -1,4 +1,4 @@
-"""Genera guia-circuito-proteus.pdf: explica cada parte del esquemático con recortes señalados.
+"""Genera T9_PDC_1288703.pdf: explica cada parte del esquemático con recortes señalados.
 
 Uso (desde la raíz del repositorio):
     python -I talleres/practica-proteus/guia/generar_guia.py
@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 BASE = Path(__file__).resolve().parent.parent
 SRC = BASE / "hydromate-esquematico.pdf"
-OUT = BASE / "guia-circuito-proteus.pdf"
+OUT = BASE / "T9_PDC_1288703.pdf"
 DPI = 200
 PAGE_W, PAGE_H = 2339, 1654          # A4 horizontal a 200 dpi
 MARGIN = 90
