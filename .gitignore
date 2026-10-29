@@ -8,7 +8,7 @@
 **/__pycache__/
 **/.venv/
 *.log
-# Documentos PDC se incluyen por solicitud expresa del usuario.
+# Documentos PDC se publican de forma intencional.
 # Referencias retiradas de GitHub; conservar los archivos originales locales.
 /Documentos PDC/Duplicados exactos/
 /Documentos PDC/HydroMate_Duena_Milca/
@@ -60,3 +60,6 @@ service-account*.json
 *.sql
 *.dump
 *.sqlite*
+
+# Salidas regenerables del CAD (cad/build.py)
+/cad/out/
