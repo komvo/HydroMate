@@ -27,9 +27,9 @@ antes de definir límites, interbloqueos y aceptación.
 
 | Concepto | Situación | Importe pendiente |
 |---|---|---|
-| ESP32 y sensores actuales | Disponibles según usuario; TDS defectuoso | Documentar costo ya pagado, no volver a presupuestar como compra nueva |
+| ESP32 y sensores actuales | Disponibles; TDS defectuoso | Documentar costo ya pagado, no volver a presupuestar como compra nueva |
 | Reemplazo TDS | Pendiente; no bloquea PoC con simulación identificada | Solicitar cotización real |
-| VPS OVHcloud VPS-1 compartido | No se ha comprobado contratación | Usuario recuerda alrededor de 90 MXN; verificar moneda, periodo, impuestos y renovación |
+| VPS OVHcloud VPS-1 compartido | No se ha comprobado contratación | Costo aproximado de 90 MXN; verificar moneda, periodo, impuestos y renovación |
 | Reparto VPS | Dos proyectos | 50/50 solo si lo acuerdan; no afirmar 45 MXN sin factura/precio confirmado |
 | Dominio | Definir al desplegar TLS | Cotizar o usar alternativa válida disponible; sin compra automática |
 | Bibliotecas/runtime local | Herramientas ya disponibles, sin compra adicional realizada | Sin costo de contratación observado en esta etapa |

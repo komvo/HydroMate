@@ -14,7 +14,7 @@ Su presencia no acredita aprobación docente ni ejecución de pruebas.
 | 6 | [PDF](taller-06/reporte.pdf) | Copia histórica existente; revisión técnica pendiente |
 | 7 | [PDF](taller-07/reporte.pdf) | Copia histórica existente; revisión técnica pendiente |
 
-## Requisito comunicado por el usuario
+## Requisito de los reportes
 
 A partir del Taller 5 los reportes deben ser técnicos e incluir código, capturas
 de pruebas, errores y resultados, diagramas y los demás archivos utilizados.

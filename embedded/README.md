@@ -15,10 +15,9 @@ Guía ../docs/PUBLIC_ACCESS.md y ../docs/INTEGRATION.md; contrato v3 en docs.
 
 `HydroMateTelemetry/HydroMateTelemetry.ino` adapta el sketch original de sensores,
 que permanece intacto en `Documentos PDC/tests/PruebaSensores1.ino`.
-Además de adquirir y transmitir, gobierna **solo la bomba de recirculación y la alarma**
-(D65). No maneja los canales de dosificación A/B/pH Up/pH Down.
+Además de adquirir y transmitir, gobierna **solo la bomba de recirculación y la alarma**. No maneja los canales de dosificación A/B/pH Up/pH Down.
 
-## Salida: bomba de recirculación (D65)
+## Salida: bomba de recirculación
 
 Cableado igual al de la práctica Proteus (`talleres/practica-proteus/`):
 - **GPIO25 (`BOMBA_N`), activo en bajo**, con pull-up de 10 kΩ a 3V3 → 74HCT02 a 5 V,

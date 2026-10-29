@@ -11,8 +11,8 @@ Ensayos del 07/10: HTTP v1, MQTT sintético (incluye primer fallo), MQTT autenti
 repetición tras reinicio Docker, validación backend/Android y esquema PostgreSQL.
 Leer el campo scope y synthetic: diez filas PC no equivalen a diez lecturas reales.
 `esp32-fisico-2026-10-07.json` conserva la primera captura física fallida:
-una muestra serial y ninguna entrega confirmada. El usuario detectó que el SSID
-original solo admitía 5 GHz y cambió el archivo privado a una red de 2.4 GHz.
+una muestra serial y ninguna entrega confirmada. El SSID original solo admitía
+5 GHz; se cambió el archivo privado a una red de 2.4 GHz.
 Una repetición debe guardarse en otro archivo; no sobrescribir este resultado.
 Repetición `esp32-fisico-24ghz-2026-10-07.json`: passed=true, diez mensajes
 físicos verificados contra API; cuatro variables reales y TDS simulado. Cambio

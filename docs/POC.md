@@ -1,7 +1,7 @@
 # Alcance actualizado — backend antes de hardware
 
-El usuario reemplazó la ruta Wokwi/Blade por API + PostgreSQL + Android mínimo,
-y posteriormente ESP32 físico. No ejecutar la ruta histórica como requisito.
+Se reemplazó la ruta Wokwi/Blade por API + PostgreSQL + Android mínimo,
+y posteriormente ESP32 físico. La ruta histórica ya no es requisito.
 Paso 1 probado: 15 tests/79 assertions; smoke HTTP real con 11 filas sintéticas,
 422 inválido, 409 duplicado, consultas por dispositivo y 404 sin datos.
 Evidencias en docs/evidence; faltan volumen Docker, Android y sensores físicos.
@@ -53,5 +53,5 @@ de BD, logs y capturas. Identificar siempre sensor simulado vs servicio real.
 
 Entregables por cerrar: código, README específico, diagrama, evidencias, problemas
 encontrados, cronograma, presupuesto y matriz de riesgos. Los documentos existentes
-apoyan los últimos tres; no inventar costos ni resultados. Confirmar criterio
+apoyan los últimos tres; sin costos ni resultados supuestos. Confirmar criterio
 académico de simulación frente al requisito original de entrada física.

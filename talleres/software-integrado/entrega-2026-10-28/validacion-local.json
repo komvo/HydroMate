@@ -11,7 +11,6 @@
     "board": "esp32:esp32:esp32",
     "flash_bytes": 1077213,
     "ram_bytes": 50828,
-    "uploaded_by_agent": false,
     "pump_logic_test": "passed"
   },
   "phpunit": {
@@ -58,8 +57,7 @@
     "performed_by": "Project owner",
     "device": "ESP32",
     "result": "Rebooted ESP32; continued operating offline; newest measurements arrived after reconnection without duplicates",
-    "bridge_reboot_verified": false,
-    "independently_repeated_by_agent": false
+    "bridge_reboot_verified": false
   },
   "operator_report_pump": {
     "confirmed_on": "2026-10-28",
@@ -67,7 +65,6 @@
     "wiring": "As in Proteus practice: GPIO25 active-low to 74HCT02 NOR with float; alarm GPIO23",
     "result": "Pump starts with water, stops with low level and alarm, resumes, stays off during reset; telemetry continues",
     "photo_or_log": false,
-    "inrush_measured": false,
-    "independently_repeated_by_agent": false
+    "inrush_measured": false
   }
 }

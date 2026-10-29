@@ -1,10 +1,9 @@
 # HydroMate — Jardín líquido
 
-2026-10-27 · Dirección visual vigente D63, solicitada por el usuario: modernizar el
+2026-10-27 · Dirección visual vigente: modernizar el
 Frutiger Aero/Eco de 0.6 (aspecto de portal web de los 90) con la jerarquía de
 materiales translúcidos que Apple describe para Liquid Glass, sin perder el enfoque
-ecológico. Dirección anterior (Jardín de cristal, D43) conservada en
-[AERO_DESIGN_HISTORY_2026-10-04](AERO_DESIGN_HISTORY_2026-10-04.md).
+ecológico. Reemplaza la dirección anterior, Jardín de cristal.
 Estado: implementado y revisado en teléfono con capturas nativas (ver AERO_ACCEPTANCE);
 TalkBack y medición de fluidez/contraste pendientes.
 

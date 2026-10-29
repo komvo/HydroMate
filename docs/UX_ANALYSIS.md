@@ -1,6 +1,6 @@
 # HydroMate — Análisis UX/UI de la app Android
 
-2026-10-27 · Solicitado por el usuario tras el rediseño D63 (Jardín líquido).
+2026-10-27 · Análisis posterior al rediseño Jardín líquido.
 Objetivo: que la app enseñe mejor qué está pasando en la torre y que el historial
 se entienda de un vistazo. Implementación: D64. Revisión en teléfono: AERO_ACCEPTANCE.
 
@@ -50,7 +50,7 @@ se entienda de un vistazo. Implementación: D64. Revisión en teléfono: AERO_AC
 11. Falta un glosario breve de qué mide cada sensor, en lenguaje del usuario.
 12. La carga solo se comunica con texto; un indicador de actividad es más visible.
 
-## Cambios implementados (D64)
+## Cambios implementados
 
 **Historial**
 - **Titular**: último valor grande, cambio entre la primera y la última lectura en
@@ -82,7 +82,7 @@ se entienda de un vistazo. Implementación: D64. Revisión en teléfono: AERO_AC
 ## Recomendaciones no implementadas (requieren decisión o backend)
 
 - Rangos por cultivo para calificar valores con bandas de referencia en la gráfica
-  (perfil de cultivo pendiente; no inventar objetivos).
+  (perfil de cultivo pendiente; sin objetivos supuestos).
 - Selector 24 h / 7 d / 30 d con agregados por hora/día (necesita endpoint de
   historial con ventana y agregación).
 - Avisos (FCM) ante cambios bruscos o nivel bajo, cuando exista autenticación.

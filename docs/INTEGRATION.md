@@ -24,23 +24,24 @@ Esta tarea no accede al servidor ni modifica recursos externos.
 | Android | `Telemetry.kt`, `ConnectionStore.kt`, Inicio/Historial/Conexión: HTTPS producción separado, valores reales, null, error HTTP, ausencia y telemetría antigua |
 | TDS / EC | TDS real ADS1115 A1; sin DS18 válido se informa referencia25°C/no compensado. EC null hasta disponer de driver independiente |
 
-No se controla ningún actuador. Aplazamiento comunicado por el usuario; anexar
+No se controla ningún actuador. Actuación aplazada; anexar
 la autorización docente a la evidencia académica. No hay nueva calibración.
 
-## Valores que proporciona el administrador posteriormente
+## Configuración administrada vigente
 
 Compartir direcciones públicas no sensibles; introducir secretos solo en sus
 archivos privados, nunca en chat, Git ni capturas públicas.
 
-1. URL base **HTTPS** de la API, sin `/api`, certificado válido y alcance del
-   GET para Android. El POST debe quedar accesible únicamente al bridge/red
-   autorizada, porque aún no hay autenticación completa de dispositivos.
+1. URL base **HTTPS** `https://hydromate-kevin.duckdns.org:9443`, sin `/api`,
+   certificado válido. POST /api/measurements es exclusivo del bridge/red
+   interna. El POST público limitado de measurement-requests está descrito en
+   API.md; no equivale a autenticación completa de dispositivos.
    El endpoint debe provisionarse sin modificar configuración `chitiito-*`.
-2. Hostname público de Mosquitto y puerto MQTT TLS propio (8884 recomendado),
+2. Hostname `hydromate-kevin.duckdns.org` y puerto MQTT TLS8884,
    certificado cuyo nombre coincida y CA de confianza. Publicación y acceso
    autorizados los resuelve el administrador fuera de esta tarea.
 3. Cuenta privada `hydromate-device`, permiso de publicación solo del tópico
-   `hydromate/hydromate-01/telemetry` y lectura de su ACK; cuenta privada
+   `hydromate/hydromate-01/telemetry`, lectura de su ACK y commands/measure; cuenta privada
    `hydromate-bridge` con ACL existentes. Contraseñas se guardan en passwd
    privado del broker y en el entorno privado/firmware correspondiente.
 4. `.env` exclusivamente en VPS con los nombres de `.env.example`:
@@ -62,16 +63,15 @@ Android no se ejecuta en VPS.
 Desde el checkout, el administrador utiliza su entorno privado:
 
 ```bash
-docker compose -p hydromate --env-file /etc/hydromate/.env -f compose.production.yml --profile mqtt build api bridge
-docker compose -p hydromate --env-file /etc/hydromate/.env -f compose.production.yml --profile mqtt up -d --wait
-docker compose -p hydromate --env-file /etc/hydromate/.env -f compose.production.yml exec -T api php artisan migrate --force
+sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
 ```
 
-También puede utilizar `deployment/deploy.sh`; ver PRODUCTION.md. No ejecutar
-pruebas sintéticas con la identidad física contra producción. No usar prune,
-reinicios globales, down -v ni reiniciar proyectos ajenos. Migración v3 preserva
-filas anteriores; revisar copia de seguridad antes de aplicarla. No hay downgrade
-automático de v3: podría destruir valores null de mediciones reales.
+Este es el arranque vigente: incluye imagen propia Mosquitto, bridge, API y HTTPS.
+Usar el checkout real, Docker rootless como deploy-hydromate y archivos privados
+ya provisionados; seguir PUBLIC_ACCESS.md/PRODUCTION.md. No se ejecuta desde este
+chat. No enviar pruebas sintéticas con identidad física a producción. No prune,
+reinicios globales ni down -v. Revisar respaldo antes de migraciones; no hay
+downgrade automático de v3 que preserve todos sus valores null.
 
 ## Firmware de producción
 

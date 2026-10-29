@@ -1,105 +1,63 @@
-# Contexto del proyecto
+# Contexto vigente de HydroMate
 
-Consolidado: 2026-09-30. Fuentes: instrucciones actuales del usuario, código local
-y documentos enumerados abajo. Estado ejecutable: ver STATUS.
+Actualizado el 27/10/2026 con código y evidencias hasta el 21/10. Las
+descripciones antiguas de TDS simulado o VPS candidata ya no aplican.
 
-Instrucción posterior 14/10: preparar producción local únicamente, sin SSH ni
-solicitud de secretos. El ejecutor existente despliega main; recursos chitiito-*
-intocables. Compose y guía PRODUCTION preparados para hydromate aislado con
-API8081, PostgreSQL interno y MQTT TLS8884 opcional. Reemplaza el acceso
-interactivo anterior, sin afirmar despliegue VPS ni nueva prueba física.
+## Producto y responsabilidades
 
-HydroMate automatiza y monitorea hidroponía vertical. Primera unidad física:
-torre recirculante de al menos seis plantas; evolución a múltiples torres por
-cuenta, perfiles, historial, alertas y configuración remota.
-El ESP32 controla localmente; Laravel procesa funciones no críticas y expone API;
-PostgreSQL persiste; Android consume REST. Mosquitto es el broker definitivo.
+Torre hidropónica recirculante para monitoreo y diseño de control de solución
+nutritiva. Primera unidad con identidad `hydromate-01`; preservar identidad por
+cada torre al ampliar. ESP32 adquiere sensores y deberá ejecutar seguridad local;
+Laravel valida, registra y sirve consultas; PostgreSQL persiste; Android Kotlin
+consume HTTPS. Mosquitto y bridge Python conectan telemetría con la API.
 
-## Incremento vigente
-Actualización 07/10: usuario solicita ejecutar primero local y documentar pasos.
-Contratos v1/v2 compatibles, Android lux/flotador/origen e integrador Paho con
-bandeja y ACK implementados; firmware nuevo cargado y diez entregas verificadas. Cuatro
-variables físicas y TDS simulado; hardware disponible según bitácora 05/10.
-Ensayos/resultados actuales en STATUS; comentarios anteriores se conservan
-como historial. VPS compartido aceptado como candidato, no contratado/desplegado.
+El flujo físico público ya está comprobado. Se continúa sobre la implementación
+existente; no reconstruir Wokwi/Blade, migrar frontend o sustituir tecnologías
+por una plantilla. Los datos sintéticos se limitan a pruebas/demo explícitas.
 
-El usuario eliminó Wokwi como requisito y eligió Android mínimo como primer
-frontend. Primero base de datos y API probadas con datos sintéticos; después app
-en teléfono; finalmente conectar el armado ESP32 real mediante MQTT/integración.
-No construir panel Blade por separado. Backend probado y volumen Docker confirmado.
-Paso 2: mensaje documentado en TELEMETRY_CONTRACT.md; firmware aún pendiente. Los datos de prueba no son
-mediciones físicas ni calibración química.
+## Producción conocida
 
-## Hardware y restricciones
-Seleccionados/contemplados, no necesariamente comprados ni probados: ESP32,
-DS18B20, flotador, PH-4502C o equivalente, SEN0244, BH1750/GY-302, ADS1115;
-INA219/INA226 opcional sujeto a compatibilidad. Bomba seleccionada 24 V, 25 W,
-1000–1200 L/h nominales; no equivalen a caudal medido. D4184 para conmutación DC.
-Sensores/actuadores no se alimentan desde GPIO. Cuatro canales de dosificación:
-nutrient_a, nutrient_b, ph_up, ph_down. Mecanismo final pendiente de validación.
-Seguridad local y estado seguro prevalecen sobre cualquier orden remota.
+| Elemento | Configuración pública o no sensible |
+|---|---|
+| API Android | https://hydromate-kevin.duckdns.org:9443, sin /api en URL base |
+| MQTT ESP32 | hydromate-kevin.duckdns.org:8884, TLS con CA/hostname |
+| Docker | rootless, usuario deploy-hydromate, proyecto hydromate |
+| API host | 127.0.0.1:8081 → API8080 |
+| MQTT y BD internos | 1884 / PostgreSQL5432; sin publicar al host |
+| Configuración privada VPS | /etc/hydromate/.env, /etc/hydromate/https, /etc/hydromate/mqtt |
 
-Base física descrita el 22/09: depósito 51 L, PVC azul 6 pulgadas, subida 3/4,
-aproximadamente 1.30 m visibles; apoyo de torre en fondo y tapa como guía lateral.
-No hay mediciones físicas auditadas en esta sesión.
+Los pasos remotos se ejecutan directamente en la VPS. `chitiito-*` es completamente intocable; no cambiar80/443/8443/8883,
+volúmenes ajenos, perfiles AppArmor globales ni Docker global. Lectura actual de
+Git/configuración no demuestra disponibilidad presente de la VPS.
 
-## Fuentes y discrepancias que no deben reinvestigarse sin motivo
-- `Documentos PDC/T6_PDC_1288703.docx`: fecha interna 23/09/2026, archivo modificado
-  30/09. RF/RNF, restricciones, arquitectura; presupuesto máximo escrito $5,000 MXN.
-- `Documentos PDC/Planeacion_integral_HydroMate_contexto_actualizado_22-09-2026.docx`:
-  diseño físico, alternativas de dosificación, pago/envío de bomba por confirmar;
-  gasto mínimo escrito $1,472.25 MXN, cargos por conciliar.
-- `Documentos PDC/Plan_trabajo_HydroMate_sep_nov_2026.docx`: fecha interna 22/09,
-  periodo 28/09–30/11; separa Basic (UNO/C++, sin red) y Smart (ESP32);
-  registra $1,872.74 MXN e incluye bomba/LECA. No reconciliado con la fuente anterior.
-- `Documentos PDC/T4_PDC_128870.docx`: alternativas del 16/09; contiene referencias
-  anteriores de presupuesto y alcance (incluido $6,000). T6 es posterior.
-- Instrucciones del usuario del 30/09: priorizar PoC Smart y diferir funciones
-  avanzadas. Actualizan la prioridad del plan Basic sin borrar esa línea histórica.
+## Hardware y compras
 
-No inferir vigencia solo por fecha del filesystem o por carpetas de versiones.
-No afirmar compras recibidas ni presupuesto disponible sin conciliación.
-Los documentos EC0935 son evidencia documental, no prueba automática de ejecución.
+DS18B20 GPIO4; flotador GPIO27 LOW=agua; I2C SDA21/SCL22; ADS1115 0x48,
+pH A0 y TDS A1; BH1750 luz en lux. EC independiente sin driver. El pH conserva
+constantes históricas, sin nueva calibración acreditada. Un flotador no distingue
+cortocircuito a GND de presencia de agua.
 
-## Evolución, fuera de la PoC
-Android preferentemente Kotlin si no existe trabajo previo; BLE para Wi-Fi;
-Sanctum previsto, FCM futuro; propiedad/vinculación, grupos lógicos sin perder
-identidad, perfiles versionados y clonables, comandos con ID/ack/estado.
-Los perfiles y comandos nunca pueden desactivar protecciones locales.
+Compra identificada como sensor pH PH014 y MOSFET dual Noyito:
+no asumir equivalencia exacta con PH-4502C/D4184 ni niveles eléctricos compatibles.
+Fuente 24V/5A y dos XL4015 figuran en el lote pagado; bomba seleccionada 24V/25W,
+sin acreditar corriente de arranque ni hidráulica medidas. Cuatro canales
+nutrient_a/nutrient_b/ph_up/ph_down: mecanismo físico por validar; no presuponer
+cuatro bombas peristálticas. GPIO de actuación del T8 son preliminares.
 
-Android implementado en mobile/ (Kotlin). Rediseño solicitado el 03/10: versión 0.2
-con cinco secciones, temas del sistema, gráfico de historial, configuración separada
-y actualización inicial/manual. Cultivo y control son preparación visual pendiente,
-sin endpoints ni acciones. Sigue pendiente instalar/probar UI en teléfono.
-Guía: mobile/README.md; decisiones D27–D30. Prioridad ESP32 después de esa prueba.
+Presupuesto vigente y componentes: `talleres/taller-05/entrega-2026-10-21/presupuesto-actualizado.json` desde la raíz. Gasto $3,493.94; máximo $6,000;
+disponible $2,506.06 MXN. Sustituye límites históricos del T6 anterior.
 
-Actualización posterior del 03/10: el prompt de rediseño Frutiger Aero reemplaza
-la dirección visual 0.2 por 0.3. Día inicial, cuatro pestañas y Equipo secundario;
-demo exclusiva debug, offline y explícita. AERO_DESIGN/AERO_ACCEPTANCE recogen
-alcance y pendientes; decisiones D31–D35. Compilación/JVM comprobadas, UI en
-Android todavía pendiente. No se confirmó la planeación física del 24/09 citada
-por el DOCX: torre dibujada de tres niveles/seis sitios es referencia del encargo,
-no cambio confirmado de dimensiones, actuadores o compras.
+## Decisiones límites y documentos
 
-Actualización 04/10: dirección visual Aero Eco 0.4 de los dos MD del usuario.
-Cinco destinos, cristal/agua/hoja natural e iconos originales. D36–D38 reemplazan
-la presentación de 0.3, sin cambios al contrato/lógica. Instalación USB y 26
-revisiones nativas de composición observadas; QA manual e integración real
-pendientes según AERO_ACCEPTANCE. Docker no disponible en esta sesión.
+D60: TDS real, eventos y adquisición solicitada. D61: continuidad Arduino-ESP32,
+Sanctum para acceso, FCM para entregar avisos y BLE para alta Wi-Fi. Estas últimas
+son decisiones, no autorización para implementarlas ni prueba de funcionamiento.
+Protecciones locales deben bloquear nivel bajo, sensores inválidos, dosis
+incompatibles y tiempos excesivos; sin deep sleep normal del controlador.
 
-Refinamiento posterior 04/10, vigente: 0.6.0-garden y D39–D43. Ilustraciones de
-cristal detalladas; únicamente cuatro iconos de barra tienen variantes de menor
-ruido, Cultivo conserva su emblema. Recarga renovada y pH/TDS diferenciados.
-La primera variante de jardín oscuro fue reemplazada a petición del usuario por
-fondo botánico muy claro y tarjetas verdes translúcidas. Sin cambios funcionales.
-Instalada por USB, seleccionada la apariencia clara en el teléfono; evidencia
-android-garden-2026-10-04.json y capturas garden-light-2026-10-04. AERO_ACCEPTANCE
-distingue revisión visual de pendientes.
+T5 demuestra viabilidad; T8 fija arquitectura; T6 actualizado contiene requisitos.
+Los documentos académicos no se editan desde el código y conservan los límites
+de cada prueba. La actuación se aplazó a la versión alfa; entrega final 2/12/2026.
+La práctica Proteus está en `talleres/practica-proteus/`.
 
-Actualización de energía 04/10: el usuario confirma ESP32 con fuente de corriente,
-leyendo sensores y controlando bombas. Solicita documentar máximo ahorro seguro y
-otras optimizaciones. ENERGY_OPTIMIZATION.md fija dirección de diseño D44–D47:
-controlador disponible, adquisición/red separadas, radio y frecuencia optimizados
-primero; sueño ligero condicionado y deep sleep excluido en operación normal.
-Cadencias 5 s/300 s y prueba 30 s son propuestas por validar, no firmware ejecutado.
-Nube gratuita evaluada, no contratada; MQTT/bridge y seguridad de acceso pendientes.
+Estado y evidencias: STATUS.md. Cambios y publicación: REPOSITORY.md.

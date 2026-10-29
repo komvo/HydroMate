@@ -258,6 +258,4 @@ El detalle de cada prueba y los intentos descartados están en
 - `T9_PDC_1288703.pdf` — reporte de 27 páginas. Contiene: cumplimiento de requisitos; cada
   parte del esquemático con recortes señalados y el componente físico que representa; cálculos y
   justificación; lista de componentes; las simulaciones con sus capturas y la explicación de cada
-  resultado; y las diferencias con el circuito físico. Se regenera con
-  `python -I talleres/practica-proteus/guia/generar_guia.py` después de reexportar el PDF del
-  esquemático; si cambia el dibujo, hay que revisar las coordenadas de las marcas.
+  resultado; y las diferencias con el circuito físico.

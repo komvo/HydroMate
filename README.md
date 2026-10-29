@@ -1,102 +1,49 @@
 # HydroMate
 
-Prototipo de monitoreo y control local para hidroponía vertical. Este repositorio
-conserva el código, los documentos académicos, las pruebas y las evidencias del
-proyecto. Repositorio público: [komvo/HydroMate](https://github.com/komvo/HydroMate).
+Monitoreo y diseño de control local para hidroponía vertical. ESP32 con sensores
+reales → MQTT/TLS → Mosquitto/bridge → Laravel → PostgreSQL → Android por HTTPS.
+Repositorio público: https://github.com/komvo/HydroMate.
 
-## Estado al 7 de octubre de 2026
+## Documentación
 
-- Backend Laravel y PostgreSQL comprobados localmente con datos sintéticos.
-- Android nativo Kotlin compilado e instalado; integración real y QA manual
-  parcialmente pendientes.
-- ESP32 con DS18B20, BH1750, flotador, ADS1115 y pH probados según la bitácora
-  del 5 de octubre. TDS defectuoso: reemplazo pendiente.
-- Código de pruebas físicas conservado en `Documentos PDC/tests/PruebaSensores1.ino`.
-  Todavía no contiene Wi-Fi ni publicación MQTT.
-- Taller 5 pendiente: demostrar sensores físicos → ESP32 → backend en nube →
-  PostgreSQL → Android, diez transmisiones y evidencia de fallos y tiempos.
-- Alcance solicitado: temperatura, pH, luz y nivel reales; TDS simulado con
-  identificación por variable. Contrato v2/API/BD/Android e integrador local
-  implementados; diez transmisiones sintéticas verificadas. Firmware nuevo en
-  `embedded/`, prueba física y despliegue según STATUS.
-- VPS-1 de OVHcloud compartido con otro proyecto es la opción aceptada para
-  preparar el despliegue; contratación y despliegue no comprobados.
+[Estado actual](docs/STATUS.md) y [contexto del proyecto](docs/PROJECT_CONTEXT.md).
+Las últimas pruebas físicas documentadas son del 21/10/2026; no garantizan que el
+servidor esté disponible en este momento.
 
-El [estado actual](docs/STATUS.md) distingue pruebas realizadas y pendientes.
-La [arquitectura](docs/ARCHITECTURE.md) y las [decisiones](docs/DECISIONS.md)
-conservan el contexto técnico e histórico.
+- Implementado: temperatura, pH, luz, flotador y TDS real; telemetría v3,
+  reintentos/ACK, historial y adquisición solicitada desde Android.
+- Diseñado, sin implementación completa: usuarios/Sanctum, avisos/FCM,
+  aprovisionamiento BLE, perfiles y control seguro de actuadores.
+- Producción: `https://hydromate-kevin.duckdns.org:9443`; MQTT TLS
+  `hydromate-kevin.duckdns.org:8884`; dispositivo `hydromate-01`.
+- Talleres5/8 y presupuesto actual en `Documentos PDC/`; fuentes y evidencias
+  en `talleres/taller-05/entrega-2026-10-21/`. Entrega final del proyecto: 2/12/2026.
 
-## Contenido
+## Mapa de trabajo
 
-| Ruta | Contenido |
+| Ruta | Uso |
 |---|---|
-| `hydromate-backend/` | API Laravel, migraciones, pruebas y fixtures sintéticos |
-| `mobile/` | Aplicación Android, pruebas y recursos gráficos |
-| `embedded/` | Firmware ESP32 MQTT, plantilla privada y guía de compilación |
-| `Documentos PDC/` | Fuentes de talleres seleccionadas y sketch de sensores |
-| `docs/` | Contexto, contratos, arquitectura, decisiones y guías |
-| `docs/evidence/` | Evidencias y resultados registrados, con fechas |
-| `scripts/` | Integrador MQTT, arranque, preparación y herramientas de prueba/captura |
-| `reports/` | Informes elaborados sobre el proyecto |
-| `talleres/` | PDF por taller e índice técnico del Taller 5 |
+| hydromate-backend/ | Laravel, validación, migraciones y pruebas |
+| embedded/HydroMateTelemetry/ | Firmware físico y ejemplo de configuración privada |
+| mobile/ | Android Kotlin nativo, Inicio/Historial y conexión por entorno |
+| scripts/ | Bridge MQTT y herramientas de pruebas/captura |
+| deployment/ y compose.production.yml | Empaquetado rootless y despliegue HydroMate |
+| docs/ | Contratos, decisiones, operación y evidencia fechada |
+| Documentos PDC/ | Entregas académicas vigentes y referencias seleccionadas |
+| reports/ | Informes; identificar su fecha antes de tratarlos como actuales |
 
-Infraestructura de nube pendiente de contratación y validación.
-Una carpeta prevista no representa una función terminada.
+## Cambiar comprobar y publicar
 
-## Ejecutar y verificar
+[SETUP](docs/SETUP.md): desarrollo y selección de pruebas.
+[REPOSITORY](docs/REPOSITORY.md): ramas, revisión, commit y push.
+[ARCHITECTURE](docs/ARCHITECTURE.md), [API](docs/API.md) y
+[contrato](docs/TELEMETRY_CONTRACT.md): interfaces que deben conservarse.
+[PUBLIC_ACCESS](docs/PUBLIC_ACCESS.md) y [PRODUCTION](docs/PRODUCTION.md):
+operación del servidor; las credenciales nunca se versionan.
 
-Seguir [SETUP](docs/SETUP.md) para los servicios locales existentes y
-[mobile/README](mobile/README.md) para compilar e instalar Android.
-Guía completa del incremento: [procedimiento local Taller 5](talleres/taller-05/procedimiento-local.md).
-Plan, presupuesto y riesgos: [plan de acción](talleres/taller-05/plan-accion.md).
-Producción aislada y hook para el ejecutor automático de main:
-[guía de producción](docs/PRODUCTION.md). Proyecto Docker explícito hydromate;
-API 127.0.0.1:8081, PostgreSQL interno y MQTT TLS opcional 8884. Recursos chitiito
-intocables. No se necesita proporcionar acceso SSH a esta tarea.
-No recrear contenedores ni borrar volúmenes para arrancar el proyecto.
+No publicar secretos, `.local/`, respaldos operativos ni datos ajenos. No borrar
+volúmenes ni operar recursos `chitiito-*`. Subir una rama no autoriza merge ni
+confirma despliegue. Producción nunca sustituye fallos por datos demo.
 
-Backend: pruebas PHPUnit en SQLite en memoria; el smoke HTTP conserva datos
-sintéticos en PostgreSQL. Android: pruebas JVM, lint y compilación; las pruebas
-físicas y HTTP se distinguen de los ejemplos y revisiones visuales.
-
-Contrato actual: [TELEMETRY_CONTRACT](docs/TELEMETRY_CONTRACT.md).
-Endpoints actuales: [API](docs/API.md).
-
-## Guardar avances
-
-Cada incremento debe conservar código y evidencia observada, actualizar el estado
-y registrar las decisiones que cambien. Un commit guarda una versión local;
-un push sincroniza los commits con GitHub. No hay sincronización automática.
-
-Ver [política del repositorio](docs/REPOSITORY.md) para documentos, secretos y archivos grandes.
-Los documentos originales se conservan sin modificar salvo solicitud explícita.
-
-## Seguridad y datos
-
-No subir `.env`, contraseñas Wi-Fi/MQTT/BD, llaves, tokens, configuraciones privadas,
-respaldos operativos ni datos privados del proyecto del compañero. `.env.example`
-solo debe contener nombres de configuración y valores ficticios o vacíos.
-
-TDS simulado debe identificarse en mensaje, BD y Android; nunca usarse para
-dosificación. Lux y nivel discreto deben conservar su significado físico.
-Seguridad crítica y estado seguro pertenecen al ESP32, independientes de Internet.
-
-El usuario autorizó expresamente el repositorio público y seleccionó los
-documentos académicos publicados. Otras referencias y la bitácora física se
-conservan solo localmente en la versión actual. Revisar nuevos
-documentos y evidencias antes de subirlos; no incluir secretos ni información
-privada de otras personas o proyectos.
-
-## Recursos de terceros
-
-Consultar [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES) y
-[procedencia de recursos](docs/recursos.json). No se declara una licencia global
-para documentos académicos, código propio y recursos de terceros indistintamente.
-
-
-## Incremento de acceso público/rootless
-
-Preparación HTTPS9443/MQTT TLS8884 para hydromate-kevin.duckdns.org, Docker
-rootless deploy-hydromate. Configuración privada y pasos exactos en
-[PUBLIC_ACCESS](docs/PUBLIC_ACCESS.md); integración v3 en
-[INTEGRATION](docs/INTEGRATION.md). Sin acceso VPS ni merge a main desde esta tarea.
+[THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES) y [recursos](docs/recursos.json)
+documentan procedencia; no se atribuye una licencia global a todos los materiales.

@@ -1,122 +1,108 @@
-# Incremento de arranque público — 2026-10-14
+# Arranque y validación por entorno
 
-Desarrollo conserva el arranque local descrito abajo. Para publicación seguir
-[PUBLIC_ACCESS](PUBLIC_ACCESS.md): usuario deploy-hydromate/rootless, .env privado,
-certificados propios, HTTPS9443 y MQTT TLS8884. Compilar Android exportando solo
-HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:9443; por defecto Gradle lee
-únicamente esa variable pública en .env.example raíz. Nunca copia .env VPS al PC.
-Firmware: secrets.h privado, hostname/puerto8884/TLS/CA raíz y credenciales propias;
-compilar sin HYDROMATE_ALLOW_PLAIN_LAN. TDS habilitado en ADS1115 A1;
-DS18B20 GPIO4, pH A0; EC independiente. Sin temperatura válida, TDS usa25°C
-de referencia y la app lo identifica como no compensado.
-Contrato y ensayo: TELEMETRY_CONTRACT.md, INTEGRATION.md. No se requiere teléfono
-USB para pruebas JVM; ensayo físico remoto en Android sigue siendo manual.
+Revisión: 27/10/2026. Estado actual en [STATUS](STATUS.md); lo documentado no
+significa que procesos o dispositivos sigan conectados.
 
-## Arranque local y antecedentes preservados
+## Herramientas y configuración
 
-# Arranque local comprobado — 2026-10-07
+Trabajar desde `C:\Hydromate`. Reutilizar herramientas instaladas y consultar sus
+versiones. `.local/`, vendor, SDK y secretos no aparecen al clonar: comprobar su
+existencia antes de usarlos. Preparar dependencias solo si la tarea lo requiere.
 
-## Producción preparada sin acceso VPS — 2026-10-14
+- Backend: [README](../hydromate-backend/README.md), composer.json/lock.
+  PHP portátil conocido: `.local/php/php.exe`.
+- Android: [README](../mobile/README.md), wrapper Gradle/JBR de Android Studio.
+  Una variable pública de producción: `HYDROMATE_APP_URL`; `.env.example` raíz
+  contiene el valor público predeterminado.
+- Firmware: [README](../embedded/README.md), core/bibliotecas allí indicados.
+  `secrets.h` es privado; no sobrescribirlo al copiar ejemplos.
+- Python MQTT: requirements del proyecto y `.local/mqtt-venv/` si existe.
+  SQLite del bridge es una bandeja privada, no la base de negocio.
 
-Guía vigente: [PRODUCTION](PRODUCTION.md); `compose.production.yml` en raíz y
-Dockerfile en hydromate-backend. Ejecutar siempre
-`docker compose -p hydromate -f compose.production.yml --env-file /etc/hydromate/.env ...`.
-Hook del ejecutor existente: `sh deployment/deploy.sh /etc/hydromate/.env [--mqtt]`.
-El usuario de Git solo descarga main; el ejecutor debe tener permiso Docker
-configurado por administrador. Secretos fuera del checkout, solo VPS; plantilla
-raíz .env.example vacía en valores sensibles. Sin cambios al .env de desarrollo.
-API loopback 8081, BD interna sin publicar5432, perfil opcional MQTT TLS8884.
-No usar puertos reservados80/443/8883 ni tocar recursos/configuración chitiito-*.
-La sección de acceso SSH anterior queda reemplazada para esta tarea por el
-empaquetado local y la ejecución automatizada descrita, sin solicitar credenciales.
+No mostrar secretos ni cambiar credenciales a partir de ejemplos. Desarrollo y
+producción permanecen separados.
 
-## Actualización Taller 5 — 2026-10-07
+## Pruebas offline: sin VPS ni hardware
 
-Guía detallada: ../talleres/taller-05/procedimiento-local.md. API/PostgreSQL
-arrancados; respaldo antes de migración v2 en .local/backups (privado). Migración
-aditiva ejecutada únicamente por --path; Sanctum sigue pendiente.
-`scripts/start_local.ps1 -WithLanMqtt` reutiliza configuración y procesos de banco.
-Broker autenticado separado 1884, configuración/ACL/usuarios en .local/mqtt;
-bridge con .local/mqtt-venv (Paho 2.1.0) y bandeja SQLite privada.
-Red Wi-Fi doméstica privada autorizada; regla solo 1884/Private/LocalSubnet.
-El script de regla necesita PowerShell administrador: scripts/enable_mqtt_lan.ps1.
-Firmware y dependencias: embedded/README.md; secretos privados en secrets.h.
-No migrar estas credenciales ni artisan serve como servicio final de nube.
+PHPUnit usa SQLite en memoria según `hydromate-backend/phpunit.xml`; verificar
+esa configuración antes de ejecutarlo. Desde la raíz, con vendor instalado:
 
-## PostgreSQL
-Abrir Docker Desktop y comprobar el contenedor existente hydromate-postgres.
-No recrear ni borrar contenedor/volúmenes. Acceso Docker recuperado; PostgreSQL
-16.15 usa volumen local anónimo en /var/lib/postgresql/data (evidence/docker-mounts-step2.json).
-Conservar ese volumen y adjuntarlo explícitamente si algún día se recrea el contenedor.
-Desde PowerShell del usuario comprobar persistencia:
 ```powershell
-docker inspect hydromate-postgres --format '{{json .Mounts}}'
+Push-Location .\hydromate-backend
+try { & ..\.local\php\php.exe vendor\bin\phpunit --testdox }
+finally { Pop-Location }
 ```
-Si está detenido y existe: docker start hydromate-postgres. Confirmar que el
-directorio de datos está montado; si no, planificar backup y migración segura.
 
-## PHP y backend
-Se agregó PHP 8.4.26 portátil a C:\Hydromate\.local\php. Fuente/hash en source.json.
-Extensiones habilitadas incluyen pdo_pgsql, pdo_sqlite, mbstring y openssl.
-No cambia PATH global ni Herd. Dependencias instaladas requieren PHP >=8.4.1.
-Comandos comprobados:
+Pruebas Python del bridge y validación de puertos públicos:
+
 ```powershell
-Set-Location C:\Hydromate\hydromate-backend
-& C:\Hydromate\.local\php\php.exe artisan --version
-& C:\Hydromate\.local\php\php.exe artisan migrate:status
-& C:\Hydromate\.local\php\php.exe artisan route:list --path=api
-& C:\Hydromate\.local\php\php.exe artisan serve --host=127.0.0.1 --port=8000 --no-reload
+& .\.local\mqtt-venv\Scripts\python.exe -m unittest discover -s scripts -p test_bridge.py
+& .\.local\mqtt-venv\Scripts\python.exe -m unittest discover -s scripts -p test_public_access.py
 ```
-Comprobar primero si el puerto ya está ocupado: se dejó un servidor iniciado.
-Logs del proceso iniciado por el agente: .local/backend-server.out.log y .err.log.
-URL API: http://127.0.0.1:8000/api/measurements. La raíz conserva bienvenida Laravel.
-No cambiar .env ni publicar credenciales. No se ejecutó ninguna migración nueva;
-Sanctum pendiente deliberadamente. No usar migrate:fresh/refresh/reset.
 
-## Pruebas
+`test_deployment.py` depende del entorno/shell: registrar skips, que no acreditan
+compatibilidad rootless. `verify_production_compose.py` valida Compose con sus
+fixtures; nunca volcar el entorno real de producción.
+Pruebas C++: `scripts/tests/telemetry_sensors_test.cpp` y `pump_control_test.cpp`
+(en esta PC: `C:\MinGW\bin\g++ -std=c++11`); usar compilador disponible
+conforme a embedded/README, sin instalar uno para esta revisión.
+
+Android, si el JBR está instalado en esa ruta:
+
 ```powershell
-& C:\Hydromate\.local\php\php.exe vendor\bin\phpunit --testdox
-python tests\smoke_api.py --output ..\docs\evidence\nueva-prueba-http.json
+$env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
+& .\mobile\gradlew.bat -p mobile :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleRelease --console=plain
 ```
-PHPUnit usa SQLite :memory: y tiene guardia para no resetear PostgreSQL.
-Smoke usa servidor activo y deja 11 lecturas sintéticas por ejecución bajo un
-device_id único test-api-*. No elimina registros. Cada ejecución usa otro archivo
-de evidencia para conservar resultados anteriores.
-Composer comprobado: PHP portátil + C:\ProgramData\ComposerSetup\bin\composer.phar.
-No hace falta reinstalar vendor. El cliente Python de auditoría PostgreSQL está
-aislado en .local/python-packages; la API no depende de él.
 
-## Después
-Android será el primer frontend. Configuración LAN y teléfono se abordarán allí;
-este paso solo escucha en loopback. No hay comandos de Wokwi/bridge requeridos.
+Comprobar la salida de cada comando. El wrapper puede descargar dependencias;
+un fallo de red no demuestra aceptación. Pruebas JVM no necesitan teléfono.
+Un APK release sin firma no acredita instalación ni firma de distribución.
+Los ensayos optativos contra API deben configurarse expresamente.
 
-## Android mínimo ya construido
-Abrir C:\Hydromate\mobile en Android Studio. Guía completa: ../mobile/README.md.
-Desde esa carpeta: JAVA_HOME al jbr de Android Studio; gradlew.bat assembleDebug
-testDebugUnitTest lintDebug. Para ejecutar también la prueba de consulta real,
-definir HYDROMATE_TEST_API=http://127.0.0.1:8000 antes de Gradle (prueba opt-in).
-Con teléfono autorizado por USB, instalar APK y ejecutar adb reverse tcp:8000
-tcp:8000. App: servidor http://127.0.0.1:8000 y dispositivo test-api-0865fd385681.
-El enlace USB no está activo hasta conectar el teléfono y ejecutar reverse.
-APK mínimo Android 8.0; versión de desarrollo, no publicación de tienda.
+## Banco local y hardware
 
-Android Aero Eco 0.4 conserva este arranque. Antes de crear el enlace USB comprobar
-también `adb reverse --list`. Demostración offline opcional: Más →
-Demostración → elegir escenario; salir explícitamente para consultar API real.
-Solo existe en debug y no requiere backend. Receta de validación/capturas:
-AERO_ACCEPTANCE.md. `scripts/verify_eco.py` desde raíz recoge evidencia
-después de Gradle; usar los argumentos de esa receta para el incremento actual,
-sin sobrescribir informes históricos. No sustituye pruebas visuales Android.
+Inspeccionar procesos, puertos, contenedores y persistencia antes de arrancar.
+PostgreSQL de banco conocido: `hydromate-postgres`; conservar su volumen, nunca
+recrearlo para resolver un error. Leer `scripts/start_local.ps1` y las guías
+embedded/mobile antes de ejecutarlos. Banco: Laravel HTTP8000 y MQTT1884 local.
 
-Revisión visual 0.4: capture_eco_review.py abre una Activity aislada solo debug;
-receta y límites en AERO_ACCEPTANCE.md. No modifica ajustes del teléfono.
-Observado el 04/10: USB autorizado/reverse preparado, Docker daemon no activo;
-arrancar y comprobar servicios existentes antes de afirmar conexión a PostgreSQL.
+`tests/smoke_api.py` del backend escribe datos sintéticos: solo banco autorizado,
+con identidad de prueba; nunca identidad física en producción. No usar
+migrate:fresh/refresh/reset ni borrar volúmenes. Revisar respaldo antes de migrar
+datos persistentes.
 
-0.6.0-garden conserva el mismo arranque. El capturador requiere pantalla
-desbloqueada; la Activity debug mantiene retrato y pantalla encendida mientras
-está visible, sin ajustes globales. Indicar `--output docs/evidence/garden-light-2026-10-04`
-al capturar. Verificador: argumentos `--build-log`, `--baseline`, `--evidence-dir`
-y `--report` completos en AERO_ACCEPTANCE.md. Evidencia previa conservada.
-Más → Apariencia → Usar Jardín claro evita la variante nocturna del sistema;
-seleccionado en este teléfono para atender la petición de fondo mucho más claro.
+USB ESP32 sirve para flasheo/serie; detectar puerto actual, no asumir COM3.
+Cerrar Monitor Serie/Plotter antes de ocuparlo. Hotspot en 2.4 GHz. USB Android
+solo para instalación, ADB/captura; uso normal por Internet. No flashear ni instalar
+por una tarea exclusivamente documental.
+
+Seguir [INTEGRATION](INTEGRATION.md) para evidencia nueva fechada: adquisición,
+ACK de persistencia, GET de la misma secuencia y pantalla. Un socket abierto o
+GET antiguo no demuestran el flujo completo. Distinguir sensor→backend de
+sensor→pantalla y registrar fuentes/campos null.
+
+## Producción: instrucciones para el administrador
+
+Guías vigentes: [PUBLIC_ACCESS](PUBLIC_ACCESS.md) y [PRODUCTION](PRODUCTION.md).
+Android:
+`https://hydromate-kevin.duckdns.org:9443`; MQTT TLS mismo hostname:8884.
+API loopback8081, MQTT1884 y BD5432 internos no son direcciones públicas del teléfono.
+
+Solo el administrador, como `deploy-hydromate`, en el checkout real de la VPS,
+con Docker rootless y archivos privados ya provisionados, utiliza:
+
+```sh
+sh deployment/deploy.sh /etc/hydromate/.env --mqtt --public
+```
+
+El script localiza su raíz. Para comandos manuales, `HM_REPO` debe contener el
+checkout existente, no un directorio supuesto en `~`:
+
+```sh
+docker compose -p hydromate -f "$HM_REPO/compose.production.yml" --env-file /etc/hydromate/.env --profile mqtt --profile public ps
+```
+
+El despliegue incluye `php artisan migrate --force`; no implica permiso para
+operarlo desde este chat. No operar puertos80/443/8443/8883, Docker global,
+AppArmor del host ni recursos ajenos. Nunca down -v/prune. Validación TLS pública
+y transmisión requieren pedido pertinente; pruebas offline no las sustituyen.

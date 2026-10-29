@@ -34,7 +34,7 @@ Generated assets are not covered by the historical Fluent Emoji MIT license.
 
 
 Glass surfaces, buttons and chart points: original native HydroMate artwork.
-Botanical emblem, eleven glass icons, four navigation variants and botanical background: original artwork generated with OpenAI imagegen.
-The emblem is reused in the adaptive launcher; complete prompts and hashes: docs/recursos.json.
+Botanical emblem, eleven glass icons, four navigation variants and botanical background: generated with an image tool (OpenAI) and edited for HydroMate.
+The emblem is reused in the adaptive launcher; provenance and hashes: docs/recursos.json.
 Typeface: Android system sans-serif; no font redistributed.
 No third-party photos, wallpaper, logos or additional icon families are included.

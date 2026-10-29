@@ -166,7 +166,7 @@ incluye tiempos PC→ACK de persistencia; no son tiempo sensor→pantalla.
 
 ## 7. Permitir conexión del ESP32 en tu red doméstica
 
-El usuario autorizó red doméstica privada y MQTT solo desde subred local. La
+Se usa red doméstica privada y MQTT solo desde la subred local. La
 primera ejecución falló por falta de elevación. Abrir PowerShell como administrador:
 
 ```powershell

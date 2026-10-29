@@ -69,8 +69,7 @@ La aceptación de interacción y accesibilidad sigue siendo parcial.
   de error y recapturado su estado; no equivale a certificar accesibilidad.
 
 Resultado: [android-garden-2026-10-04.json](evidence/android-garden-2026-10-04.json).
-Log: ../.local/garden-validation.log. Respaldo: ../.local/backups/android-crystal-nav-2026-10-04.
-Sin Git; revisión local contra respaldo. Evidencias anteriores conservadas.
+Log y respaldo de comparación en `.local/` (no versionados).
 
 ## Revisión en teléfono
 

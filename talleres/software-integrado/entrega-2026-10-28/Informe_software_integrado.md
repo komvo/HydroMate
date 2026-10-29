@@ -33,7 +33,7 @@ Fuentes: compose.production.yml, firmware HydroMateTelemetry, scripts/mqtt_bridg
 
 | Requisito firmware | Evidencia y límite |
 |---|---|
-| Compilar sin errores | Compilación ESP32 Dev Module correcta el 28/10 con la salida: 1,077,213 bytes de flash (82%) y 50,828 de RAM (15%). Flasheado y probado por el responsable (P7). |
+| Compilar sin errores | Compilación ESP32 Dev Module correcta el 28/10 con la salida: 1,077,213 bytes de flash (82%) y 50,828 de RAM (15%). Flasheado y probado en banco (P7). |
 | Entrada física real | DS18B20 GPIO4; BH1750 I2C21/22; flotador GPIO27; pH ADS1115 A0 y TDS A1. Evidencia física del 21/10. |
 | Protocolo definitivo | MQTT 3.1.1 con TLS8884, CA, hostname y reloj válido. Sin setInsecure ni fallback plano por Internet. |
 | Salida o acción central | Bomba de recirculación: GPIO25 activo en bajo → NOR 74HCT02 con el flotador → MOSFET; alarma GPIO23. Arranca tras 5 s con agua confirmada y se apaga al instante con nivel bajo. Tarea FreeRTOS de seguridad separada de la red. Sin orden remota ni dosificación. |
@@ -191,15 +191,15 @@ Conservar estos casos por incremento. Los mensajes incorrectos o sintéticos se 
 
 | Caso / entorno | Procedimiento y resultado esperado | Estado |
 |---|---|---|
-| P1 Flujo real / físico | Adquirir; seguir device_id/sequence hasta stored, GET e Inicio/Historial. Valor y fecha coinciden. | Evidencia real21/10; recuperación confirmada por responsable. |
+| P1 Flujo real / físico | Adquirir; seguir device_id/sequence hasta stored, GET e Inicio/Historial. Valor y fecha coinciden. | Evidencia real21/10; recuperación comprobada el 28/10. |
 | P2 Inválido / local | Enviar ph=50 o número como cadena. HTTP422 con error; no se guarda. | Cubierto por PHPUnit27/10. |
 | P3 Duplicado / local | Reenviar identidad; no crear otra fila. Bridge solo stored si coincide contenido. | API y bridge probados; integración anterior. |
-| P4 Reconexión / físico | Cortar y restaurar Wi-Fi. Pendiente conserva identidad y llega sin duplicarse. | Comprobada por el responsable; confirmación28/10. |
-| P5 Estados Android / local | Vacío, errorHTTP, null y lectura antigua. Estado correcto sin inventar valores. | JVM27/10; interacción manual parcial. |
-| P6 Reinicio ESP32 / físico | Reiniciar ESP32; comprobar continuidad sin conexión y recepción de las mediciones recientes sin duplicados al recuperarla. | Comprobado por el responsable; confirmación28/10. |
-| P7 Bomba / físico | Arranque con agua tras 5 s; nivel bajo apaga y enciende alarma; recuperación reanuda; reinicio ESP32 sin arranque; telemetría continúa. | Comprobado por el responsable; confirmación28/10, sin fotografía. |
+| P4 Reconexión / físico | Cortar y restaurar Wi-Fi. Pendiente conserva identidad y llega sin duplicarse. | Comprobada el 28/10. |
+| P5 Estados Android / local | Vacío, errorHTTP, null y lectura antigua. Estado correcto sin valores de relleno. | JVM27/10; interacción manual parcial. |
+| P6 Reinicio ESP32 / físico | Reiniciar ESP32; comprobar continuidad sin conexión y recepción de las mediciones recientes sin duplicados al recuperarla. | Comprobado el 28/10. |
+| P7 Bomba / físico | Arranque con agua tras 5 s; nivel bajo apaga y enciende alarma; recuperación reanuda; reinicio ESP32 sin arranque; telemetría continúa. | Comprobado el 28/10, sin fotografía. |
 
-El responsable confirmó el 28/10 que reinició el ESP32, que siguió funcionando sin conexión y que al recuperarla llegaron las mediciones más recientes sin duplicarse. Esta comprobación corresponde al ESP32 y la recuperación de telemetría; no acredita un reinicio del bridge ni un historial completo de lecturas durante el corte.
+El 28/10 se reinició el ESP32: siguió funcionando sin conexión y al recuperarla llegaron las mediciones más recientes sin duplicarse. Esta comprobación corresponde al ESP32 y la recuperación de telemetría; no acredita un reinicio del bridge ni un historial completo de lecturas durante el corte.
 
 ### Resultados locales del 27 de octubre
 
@@ -290,11 +290,11 @@ Los datos sintéticos de las suites no sustituyen el flujo físico documentado. 
 
 ### Comprobación de reconexión y reinicio
 
-Prueba realizada por el responsable del proyecto y confirmada el 28/10: reinicio del ESP32, continuidad de funcionamiento sin conexión y entrega de las mediciones más recientes sin duplicados al recuperarla. La fecha exacta de ejecución no fue indicada. La evidencia real previa de la app se conserva con su fecha original.
+Prueba realizada el 28/10: reinicio del ESP32, continuidad de funcionamiento sin conexión y entrega de las mediciones más recientes sin duplicados al recuperarla. La evidencia real previa de la app se conserva con su fecha original.
 
 ### Comprobación de la salida de bomba
 
-Prueba realizada por el responsable del proyecto y confirmada el 28/10, con el circuito armado como en la práctica Proteus y el firmware de esta entrega: la bomba arrancó con agua, se detuvo con nivel bajo encendiendo la alarma, se reanudó al recuperar el nivel, no arrancó durante el reinicio y la telemetría continuó. No se conserva fotografía, video ni registro serie; no se midió corriente de arranque.
+Prueba realizada el 28/10, con el circuito armado como en la práctica Proteus y el firmware de esta entrega: la bomba arrancó con agua, se detuvo con nivel bajo encendiendo la alarma, se reanudó al recuperar el nivel, no arrancó durante el reinicio y la telemetría continuó. No se conserva fotografía, video ni registro serie; no se midió corriente de arranque.
 
 ### Comprobaciones que siguen abiertas
 

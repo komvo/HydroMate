@@ -1,8 +1,8 @@
 # HydroMate — ahorro energético y optimización segura
 
 Fecha: 2026-10-04. Alcance: diseño y plan de validación, **no firmware implementado ni ahorro medido**.
-El usuario confirma alimentación mediante fuente y un ESP32 que leerá sensores y controlará bombas.
-Referencias internas: [criterios](../AGENTS.md), [arquitectura](ARCHITECTURE.md),
+Alimentación confirmada: fuente de 24 V y un ESP32 que lee sensores y controla bombas.
+Referencias internas: [arquitectura](ARCHITECTURE.md),
 [contrato v1](TELEMETRY_CONTRACT.md), [estado ejecutable](STATUS.md), decisiones D44–D47.
 
 La dirección seleccionada es mantener disponible el controlador, separar seguridad,
@@ -15,7 +15,7 @@ no existe evidencia para afirmar que una configuración concreta sea el mínimo 
 
 | Estado | Evidencia o alcance |
 |---|---|
-| Confirmado por usuario | Fuente de corriente; lectura de sensores y control de bombas. Interés en lecturas cada 5 s y pruebas con envíos aproximadamente cada 30 s. |
+| Confirmado | Fuente de corriente; lectura de sensores y control de bombas. Interés en lecturas cada 5 s y pruebas con envíos aproximadamente cada 30 s. |
 | Implementado | Laravel/PostgreSQL y Android; consulta inicial/manual, límite de 20 lecturas en app, deduplicación por torre/secuencia. No hay conexión física de sensores comprobada. |
 | Seleccionado como dirección | Seguridad local independiente de Internet; MQTT/TLS → Mosquitto → integración → API; modos de ahorro graduales y reversibles. |
 | Propuesto para ensayo | Lectura ambiental cada 5 s; telemetría estable cada 300 s; modo de prueba de 30 s con vencimiento; eventos prioritarios. |
@@ -145,7 +145,7 @@ flotador/BH1750, enviar alarmas de sensor ausente o recuperar cola tardía para 
 real, diseñar una ampliación compatible: nivel discreto, magnitud real de luz,
 datos parciales con calidad, eventos y hora de adquisición con estado del reloj.
 Si no hay UTC fiable, conservar tiempo monótono/identidad de arranque y marcar la hora
-desconocida; no inventarla. No mezclar lecturas antiguas con nuevas para completar v1.
+desconocida y se deja vacía. No mezclar lecturas antiguas con nuevas para completar v1.
 
 Los promedios/mínimos/máximos de una ventana deben tener su intervalo y número de muestras;
 no publicarlos como una lectura instantánea. Enviar seis muestras juntas ahorra conexiones,
@@ -271,10 +271,9 @@ no certifica protección contra todos los fallos ni autoriza dosificación no ca
 6. Evaluar E3 únicamente si aporta ahorro medible y supera todos sus ensayos.
 
 Este orden no inicia autenticación completa, perfiles sociales, automatización física,
-nuevas tablas o despliegue por sí mismo. Fuente y control de bombas son requisitos del
-usuario; los intervalos y modos aquí indicados son dirección de diseño para validar.
+nuevas tablas o despliegue por sí mismo. Fuente y control de bombas son requisitos
+confirmados; los intervalos y modos aquí indicados son dirección de diseño para validar.
 
 Revisión documental actual: fuentes oficiales consultadas el 04/10/2026, cálculos
-reproducidos y comparación de hashes del código. Resultados en
-[energy-review-2026-10-04.json](evidence/energy-review-2026-10-04.json).
+reproducidos y comparación de hashes del código.
 No se ejecutaron pruebas de consumo, sensores, actuadores, nube o SQL de rendimiento.

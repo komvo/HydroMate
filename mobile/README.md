@@ -37,8 +37,8 @@ Sin Compose, WebView, motor 3D ni dependencias nuevas.
 - Jardín con paneles claros inicial; se respeta la elección guardada de seguir sistema.
 
 Diseño y recursos: ../docs/AERO_DESIGN.md, ../docs/recursos.json y
-../THIRD_PARTY_NOTICES. El emblema, las ilustraciones y el fondo son originales generados con IA,
-con una misma referencia de material/luz; el manifiesto incluye todos los prompts.
+../THIRD_PARTY_NOTICES. El emblema, las ilustraciones y el fondo se generaron con una herramienta de imagen
+y se editaron con una misma referencia de material/luz; procedencia en el manifiesto.
 Solo Inicio, Historial, Control y Más de la barra usan cuatro variantes de cristal
 con menos detalle. Cultivo y los iconos de las pantallas conservan los originales.
 Recarga usa una flecha circular y TDS un vaso con minerales, distinto del matraz
@@ -79,7 +79,7 @@ HYDROMATE_TEST_API=http://127.0.0.1:8000 activa la prueba GET solo cuando los
 servicios existentes están disponibles. Sin variable, se omite expresamente.
 Después de capturas: usar verify_eco.py con las rutas de evidencia 0.6 para
 conservar los resultados previos. Receta completa
-y límites: ../docs/AERO_ACCEPTANCE.md. verify_aero.py corresponde a 0.3.
+y límites: ../docs/AERO_ACCEPTANCE.md.
 
 APK: app/build/outputs/apk/debug/app-debug.apk. Release se compila sin firmar
 para validar exclusión de fixtures y HTTP; no es una publicación de tienda.

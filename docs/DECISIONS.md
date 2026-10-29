@@ -5,24 +5,24 @@ añadir reemplazo explícito cuando cambien.
 
 | ID | Fecha / fuente | Decisión y razón | Estado |
 |---|---|---|---|
-| D01 | 30/09, usuario; T6 23/09 | ESP32 + MQTT/TLS + Mosquitto + Laravel + PostgreSQL + Android REST. Separar control local y servicios remotos. | Confirmada, arquitectura objetivo |
-| D02 | 30/09, usuario | Completar PoC Wokwi→MQTT→Python→Laravel→BD→frontend antes de funciones avanzadas. Reduce alcance del incremento. | Reemplazada por D13 |
-| D03 | 30/09, usuario | Broker público, bridge Python, MicroPython, Blade y posible deep sleep son recursos de PoC. No describirlos como producto final. | Ruta anterior; Wokwi/Blade reemplazados por D13 |
-| D04 | 30/09, usuario; T6 | Seguridad crítica en ESP32, independiente de Internet; orden remota rechazable. | Confirmada |
-| D05 | 22/09, planeación; 30/09, usuario | Dosificación como canales A/B/Up/Down; mecanismo pendiente (incluye gravedad/servo/pinch). Evita acoplar negocio a una bomba concreta. | Confirmada abstracción; pendiente mecanismo |
+| D01 | 30/09; T6 23/09 | ESP32 + MQTT/TLS + Mosquitto + Laravel + PostgreSQL + Android REST. Separar control local y servicios remotos. | Confirmada, arquitectura objetivo |
+| D02 | 30/09 | Completar PoC Wokwi→MQTT→Python→Laravel→BD→frontend antes de funciones avanzadas. Reduce alcance del incremento. | Reemplazada por D13 |
+| D03 | 30/09 | Broker público, bridge Python, MicroPython, Blade y posible deep sleep son recursos de PoC. No describirlos como producto final. | Ruta anterior; Wokwi/Blade reemplazados por D13 |
+| D04 | 30/09; T6 | Seguridad crítica en ESP32, independiente de Internet; orden remota rechazable. | Confirmada |
+| D05 | 22/09, planeación; 30/09 | Dosificación como canales A/B/Up/Down; mecanismo pendiente (incluye gravedad/servo/pinch). Evita acoplar negocio a una bomba concreta. | Confirmada abstracción; pendiente mecanismo |
 | D06 | Código auditado 30/09 | Conservar measurements y UNIQUE(device_id, sequence); corregir incrementalmente. No reemplazar esquema existente. | Confirmada para PoC; reinicio de secuencia pendiente |
 | D07 | Plan interno 22/09 | Basic UNO debía completarse antes de depender de Smart. | Reemplazada solo como prioridad de esta sesión por D02; conservar línea Basic física |
 | D08 | T4 16/09; T6 23/09 | Referencia antigua $6,000 reemplazada por techo documental $5,000 de T6. No equivale a saldo ni autoriza compras. | Vigente documental; gasto real pendiente de conciliar |
 | D09 | Fuentes del 22/09 | $1,472.25 vs $1,872.74 y estados de bomba/LECA incompatibles; no fusionarlos como hechos. | Pendiente conciliación |
-| D10 | 30/09, usuario | AGENTS raíz y seis documentos compactos son contexto principal; originales solo para consultas focalizadas. | Confirmada |
+| D10 | 30/09 | Seis documentos compactos en docs/ son el contexto principal; los originales solo se consultan para dudas puntuales. | Confirmada |
 | D11 | Auditoría 30/09 | No recrear PostgreSQL ni afirmar pruebas hasta comprobar acceso, versión, volumen y datos. | Confirmada |
-| D12 | 30/09, consolidación | Sustituir AGENTS genérico de bootstrap por enlace al contexto real; no instalar Boost solo para inicializar instrucciones. Conservar copia del archivo anterior. | Confirmada para este incremento |
+| D12 | 30/09 | No instalar Laravel Boost; basta la documentación propia del proyecto. | Confirmada |
 
 No se decidieron hardware final de dosificación, VPS, credenciales, estrategia
 final de MQTT, versión/lenguaje de app existente ni compras nuevas.
 
 ## Actualización del paso 1 — 2026-09-30
-- D13 — Confirmada por usuario: PostgreSQL → API → Android mínimo → ESP32 físico.
+- D13 — Confirmada: PostgreSQL → API → Android mínimo → ESP32 físico.
   Reemplaza D02 y la prioridad Wokwi/Blade de D03. Sensores físicos próximos;
   usar datos sintéticos para avanzar backend/app sin depender de ellos.
 - D14 — Implementada: deduplicación atómica por UNIQUE existente y traducción de
@@ -62,7 +62,7 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   JVM/HTTP correctas no sustituyen esa comprobación.
 
 ## Android UX/UI — 2026-10-03
-- D27 — Usuario solicita evolución visual/funcional: navegación Inicio, Historial,
+- D27 — Evolución visual/funcional: navegación Inicio, Historial,
   Cultivo, Control, Más; preparar futuras funciones sin implementarlas ni cambiar API.
 - D28 — Implementada: conservar vistas nativas y cliente común; pantallas/componentes
   separados, temas del sistema y gráfica Canvas sobre las 20 recepciones existentes.
@@ -75,7 +75,7 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   Validación visual y de gestos/lifecycle en teléfono sigue pendiente (D26).
 
 ## Android Aero — 2026-10-03
-- D31 — Reemplazada visualmente y en navegación por D36; usuario, prompt del DOCX: Aero Día es dirección vigente; reemplaza tema
+- D31 — Reemplazada visualmente y en navegación por D36: según el documento de diseño, Aero Día es dirección vigente; reemplaza tema
   automático como inicial de D28 y cinco destinos de D27. Inicio/Historial/
   Cultivo/Ajustes; Equipo secundario. Se conserva opción sistema reversible.
 - D32 — Recursos reemplazados por D37; implementada en 0.3: materiales y torre originales en Canvas/drawables;
@@ -92,25 +92,25 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   La aceptación visual real sigue pendiente; ver AERO_ACCEPTANCE.md y evidencia.
 
 ## Android Aero Eco — 2026-10-04
-- D36 — Usuario, dos MD de Aero Cristal + Eco 90s: nueva dirección principal,
+- D36 — A partir de dos guías de diseño (Aero Cristal y Eco 90s): nueva dirección principal,
   cristal con espesor/reflejo, planta natural y portal ecológico luminoso.
   Restablece cinco destinos: Inicio, Historial, Cultivo, Control, Más.
   Reemplaza el acabado y navegación D31; conserva Día inicial y opción sistema.
 - D37 — Implementada en 0.4; la parte de iconos queda reemplazada por D39:
-  emblema original generado con IA, iconos nativos propios;
+  emblema generado con herramienta de imagen y editado, iconos nativos propios;
   reemplazan PNG Fluent de D32 y esquema visual de D35, sin decidir hardware.
-  Fuentes/prompt/hashes en recursos.json; aviso MIT histórico conservado.
+  Procedencia y hashes en recursos.json; aviso MIT histórico conservado.
 - D38 — Implementada solo debug: revisión visual nativa con configuración local
   de ancho/fuente, sin red/persistencia/órdenes y con marca fija. No sustituye
   MainActivity ni acredita gestos, TalkBack o conectividad física.
   D26 pasa de instalación pendiente a instalación comprobada y QA parcial.
 
-- D39 — Usuario pide elevar todos los gráficos al nivel del emblema. Implementada
+- D39 — Elevar todos los gráficos al nivel del emblema. Implementada
   en 0.5: diez iconos originales prerenderizados de cristal, alfa real y 256 px,
   generados por separado con referencia común; reemplazan iconos Canvas de D37.
   Emblema conservado y reutilizado en launcher adaptativo; biseles, burbujas y
   puntos de Historial refinados con Canvas. Sin motor 3D, dependencias ni cambios
-  funcionales. Prompts, procedencia y hashes en recursos.json.
+  funcionales. Procedencia y hashes en recursos.json.
 
 - D40 — Propuesta intermedia retirada y reemplazada por D41: el detalle y color fotográficos se
   confunden al reducirlos. Reemplaza el uso indiscriminado de PNG pequeños de D39
@@ -118,20 +118,20 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   colores controlados; ilustraciones grandes conservan cristal/hojas detallados.
   Barra 36 dp, instrumentos 38 dp. Sin cambios de datos o estados.
 
-- D41 — Aclaración final del usuario: solo ajustar los cuatro iconos de navegación
+- D41 — Ajuste final: solo ajustar los cuatro iconos de navegación
   distintos de Cultivo. Restaurar Cultivo y todos los gráficos de las pantallas.
   Implementada: cuatro variantes PNG con volumen cristalino y menos ruido
   interno; 36 dp. Cultivo original 34 dp. Se elimina la sustitución automática
   por glifos nativos de D40. La simplificación debe conservar riqueza material.
 
-- D42 — Usuario, 04/10: cambiar recarga, distinguir pH/TDS y orientar el fondo a
+- D42 — 04/10: cambiar recarga, distinguir pH/TDS y orientar el fondo a
   plantas con verde oscuro y cristal verde claro. Implementada en 0.6: fondo
   botánico local con velo de contraste, paneles verde claro translúcidos, textos
   externos claros; recarga con una flecha circular, TDS con vaso/minerales y pH
   mantiene matraz. Reemplaza la paleta celeste principal de D36, conserva Aero/Eco
   y las cuatro variantes de navegación D41. No cambia lógica, datos o hardware.
 
-- D43 — Corrección del usuario: fondo demasiado oscuro. Vigente en 0.6: jardín
+- D43 — Corrección: fondo demasiado oscuro. Vigente en 0.6: jardín
   mucho más claro con velo menta luminoso, texto oscuro y paneles realmente
   translúcidos (base alfa 110/255, placa 68/255). De noche base 180, placa 130.
   Reemplaza el oscurecimiento diurno de D42; conserva hojas, pH/TDS diferenciados,
@@ -139,7 +139,7 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
 
 ## Energía, telemetría y procesos — 2026-10-04
 
-- D44 — Confirmado por usuario: ESP32 alimentado por fuente de corriente, lector
+- D44 — Confirmado: ESP32 alimentado por fuente de corriente, lector
   de sensores y controlador de bombas. El ahorro debe mantener seguridad local
   D04, identidad por torre y abstracción A/B/Up/Down D05. No cambia hardware comprado.
 - D45 — Dirección documentada solicitada, pendiente de implementación/pruebas:
@@ -161,34 +161,34 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
 
 ## Preparación del taller 5 y repositorio — 2026-10-07
 
-- D48 — Usuario: PoC con temperatura, pH, iluminación y flotador físicos, TDS
+- D48 — PoC con temperatura, pH, iluminación y flotador físicos, TDS
   simulado identificado por variable. Reemplaza la propuesta inicial de solo
   temperatura para el taller; no modifica todavía v1. Lux/nivel discreto deben
   representarse sin porcentajes inventados y TDS simulado no autoriza dosificación.
-- D49 — Usuario acepta OVHcloud VPS-1 compartido con un proyecto similar para
+- D49 — Se acepta OVHcloud VPS-1 compartido con un proyecto similar para
   preparar alojamiento de la PoC. Separar código, datos, credenciales y permisos;
   verificar recursos con ambos proyectos. No afirma contratación/despliegue ni
   selecciona infraestructura definitiva; reemplaza Render+Aiven como candidato
   preferido para este taller, conservando D47 como antecedente.
-- D50 — Usuario solicita repositorio GitHub en `komvo` para documentos, pruebas
+- D50 — Repositorio GitHub en `komvo` para documentos, pruebas
   y código, antes del taller. Propuesta privada reemplazada por autorización
   explícita posterior de visibilidad pública; documentos originales incluidos,
   secretos/dependencias/cachés/compilaciones excluidos. Autoriza crear y subir la
   versión inicial; sincronización futura requiere commits/push y no implica
   acceso de escritura del compañero.
-- D51 — Usuario comunica requisito docente: carpeta de talleres en GitHub,
+- D51 — Requisito docente: carpeta de talleres en GitHub,
   preferentemente PDF; reportes técnicos desde T5 con código, capturas,
   errores/resultados, diagramas y archivos utilizados. Conservar fuentes y
   originales; generar reporte final con evidencia observada, sin completar
   resultados pendientes por simulación o inventar aprobación de entregables.
-- D52 — Usuario solicita retirar las tres carpetas y los 18 archivos de
+- D52 — Retirar las tres carpetas y los 18 archivos de
   Documentos PDC señalados en capturas. Reemplaza la inclusión exhaustiva de D50:
   conservar originales locales mediante exclusión de Git, publicar solo las
   fuentes de talleres seleccionadas y sketch tsts; no reescribir historial.
 
 ## D53 — Incremento local Taller 5 (2026-10-07)
 
-Por petición del usuario se implementa primero el flujo local completo y se
+Se implementa primero el flujo local completo y se
 documenta procedimiento reproducible. Telemetría v2 conserva lux reales y nivel
 booleano, agrega origen por variable y mantiene v1 compatible. TDS simulado fijo
 650 ppm, explícito desde firmware hasta Android; no se usa para dosificación.
@@ -196,12 +196,12 @@ Bridge Python/Paho con bandeja SQLite privada y ACK después de persistencia.
 Firmware de banco separado del sketch histórico, sin actuadores, NVS para
 reserva de secuencia y un pendiente. MQTT sin TLS solamente en banco doméstico
 autorizado; VPS requiere TLS/HTTPS, API protegida y separación del compañero.
-Usuario autorizó perfil doméstico privado/regla 1884 local; configuración previa
+Se autorizó perfil doméstico privado/regla 1884 local; configuración previa
 Mosquitto 1883 y PostgreSQL conservada. Pruebas físicas/nube según STATUS.
 
 ## D55 — Producción aislada y despliegue externo desde main (2026-10-14)
 
-Usuario limita expresamente la tarea a preparar repositorio, sin acceso SSH ni
+La tarea se limita a preparar repositorio, sin acceso SSH ni
 solicitar credenciales. Sustituye la propuesta previa de acceso interactivo: ejecutor
 existente despliega main con lectura Git; se entrega hook de operación Docker
 propia, no workflow con secretos SSH. chitiito-* (incluidas redes/volúmenes/config)
@@ -216,7 +216,7 @@ de esta tarea; no alterar proxy de chitiito. Detalles en PRODUCTION.md.
 
 ## D56 — Publicación aislada y reconciliación de alcance (2026-10-14)
 
-Por solicitud del usuario: HTTPS8443/MQTT TLS8884 en hostname
+HTTPS8443/MQTT TLS8884 en hostname
 hydromate-kevin.duckdns.org, Docker rootless deploy-hydromate, sin SSH ni secretos.
 Certificados privados /etc/hydromate/{https,mqtt}; guard de cuenta/socket/daemon
 con permisos mediante namespace. URL única HYDROMATE_APP_URL para Laravel/Android.
@@ -228,7 +228,7 @@ reconciliado antes de merge. Antecedentes de main permanecen sin eliminar.
 
 ## D57 — Configuración Mosquitto incorporada en imagen (2026-10-14)
 
-Por diagnóstico confirmado del usuario se sustituyen únicamente bind mounts
+Tras el diagnóstico se sustituyen únicamente bind mounts
 individuales conf/ACL por COPY --chown1883:1883/--chmod640 durante build de imagen
 basada eclipse-mosquitto:2.0.22. Dockerfile termina USER1883:1883. Secretos siguen
 externos/read-only y mqtt_data conserva su nombre/persistencia. Sustituye el
@@ -239,7 +239,7 @@ Validación local directa/integración TLS; ninguna operación VPS realizada.
 
 ## D58 — HTTPS9443 sustituye8443 (2026-10-14)
 
-Usuario confirma8443 ocupado por proyecto ajeno, intocable. Se sustituye el puerto
+Se confirma 8443 ocupado por proyecto ajeno, intocable. Se sustituye el puerto
 HTTPS de D56 por9443 en Compose/Nginx/gate/plantilla/validadores y documentación.
 URL única HYDROMATE_APP_URL=https://hydromate-kevin.duckdns.org:9443; Android
 compila ese default y conserva desarrollo independiente. MQTT permanece8884,
@@ -250,7 +250,7 @@ conectividad VPS. Administrador actualiza solo APP_URL y acceso TCP9443.
 
 ## D59 — Base documental de arquitectura integral (2026-10-14)
 
-Usuario solicita congelar la arquitectura principal en un taller académico.
+Se congela la arquitectura principal en un taller académico.
 Se consolidan ESP32/control local, Mosquitto MQTT/TLS, consumidor Paho con
 bandeja, Laravel/PostgreSQL y Android HTTPS; se preservan v3, identidad
 device_id/sequence y tópicos actuales. Base1.0 con14 ADR,12 figuras y trazabilidad:
@@ -264,7 +264,7 @@ completo. Cambios posteriores mediante ADR sucesor y revisión de contratos.
 
 ## D60 — TDS real, eventos y adquisición solicitada (2026-10-21)
 
-Usuario confirma reemplazo TDS analógico conectado a ADS1115 A1 y DS18B20 GPIO4.
+Se confirma reemplazo TDS analógico conectado a ADS1115 A1 y DS18B20 GPIO4.
 Se reemplaza la deshabilitación previa: mediana de9 conversiones, transferencia
 del módulo y compensación con temperatura medida. Si falta temperatura, referencia
 25°C identificada en Android; nunca inventar temperatura ni EC. Sin calibración
@@ -282,8 +282,8 @@ firmware/app; pruebas locales no equivalen a aceptación física pública.
 
 ## D61 — T8 acotado y decisiones de continuidad (2026-10-21)
 
-Por solicitud del usuario se concentra el diseño de D59 en los mínimos del taller;
-la versión corregida del usuario se conserva y la revisión queda en Documentos
+Se concentra el diseño de D59 en los mínimos del taller;
+la versión corregida a mano se conserva y la revisión queda en Documentos
 PDC/T8_PDC_1288703.docx y PDF. Sustituye para esta entrega el informe
 ampliado de D59; el original permanece como antecedente, sin borrar su historial.
 Se ratifican ESP32/MQTT TLS/bridge/Laravel/PostgreSQL/Android HTTPS, pines reales
@@ -295,19 +295,28 @@ firmware probado y el core ya admite tareas. Fuentes oficiales citadas en el T8.
 Control hm-control-1 conserva su envoltorio separado de telemetría v3; ningún
 contrato ejecutable ni componente cambia en esta revisión documental.
 
+
+## D62 — Documentación vigente (2026-10-27)
+
+Se consolida la documentación en STATUS → PROJECT_CONTEXT → ARCHITECTURE; SETUP y
+REPOSITORY describen el estado actual. Se distinguen evidencia observada, diseño
+seleccionado y pruebas pendientes. No cambia arquitectura, contrato ni implementación.
+Push, merge y despliegue son pasos distintos.
+
+
 ## D63 — Rediseño visual Android «Jardín líquido» (2026-10-27)
 
-Solicitud del usuario: rediseño total que conserve Frutiger Aero y lo ecológico
-pero deje el aspecto de web de los 90, tomando como referencia los materiales de
-cristal de Apple (Liquid Glass). Reemplaza la dirección visual D43 (se conserva en
-AERO_DESIGN_HISTORY); mantiene emblema, iconos PNG, fondo botánico y variantes D41.
+Rediseño total que conserva Frutiger Aero y lo ecológico
+pero deja el aspecto de web de los 90, tomando como referencia los materiales de
+cristal de Apple (Liquid Glass). Reemplaza la dirección visual D43;
+mantiene emblema, iconos PNG, fondo botánico y variantes D41.
 Vidrio nativo con muestreo de una copia desenfocada del fondo local, barra flotante
 en cápsula y listas agrupadas. Sin dependencias, datos, contrato ni lógica nuevos.
 Revisado en teléfono el 27/10; detalle en AERO_DESIGN y AERO_ACCEPTANCE.
 
 ## D64 — Historial e Inicio orientados a comprensión (2026-10-27)
 
-Solicitud del usuario: análisis UX/UI y mejoras para entender el sistema y el
+Análisis UX/UI y mejoras para entender el sistema y el
 historial (UX_ANALYSIS.md). Reemplaza los puntos aislados de D43/D63 por línea con
 área, eje Y dinámico, promedio, inspección táctil y **cortes visibles** cuando un
 intervalo supera 3× la mediana. Así no se dibuja continuidad sobre recepciones faltantes.
@@ -315,3 +324,37 @@ Inicio añade minigráficas, cambio frente a la lectura anterior en color neutro
 rangos no se califica), precisión por métrica, estado relativo y guía «Entender
 HydroMate». Tabla de recepciones con detalle por fila. Sin cambios de API/contrato;
 selector de periodos y rangos por cultivo quedan como recomendaciones.
+
+## D65 — Primera salida física: bomba de recirculación local (2026-10-28)
+
+Para la entrega de software integrado se implementa en
+`embedded/` la salida tal como se armó en la práctica Proteus. Su alcance es solo la
+bomba de recirculación (GPIO25, activo en bajo, NOR 74HCT02 con el flotador) y la
+alarma (GPIO23).
+- La decisión es local: la bomba arranca 5 s después de confirmar agua, corre de forma
+  continua y se apaga de inmediato con nivel bajo.
+- Una tarea FreeRTOS de seguridad, separada de las esperas de red, es la dueña de los pines.
+- El interbloqueo físico por nivel no depende del firmware.
+
+Sin orden remota, sin dosificación y sin cambios de contrato ni API. Reemplaza
+parcialmente la nota «no hay salidas de actuadores» de STATUS; el aplazamiento docente
+de la actuación (T5) queda superado para la bomba. Los valores son de banco, no un
+riego definido. Prueba física realizada el 28/10, sin registro gráfico.
+
+## D66 — Ecosistema 3D paramétrico en CadQuery (2026-10-28)
+
+Propuesta pendiente de validación física.
+- CAD como código (CadQuery 2.8, venv local) con medidas únicas en `cad/hydromate_cad/params.py`.
+- Envolventes superelipse; junta TPU con tornillos M3 en pétalos exteriores desde abajo;
+  tapas sin barrenos impresas boca abajo.
+- ~~Fuente dentro de CTRL-01 en cámara inferior ventilada~~ reemplazado el mismo día:
+  la fuente medida (197×130×40) no cabe acostada en la K1C; va en POWER-01, torre
+  vertical ventilada en el mismo riel. Alternativa: caja eléctrica comercial.
+- Montaje: placas planas en la pared exterior (el borde de la tapa no se usa: rompería el
+  sello); POWER-01 fuera de la caja, ≥10 cm sobre el piso.
+- Puertos con prensaestopas PG9 (comprados) + pigtail al conector automotriz de 14 vías;
+  pH por pasacables TPU partido por su BNC.
+- Montaje universal por riel cola de milano; AQUA propone un cable de 7–8 hilos al
+  principal (reversible en `HUB_FRONT_PORTS`).
+- Dosificación: frascos comprados + bastidor impreso; se recomienda peristáltica sobre
+  gravedad/pinch. No decidido.

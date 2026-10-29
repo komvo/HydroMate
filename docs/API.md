@@ -35,11 +35,18 @@ Todos los sensores se consultan en una misma fila; no se requieren endpoints
 separados por temperatura/pH/nivel/luz/TDS/EC. Detalles y pruebas reproducibles:
 [INTEGRATION](INTEGRATION.md).
 
-# API de telemetría para el primer cliente Android
+## Referencia histórica v1: primer cliente Android
+
+Los ejemplos siguientes conservan el banco inicial; no describen la exposición
+pública actual ni el contrato físico v3. Prevalecen las secciones anteriores,
+TELEMETRY_CONTRACT.md y PUBLIC_ACCESS.md. La restricción de no exponer el POST
+de mediciones sigue vigente; las consultas y solicitudes limitadas sí tienen
+acceso público por HTTPS9443.
 
 Base de desarrollo: http://127.0.0.1:8000. JSON; enviar Accept: application/json.
-Android usará posteriormente la dirección LAN de la PC, no su propio localhost.
-Sin autenticación por ahora: no exponer a Internet. Filtro no equivale a autorización.
+El primer banco Android usaba LAN o USB reverse; producción usa HTTPS9443.
+Regla del banco inicial: no exponerlo directamente a Internet. El despliegue
+actual aplica Nginx y rutas restringidas; filtro no equivale a autorización.
 
 ## Registrar
 Actualización 07/10: también acepta v2 físico en los mismos endpoints. Ver

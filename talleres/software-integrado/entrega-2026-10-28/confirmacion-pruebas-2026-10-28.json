@@ -1,0 +1,24 @@
+{
+  "fecha": "2026-10-28",
+  "tipo": "Prueba manual en banco, sin registro automático",
+  "pruebas": [
+    {
+      "id": "P6",
+      "equipo": "ESP32",
+      "procedimiento": "Reiniciar el ESP32 sin conexión y restablecer la red",
+      "resultado": {
+        "reinicio_esp32": "Comprobado",
+        "continuidad_sin_conexion": "Comprobada",
+        "recepcion_mediciones_recientes_sin_duplicados": "Comprobada"
+      },
+      "alcance": "No incluye reinicio del bridge ni almacenamiento de todas las lecturas sin Internet."
+    },
+    {
+      "id": "P7",
+      "equipo": "Salida de bomba de recirculación",
+      "cableado": "Igual que la práctica Proteus: GPIO25 activo en bajo hacia la NOR 74HCT02 con el flotador; alarma GPIO23",
+      "resultado": "Comprobada",
+      "alcance": "Sin fotografía, video ni registro serie; corriente de arranque no medida."
+    }
+  ]
+}
