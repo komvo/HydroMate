@@ -19,7 +19,7 @@ Además de adquirir y transmitir, gobierna **solo la bomba de recirculación y l
 
 ## Salida: bomba de recirculación
 
-Cableado igual al de la práctica Proteus (`talleres/practica-proteus/`):
+Cableado igual al de la práctica Proteus (`Documentos PDC/T9_anexos/`):
 - **GPIO25 (`BOMBA_N`), activo en bajo**, con pull-up de 10 kΩ a 3V3 → 74HCT02 a 5 V,
   `NOR(NIVEL, BOMBA_N)` → R de compuerta 100 Ω + pull-down de 10 kΩ → MOSFET → bomba 24 V,
   con diodo flyback y fusible retardado.

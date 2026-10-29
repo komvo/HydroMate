@@ -1,8 +1,7 @@
 # Evidencias del Taller 5 al 21 de octubre de 2026
 
-Versión académica vigente: [Word T5](../../../Documentos%20PDC/T5_PDC_1288703.docx)
-y [PDF T5](../../../Documentos%20PDC/T5_PDC_1288703.pdf).
-Copia de contenido y anexos: [HydroMate Taller 5](HydroMate_Taller_5.docx).
+Versión académica vigente: [Word T5](../../T5_PDC_1288703.docx)
+y [PDF T5](../../T5_PDC_1288703.pdf).
 Incluye explicación del flujo físico público, conexiones, backend, modelo de
 datos, registros reales, capturas Android, pruebas y errores, cronograma hasta
 el 2 de diciembre, presupuesto preliminar y ocho riesgos. La revisión por

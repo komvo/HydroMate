@@ -176,7 +176,7 @@ final de MQTT, versión/lenguaje de app existente ni compras nuevas.
   secretos/dependencias/cachés/compilaciones excluidos. Autoriza crear y subir la
   versión inicial; sincronización futura requiere commits/push y no implica
   acceso de escritura del compañero.
-- D51 — Requisito docente: carpeta de talleres en GitHub,
+- D51 — Requisito docente: carpeta de talleres en GitHub (desde 28/10 es `Documentos PDC/`),
   preferentemente PDF; reportes técnicos desde T5 con código, capturas,
   errores/resultados, diagramas y archivos utilizados. Conservar fuentes y
   originales; generar reporte final con evidencia observada, sin completar

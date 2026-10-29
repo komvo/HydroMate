@@ -1,7 +1,7 @@
 # Validación de la versión inicial integrada
 
 Revisión documental: 28/10/2026. Paquete y fuentes en
-[talleres/software-integrado](../talleres/software-integrado/README.md).
+[Documentos PDC/T10_anexos](../Documentos PDC/T10_anexos/README.md).
 
 El documento cubre los mínimos generales, firmware, backend, base de datos,
 frontend y calidad. Añade el modelo de telemetría implementado, diccionario de

@@ -44,7 +44,7 @@ sin acreditar corriente de arranque ni hidráulica medidas. Cuatro canales
 nutrient_a/nutrient_b/ph_up/ph_down: mecanismo físico por validar; no presuponer
 cuatro bombas peristálticas. GPIO de actuación del T8 son preliminares.
 
-Presupuesto vigente y componentes: `talleres/taller-05/entrega-2026-10-21/presupuesto-actualizado.json` desde la raíz. Gasto $3,493.94; máximo $6,000;
+Presupuesto vigente y componentes: `Documentos PDC/T5_anexos/entrega-2026-10-21/presupuesto-actualizado.json` desde la raíz. Gasto $3,493.94; máximo $6,000;
 disponible $2,506.06 MXN. Sustituye límites históricos del T6 anterior.
 
 ## Decisiones límites y documentos
@@ -58,6 +58,6 @@ incompatibles y tiempos excesivos; sin deep sleep normal del controlador.
 T5 demuestra viabilidad; T8 fija arquitectura; T6 actualizado contiene requisitos.
 Los documentos académicos no se editan desde el código y conservan los límites
 de cada prueba. La actuación se aplazó a la versión alfa; entrega final 2/12/2026.
-La práctica Proteus está en `talleres/practica-proteus/`.
+La práctica Proteus está en `Documentos PDC/T9_anexos/`.
 
 Estado y evidencias: STATUS.md. Cambios y publicación: REPOSITORY.md.

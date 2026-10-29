@@ -255,7 +255,7 @@ El detalle de cada prueba y los intentos descartados están en
   `.hex` que se carga en la simulación. La compilación de 8 MHz se genera en `build/`, que no se
   versiona.
 - `evidencias/` — capturas de Proteus; `resultados-fallas.md` contiene las notas de las fallas.
-- `T9_PDC_1288703.pdf` — reporte de 27 páginas. Contiene: cumplimiento de requisitos; cada
+- [`T9_PDC_1288703.pdf`](../T9_PDC_1288703.pdf) — reporte de 27 páginas. Contiene: cumplimiento de requisitos; cada
   parte del esquemático con recortes señalados y el componente físico que representa; cálculos y
   justificación; lista de componentes; las simulaciones con sus capturas y la explicación de cada
   resultado; y las diferencias con el circuito físico.

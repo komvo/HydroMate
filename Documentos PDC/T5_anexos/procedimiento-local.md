@@ -15,7 +15,7 @@ de pasos pendientes. No es todavía la aprobación de viabilidad en nube.
 | scripts/test_mqtt_flow.py | Productor sintético para probar red/API/BD antes de usar hardware |
 | scripts/start_local.ps1 | Arranque de procesos locales existentes sin borrar/recrear datos |
 | docs/ | Contexto, decisiones, arquitectura, API y contrato vigente |
-| talleres/taller-05/ | Evidencias y reporte técnico de esta entrega |
+| Documentos PDC/T5_anexos/ | Evidencias y reporte técnico de esta entrega |
 | Documentos PDC/tests/PruebaSensores1.ino | Prueba histórica de sensores, conservada sin cambiar |
 | .local/ | Herramientas portátiles, logs, backup y bandeja privada; no se sube a GitHub |
 
@@ -107,7 +107,7 @@ Otra consola puede consultar:
 ```powershell
 Invoke-RestMethod 'http://127.0.0.1:8000/api/measurements?device_id=hydromate-01&limit=20'
 Set-Location C:\Hydromate
-python hydromate-backend/tests/smoke_api.py --output talleres/taller-05/pruebas/http-nueva-ejecucion.json
+python hydromate-backend/tests/smoke_api.py --output Documentos PDC/T5_anexos/pruebas/http-nueva-ejecucion.json
 ```
 
 HTTP 201 significa nueva fila; 409 identidad duplicada; 422 campos incorrectos.
@@ -155,7 +155,7 @@ Set-Location C:\Hydromate
 $taskUsers = Get-Content .local/mqtt/users.json -Raw | ConvertFrom-Json
 $env:MQTT_USERNAME = 'hydromate-test'
 $env:MQTT_PASSWORD = $taskUsers.'hydromate-test'
-& .local/mqtt-venv/Scripts/python.exe scripts/test_mqtt_flow.py --port 1884 --output talleres/taller-05/pruebas/mqtt-nueva-ejecucion.json
+& .local/mqtt-venv/Scripts/python.exe scripts/test_mqtt_flow.py --port 1884 --output Documentos PDC/T5_anexos/pruebas/mqtt-nueva-ejecucion.json
 Remove-Item Env:MQTT_PASSWORD
 Remove-Item Env:MQTT_USERNAME
 ```
@@ -251,7 +251,7 @@ Captura automática usada en esta etapa (cerrar otros monitores serie antes):
 ```powershell
 Set-Location C:\Hydromate
 & .local/mqtt-venv/Scripts/python.exe -m pip install -r scripts/requirements-hardware.txt
-& .local/mqtt-venv/Scripts/python.exe scripts/capture_sensor_flow.py --port COM3 --device hydromate-01 --output talleres/taller-05/pruebas/esp32-nueva-ejecucion.json
+& .local/mqtt-venv/Scripts/python.exe scripts/capture_sensor_flow.py --port COM3 --device hydromate-01 --output Documentos PDC/T5_anexos/pruebas/esp32-nueva-ejecucion.json
 ```
 
 Conserva muestras JSON, intentos y ACK, y verifica campos/secuencias contra API.
@@ -271,7 +271,7 @@ igual a la PC; cerrar otros monitores serie):
 
 ```powershell
 $adb="$env:LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe"
-& .local/mqtt-venv/Scripts/python.exe scripts/measure_android_latency.py --port COM3 --adb $adb --output talleres/taller-05/pruebas/latencia-nueva.json
+& .local/mqtt-venv/Scripts/python.exe scripts/measure_android_latency.py --port COM3 --adb $adb --output Documentos PDC/T5_anexos/pruebas/latencia-nueva.json
 ```
 
 El script observa SAMPLE/STORED nuevos, consulta la secuencia por API, reinicia

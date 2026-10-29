@@ -32,4 +32,4 @@ Condiciones comunes: MCU a 16 MHz (`firmware-sim/build-16mhz`), F2 = 4 A como aj
 ## Estado final del proyecto (tras las fallas)
 - Valores normales restaurados: F2 = 2 A; SW1 a SW5 abiertos (STATE=0); SW6 cerrado (STATE=1, con agua); SW7 abierto; RV1 POS=25.4 (1.251 V) y RV2 POS=80 (1.788 V); D6 y ADS1015 incluidos en la simulación; breakpoint de VD_BOMBA desactivado; firmware `build-16mhz`.
 - Al simular con F2 = 2 A y la bomba ordenada, el fusible se funde en el arranque, porque el modelo no tiene retardo (ver N3a).
-- Esquemático exportado a `talleres/practica-proteus/hydromate-esquematico.pdf` (las 2 hojas, en color).
+- Esquemático exportado a `Documentos PDC/T9_anexos/hydromate-esquematico.pdf` (las 2 hojas, en color).

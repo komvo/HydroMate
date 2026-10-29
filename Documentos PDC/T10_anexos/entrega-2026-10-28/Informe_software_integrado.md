@@ -10,7 +10,7 @@ La integración de monitoreo está implementada. El firmware gobierna la bomba d
 
 | Requisito general | Dónde se cumple |
 |---|---|
-| Repositorio organizado | embedded/, hydromate-backend/, mobile/, scripts/, deployment/, docs/ y talleres/ separan responsabilidades. |
+| Repositorio organizado | embedded/, hydromate-backend/, mobile/, scripts/, deployment/, docs/ y Documentos PDC/ separan responsabilidades. |
 | Módulos y responsabilidades | Figura 1 y tabla de la sección 2. Se distinguen los componentes implementados del diseño por desarrollar. |
 | Procesos principales | Sección 3: pseudocódigo de adquisición, persistencia y consulta, incluyendo errores y reconexión. |
 
@@ -179,7 +179,7 @@ Figura 3. Bosquejo de la estructura de Inicio e Historial y navegación entre pa
 | Carga, vacío y error | ReadingState.kt y pruebas de repositorio; sin fallback automático a demo en producción. |
 | Navegación básica | Barra de destinos y configuración por entorno; revisión visual documentada27/10. |
 
-Capturas: talleres/taller-05/entrega-2026-10-21/evidencias/android-inicio.png y android-historial.png, desde raíz del repositorio.
+Capturas: Documentos PDC/T5_anexos/entrega-2026-10-21/evidencias/android-inicio.png y android-historial.png, desde raíz del repositorio.
 
 Figuras 4 y 5. Capturas físicas del 21/10: datos reales en Inicio e Historial. La interfaz fue actualizada el 27/10; estas imágenes demuestran el flujo anterior, no una nueva adquisición de hoy. La aceptación de la UI actual está en docs/AERO_ACCEPTANCE.md.
 
@@ -281,7 +281,7 @@ Compose requiere Docker CLI en PATH; usa fixtures y no inicia contenedores. Arra
 |---|---|
 | docs/evidence/public-flow-esp32-android-2026-10-21.json | 14 adquisiciones4201–4214 confirmadas y comparadas con API. SAMPLE→STORED258–577ms, media409ms; no incluye pantalla. |
 | docs/evidence/tds-events-2026-10-21.json | TDS A1/temperatura reales comparados con API; no calibración química. |
-| talleres/taller-05/entrega-2026-10-21/evidencias/ | Capturas, video, registros y fotos del banco. |
+| Documentos PDC/T5_anexos/entrega-2026-10-21/evidencias/ | Capturas, video, registros y fotos del banco. |
 | docs/AERO_ACCEPTANCE.md y docs/evidence/ux-2026-10-27/ | Aceptación visual de la interfaz actual y límites de interacción manual. |
 | hydromate-backend/database/migrations/ y tests/ | Esquema reproducible y comportamiento automatizado. |
 | Esta entrega: validacion-local.json y diagramas/ | Resultados locales27/10, huellas de fuentes y figuras SVG editables. |

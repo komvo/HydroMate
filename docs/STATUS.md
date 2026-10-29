@@ -62,7 +62,7 @@ no obliga a migrar a ESP-IDF. Control hm-control-1 es diseño; measure ya existe
 - `Documentos PDC/T8_PDC_1288703.docx` y PDF:15 páginas; decisiones y 16 mínimos.
 - `T6_PDC_1288703_act` es referencia de requisitos actualizada; los anteriores
   y el informe ampliado de 41 páginas son antecedentes, no versiones vigentes.
-- Fuentes/anexos T5: `talleres/taller-05/entrega-2026-10-21/` desde la raíz.
+- Fuentes/anexos T5: `Documentos PDC/T5_anexos/entrega-2026-10-21/` desde la raíz.
 - Compras anteriores $2,055.94 + electrónica pagada $1,168 + segundo TDS $270 =
   $3,493.94 MXN. Máximo $6,000; disponible $2,506.06. Desglose electrónico $1,174.23:
   diferencia $6.23 sin motivo identificado. VPS prestada $0.
@@ -103,7 +103,7 @@ arrastre, diálogos y TalkBack sin verificar (AERO_ACCEPTANCE).
 ## Entrega inicial de software integrado — 28/10/2026
 
 Documento nuevo `Documentos PDC/Software_integrado_PDC_1288703.docx` y PDF;
-fuentes en `talleres/software-integrado/`, resumen en SOFTWARE_INTEGRATION.md.
+fuentes en `Documentos PDC/T10_anexos/`, resumen en SOFTWARE_INTEGRATION.md.
 Completa diagramas de módulos/modelo/bosquejo, diccionario de veinte columnas,
 pseudocódigo de tres procesos y plan de siete pruebas, sin modificar T5/T8.
 Pruebas repetidas el 27/10: ESP32 compilado (82% flash/15% RAM), PHPUnit 29/194,
@@ -119,7 +119,7 @@ funcionando sin conexión y al recuperarla llegaron las mediciones más reciente
 sin duplicarse. Word/PDF y plan P4/P6 se actualizan como comprobados; no se
 acredita reinicio del bridge.
 La evidencia real anterior de Android conserva su fecha. Registro en
-`talleres/software-integrado/entrega-2026-10-28/confirmacion-pruebas-2026-10-28.json`.
+`Documentos PDC/T10_anexos/entrega-2026-10-28/confirmacion-pruebas-2026-10-28.json`.
 
 ## Diseño 3D paramétrico — 28/10/2026
 

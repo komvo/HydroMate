@@ -17,7 +17,7 @@ servidor esté disponible en este momento.
 - Producción: `https://hydromate-kevin.duckdns.org:9443`; MQTT TLS
   `hydromate-kevin.duckdns.org:8884`; dispositivo `hydromate-01`.
 - Talleres5/8 y presupuesto actual en `Documentos PDC/`; fuentes y evidencias
-  en `talleres/taller-05/entrega-2026-10-21/`. Entrega final del proyecto: 2/12/2026.
+  en `Documentos PDC/T5_anexos/entrega-2026-10-21/`. Entrega final del proyecto: 2/12/2026.
 
 ## Mapa de trabajo
 
