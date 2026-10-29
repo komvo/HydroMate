@@ -23,11 +23,10 @@ remota. Consultar AERO_ACCEPTANCE para la revisión visual del 27/10.
 
 Permanece pendiente la actuación central o una autorización docente aplicable
 a esta etapa; no se habilitan salidas de riesgo para cerrar un requisito en papel.
-El responsable confirmó el 28/10 que reinició el ESP32, continuó funcionando sin
-conexión y recibió las mediciones más recientes sin duplicarse al recuperarla.
-Reconexión y reinicio ESP32 se registran como comprobados por el responsable,
-no como ensayos repetidos por el agente ni como reinicio del bridge. La fecha
-exacta del ensayo no fue indicada; la evidencia de la app conserva su fecha.
+El 28/10 se reinició el ESP32: continuó funcionando sin conexión y al
+recuperarla llegaron las mediciones más recientes sin duplicarse. La reconexión
+y el reinicio del ESP32 quedan comprobados; el reinicio del bridge no se probó.
+La evidencia de la app conserva su fecha.
 Registro en confirmacion-responsable.json del paquete de entrega.
 La interacción manual restante se mantiene en AERO_ACCEPTANCE. No se introduce
 código funcional ni cambia arquitectura, secretos o puertos.
